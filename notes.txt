@@ -1,0 +1,34 @@
+8-bit overwatch duel game
+
+similar to pokemon
+players choose 3-4 characters
+
+characters have hp/ability/attack stats based on original game
+
+some abilities have accuracy %. random num between 1-100
+if number>accuracy, 100% hit. if it is less than the accuracy %,
+subtract attack num.
+e.g. ability 1. damage-80pts accuracy-60%
+gets 40 on the number gen. damage:
+(40/60)*damage = 53
+
+players can rotate characters as long as they are alive
+https://i.pinimg.com/736x/b3/e3/ba/b3e3ba0c0a25a89005f14dfaeea6150f--perler-beads-overwatch-pixel-art.jpg
+
+33q0b0ksJsrhqfghqfgxJmNFFea
+http://paletton.com/#uid=33q0b0ksJsrhqfghqfgxJmNFFea
+
+20, 108, 142	146C8E
+23, 57, 70	173946
+25, 85, 147	195593
+227, 145, 23	E39117
+227, 110, 23	E36E17
+227, 129, 23	E38117
+
+
+https://pixeljeff.tumblr.com/search/overwatch
+https://i.pinimg.com/originals/1c/bc/96/1cbc964786a4448df79b11470214b4a6.gif
+https://www.pinterest.com/source/chiwadesu.tumblr.com/
+http://chiwadesu.tumblr.com/
+https://www.spriters-resource.com/pc_computer/overwatch/
+https://i.pinimg.com/originals/dc/15/1e/dc151e3a20a4609f8edcdba5fc9242a7.gif

@@ -1,0 +1,111 @@
+html,body{
+	overflow-x: hidden;
+}
+/*font-family: 'Press Start 2P', cursive;*/
+.introPageMain, .gamePageMain{
+	height: 100vh;
+}
+.introPageMain{
+	background-color: rgb(25, 85, 147);
+	font-family: 'Press Start 2P', cursive;
+}
+.gamePageMain{
+	background-color:rgb(227, 129, 23);
+}
+/*end of container css*/
+
+.logo-charSelection{
+	height: 60%;
+}
+.charSelect{
+	height: 90%;
+	box-sizing: border-box;
+	border: 5px dashed;
+	background-color: rgba(227, 145, 23, 1);
+	margin-top: 20px;
+	margin-left: 4.1666%;
+}
+.charSelect>div:first-child{
+	height: 70%;
+}
+.introBackground{
+	height: 100%;
+	background: url('../images/introBG.gif');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin-left: 4.1666%;
+}
+.charSelect>div:nth-child(2){
+	height: 30%;
+}
+.charBanner{
+	height: 98%;
+	background-color: rgb(255,255,255);
+	border: 5px dashed;
+}
+.playerCharDisplay{
+	height: 40%;
+}
+.player1_intro, .player2_intro{
+	height: 90%;
+	box-sizing: border-box;
+	border: 5px dashed;
+	background-color: rgb(255,255,255);
+}
+.player1_intro{
+	/*margin-right: 10px;*/
+	border-right: 2.5px dashed;
+}
+.player2_intro{
+	/*margin-left: 10px;*/
+	border-left: 2.5px dashed;
+}
+@media screen and (max-width: 768px){
+	.logo-charSelection{
+		height: 40%;
+	}
+	.charSelect{
+		margin-top: 5px;
+		height: 94%;	
+	}
+	.introBackground{
+		margin-left: 0;
+	}
+	.charBanner{
+		margin-left: 4.1666%;
+	}
+	.playerCharDisplay{
+		height: 60%;
+	}
+	.player1_intro, .player2_intro{
+		height: 50%;
+		border: 2.5px dashed;
+	}
+	.player1_intro{
+		border-right: 2.5px dashed;
+	}
+	.player2_intro{
+		margin-left: 8.3333%;
+		border-left: 2.5px dashed;
+	}
+}
+/*end of intro page main css*/
+
+.gameBannerRow{
+	height: 10%;
+}
+.gameBanner{
+	height: 95%;
+	border: 4px dashed;
+	background-color:rgba(25, 85, 147,0.8);
+}
+.gameBodyRow{
+	height: 90%;
+}
+.gameBody{
+	margin-left: 4.1666%;
+	height: 98%;
+	border: 4px dashed;
+	background-color: rgb(255,255,255);
+}
