@@ -32,3 +32,60 @@ https://www.pinterest.com/source/chiwadesu.tumblr.com/
 http://chiwadesu.tumblr.com/
 https://www.spriters-resource.com/pc_computer/overwatch/
 https://i.pinimg.com/originals/dc/15/1e/dc151e3a20a4609f8edcdba5fc9242a7.gif
+
+
+js
+game object: - me/anthony
+	track player turn
+	randomly decide if player1 will choose characters first or
+	player2;
+	the player to choose second will get the first turn of game
+	initiate game
+	console message
+	
+	
+player object - collin
+	character objects - array/object?
+	inventory - object(key:"item name" | value: object)
+	active character - 
+	character available - array 
+	public | reload function - targets current character pp
+	public | item use function
+	public | swap char function
+	public | skil use function
+
+character object - michael
+	constructor para - char name, hp, img array, skills array, 
+	character name - 'string'
+	char hp - 'number'
+	death/elimination status - 'boolean'
+	char img/icon - (array)src 'string'
+	char move/skill(4) options - skill objects
+	public | return skill name, damage - decrement pp
+	public | return char name
+	public | return hp
+	private | character animation function (phase 2)	
+
+skill object - harry
+	constructor para - name, accuracy, pp, damange
+	skill name - 'string'
+	accuracy - 'number'
+	pp - 'number'
+	damage - 'number' 
+	public | return damage - function
+	public | return pp - function
+	prviate | random accuracy gen - function
+
+on hold: 
+	accuracy gen function- skill vs character	
+
+console message:
+output char status.
+move select execution
+
+move options: 
+attk-
+	e.g.: move1 5/5 	move2 2/10 	ult3 2/2
+change char-
+item- 	health pack 4/4
+	reload	noLimit

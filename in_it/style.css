@@ -109,3 +109,38 @@ html,body{
 	border: 4px dashed;
 	background-color: rgb(255,255,255);
 }
+.gameBodyDisplay{
+	height: 75%;
+	/*border: 1.5px solid;*/
+	font-family: 'Press Start 2P', cursive;
+}
+.quadUpper, .quadLower{
+	height: 50%;
+}
+.quad1, .quad2, .quad3, .quad4{
+	height: 99%;
+}
+.quad1, .quad3{
+	border: 1px solid orange;
+}
+.quad2, .quad4{
+	border: 1px solid blue;
+}
+.gameBodyConsole{
+	height: 25%;
+}
+.console{
+	height: 98%;
+	margin-left: 4.1666%;
+	padding:0 5px;
+	border: 4px dashed;
+	box-sizing: border-box;
+	background-color: rgba(255,255,255,0.5);
+	font-family: 'Press Start 2P', cursive;
+	font-size: 24px;
+}
+.console>div{
+	height: 98%;
+	margin-top: 0.125%;
+	border: 1px solid;
+}
