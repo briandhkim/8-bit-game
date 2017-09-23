@@ -176,14 +176,9 @@ html,body{
 .moveOptions li:focus{
 	list-style-type: square;
 }
-.skillList{
-	background-color: lightgreen;
-}
-.changeCharList{
-	background-color: lightblue;
-}
-.itemList{
-	background-color: purple;
+
+.skillList, .changeCharList, .itemList{
+	background-color: white;
 }
 .tracker{
 	font-size: 175%;

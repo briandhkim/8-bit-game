@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 });
 
-var spanAdd = $('<span>').addClass('tracker').html('&#9830');
+var spanAdd = $("<span>").addClass("tracker").html('&#9830');
 var menuOpened = false;
 
 $(window).keydown(function(event){
