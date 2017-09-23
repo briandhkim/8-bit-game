@@ -16,17 +16,21 @@ $(document).ready(function(){
 	// inFocus = $('.tracker');
 });
 
-var spanAdd = $('<span>').addClass('tracker').html('&#x25BA');
+var spanAdd = $('<span>').addClass('tracker').html('&#9830');
+var menuOpened = false;
+
 $(window).keydown(function(event){
 	var key = event.keyCode;
 	var this_ = $('.tracker').parent().closest('.moveOpt');
-	if(key == 40|| key == 39){
+	if(key == 40|| key == 39){			// down/right key
 		if(this_.next('.moveOpt').length >0){
+			event.preventDefault();		//prevents arrow key scroll
 			this_.next('.moveOpt').append(spanAdd);
 			this_.children('span:first').remove();
 		}
-	}else if(key===37||key===38){
+	}else if(key===37||key===38){		// up/left key
 		if(this_.prev('.moveOpt').length>0){
+			event.preventDefault();
 			this_.prev('.moveOpt').append(spanAdd);
 			this_.children('span:first').remove();
 		}
@@ -54,4 +58,7 @@ function charOptClick(){
 function itemOptClick(){
 	$('.itemList').css('display','block');
 	$('.itemList li:first-child').append(spanAdd);
+}
+function backButtonClick(){
+	$(this).parent().closest('div').css('display','none');
 }
