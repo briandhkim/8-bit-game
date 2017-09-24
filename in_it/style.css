@@ -144,6 +144,11 @@ html,body{
 	margin-top: 0.125%;
 	/*border: 1px solid;*/
 }
+.console>div>ul>li{
+	margin-top: 5px;
+	font-size: 14px;
+	list-style-type: none;
+}
 .consoleMessage{
 	border-right: 4px dashed;
 }
