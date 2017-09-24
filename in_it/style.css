@@ -144,6 +144,13 @@ html,body{
 	margin-top: 0.125%;
 	/*border: 1px solid;*/
 }
+.console>div>ul>li{
+	height: 98%;
+	margin-top: 0.125%;
+	font-size: 14px;
+	list-style-type: none;
+	/*border: 1px solid;*/
+}
 .consoleMessage{
 	border-right: 4px dashed;
 }
