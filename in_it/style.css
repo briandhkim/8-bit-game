@@ -18,11 +18,11 @@ html,body{
 	height: 60%;
 }
 .charSelect{
-	height: 90%;
+	height: 97%;
 	box-sizing: border-box;
 	border: 5px dashed;
 	background-color: rgba(227, 145, 23, 1);
-	margin-top: 20px;
+	margin-top: 10px;
 	margin-left: 4.1666%;
 }
 .charSelect>div:first-child{
@@ -43,6 +43,10 @@ html,body{
 	height: 98%;
 	background-color: rgb(255,255,255);
 	border: 5px dashed;
+}
+.charBanner>div{
+	border: 1px solid;
+	height: 100%;
 }
 .playerCharDisplay{
 	height: 40%;
@@ -74,6 +78,9 @@ html,body{
 	}
 	.charBanner{
 		margin-left: 4.1666%;
+	}
+	.gameLogo{
+		display: none;
 	}
 	.playerCharDisplay{
 		height: 60%;
@@ -138,6 +145,7 @@ html,body{
 	background-color: rgba(255,255,255,0.5);
 	font-family: 'Press Start 2P', cursive;
 	font-size: 24px;
+
 }
 .console>div{
 	height: 98%;
@@ -156,6 +164,8 @@ html,body{
 .moveOpt{
 	height: 50%;
 	font-size: 15px;
+	overflow: hidden;
+	text-overflow:ellipsis;
 }
 
 .moveOptionSkills{
@@ -174,6 +184,8 @@ html,body{
 	display:none;
 	z-index: 1;
 	/*default display - block*/
+	/*overflow: hidden;
+	text-overflow:ellipsis;*/
 }
 .moveOptions ul{
 	list-style-type:none;
@@ -187,4 +199,10 @@ html,body{
 }
 .tracker{
 	font-size: 175%;
+}
+
+@media screen and (max-width: 768px){
+	/*.console{
+		font-size: 18px;
+	}*/
 }
