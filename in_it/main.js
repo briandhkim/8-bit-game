@@ -8,8 +8,8 @@ var menuOpened = false;
 
 $(window).keydown(function(event){
 	var key = event.keyCode;
-	var this_ = $('.tracker').parent().closest('.moveOpt');
-	var this_li_ = $('.tracker').parent().closest('li');
+	var this_ = $('.tracker').parent().closest('.moveOpt');		//track span in choosing move options
+	var this_li_ = $('.tracker').parent().closest('li');		//track span in the move option list
 	//	37left	38up	39right	40down	87w	65a	83s	68d
 	if(key===39||key===68){			//right key
 		if(this_.next('.moveOpt').length >0){
