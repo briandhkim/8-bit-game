@@ -15,7 +15,7 @@ var ana = {
 	name: 'Ana',
 	hp : 200,
 	img : 'images/charMain/ana.png',
-	icon : '', //haven't finished image edits yet
+	icon : 'images/icon/ana.png', 
 	skill_1 :{
 		name: 'Biotic Rifle',	//can also shoot allies and heal, but will not use healing at this time
 		damage: 60,
@@ -54,7 +54,7 @@ var lucio = {
 	name : 'Lucio',
 	hp : 200,
 	img : 'images/charMain/lucio.png',
-	icon : '',
+	icon : 'images/icon/lucio.png',
 	skill_1 :{
 		name: 'Sonic Amplifier',
 		damage: 20,
@@ -93,7 +93,7 @@ var zenyatta = {
 	name : 'Zenyatta',
 	hp : 200,
 	img : 'images/charMain/zenyatta.png',
-	icon : '',
+	icon : 'images/icon/zenyatta.png',
 	skill_1 :{
 		name: 'Orb of Destruction',
 		damage: 46,
@@ -132,7 +132,7 @@ var dva = {
 	name : 'D. Va',
 	hp : 400,
 	img : 'images/charMain/dva.png',
-	icon : '',
+	icon : 'images/icon/dva.png',
 	skill_1 :{
 		name: 'Fusion Cannons',
 		damage: 22,
@@ -171,7 +171,7 @@ var reinhardt = {
 	name : 'Reinhardt',
 	hp : 500,
 	img : 'images/charMain/reinhardt.png',
-	icon : '',
+	icon : 'images/icon/reinhardt.png',
 	skill_1 :{
 		name: 'Rocket Hammer',
 		damage: 75,
@@ -210,7 +210,7 @@ var roadhog = {
 	name : 'Roadhog',
 	hp : 600,
 	img : 'images/charMain/roadhog.png',
-	icon : '',
+	icon : 'images/icon/roadhog.png',
 	skill_1 :{
 		name: 'Scrap Gun - SR',
 		damage: 25,
@@ -249,7 +249,7 @@ var hanzo = {
 	name : 'Hanzo',
 	hp : 200,
 	img : 'images/charMain/hanzo.png',
-	icon : '',
+	icon : 'images/icon/hanzo.png',
 	skill_1 :{
 		name: 'Storm Bow',
 		damage: 90,
@@ -288,7 +288,7 @@ var junkrat = {
 	name : 'Junkrat',
 	hp : 200,
 	img : 'images/charMain/junkrat.png',
-	icon : '',
+	icon : 'images/icon/junkrat.png',
 	skill_1 :{
 		name: 'Frag Launcher',
 		damage: 40,
@@ -327,7 +327,7 @@ var mei = {
 	name : 'Mei (satan)',
 	hp : 250,
 	img : 'images/charMain/mei.png',
-	icon : '',
+	icon : 'images/icon/mei.png',
 	skill_1 :{
 		name: 'Endothermic Blaster',
 		damage: 30,
@@ -366,7 +366,7 @@ var torbjorn = {
 	name : 'Torbjörn',
 	hp : 200,
 	img : 'images/charMain/torbjorn.png',
-	icon : '',
+	icon : 'images/icon/torbjorn.png',
 	skill_1 :{
 		name: 'Rivet Gun',
 		damage: 70,
@@ -405,7 +405,7 @@ var genji = {
 	name : 'Genji',
 	hp : 200,
 	img : 'images/charMain/genji.png',
-	icon : '',
+	icon : 'images/icon/genji.png',
 	skill_1 :{
 		name: 'Shuriken',
 		damage: 60,
@@ -444,7 +444,7 @@ var mccree = {
 	name : 'McCree',
 	hp : 200,
 	img : 'images/charMain/mccree.png',
-	icon : '',
+	icon : 'images/icon/mccree.png',
 	skill_1 :{
 		name: 'Peacekeeper',
 		damage: 45,
@@ -483,7 +483,7 @@ var pharah = {
 	name : 'Pharah',
 	hp : 200,
 	img : 'images/charMain/pharah.png',
-	icon : '',
+	icon : 'images/icon/pharah.png',
 	skill_1 :{
 		name: 'Rocket Launcher',
 		damage: 120,
@@ -522,7 +522,7 @@ var soldier = {
 	name : 'Solder: 76',
 	hp : 200,
 	img : 'iamges/charMain/soldier.png',
-	icon : '',
+	icon : 'images/icon/soldier.png',
 	skill_1 :{
 		name: 'Heavy Pulse Rifle',
 		damage: 19,
