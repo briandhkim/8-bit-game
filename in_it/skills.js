@@ -17,3 +17,21 @@ function createSkill(skillName, accuracyRate, powerPoints, damage) {
         return damageOutput;
     }
 }
+
+var createSkill = function(skillObj){
+    this.name = skillObj.name;
+    this.skillAccuracy = skillObj.accuracy;
+    this.pp = skillObj.pp;
+    this.damage = skillObj.damage;
+
+    this.executeSkill = function(){
+        if(this.pp>0){
+            this.pp--;
+        }
+        
+
+    };
+    this.generateDamage = funnction(){
+
+    };
+};
