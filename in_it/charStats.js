@@ -11,6 +11,8 @@
 
 	aoe may need to be boolean to make it impact healing factor too.
 	as of now, aoe is just the damage that other characters would take
+
+	healSplash true -> ana, soldier
 */
 
 
@@ -27,7 +29,9 @@ var ana = {
 		// aoe: false,		//skills with aoe true can do maybe 50% of damage to opponent characters on reserve
 		aoe: 0,
 		// heal: true
-		heal: 75
+		// heal: 75,		//might change later to choose heal or damage
+		heal: 0,
+		healSplash : false
 	},
 	skill_2 :{
 		name: 'Sleep Dart', //maybe skip this skill for the time, this would stun the character that is hit
@@ -37,17 +41,19 @@ var ana = {
 		// aoe: false,
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
-	skill_3 :{
+	skill_3 :{		//only skill that does damage and heal. may need to change
 		name: 'Biotic Grenade',
 		damage: 60,
 		accuracy: 90,
-		pp: 3,
+		pp: 2,
 		// aoe: true,
 		aoe: 30,
 		// heal: true
-		heal: 80 //might change to 100
+		heal: 80, //might change to 100
+		healSplash : true
 	},
 	skill_4 :{
 		name: 'Nano Boost',	//choose an ally at random and incresae their damage at next turn by 50%
@@ -57,7 +63,8 @@ var ana = {
 		// aoe: false,
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	}
 };
 
@@ -74,7 +81,8 @@ var lucio = {
 		// aoe: false,
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_2 :{
 		name: 'Soundwave',
@@ -84,7 +92,8 @@ var lucio = {
 		// aoe: true,
 		aoe: 45,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_3 :{
 		name: 'Amp It Up',
@@ -94,7 +103,8 @@ var lucio = {
 		// aoe: true,
 		aoe: 0,
 		//heal: true 	//heals all allies alive by 50hp
-		heal: 60
+		heal: 60,
+		healSplash : true
 	},
 	skill_4 :{
 		name: 'Sound Barrier',
@@ -104,7 +114,8 @@ var lucio = {
 		// aoe: true,
 		aoe: 0,
 		//heal: true	//heals all allies alive 100%
-		heal: 200
+		heal: 200,
+		healSplash : true
 	}
 };
 
@@ -121,7 +132,8 @@ var zenyatta = {
 		// aoe: false,
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_2 :{
 		name: 'Orb Volley',
@@ -131,7 +143,8 @@ var zenyatta = {
 		// aoe: false,
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_3 :{
 		name: 'Orb of Harmony',	//heal one ally chosen at random by 50hp
@@ -141,7 +154,8 @@ var zenyatta = {
 		// aoe: false,
 		aoe: 0,
 		// heal: true
-		heal: 50
+		heal: 50,
+		healSplash : false
 	},
 	skill_4 :{
 		name: 'Transcendence',	//heal all allies alive 100%
@@ -151,7 +165,8 @@ var zenyatta = {
 		// aoe: true,
 		aoe: 0,
 		// heal: true
-		heal: 200	
+		heal: 200,
+		healSplash : false
 	}
 };
 
@@ -168,7 +183,8 @@ var dva = {
 		//aoe: true,		//might be false
 		aoe: 20,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_2 :{
 		name: 'Micro Missiles',
@@ -178,7 +194,8 @@ var dva = {
 		// aoe: true,
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_3 :{
 		name: 'Boost',
@@ -188,7 +205,8 @@ var dva = {
 		// aoe: false,
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_4 :{
 		name: 'Self-Destruct',
@@ -198,7 +216,8 @@ var dva = {
 		// aoe: true,
 		aoe: 500,	//probably needs to be decreased
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	}
 };
 
@@ -215,7 +234,8 @@ var reinhardt = {
 		// aoe: true,
 		aoe: 37,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_2 :{
 		name: 'Charge',
@@ -225,7 +245,8 @@ var reinhardt = {
 		//aoe: false,	//may need to change to true
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_3 :{
 		name: 'Fire Strike',
@@ -235,7 +256,8 @@ var reinhardt = {
 		//aoe: false, //may need to change to true
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_4 :{
 		name: 'Earthshatter',	//may need to add stun effect
@@ -245,7 +267,8 @@ var reinhardt = {
 		// aoe: true,
 		aoe: 35,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	}
 };
 
@@ -262,7 +285,8 @@ var roadhog = {
 		// aoe: true,
 		aoe: 15,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_2 :{
 		name: 'Scrap Gun - LR',
@@ -272,7 +296,8 @@ var roadhog = {
 		// aoe: false,
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_3 :{
 		name: 'Chain Hook',
@@ -282,7 +307,8 @@ var roadhog = {
 		// aoe: false,
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_4 :{
 		name: 'Whole Hog',
@@ -292,7 +318,8 @@ var roadhog = {
 		// aoe: true,
 		aoe: 1250, // will probably most definitely need to be decreased
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	}
 };
 
@@ -309,7 +336,8 @@ var hanzo = {
 		// aoe: false,
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_2 :{
 		name: 'Sonic Arrow',
@@ -319,7 +347,8 @@ var hanzo = {
 		// aoe: false,
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_3 :{
 		name: 'Scatter Arrow',
@@ -329,7 +358,8 @@ var hanzo = {
 		// aoe: true,
 		aoe: 20,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_4 :{
 		name: 'Ryū ga waga teki wo kurau!',
@@ -339,7 +369,8 @@ var hanzo = {
 		// aoe: true,
 		aoe: 100,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	}
 };
 
@@ -356,7 +387,8 @@ var junkrat = {
 		// aoe: true,
 		aoe: 20,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_2 :{
 		name: 'Concussion Mine',
@@ -366,7 +398,8 @@ var junkrat = {
 		// aoe: true,
 		aoe: 60,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_3 :{
 		name: 'Steel Trap',	//consider stun option
@@ -376,7 +409,8 @@ var junkrat = {
 		// aoe: false,
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_4 :{
 		name: 'RiP-Tire',
@@ -386,7 +420,8 @@ var junkrat = {
 		// aoe: true,
 		aoe: 200,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	}
 };
 
@@ -403,7 +438,8 @@ var mei = {
 		// aoe: true,
 		aoe: 15,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_2 :{
 		name: 'Icicle',
@@ -413,7 +449,8 @@ var mei = {
 		// aoe: false,
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_3 :{
 		name: 'Cryo-Freeze',
@@ -423,7 +460,8 @@ var mei = {
 		// aoe: false,
 		aoe: 0,
 		//heal: true 	//heals self 100hp
-		heal: 150
+		heal: 150,
+		healSplash : false
 	},
 	skill_4 :{
 		name: 'Blizzard',
@@ -433,7 +471,8 @@ var mei = {
 		// aoe: true,
 		aoe: 50,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	}
 };
 
@@ -450,7 +489,8 @@ var torbjorn = {
 		// aoe: false,
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_2 :{
 		name: 'Rivet Shot Gun',
@@ -460,7 +500,8 @@ var torbjorn = {
 		// aoe: true,
 		aoe: 8,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_3 :{
 		name: 'Build Turret',
@@ -470,7 +511,8 @@ var torbjorn = {
 		// aoe: false,
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_4 :{
 		name: 'Molten Core',
@@ -480,7 +522,8 @@ var torbjorn = {
 		// aoe: false,
 		aoe: 0,
 		//heal: true  //only heals self 100% hp
-		heal: 200
+		heal: 200,
+		healSplash : false
 	}
 };
 
@@ -497,7 +540,8 @@ var genji = {
 		// aoe: false,
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_2 :{
 		name: 'Fan of Blades',
@@ -507,7 +551,8 @@ var genji = {
 		// aoe: true,
 		aoe: 30,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_3 :{
 		name: 'Swift Strike',
@@ -517,7 +562,8 @@ var genji = {
 		// aoe: true,
 		aoe: 25,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_4 :{
 		name: 'Ryūjin no ken wo kurae',
@@ -527,7 +573,8 @@ var genji = {
 		//aoe: false,		//maybe change to true
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	}
 };
 
@@ -544,7 +591,8 @@ var mccree = {
 		// aoe: false,
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_2 :{
 		name: 'Fan the Hammer',
@@ -554,7 +602,8 @@ var mccree = {
 		// aoe: true,
 		aoe: 15,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_3 :{
 		name: 'Flashbang',		//consider adding stun effect
@@ -564,7 +613,8 @@ var mccree = {
 		// aoe: true,
 		aoe: 13,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_4 :{
 		name: "It's 420 Noon",
@@ -574,7 +624,8 @@ var mccree = {
 		// aoe: true,
 		aoe: 125,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	}
 };
 
@@ -591,7 +642,8 @@ var pharah = {
 		// aoe: true,
 		aoe: 60,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_2 :{
 		name: 'Jump Jet',
@@ -601,7 +653,8 @@ var pharah = {
 		// aoe: false,
 		aoe: 0,
 		//heal: true 		//heal self 50hp for the time, maybe change to no heal and evading next attack
-		heal: 50
+		heal: 50,
+		healSplash : false
 	},
 	skill_3 :{
 		name: 'Concussive Blast',
@@ -611,7 +664,8 @@ var pharah = {
 		// aoe: true,
 		aoe: 5,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_4 :{
 		name: 'Barrage',
@@ -621,7 +675,8 @@ var pharah = {
 		// aoe: true,
 		aoe: 60,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	}
 };
 
@@ -638,7 +693,8 @@ var soldier = {
 		// aoe: false,
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_2 :{
 		name: 'Helix Rockets',
@@ -648,7 +704,8 @@ var soldier = {
 		// aoe: true,
 		aoe: 30,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	},
 	skill_3 :{
 		name: 'Biotic Field',
@@ -658,7 +715,8 @@ var soldier = {
 		// aoe: true,
 		aoe: 0,
 		//heal: true  	//heal self and ally 50hp
-		heal: 100
+		heal: 100,
+		healSplash : true
 	},
 	skill_4 :{
 		name: 'Tactical Visor',
@@ -668,7 +726,8 @@ var soldier = {
 		// aoe: false,
 		aoe: 0,
 		// heal: false
-		heal: 0
+		heal: 0,
+		healSplash : false
 	}
 };
 
