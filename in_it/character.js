@@ -6,6 +6,9 @@ var Character = function(charObj){  //fetch charObj from charStats.js
                         //with the window, using self may not be necessary
     this.name = charObj.name;
     this.hp = charObj.hp;
+    this.hpMax = charObj.hp;    //similar to the ppMax in skillObject, this will not be changed during game play
+                                // any healing cannot set character hp to be higher than this value
+                                // similarly, when, hp gets below 0, character alive status is set to false
     //gameImage and charIcon are img file src
     this.gameImage = charObj.img; //may later change to array to add animation change when using skills
     this.characterIcon = charObj.icon;
@@ -21,10 +24,16 @@ var Character = function(charObj){  //fetch charObj from charStats.js
     };
     this.addHP = function(amountAdd){
         this.hp += amountAdd;
+        if(this.hp > this.hpMax){
+            this.hp = this.hpMax;
+        }
     };  //will likely be called when using health pack item or 
         //when skill used has healing property
     this.removeHP = function(amountLoss){
         this.hp -= amountLoss;
+        if(this.hp<=0){
+            this.toggleStatus();
+        }
     };  //will need to be called when taking damage from opponent
 
     this.useSkill = function(skillNum){ 
@@ -59,11 +68,12 @@ var Character = function(charObj){  //fetch charObj from charStats.js
     this.toggleStatus = function(){
         if(this.alive){
             this.alive = false;
+            console.log(this.name +" was eliminated");
         }
     };
     this.getName = function(){
         return this.name;
-    }
+    };
 };
 
 
