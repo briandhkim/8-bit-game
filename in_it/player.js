@@ -40,6 +40,7 @@ var Player = function(){
 	this.useHealthPack = function(){	//using helathpack item function
 		if(healthPackCount >0){
 			self.activeCharacter.addHP(self.healthPack); //addHP takes amount of hp to add
+			self.healthPackCount--;
 		}else{
 			console.log('console message saying no health pack available');
 		}
