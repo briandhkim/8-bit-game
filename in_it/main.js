@@ -1,16 +1,17 @@
 
 $(document).ready(function(){
-	$('.charSelectDrop').click(charDropMenuOpen);
-	$('.charMenuCloser').click(charDropMenuClose);
+	// $('.charDropMenu').hide();
+	// $('.charSelectDrop').click(charDropMenuOpen);
+	// $('.charMenuCloser').click(charDropMenuClose);
 });
 
 
-function charDropMenuOpen(){
-	$('.charDropMenu').css('display','block');
-}
-function charDropMenuClose(){
-	$('.charDropMenu').css('display','none');
-}
+// function charDropMenuOpen(){
+// 	$('.charDropMenu').show();
+// }
+// function charDropMenuClose(){
+// 	$('.charDropMenu').hide();
+// }
 
 var spanAdd = $("<span>").addClass("tracker").html('&#9830');
 var menuOpened = false;
