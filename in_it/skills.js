@@ -23,6 +23,9 @@ var Skill = function(skillObj){   //pass in an object instead of individual stat
     this.name = skillObj.name;
     this.skillAccuracy = skillObj.accuracy;
     this.pp = skillObj.pp;
+    this.ppMax = skillObj.pp;   //this should not change throughout the game. 
+                                //this will be used to reset skill pp when reload is used
+                                //at playerObject level. reload cannot set pp above ppMax amount
     this.damage = skillObj.damage; //base damage
     this.aoe = skillObj.aoe;   //at this time, aoe and heal are numbers
     //aoe may change to boolean and the output might be generated in generateDamage function
@@ -52,8 +55,6 @@ var Skill = function(skillObj){   //pass in an object instead of individual stat
             return [this.generateDamage()]; //returning as array to keep it in same format as the heal return
     };
 
-
-
     this.generateDamage = function(){
         var randomAccuracyFactor = Math.floor(Math.random()*(101));
         if(randomAccuracyFactor > this.skillAccuracy){
@@ -61,5 +62,9 @@ var Skill = function(skillObj){   //pass in an object instead of individual stat
         }
         var damageOutput = Math.round((randomAccuracyFactor/this.skillAccuracy)*this.damage);
         return damageOutput;
+    };
+
+    this.skillReloaded = function(){
+        this.pp = this.ppMax;
     };
 };
