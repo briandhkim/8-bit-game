@@ -18,11 +18,12 @@
 //     }
 // }
 
-var createSkill = function(skillObj){   //pass in an object instead of individual stats. object in charStat.js
+var Skill = function(skillObj){   //pass in an object instead of individual stats. object in charStat.js
+    //changed object name from createSkill to Skill; since this object also handles skill execution
     this.name = skillObj.name;
     this.skillAccuracy = skillObj.accuracy;
     this.pp = skillObj.pp;
-    this.damage = skillObj.damage;
+    this.damage = skillObj.damage; //base damage
     this.aoe = skillObj.aoe;   //at this time, aoe and heal are numbers
     //aoe may change to boolean and the output might be generated in generateDamage function
     //by returning half of the generated damage output
