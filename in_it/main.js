@@ -1,7 +1,16 @@
 
 $(document).ready(function(){
-
+	$('.charSelectDrop').click(charDropMenuOpen);
+	$('.charMenuCloser').click(charDropMenuClose);
 });
+
+
+function charDropMenuOpen(){
+	$('.charDropMenu').css('display','block');
+}
+function charDropMenuClose(){
+	$('.charDropMenu').css('display','none');
+}
 
 var spanAdd = $("<span>").addClass("tracker").html('&#9830');
 var menuOpened = false;
