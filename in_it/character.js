@@ -39,7 +39,7 @@ var Character = function(charObj){  //fetch charObj from charStats.js
     };  //will need to be called when taking damage from opponent
 
     this.useSkill = function(skillNum){ 
-        //takes in skill number (1-4) passed in from playerObj level. 
+        //takes in skill number (0-3) passed in from playerObj level. 
         return this.skillArr[skillNum].executeSkill();
         //returns an array with a single damage input or 
         //array with length 2 with heal input and healsplash bool
