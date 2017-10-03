@@ -1,19 +1,67 @@
-var MoveOptionButton = function(){
-	this.inFocus = null;
+function MoveOptionButton(){
+	var spanAdd = $('.tracker').parent().closest('.moveOpt');
+	var menuOpened = false;
 
-	this.directionClick = function(event){
+	$(window).keydown(function(event){
 		var key = event.keyCode;
-		var spanAdd = $('<span>').addClass('tracker').text('&#x25BA')
-		console.log('first check');
-		if(key == 40 || 39){ //down or right button
-			console.log('second check');
-			$(this).parent().closest('.moveOption').next('.moveOption').append(spanAdd);
-			$(this).parent().closest('.moveOption').remove(this);
+		var this_ = $('.tracker').parent().closest('.moveOpt');	//track span in choosing move options
+		var this_li_ = $('.tracker').parent().closest('li'); 	//track span in the move option list
+		//	37left	38up	39right	40down	87w	65a	83s	68d
+		if(key===39||key===68){			//right key
+			if(this_.next('.moveOpt').length >0){
+				event.preventDefault();		//prevents arrow key scroll
+				this_.next('.moveOpt').append(spanAdd);
+				this_.children('span:first').remove();
+			}
+		}else if(key===40||key===83){		//down key
+			if(menuOpened){	
+				if(this_li_.next('li').length>0){
+					event.preventDefault();
+					this_li_.next('li').append(spanAdd);
+					this_li_.children('span:first').remove();
+				}
+			}
+			if(this_.next('.moveOpt').next('.moveOpt').length > 0){
+				event.preventDefault();
+				this_.next('.moveOpt').next('.moveOpt').append(spanAdd);
+				this_.children('span:first').remove();
+			}
+		}else if(key===37||key===65){		//left key
+			if(this_.prev('.moveOpt').length>0){
+				event.preventDefault();
+				this_.prev('.moveOpt').append(spanAdd);
+				this_.children('span:first').remove();
+			}
+		}else if(key===38||key===87){		//up key
+			if(menuOpened){
+				if(this_li_.prev('li').length>0){
+					event.preventDefault();
+					this_li_.prev('li').append(spanAdd);
+					this_li_.children('span:first').remove();
+				}
+			}
+			if(this_.prev('.moveOpt').prev('.moveOpt').length>0){
+				event.preventDefault();
+				this_.prev('.moveOpt').prev('.moveOpt').append(spanAdd);
+				this_.children('span:first').remove();
+			}
+		}else if(key===32){		//space key
+			if(menuOpened){
+				if(this_li_.hasClass('backButton')){
+					backButtonClick(this_li_.parent().closest('div'));
+				}
+			}
+			if(this_.hasClass('moveOptionSkills')){
+				skillMenuClick();
+				this_.children('span:first').remove();
+			}else if(this_.hasClass('moveOptionChangeChar')){
+				charOptClick();
+				this_.children('span:first').remove();
+			}else if(this_.hasClass('moveOptionItem')){
+				itemOptClick();
+				this_.children('span:first').remove();
+			}
 		}
-	};
-
-	$('.backButton').on('click',this.backButtonClick);
-	this.backButtonClick = function(){
-		$(this).parent().closest('div').css('div').css('display','none');
-	};
+	});
+	
 };

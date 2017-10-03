@@ -1,17 +1,24 @@
 
 $(document).ready(function(){
-	// $('.charDropMenu').hide();
-	// $('.charSelectDrop').click(charDropMenuOpen);
-	// $('.charMenuCloser').click(charDropMenuClose);
+	// $('.charDropMenu').click(charDropMenuClick);
+	$('.charSelectDrop').click(charDropMenuOpen);
+	$('.charDropMenu').on('click',function(evt){
+		evt.stopPropagation();
+		charDropMenuClose();
+	});
 });
 
 
-// function charDropMenuOpen(){
-// 	$('.charDropMenu').show();
-// }
-// function charDropMenuClose(){
-// 	$('.charDropMenu').hide();
-// }
+function charDropMenuOpen(){
+	if($('.charDropMenu').css('display')=='none'){
+		$('.charDropMenu').show();
+	}
+}
+function charDropMenuClose(){
+	if($('.charDropMenu').css('display')=='block'){
+		$('.charDropMenu').hide();
+	}
+}
 
 var spanAdd = $("<span>").addClass("tracker").html('&#9830');
 var menuOpened = false;

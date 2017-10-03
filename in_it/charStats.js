@@ -770,41 +770,41 @@ var soldier = {
 // 	}
 // };
 
-var char = {
-	name : '',
-	hp : ,
-	img : '',
-	icon : '',
-	skill_1 :{
-		name: '',
-		damage: ,
-		accuracy: ,
-		pp: ,
-		aoe: ,
-		heal: 
-	},
-	skill_2 :{
-		name: '',
-		damage: ,
-		accuracy: ,
-		pp: ,
-		aoe: ,
-		heal: 
-	},
-	skill_3 :{
-		name: '',
-		damage: ,
-		accuracy: ,
-		pp: ,
-		aoe: ,
-		heal: 
-	},
-	skill_4 :{
-		name: '',
-		damage: ,
-		accuracy: ,
-		pp: ,
-		aoe: ,
-		heal: 
-	}
-};
+// var char = {
+// 	name : '',
+// 	hp : ,
+// 	img : '',
+// 	icon : '',
+// 	skill_1 :{
+// 		name: '',
+// 		damage: ,
+// 		accuracy: ,
+// 		pp: ,
+// 		aoe: ,
+// 		heal: 
+// 	},
+// 	skill_2 :{
+// 		name: '',
+// 		damage: ,
+// 		accuracy: ,
+// 		pp: ,
+// 		aoe: ,
+// 		heal: 
+// 	},
+// 	skill_3 :{
+// 		name: '',
+// 		damage: ,
+// 		accuracy: ,
+// 		pp: ,
+// 		aoe: ,
+// 		heal: 
+// 	},
+// 	skill_4 :{
+// 		name: '',
+// 		damage: ,
+// 		accuracy: ,
+// 		pp: ,
+// 		aoe: ,
+// 		heal: 
+// 	}
+// };

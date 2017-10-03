@@ -3,7 +3,7 @@
 using reload and using healthpack counts as turn. afterwards change to opponent 
 */
 
-var Player = function(){
+function Player(){
 	this.self = this; //will likely need to use this for DOM stuff. e.g. updating console, player menu options etc.
 
 	//this.name //at this time, the name will likely stay player 1 || player 2
