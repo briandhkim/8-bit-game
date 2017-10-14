@@ -12,7 +12,8 @@ function Player(){
 	this.character_3 = null; 
 	this.characterArr = [character_1, character_2, character_3];
 	var char_iterator = 0;
-	this.charactersAlive = 3; //may increase characters available to 4 in future
+	this.charactersAlive = 3; //check characters alive
+	var max_char_num = 3; //maximum number of characters in storage; may increase to 4 in future
 
 	this.healthPackCount = 5;
 	this.healthPack = 75; 
@@ -21,7 +22,7 @@ function Player(){
 	this.activeCharacterTracker = 0;
 	this.activeCharacter = characterArr[activeCharacterTracker];
 
-	this.chooseCharacter = function(selectedCharacter){		//pass in the character object based on what was selected
+	this.addCharacter = function(selectedCharacter){		//pass in the character object based on what was selected
 		//will likely use click handler attached to the character list item in the inital selection page
 		if(char_iterator < self.charactersAlive){	//condition check. can't create more characters alive then max allowed 
 			self.characterArr[char_iterator] = new Character(selectedCharacter);

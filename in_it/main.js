@@ -6,9 +6,20 @@ $(document).ready(function(){
 		evt.stopPropagation();
 		charDropMenuClose();
 	});
+
+	
+
 });
 
 
+
+
+
+
+
+
+
+/** initial screen ui handler **/
 function charDropMenuOpen(){
 	if($('.charDropMenu').css('display')=='none'){
 		$('.charDropMenu').show();
@@ -19,7 +30,9 @@ function charDropMenuClose(){
 		$('.charDropMenu').hide();
 	}
 }
+/**** end of initial screen ui handler ****/
 
+/******************* ui handlers for game area *****************/ 
 var spanAdd = $("<span>").addClass("tracker").html('&#9830');
 var menuOpened = false;
 
@@ -105,3 +118,5 @@ function backButtonClick(elmt){
 	$('.moveOptionSkills').append(spanAdd);
 	menuOpened = false;
 }
+
+/********** end of ui handlers for game area *********/

@@ -69,10 +69,11 @@ html,body{
 	z-index: 1;
 	background-color: lightblue;
 	border: 5px dashed;
-	
 }
-.charDropMenu ul{
+.characterList{
 	list-style-type: none;
+	text-align: center;
+	padding: 0;
 }
 .playerCharDisplay{
 	height: 40%;
