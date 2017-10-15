@@ -32,7 +32,7 @@ function Player(){
 		}
 	};
 	this.changeCharacter = function(charChosen){	//changing character function
-		if(this.characterArr[charChosen].alive){ 	//check if character chosen is alive
+		if(this.characterArr[charChosen].alive && this.activeCharacterTracker!==charChosen){ 	//check if character chosen is alive
 			this.activeCharacterTracker = charChosen;
 			this.activeCharacter = this.characterArr[this.activeCharacterTracker]; //this line might not be necessary
 			//call ui update function
@@ -50,7 +50,7 @@ function Player(){
 		}
 	};
 	this.reload = function(){
-		self.activeCharacter.reload();
+		this.activeCharacter.reload();
 		console.log('console message saying the current character reloaded');
 	};
 	this.skillSelected = function(skillNum){
@@ -60,7 +60,7 @@ function Player(){
 		 level that calls the skill use function at skill object
 		 skills held in an array inside character object - 0 indexed
 		 need to decide where to update console with pp change etc.*/
-		 return self.activeCharacter.useSkill(skillNum);
+		 return this.activeCharacter.useSkill(skillNum);
 		 //skill use function returns damage value
 		 //still needs to work on accounting for heal/attk thing
 	};

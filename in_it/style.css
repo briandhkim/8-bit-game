@@ -69,11 +69,25 @@ html,body{
 	z-index: 1;
 	background-color: lightblue;
 	border: 5px dashed;
+	overflow: auto;
+}
+.charDropMenu::-webkit-scrollbar{
+	width: 7px;
+	background-color: rgb(25, 85, 147);
+}
+.charDropMenu::-webkit-scrollbar-thumb{
+	width: 5px;
+	border-radius: 20px;
+	background-color:rgb(227, 129, 23);
 }
 .characterList{
 	list-style-type: none;
 	text-align: center;
-	padding: 0;
+	padding: 10px;
+}
+.characterList .charListIcon{
+	width: 30px;
+	height: 30px;
 }
 .playerCharDisplay{
 	height: 40%;

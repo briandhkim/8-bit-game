@@ -1,8 +1,6 @@
 function UIupdater(){
 	
 	/*** ui updates for main game area ***/
-
-
 	this.characterLoadUpdate = function(player, playerTurnNum){
 		let charInPlay = player.activeCharacter;
 		this.loadCurrentCharName(charInPlay, playerTurnNum);
@@ -99,16 +97,24 @@ function UIupdater(){
  	this.loadHealthPackCount = function(hPackCount){
  		$('#item_healthPack_counter').text(hPackCount);
  	};	
- 	/***************************
-	updateHealthPackCount -> 
-	param: available health pack numnber (int) 
-	return: nothing
-	descpt: updates health pack list of user
-		called by useHealthPack function in player object
-		---may not be necessary as using hPack changes player turn
- 	*/
- 	this.updateHealthPackCount = function(healthPackCount){
- 		$('#item_healthPack_counter').text(healthPackCount);
- 	};
 
+
+ 	/****game play updates****/
+
+ 	/***************************
+	updateConsoleMessage -> 
+	param: player active char name (string),
+			 skill/item/character change used (string)
+	return: nothing
+	descpt: append message to console area of player action
+ 	*/
+ 	this.updateConsoleMessage = function(currentPlayerChar, playerMove){
+ 		let currentPlayerCharacter = currentPlayerChar;
+ 		let currentPlayerMove = playerMove;
+ 		let updateList = $('<li>',{
+ 			text: currentPlayerCharacter + " used " + currentPlayerMove +"!"
+ 		});
+ 		$('.consoleMsgList').prepend(updateList);
+ 	}
+ 	/*****end of game play updates *****/
 }

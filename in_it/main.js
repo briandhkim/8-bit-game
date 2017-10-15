@@ -5,22 +5,24 @@
 	descpt: 
  	*/
 
-var player1 = null;
-var uiUpdate = null;
+let player1 = null;
+let player2 = null;
+let uiUpdate = null;
+
 $(document).ready(function(){
-	// $('.charDropMenu').click(charDropMenuClick);
 	$('.charSelectDrop').click(charDropMenuOpen);
 	$('.charDropMenu').on('click',function(evt){
 		evt.stopPropagation();
 		charDropMenuClose();
 	});
+	mouseHandlerGameArea();
 
-	// var char1 = new Character(hanzo);
-	// var char2 = new Character(genji);
+
 	uiUpdate = new UIupdater();
 	player1 = new Player();
 	player2 = new Player();
 	playerCreateTest();
+	uiHandleTest();
 });
 
 function playerCreateTest(){
@@ -31,8 +33,23 @@ function playerCreateTest(){
 	player2.addCharacter(torbjorn);
 	player2.addCharacter(mccree);
 }
+function uiHandleTest(){
+	uiUpdate.characterLoadUpdate(player2, 1);
+	uiUpdate.characterLoadUpdate(player1, 0);
+}
+function playerAttackTest(player){
+	player.skillSelected(1);
+	uiUpdate.updateConsoleMessage(player.activeCharacter.name, player.activeCharacter.skillArr[1].name);
+
+}
 
 
+function mouseHandlerGameArea(){
+	$('.moveOptionSkills').click(skillMenuClickMouse);
+	$('.moveOptionChangeChar').click(charOptClickMouse);
+	$('.moveOptionUse').click(useOptClickMouse);
+	$('.backButton').click(backButtonClickMouse);
+}
 
 
 
@@ -52,9 +69,10 @@ function charDropMenuClose(){
 /**** end of initial screen ui handler ****/
 
 /******************* ui handlers for game area *****************/ 
-var spanAdd = $("<span>").addClass("tracker").html('&#9830');
-var menuOpened = false;
+let spanAdd = $("<span>").addClass("tracker").html('&#9830');
+let menuOpened = false;
 
+/******** ui handlers for keyboard input *******/
 $(window).keydown(function(event){
 	var key = event.keyCode;
 	var this_ = $('.tracker').parent().closest('.moveOpt');		//track span in choosing move options
@@ -121,6 +139,7 @@ function skillMenuClick(){
 	$('.skillList li:first-child').append(spanAdd);
 	menuOpened = true;
 }
+
 function charOptClick(){
 	$('.changeCharList').css('display','block');
 	$('.changeCharList li:first-child').append(spanAdd);
@@ -137,5 +156,30 @@ function backButtonClick(elmt){
 	$('.moveOptionSkills').append(spanAdd);
 	menuOpened = false;
 }
-
+/*******ui handlers with keyboard end*******/
+/****mouse click handler for main game area ****/
+function skillMenuClickMouse(){
+	$('.tracker').remove();
+	$('.skillList').css('display','block');
+	$('.skillList li:first-child').append(spanAdd);
+	menuOpened = true;
+}
+function charOptClickMouse(){
+	$('.tracker').remove();
+	$('.changeCharList').css('display','block');
+	$('.changeCharList li:first-child').append(spanAdd);
+	menuOpened = true;
+}
+function useOptClickMouse(){
+	$('.tracker').remove();
+	$('.useList').css('display','block');
+	$('.useList li:first-child').append(spanAdd);
+	menuOpened = true;
+}
+function backButtonClickMouse(){
+	$('.tracker').closest('div').css('display', 'none');
+	$('.moveOptionSkills').append(spanAdd);
+	menuOpened = false;
+}
+/****end of mouse click handler for main game area ****/
 /********** end of ui handlers for game area *********/

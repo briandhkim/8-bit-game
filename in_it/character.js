@@ -1,6 +1,5 @@
 /*edit done by Brian. check bottom for initial submit by michael*/
 function Character(charObj){  //fetch charObj from charStats.js
-    this.self = this;   //this may not be necessary at this time. might need to be converted if 
                         //character object is used for DOM stuff. ie. without direct interaction
                         //with the window, using self may not be necessary
     this.name = charObj.name;
