@@ -160,6 +160,37 @@ html,body{
 .quad2, .quad4{
 	border: 1px solid blue;
 }
+.player2_charStats, .player1_charStats{
+	height: 70%;
+	border: 1px solid green;
+}
+.player2_charStats{
+	margin-top: 2.5%;
+	background-image: url(../images/charStat1.png);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	background-size: 100% 100%;
+	padding: 2%;
+}
+.player2_currentChar_nameArea, .player2_currentChar_hpArea{
+	height: 50%;
+	border: 1px solid red;
+}
+.player1_currentChar_nameArea, .player1_currentChar_hpArea{
+	height: 50%;
+	border: 1px solid red;
+}
+.player1_charStats{
+	margin-top: 8.5%;
+	background-image: url(../images/charStat2.png);
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	background-size: 100% 100%;
+	padding: 2%;
+}
+
+
+/*console area css (message and move options)*/
 .gameBodyConsole{
 	height: 25%;
 }
@@ -203,7 +234,7 @@ html,body{
 	border-top: 4px dashed;
 	border-left: 4px dashed;
 }
-.skillList, .changeCharList, .itemList{
+.skillList, .changeCharList, .useList{
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -221,7 +252,7 @@ html,body{
 	list-style-type: square;
 }
 
-.skillList, .changeCharList, .itemList{
+.skillList, .changeCharList, .useList{
 	background-color: white;
 }
 .tracker{

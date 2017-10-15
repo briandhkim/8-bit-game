@@ -65,7 +65,7 @@ function Character(charObj){  //fetch charObj from charStats.js
     this.checkDMG = function(skillNum){
         //same as checkAccuracy function. may not be necessary. unless 
         //used for future skill/character stat display in game. this is not a feature at this time
-        return thsi.skillArr[skillNum].damage;
+        return this.skillArr[skillNum].damage;
     };
 
     this.animate = function(){

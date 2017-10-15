@@ -7,7 +7,8 @@ $(document).ready(function(){
 		charDropMenuClose();
 	});
 
-	
+	// var char1 = new Character(hanzo);
+	// var char2 = new Character(genji);
 
 });
 
@@ -91,8 +92,8 @@ $(window).keydown(function(event){
 		}else if(this_.hasClass('moveOptionChangeChar')){
 			charOptClick();
 			this_.children('span:first').remove();
-		}else if(this_.hasClass('moveOptionItem')){
-			itemOptClick();
+		}else if(this_.hasClass('moveOptionUse')){
+			useOptClick();
 			this_.children('span:first').remove();
 		}
 	}
@@ -107,9 +108,9 @@ function charOptClick(){
 	$('.changeCharList li:first-child').append(spanAdd);
 	menuOpened = true;
 }
-function itemOptClick(){
-	$('.itemList').css('display','block');
-	$('.itemList li:first-child').append(spanAdd);
+function useOptClick(){
+	$('.useList').css('display','block');
+	$('.useList li:first-child').append(spanAdd);
 	menuOpened = true;
 }
 function backButtonClick(elmt){
