@@ -10,6 +10,7 @@ function UIupdater(){
 		this.loadCurrentCharHP(charInPlay, playerTurnNum);
 		this.loadAttackMoveList(charInPlay.skillArr);
 		this.loadHealthPackCount(player.healthPackCount);
+		this.loadPlayerCharacterList(player.characterArr);
 	}
 
 	/***************************
@@ -75,6 +76,18 @@ function UIupdater(){
 			$('#skill_'+(i+1)+'_name').text(skills[i].name);
 			$('#skill_'+(i+1)+'_ppUpdate').text(skills[i].pp);
 			$('#skill_'+(i+1)+'_ppMax').text(skills[i].ppMax);
+		}
+	};
+	/***************************
+	loadPlayerCharacterList -> 
+	param: 
+	return: 
+	descpt: 
+ 	*/
+	this.loadPlayerCharacterList = function(characterArr){
+		for(var i=0; i<characterArr.length; i++){
+			$('#playerChar_'+(i+1)+' .playerCharListIcon').attr('src', characterArr[i].characterIcon);
+			$('#playerChar_'+(i+1)+' .playerCharName').text(characterArr[i].name);
 		}
 	};
 	/***************************

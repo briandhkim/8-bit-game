@@ -205,6 +205,11 @@ html,body{
 	background-size: 100% 100%;
 	padding: 2%;
 }
+.changeCharList .playerCharListIcon{
+	height: 50px;
+	width: 50px;
+}
+
 
 .player1_currentChar_hp, .player2_currentChar_hp{
 	height: 10px;

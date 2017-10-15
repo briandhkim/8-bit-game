@@ -477,7 +477,7 @@ var mei = {
 };
 
 var torbjorn = {
-	name : 'Torbjörn',
+	name : 'Torbjorn',
 	hp : 200,
 	img : 'images/charMain/torbjorn.png',
 	icon : 'images/icon/torbjorn.png',
