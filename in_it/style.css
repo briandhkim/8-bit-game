@@ -176,6 +176,23 @@ html,body{
 	height: 50%;
 	border: 1px solid red;
 }
+.player2_charImg{
+	height: 100%;
+	background-image: url(../images/charMain/genji.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	transform: rotateY(180deg);
+	border: 1px solid red;
+}
+.player1_charImg{
+	height: 100%;
+	background-image: url(../images/charMain/hanzo.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	border: 1px solid red;
+}
 .player1_currentChar_nameArea, .player1_currentChar_hpArea{
 	height: 50%;
 	border: 1px solid red;
