@@ -7,6 +7,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="in_it/style.css">
 	<!-- <script type="text/javascript" src="in_it/moveButton.js"></script> -->
+	<script type="text/javascript" src="in_it/uiUpdater.js"></script>
 	<script type="text/javascript" src="in_it/charStats.js"></script>
 	<script type="text/javascript" src="in_it/skills.js"></script>
 	<script type="text/javascript" src="in_it/character.js"></script>
@@ -81,7 +82,7 @@
 											</div>
 											<div class="col-xs-11">
 												<div class="progress player2_currentChar_hp">
-													<div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+													<div class="progress-bar progress-bar-success" id="player2_charHealthBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
 												</div>
 											</div>
 										</div>
@@ -114,7 +115,7 @@
 											</div>
 											<div class="col-xs-11">
 												<div class="progress player1_currentChar_hp">
-													<div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
+													<div class="progress-bar progress-bar-success" id="player1_charHealthBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
 												</div>
 											</div>
 										</div>
@@ -142,10 +143,34 @@
 							<div class="col-xs-4 moveOptions">
 								<div class=skillList>
 									<ul>
-										<li id="skill_1">skill 1</li>
-										<li id="skill_2">skill 2</li>
-										<li id="skill_3">skill 3</li>
-										<li id="skill_4">skill 4</li>
+										<li id="skill_1">
+											<span id="skill_1_name">skill 1</span>
+											<span class="skill_1_pp">
+												<span id="skill_1_ppUpdate">5</span> / 
+												<span id="skill_1_ppMax">5</span>
+											</span>
+										</li>
+										<li id="skill_2">
+											<span id="skill_2_name">skill 2</span>
+											<span class="skill_2_pp">
+												<span id="skill_2_ppUpdate">5</span> / 
+												<span id="skill_2_ppMax">5</span>
+											</span>
+										</li>
+										<li id="skill_3">
+											<span id="skill_3_name">skill 3</span>
+											<span class="skill_3_pp">
+												<span id="skill_3_ppUpdate">5</span> / 
+												<span id="skill_3_ppMax">5</span>
+											</span>
+										</li>
+										<li id="skill_4">
+											<span id="skill_4_name">skill 4</span>
+											<span class="skill_4_pp">
+												<span id="skill_4_ppUpdate">5</span> / 
+												<span id="skill_4_ppMax">5</span>
+											</span>
+										</li>
 										<li class="backButton">back</li>
 									</ul>
 								</div>
@@ -159,8 +184,12 @@
 								</div>
 								<div class="useList">
 									<ul>
-										<li id="item_healthPack">item 1</li>
-										<li id="item_Reload">item 2</li>
+										<li id="item_healthPack">
+											Health Pack
+											<span id="item_healthPack_counter">5</span> /
+											<span id="item_healthPack_Max">5</span>
+										</li>
+										<li id="item_Reload">Reload</li>
 										<li class="backButton">back</li>
 									</ul>
 								</div>

@@ -1,4 +1,12 @@
+/***************************
+	 -> 
+	param: 
+	return: 
+	descpt: 
+ 	*/
 
+var player1 = null;
+var uiUpdate = null;
 $(document).ready(function(){
 	// $('.charDropMenu').click(charDropMenuClick);
 	$('.charSelectDrop').click(charDropMenuOpen);
@@ -9,10 +17,20 @@ $(document).ready(function(){
 
 	// var char1 = new Character(hanzo);
 	// var char2 = new Character(genji);
-
+	uiUpdate = new UIupdater();
+	player1 = new Player();
+	player2 = new Player();
+	playerCreateTest();
 });
 
-
+function playerCreateTest(){
+	player1.addCharacter(hanzo);
+	player1.addCharacter(genji);
+	player1.addCharacter(dva);
+	player2.addCharacter(reinhardt);
+	player2.addCharacter(torbjorn);
+	player2.addCharacter(mccree);
+}
 
 
 
@@ -46,39 +64,39 @@ $(window).keydown(function(event){
 		if(this_.next('.moveOpt').length >0){
 			event.preventDefault();		//prevents arrow key scroll
 			this_.next('.moveOpt').append(spanAdd);
-			this_.children('span:first').remove();
+			this_.children('.tracker').remove();
 		}
 	}else if(key===40||key===83){		//down key
 		if(menuOpened){	
 			if(this_li_.next('li').length>0){
 				event.preventDefault();
 				this_li_.next('li').append(spanAdd);
-				this_li_.children('span:first').remove();
+				this_li_.children('.tracker').remove();
 			}
 		}
 		if(this_.next('.moveOpt').next('.moveOpt').length > 0){
 			event.preventDefault();
 			this_.next('.moveOpt').next('.moveOpt').append(spanAdd);
-			this_.children('span:first').remove();
+			this_.children('.tracker').remove();
 		}
 	}else if(key===37||key===65){		//left key
 		if(this_.prev('.moveOpt').length>0){
 			event.preventDefault();
 			this_.prev('.moveOpt').append(spanAdd);
-			this_.children('span:first').remove();
+			this_.children('.tracker').remove();
 		}
 	}else if(key===38||key===87){		//up key
 		if(menuOpened){
 			if(this_li_.prev('li').length>0){
 				event.preventDefault();
 				this_li_.prev('li').append(spanAdd);
-				this_li_.children('span:first').remove();
+				this_li_.children('.tracker').remove();
 			}
 		}
 		if(this_.prev('.moveOpt').prev('.moveOpt').length>0){
 			event.preventDefault();
 			this_.prev('.moveOpt').prev('.moveOpt').append(spanAdd);
-			this_.children('span:first').remove();
+			this_.children('.tracker').remove();
 		}
 	}else if(key===32){		//space key
 		if(menuOpened){

@@ -362,7 +362,7 @@ var hanzo = {
 		healSplash : false
 	},
 	skill_4 :{
-		name: 'Ryū ga waga teki wo kurau!',
+		name: 'Ryu ga waga teki wo kurau!',
 		damage: 200,
 		accuracy: 75,
 		pp: 1,

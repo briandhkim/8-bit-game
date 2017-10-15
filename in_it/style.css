@@ -178,7 +178,7 @@ html,body{
 }
 .player2_charImg{
 	height: 100%;
-	background-image: url(../images/charMain/genji.png);
+	background-image: url(../images/charMain/ana.png);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -187,7 +187,7 @@ html,body{
 }
 .player1_charImg{
 	height: 100%;
-	background-image: url(../images/charMain/hanzo.png);
+	background-image: url(../images/charMain/reaper.png);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -206,6 +206,10 @@ html,body{
 	padding: 2%;
 }
 
+.player1_currentChar_hp, .player2_currentChar_hp{
+	height: 10px;
+	margin-top: 7px;
+}
 
 /*console area css (message and move options)*/
 .gameBodyConsole{
@@ -253,11 +257,14 @@ html,body{
 }
 .skillList, .changeCharList, .useList{
 	position: absolute;
-	width: 100%;
-	height: 100%;
-	left: 0;
+	width: 200%;
+	height: 150%;
+	/*left: 0;*/
+	right: 0;
+	bottom: 0;
 	display:none;
 	z-index: 1;
+	border: 4px dashed;
 	/*default display - block*/
 	/*overflow: hidden;
 	text-overflow:ellipsis;*/

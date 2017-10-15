@@ -7,10 +7,9 @@ function Player(){
 	this.self = this; //will likely need to use this for DOM stuff. e.g. updating console, player menu options etc.
 
 	//this.name //at this time, the name will likely stay player 1 || player 2
-	this.character_1 = null;
-	this.character_2 = null;
-	this.character_3 = null; 
-	this.characterArr = [character_1, character_2, character_3];
+	this.characterArr = [];
+	// this.currentCharacter = null;   //will be single chracter from characterArr
+	
 	var char_iterator = 0;
 	this.charactersAlive = 3; //check characters alive
 	var max_char_num = 3; //maximum number of characters in storage; may increase to 4 in future
@@ -20,28 +19,32 @@ function Player(){
 	//large helath packs restore 250, small 75.
 	//may change to small and larget health pack in future with different count value;
 	this.activeCharacterTracker = 0;
-	this.activeCharacter = characterArr[activeCharacterTracker];
+	this.activeCharacter = null;
 
 	this.addCharacter = function(selectedCharacter){		//pass in the character object based on what was selected
 		//will likely use click handler attached to the character list item in the inital selection page
-		if(char_iterator < self.charactersAlive){	//condition check. can't create more characters alive then max allowed 
-			self.characterArr[char_iterator] = new Character(selectedCharacter);
+		this.activeCharacter = this.characterArr[this.activeCharacterTracker];
+		if(char_iterator < max_char_num){	//condition check. can't create more characters alive then max allowed 
+			this.characterArr[char_iterator] = new Character(selectedCharacter);
 			char_iterator++;
+		}else{
+			console.log('check addCharacter in player obj');
 		}
 	};
 	this.changeCharacter = function(charChosen){	//changing character function
-		if(self.characterArr[charChosen].alive){ 	//check if character chosen is alive
-			self.activeCharacterTracker = charChosen;
-			self.activeCharacter = self.characterArr[self.activeCharacterTracker]; //this line might not be necessary
+		if(this.characterArr[charChosen].alive){ 	//check if character chosen is alive
+			this.activeCharacterTracker = charChosen;
+			this.activeCharacter = this.characterArr[this.activeCharacterTracker]; //this line might not be necessary
 			//call ui update function
 		}else{
 			console.log('update console to ask for different character');
 		}
 	};
 	this.useHealthPack = function(){	//using helathpack item function
-		if(healthPackCount >0){
-			self.activeCharacter.addHP(self.healthPack); //addHP takes amount of hp to add
-			self.healthPackCount--;
+		if(this.healthPackCount >0){
+			this.activeCharacter.addHP(this.healthPack); //addHP takes amount of hp to add
+			this.healthPackCount--;
+			//need to call healthPack count update ui
 		}else{
 			console.log('console message saying no health pack available');
 		}
