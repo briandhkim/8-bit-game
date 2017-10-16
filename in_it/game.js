@@ -41,13 +41,13 @@ function Game(uiUpdater){
     this.changePlayerTurn = function(){
         if(this.currentPlayerTurn===0){
             this.currentPlayerTurn++;
-            uiUp.characterLoadUpdate(this.playersInGame[this.currentPlayerTurn], this.currentPlayerTurn);
+            uiUp.turnChangeLoadUpdate(this.playersInGame[this.currentPlayerTurn], this.currentPlayerTurn);
             uiUp.clearConsoleMessage();
             uiUp.updateConsoleMessageTurnChange(this.currentPlayerTurn);
             return;
         }else if(this.currentPlayerTurn===1){
             this.currentPlayerTurn--;
-            uiUp.characterLoadUpdate(this.playersInGame[this.currentPlayerTurn], this.currentPlayerTurn);
+            uiUp.turnChangeLoadUpdate(this.playersInGame[this.currentPlayerTurn], this.currentPlayerTurn);
             uiUp.clearConsoleMessage();
             uiUp.updateConsoleMessageTurnChange(this.currentPlayerTurn);
             return;

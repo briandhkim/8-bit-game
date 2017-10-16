@@ -11,6 +11,14 @@ function UIupdater(){
 		this.loadPlayerCharacterList(player.characterArr);
 	}
 
+	this.turnChangeLoadUpdate = function(player, playerTurnNum){	//doesn't animate the character image
+		let charInPlay = player.activeCharacter;
+		this.loadCurrentCharName(charInPlay, playerTurnNum);
+		this.loadCurrentCharHP(charInPlay, playerTurnNum);
+		this.loadAttackMoveList(charInPlay.skillArr);
+		this.loadHealthPackCount(player.healthPackCount);
+		this.loadPlayerCharacterList(player.characterArr);
+	}
 	/***************************
 	updateCurrentCharName -> 
 	param: selectedChar -> currentCharacter from player object (activeCharacter)
@@ -36,9 +44,19 @@ function UIupdater(){
  	*/
  	this.loadCurrentCharImage = function(selectedChar, playerTurnNum){
  		if(playerTurnNum){
- 			$('.player2_charImg').css('background-image','url('+selectedChar.gameImage+')');
+ 			$('.player2_charImg').css({
+ 				'background-image': 'url('+selectedChar.gameImage+')',
+ 				'left': '150px'
+ 			});
+ 			$('.player2_charImg').animate({'left': '-=150px'},1200);
+ 			return;
  		}else{
- 			$('.player1_charImg').css('background-image','url('+selectedChar.gameImage+')');
+ 			$('.player1_charImg').css({
+ 				'background-image': 'url('+selectedChar.gameImage+')',
+ 				'left': '-150px'
+ 			});
+ 			$('.player1_charImg').animate({'left':'+=150px'},1200);
+ 			return;
  		}
  	};
  	/***************************
@@ -52,12 +70,20 @@ function UIupdater(){
  			$('.player2_currentChar_hpArea .currentHP').text(selectedChar.hp);
  			$('.player2_currentChar_hpArea .maxHP').text(selectedChar.hpMax);
  			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
- 			$('.player2_currentChar_hpArea .progress-bar').css('width', hpBar+'%');
+ 			$('.player2_currentChar_hpArea .progress-bar').css('width', '0%');
+ 			$('.player2_currentChar_hpArea .progress-bar').animate({
+ 				'width': '+='+hpBar+'%'
+ 			}, 1200);
+ 			// $('.player2_currentChar_hpArea .progress-bar').css('width', hpBar+'%');
  		}else{
  			$('.player1_currentChar_hpArea .currentHP').text(selectedChar.hp);
  			$('.player1_currentChar_hpArea .maxHP').text(selectedChar.hpMax);
  			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
- 			$('.player1_currentChar_hpArea .progress-bar').css('width', hpBar+'%');
+ 			$('.player1_currentChar_hpArea .progress-bar').css('width', '0%');
+ 			$('.player1_currentChar_hpArea .progress-bar').animate({
+ 				'width': '+='+hpBar+'%'
+ 			}, 1200);
+ 			// $('.player1_currentChar_hpArea .progress-bar').css('width', hpBar+'%');
  		}
  	}
 	/***************************
