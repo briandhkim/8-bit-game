@@ -269,7 +269,7 @@ html,body{
 	margin: 0 auto;
 	letter-spacing: .15em;
 	animation: 
-		typing 2.5s steps(40, end),
+		typing 2s steps(40, end),
 		blinkCaret .85s step-end infinite;
 }
 /*type animation*/
