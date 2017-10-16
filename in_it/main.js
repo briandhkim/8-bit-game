@@ -5,10 +5,8 @@
 	descpt: 
  	*/
 
-let player1 = null;
-let player2 = null;
 let uiUpdate = null;
-
+let game = null;
 $(document).ready(function(){
 	$('.charSelectDrop').click(charDropMenuOpen);
 	$('.charDropMenu').on('click',function(evt){
@@ -19,24 +17,22 @@ $(document).ready(function(){
 
 
 	uiUpdate = new UIupdater();
-	player1 = new Player();
-	player2 = new Player();
+	game = new Game(uiUpdate);
+	// game.gameInitiated();
 	playerCreateTest();
-	uiHandleTest();
+	game.gameStart();
+	// uiHandleTest();
 });
 
 function playerCreateTest(){
-	player1.addCharacter(hanzo);
-	player1.addCharacter(genji);
-	player1.addCharacter(dva);
-	player2.addCharacter(reinhardt);
-	player2.addCharacter(torbjorn);
-	player2.addCharacter(mccree);
+	game.addCharacterToPlayer(game.playersInGame[0], mei);
+	game.addCharacterToPlayer(game.playersInGame[1], torbjorn);
+	game.addCharacterToPlayer(game.playersInGame[0], reinhardt);
+	game.addCharacterToPlayer(game.playersInGame[1], mccree);
+	game.addCharacterToPlayer(game.playersInGame[0], dva);
+	game.addCharacterToPlayer(game.playersInGame[1], genji);
 }
-function uiHandleTest(){
-	uiUpdate.characterLoadUpdate(player2, 1);
-	uiUpdate.characterLoadUpdate(player1, 0);
-}
+
 function playerAttackTest(player){
 	player.skillSelected(1);
 	uiUpdate.updateConsoleMessage(player.activeCharacter.name, player.activeCharacter.skillArr[1].name);

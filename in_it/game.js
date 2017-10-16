@@ -1,38 +1,67 @@
-var availablePlayerTurns = ["p1", "p2"];
-var currentPlayerTurnIndex = 0;
 
-var consoleMessages = [];
+function Game(uiUpdater){
+    let this_ = this;
+    let uiUp = uiUpdater;     //uiUpdater Object
+    this.playersInGame = [];        // will always have 2
+    this.currentPlayerTurn = 0;     // 0 --player1 ||| 1 --player2 (since playersInPlay is 0 indexed)
+    let player1 = null;
+    let player2 = null;
 
-function currentPlayerTurn(){
-    return availablePlayerTurns[currentPlayerTurnIndex];
+    /***************************
+    gameInitiated -> 
+    param: none
+    return: none
+    descpt: creates new players and adds the objects to playersInPlay array
+            called when Game object is created
+    */
+    this.gameInitiated = function(){
+        player1 = new Player(uiUp, this_);
+        player2 = new Player(uiUp, this_);
+        this_.playersInGame[0] = player1;
+        this_.playersInGame[1] = player2;
+        console.log(this_.playersInGame);
+    }();    /*****!!! called when Game object is created !!!*****/
+
+    /***************************
+    addCharacterToPlayer -> 
+    param: player --> e.g. game.playersInGame[currentPlayerTurn]
+            characterObj --> e.g. ana (object from characterStats.js)
+    return: nothing
+    descpt: adds a new character to player
+    */
+    this.addCharacterToPlayer = function(player, characterObj){
+        player.addCharacter(characterObj);
+    };
+
+    this.gameStart = function(){
+        uiUp.characterLoadUpdate(player2, 1);
+        uiUp.characterLoadUpdate(player1, 0);
+    };
+
+    this.changePlayerTurn = function(){
+        if(this.currentPlayerTurn===0){
+            this.currentPlayerTurn++;
+            return;
+        }else if(this.currentPlayerTurn===1){
+            this.currentPlayerTurn--;
+            return;
+        }else{
+            console.log('changePlayerTurn error in game object');
+        }
+    };
+
+    /***************************
+    turnChangeChar -> 
+    param: player --> e.g. game.playersInGame[currentPlayerTurn]
+            characterNum --> value grabbed from available character 
+                    list in html li element when clicked
+    return: nothing
+    descpt: changes player character. calls changeCharacterFunction in player object
+    */
+    this.turnChangeChar = function(characterNum){
+        this_.playersInGame[this_.currentPlayerTurn].changeCharacter(characterNum);
+    };
+    // this.charChangeUIup = function(){
+    //     let 
+    // };
 }
-
-function switchTurn(){
-    currentPlayerTurnIndex = 1 - currentPlayerTurnIndex;
-}
-
-function logConsoleMessage(message){
-    consoleMessages.unshift(message);
-    if(consoleMessages > 5){
-        consoleMessages.pop();
-    }
-    updateConsoleMessages();
-}
-
-function updateConsoleMessages(){
-    for(var i = 0; i < consoleMessages.length; i++){
-        var consoleLI = "#console_" + (i+1);
-        console.log(consoleLI);
-        $(consoleLI).text(consoleMessages[i]).css("list-style-type", "square")
-    }
-}
-
-function clearConsoleMessages(){
-    consoleMessages = [];
-    $("#console_1").text("").css("list-style-type", "none");
-    $("#console_2").text("").css("list-style-type", "none");
-    $("#console_3").text("").css("list-style-type", "none");
-    $("#console_4").text("").css("list-style-type", "none");
-    $("#console_5").text("").css("list-style-type", "none")
-}
-

@@ -464,7 +464,7 @@ var mei = {
 		healSplash : false
 	},
 	skill_4 :{
-		name: 'Blizzard',
+		name: "I'm the greatest good you're ever gonna get",
 		damage: 100,
 		accuracy: 90,
 		pp: 1,

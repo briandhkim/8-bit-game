@@ -3,9 +3,10 @@
 using reload and using healthpack counts as turn. afterwards change to opponent 
 */
 
-function Player(){
-	this.self = this; //will likely need to use this for DOM stuff. e.g. updating console, player menu options etc.
-
+function Player(uiUpdater, game){
+	let this_ = this; //will likely need to use this for DOM stuff. e.g. updating console, player menu options etc.
+	let uiUp = uiUpdater;
+	let gameObj = game;
 	//this.name //at this time, the name will likely stay player 1 || player 2
 	this.characterArr = [];
 	// this.currentCharacter = null;   //will be single chracter from characterArr
@@ -35,7 +36,8 @@ function Player(){
 		if(this.characterArr[charChosen].alive && this.activeCharacterTracker!==charChosen){ 	//check if character chosen is alive
 			this.activeCharacterTracker = charChosen;
 			this.activeCharacter = this.characterArr[this.activeCharacterTracker]; //this line might not be necessary
-			//call ui update function
+			uiUp.characterLoadUpdate(this_,gameObj.currentPlayerTurn);//call ui update function
+			// uiUp.characterLoadUpdate(this_,0);
 		}else{
 			console.log('update console to ask for different character');
 		}

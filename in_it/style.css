@@ -270,6 +270,9 @@ html,body{
 	border-right: 4px dashed;
 	border-bottom: 4px dashed;
 }
+#skill_4{
+	font-size: 20px;
+}
 .moveOptionRageQuit{
 	border-top: 4px dashed;
 	border-left: 4px dashed;
