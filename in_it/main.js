@@ -40,16 +40,15 @@ function playerAttackTest(player){
 }
 
 
+
 function mouseHandlerGameArea(){
 	$('.moveOptionSkills').click(skillMenuClickMouse);
 	$('.moveOptionChangeChar').click(charOptClickMouse);
 	$('.moveOptionUse').click(useOptClickMouse);
 	$('.backButton').click(backButtonClickMouse);
+
+	$('.changeCharList li').click(changeCharListClickMouse);
 }
-
-
-
-
 
 /** initial screen ui handler **/
 function charDropMenuOpen(){
@@ -116,6 +115,9 @@ $(window).keydown(function(event){
 		if(menuOpened){
 			if(this_li_.hasClass('backButton')){
 				backButtonClick(this_li_.parent().closest('div'));
+			}else if(this_li_.closest('div').hasClass('changeCharList')){
+				// this_li_.val()
+				changeCharListClick(this_li_.val());
 			}
 		}
 		if(this_.hasClass('moveOptionSkills')){
@@ -130,6 +132,29 @@ $(window).keydown(function(event){
 		}
 	}
 });
+
+/****click handler for changing character option  in game ****/
+function changeCharListClick(charVal){
+	let changeCharNum = charVal;
+	let currentPlayer = game.playersInGame[game.currentPlayerTurn];
+	currentPlayer.changeCharacter(changeCharNum);
+	backButtonClickMouse()
+}
+/***************************
+changeCharListClick -> 
+param: none
+return: none
+descpt: handles player turn change when selected by user
+ */
+function changeCharListClickMouse(){
+	let changeCharNum = $(this).val();
+	// console.log(changeCharNum);
+	let currentPlayer = game.playersInGame[game.currentPlayerTurn];
+	currentPlayer.changeCharacter(changeCharNum);
+	backButtonClickMouse()
+}
+/****end of click handler for changing character option in game ****/
+
 function skillMenuClick(){
 	$('.skillList').css('display','block');
 	$('.skillList li:first-child').append(spanAdd);

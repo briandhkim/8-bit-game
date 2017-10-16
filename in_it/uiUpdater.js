@@ -108,13 +108,25 @@ function UIupdater(){
 	return: nothing
 	descpt: append message to console area of player action
  	*/
- 	this.updateConsoleMessage = function(currentPlayerChar, playerMove){
+ 	this.updateConsoleMessageAttack = function(currentPlayerChar, playerMove){
  		let currentPlayerCharacter = currentPlayerChar;
  		let currentPlayerMove = playerMove;
  		let updateList = $('<li>',{
  			text: currentPlayerCharacter + " used " + currentPlayerMove +"!"
  		});
  		$('.consoleMsgList').prepend(updateList);
- 	}
+ 	};
+
+ 	this.updateConsoleMessageTurnChange = function(currentPlayerTurn){
+ 		let turnChangeMsg = $('<li>',{
+ 			text: 'Player '+ (currentPlayerTurn+1) +"'s turn"
+ 		});
+ 		$('.consoleMsgList').prepend(turnChangeMsg);
+ 	};	
+
+
+ 	this.clearConsoleMessage = function(){
+ 		$('.consoleMsgList li').remove();
+ 	};
  	/*****end of game play updates *****/
 }

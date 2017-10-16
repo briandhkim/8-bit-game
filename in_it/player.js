@@ -37,7 +37,7 @@ function Player(uiUpdater, game){
 			this.activeCharacterTracker = charChosen;
 			this.activeCharacter = this.characterArr[this.activeCharacterTracker]; //this line might not be necessary
 			uiUp.characterLoadUpdate(this_,gameObj.currentPlayerTurn);//call ui update function
-			// uiUp.characterLoadUpdate(this_,0);
+			gameObj.changePlayerTurn();
 		}else{
 			console.log('update console to ask for different character');
 		}
