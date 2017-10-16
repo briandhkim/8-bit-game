@@ -144,6 +144,7 @@ function UIupdater(){
  	};
 
  	this.updateConsoleMessageTurnChange = function(currentPlayerTurn){
+ 		let turnMsgString = 'Player '+(currentPlayerTurn+1)+"'s turn";
  		let turnChangeMsg = $('<li>',{
  			text: 'Player '+ (currentPlayerTurn+1) +"'s turn"
  		});
