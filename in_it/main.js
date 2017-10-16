@@ -47,7 +47,7 @@ function mouseHandlerGameArea(){
 	$('.moveOptionUse').click(useOptClickMouse);
 	$('.backButton').click(backButtonClickMouse);
 
-	$('.changeCharList li').click(changeCharListClickMouse);
+	$('#playerChar_1, #playerChar_2, #playerChar_3').click(changeCharListClickMouse);
 }
 
 /** initial screen ui handler **/

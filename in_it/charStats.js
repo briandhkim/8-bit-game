@@ -566,7 +566,7 @@ var genji = {
 		healSplash : false
 	},
 	skill_4 :{
-		name: 'Ryūjin no ken wo kurae',
+		name: 'Ryujin no ken wo kurae',
 		damage: 120,
 		accuracy: 85,
 		pp: 1,
