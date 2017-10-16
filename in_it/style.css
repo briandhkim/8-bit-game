@@ -1,6 +1,8 @@
 html,body{
 	overflow-x: hidden;
 }
+
+
 /*font-family: 'Press Start 2P', cursive;*/
 .introPageMain, .gamePageMain{
 	height: 100vh;
@@ -257,6 +259,27 @@ html,body{
 }
 .consoleMessage{
 	border-right: 4px dashed;
+	display: flex;
+}
+
+.consoleMsgList li{
+	overflow: hidden;
+	border-right: .15em solid rgb(25, 85, 147);
+	white-space: nowrap;
+	margin: 0 auto;
+	letter-spacing: .15em;
+	animation: 
+		typing 2.5s steps(40, end),
+		blinkCaret .85s step-end infinite;
+}
+/*type animation*/
+@keyframes typing{
+	from {width: 0}
+	to {width: 100%}
+}
+@keyframes blinkCaret{
+	from, to{border-color: transparent}
+	50%{ border-color: rgb(25, 85, 147);}
 }
 
 .moveOpt{

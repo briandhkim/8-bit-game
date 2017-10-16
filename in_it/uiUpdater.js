@@ -46,16 +46,16 @@ function UIupdater(){
  		if(playerTurnNum){
  			$('.player2_charImg').css({
  				'background-image': 'url('+selectedChar.gameImage+')',
- 				'left': '150px'
+ 				'left': '175px'
  			});
- 			$('.player2_charImg').animate({'left': '-=150px'},1200);
+ 			$('.player2_charImg').animate({'left': '-=175px'},1200);
  			return;
  		}else{
  			$('.player1_charImg').css({
  				'background-image': 'url('+selectedChar.gameImage+')',
- 				'left': '-150px'
+ 				'left': '-175px'
  			});
- 			$('.player1_charImg').animate({'left':'+=150px'},1200);
+ 			$('.player1_charImg').animate({'left':'+=175px'},1200);
  			return;
  		}
  	};
