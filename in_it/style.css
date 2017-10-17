@@ -262,7 +262,7 @@ html,body{
 	display: flex;
 }
 
-.consoleMsgList li{
+.consoleMsgList li:first-child{		/*typing animation for first li element in console*/
 	overflow: hidden;
 	border-right: .15em solid rgb(25, 85, 147);
 	white-space: nowrap;

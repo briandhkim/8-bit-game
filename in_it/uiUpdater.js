@@ -127,10 +127,16 @@ function UIupdater(){
 
  	/****game play updates****/
 
+ 	this.updateConsoleCustomMsg = function(msgString){
+ 		let updateMsg = $('<li>',{
+ 			text: msgString
+ 		});
+ 		$('.consoleMsgList').prepend(updateMsg);
+ 	};
  	/***************************
-	updateConsoleMessage -> 
+	updateConsoleMessageAttack -> 
 	param: player active char name (string),
-			 skill/item/character change used (string)
+			 skill option used (string)
 	return: nothing
 	descpt: append message to console area of player action
  	*/

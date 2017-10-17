@@ -39,7 +39,9 @@ function Player(uiUpdater, game){
 			uiUp.characterLoadUpdate(this_,gameObj.currentPlayerTurn);//call ui update function
 			gameObj.changePlayerTurn();
 		}else{
-			console.log('update console to ask for different character');
+			// console.log('update console to ask for different character');
+			const consoleMsg = "You can't select this character..."
+			uiUp.updateConsoleCustomMsg(consoleMsg);
 		}
 	};
 	this.useHealthPack = function(){	//using helathpack item function
