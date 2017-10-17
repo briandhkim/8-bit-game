@@ -260,8 +260,19 @@ html,body{
 .consoleMessage{
 	border-right: 4px dashed;
 	display: flex;
+	overflow: auto;
 }
-
+.consoleMessage::-webkit-scrollbar{
+	width: 7px;
+	/*background-color:rgb(227, 129, 23);*/
+	background-color: rgb(25, 85, 147);
+	background-color: white;
+}
+.consoleMessage::-webkit-scrollbar-thumb{
+	width: 5px;
+	border-radius: 20px;
+	background-color: rgb(25, 85, 147);
+}
 .consoleMsgList li:first-child{		/*typing animation for first li element in console*/
 	overflow: hidden;
 	border-right: .15em solid rgb(25, 85, 147);

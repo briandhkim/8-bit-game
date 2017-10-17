@@ -27,6 +27,7 @@ function Character(charObj){  //fetch charObj from charStats.js
         }
     };  //will likely be called when using health pack item or 
         //when skill used has healing property
+    /**
     this.removeHP = function(amountLoss){
         this.hp -= amountLoss;
         if(this.hp<=0){
@@ -35,6 +36,7 @@ function Character(charObj){  //fetch charObj from charStats.js
         }
         //update gamebody ui - probably player object level function
     };  //will need to be called when taking damage from opponent
+    **/
 
     this.useSkill = function(skillNum){ 
         //takes in skill number (0-3) passed in from playerObj level. 
@@ -44,6 +46,13 @@ function Character(charObj){  //fetch charObj from charStats.js
         //taking damage/heal is called at playerObject level based on the array returned
         //or if the skill can't be used anymore because of 0 pp, will return string message
         //and player will choose again (or lose the turn. have not decided)
+    };
+    this.takeDamage = function(opponentDamage){
+        this.hp -= opponentDamage; 
+        if(this.hp<= 0){
+            this.toggleDeathStatus();
+            return;
+        }
     };
     this.reload = function(){
        for(var i = 0; i < skillArr.length -1; i++){ //last skill does not get pp update
@@ -71,7 +80,7 @@ function Character(charObj){  //fetch charObj from charStats.js
         //as mentioned in gameImage variable, may be used in future for 
         //changing character image during skill use
     }; 
-    this.toggleStatus = function(){
+    this.toggleDeathStatus = function(){
         if(this.alive){
             this.alive = false;
             console.log(this.name +" was eliminated");
