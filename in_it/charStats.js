@@ -516,13 +516,14 @@ var torbjorn = {
 	},
 	skill_4 :{
 		name: 'Molten Core',
-		damage: 110,		//hammer damage*2 for the time
+		damage: 120,		//hammer damage*2 for the time
 		accuracy: 95,
 		pp: 1,
 		// aoe: false,
 		aoe: 0,
 		//heal: true  //only heals self 100% hp
-		heal: 200,
+		// heal: 200,
+		heal: 0,
 		healSplash : false
 	}
 };

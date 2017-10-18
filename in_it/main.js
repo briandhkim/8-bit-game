@@ -167,7 +167,7 @@ function changeCharListClickMouse(){
 	let changeCharNum = $(this).val();
 	// let currentPlayer = game.playersInGame[game.currentPlayerTurn];
 	// currentPlayer.changeCharacter(changeCharNum);
-	game.turnchangeChar(changecharNum);
+	game.turnChangeChar(changeCharNum);
 	backButtonClickMouse()
 }
 /****end of click handler for changing character option in game ****/

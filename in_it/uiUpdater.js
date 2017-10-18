@@ -13,8 +13,8 @@ function UIupdater(){
 
 	this.turnChangeLoadUpdate = function(player, playerTurnNum){	//doesn't animate the character image
 		let charInPlay = player.activeCharacter;
-		this.loadCurrentCharName(charInPlay, playerTurnNum);
-		this.loadCurrentCharHP(charInPlay, playerTurnNum);
+		// this.loadCurrentCharName(charInPlay, playerTurnNum);
+		// this.loadCurrentCharHP(charInPlay, playerTurnNum);
 		this.loadAttackMoveList(charInPlay.skillArr);
 		this.loadHealthPackCount(player.healthPackCount);
 		this.loadPlayerCharacterList(player.characterArr);
@@ -70,8 +70,8 @@ function UIupdater(){
  			$('.player2_currentChar_hpArea .currentHP').text(selectedChar.hp);
  			$('.player2_currentChar_hpArea .maxHP').text(selectedChar.hpMax);
  			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
- 			$('.player2_currentChar_hpArea .progress-bar').css('width', '0%');
- 			$('.player2_currentChar_hpArea .progress-bar').animate({
+ 			$('#player2_charHealthBar').css('width', '0%');
+ 			$('#player2_charHealthBar').animate({
  				'width': '+='+hpBar+'%'
  			}, 1200);
  			// $('.player2_currentChar_hpArea .progress-bar').css('width', hpBar+'%');
@@ -79,11 +79,32 @@ function UIupdater(){
  			$('.player1_currentChar_hpArea .currentHP').text(selectedChar.hp);
  			$('.player1_currentChar_hpArea .maxHP').text(selectedChar.hpMax);
  			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
- 			$('.player1_currentChar_hpArea .progress-bar').css('width', '0%');
- 			$('.player1_currentChar_hpArea .progress-bar').animate({
+ 			$('#player1_charHealthBar').css('width', '0%');
+ 			$('#player1_charHealthBar').animate({
  				'width': '+='+hpBar+'%'
  			}, 1200);
  			// $('.player1_currentChar_hpArea .progress-bar').css('width', hpBar+'%');
+ 		}
+ 	};
+ 	this.currentCharDamageTakeHP=function(selectedChar, playerTurnNum){
+ 		if(playerTurnNum){
+ 			let prevHP = $('.player2_currentChar_hpArea .currentHP').text();
+ 			let prevHPperc = Math.round((prevHP/selectedChar.hpMax)*100);
+ 			$('.player2_currentChar_hpArea .currentHP').text(selectedChar.hp);
+ 			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
+ 			let percDiff = prevHPperc - hpBar;
+ 			// $('#player2_charHealthBar').animate({
+ 			// 	'width' : "-=" + percDiff + "%"
+ 			// });
+ 			$('#player2_charHealthBar').animate({
+ 				'width' : hpBar+'%'
+ 			});
+ 		}else{
+ 			$('.player1_currentChar_hpArea .currentHP').text(selectedChar.hp);
+ 			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
+ 			$('#player1_charHealthBar').animate({
+ 				'width' : hpBar+'%'
+ 			},450);
  		}
  	}
 	/***************************

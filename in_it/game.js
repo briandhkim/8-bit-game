@@ -72,6 +72,17 @@ function Game(uiUpdater){
     this.turnSkillChar = function(skillNum){
         let skillOutput = this_.playersInGame[this_.currentPlayerTurn].skillSelected(skillNum);
         //skillOutput =array [0]:heal/damage val  [1]:heal true||false
-        console.log(skillOutput);
+        // console.log(skillOutput);
+        if(!skillOutput[1]){
+            if(this.currentPlayerTurn===0){
+                this.playersInGame[1].activeCharacter.takeDamage(skillOutput[0][0]);
+                uiUp.currentCharDamageTakeHP(this.playersInGame[1].activeCharacter, 1);
+                this.changePlayerTurn();
+            }else if(this.currentPlayerTurn===1){
+                this.playersInGame[0].activeCharacter.takeDamage(skillOutput[0][0]);
+                uiUp.currentCharDamageTakeHP(this.playersInGame[0].activeCharacter, 0);
+                this.changePlayerTurn();
+            }
+        }
     };
 }

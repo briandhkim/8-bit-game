@@ -61,7 +61,9 @@ function Character(charObj){  //fetch charObj from charStats.js
     this.takeDamage = function(opponentDamage){
         this.hp -= opponentDamage; 
         if(this.hp<= 0){
+            this.hp = 0;
             this.toggleDeathStatus();
+            console.log("dead");
             return;
         }
     };
