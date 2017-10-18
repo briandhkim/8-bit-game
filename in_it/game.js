@@ -56,6 +56,7 @@ function Game(uiUpdater){
         }
     };
 
+
     /***************************
     turnChangeChar -> 
     param: player --> e.g. game.playersInGame[currentPlayerTurn]
@@ -67,7 +68,10 @@ function Game(uiUpdater){
     this.turnChangeChar = function(characterNum){
         this_.playersInGame[this_.currentPlayerTurn].changeCharacter(characterNum);
     };
-    // this.charChangeUIup = function(){
-    //     let 
-    // };
+    
+    this.turnSkillChar = function(skillNum){
+        let skillOutput = this_.playersInGame[this_.currentPlayerTurn].skillSelected(skillNum);
+        //skillOutput =array [0]:heal/damage val  [1]:heal true||false
+        console.log(skillOutput);
+    };
 }

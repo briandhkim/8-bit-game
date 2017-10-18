@@ -35,9 +35,9 @@ var ana = {
 	},
 	skill_2 :{
 		name: 'Sleep Dart', //maybe skip this skill for the time, this would stun the character that is hit
-		damage: 5,
+		damage: 25,
 		accuracy: 20,
-		pp: 2,
+		pp: 10,
 		// aoe: false,
 		aoe: 0,
 		// heal: false
@@ -63,7 +63,7 @@ var ana = {
 		// aoe: false,
 		aoe: 0,
 		// heal: false
-		heal: 0,
+		heal: 150,
 		healSplash : false
 	}
 };
@@ -166,7 +166,7 @@ var zenyatta = {
 		aoe: 0,
 		// heal: true
 		heal: 200,
-		healSplash : false
+		healSplash : true
 	}
 };
 
@@ -316,7 +316,7 @@ var roadhog = {
 		accuracy: 25,
 		pp: 1,
 		// aoe: true,
-		aoe: 1250, // will probably most definitely need to be decreased
+		aoe: 100, // will probably most definitely need to be decreased
 		// heal: false
 		heal: 0,
 		healSplash : false
@@ -418,7 +418,7 @@ var junkrat = {
 		accuracy: 65,
 		pp: 1,
 		// aoe: true,
-		aoe: 200,
+		aoe: 100,
 		// heal: false
 		heal: 0,
 		healSplash : false
@@ -494,18 +494,18 @@ var torbjorn = {
 	},
 	skill_2 :{
 		name: 'Rivet Shot Gun',
-		damage: 15,
+		damage: 20,
 		accuracy: 80,
 		pp: 6,
 		// aoe: true,
-		aoe: 8,
+		aoe: 10,
 		// heal: false
 		heal: 0,
 		healSplash : false
 	},
 	skill_3 :{
 		name: 'Build Turret',
-		damage: 14,
+		damage: 17,
 		accuracy: 100,
 		pp: 5,
 		// aoe: false,
@@ -596,11 +596,11 @@ var mccree = {
 	},
 	skill_2 :{
 		name: 'Fan the Hammer',
-		damage: 30,
+		damage: 50,
 		accuracy: 80,
 		pp: 6,
 		// aoe: true,
-		aoe: 15,
+		aoe: 0,
 		// heal: false
 		heal: 0,
 		healSplash : false
@@ -619,10 +619,10 @@ var mccree = {
 	skill_4 :{
 		name: "It's 420 Noon",
 		damage: 250,
-		accuracy: 80,		//may need to adjust
+		accuracy: 70,		//may need to adjust
 		pp: 1,
 		// aoe: true,
-		aoe: 125,
+		aoe: 115,
 		// heal: false
 		heal: 0,
 		healSplash : false
@@ -700,7 +700,7 @@ var soldier = {
 		name: 'Helix Rockets',
 		damage: 60,
 		accuracy: 70,
-		pp: 5,
+		pp: 4,
 		// aoe: true,
 		aoe: 30,
 		// heal: false

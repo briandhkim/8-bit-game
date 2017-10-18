@@ -48,6 +48,7 @@ function mouseHandlerGameArea(){
 	$('.backButton').click(backButtonClickMouse);
 
 	$('#playerChar_1, #playerChar_2, #playerChar_3').click(changeCharListClickMouse);
+	$('#skill_1, #skill_2, #skill_3, #skill_4').click(skillListClickMouse);
 }
 
 /** initial screen ui handler **/
@@ -118,6 +119,8 @@ $(window).keydown(function(event){
 			}else if(this_li_.closest('div').hasClass('changeCharList')){
 				// this_li_.val()
 				changeCharListClick(this_li_.val());
+			}else if(this_li_.closest('div').hasClass('skillList')){
+				skillListClick(this_li_.val());
 			}
 		}
 		if(this_.hasClass('moveOptionSkills')){
@@ -133,11 +136,25 @@ $(window).keydown(function(event){
 	}
 });
 
+
+function skillListClick(skillVal){
+	let skillListNum = skillVal;
+	// let currentPlayer = game.playersInGame[game.currentPlayerTurn];
+	game.turnSkillChar(skillListNum);
+	backButtonClickMouse();
+}
+function skillListClickMouse(){
+	let skillListNum = $(this).val();
+	// let currentPlayer = game.playersInGame[game.currentPlayerTurn];
+	game.turnSkillChar(skillListNum);
+	backButtonClickMouse();
+}
 /****click handler for changing character option  in game ****/
 function changeCharListClick(charVal){
 	let changeCharNum = charVal;
-	let currentPlayer = game.playersInGame[game.currentPlayerTurn];
-	currentPlayer.changeCharacter(changeCharNum);
+	// let currentPlayer = game.playersInGame[game.currentPlayerTurn];
+	// currentPlayer.changeCharacter(changeCharNum);
+	game.turnChangeChar(changeCharNum);
 	backButtonClickMouse()
 }
 /***************************
@@ -148,9 +165,9 @@ descpt: handles player turn change when selected by user
  */
 function changeCharListClickMouse(){
 	let changeCharNum = $(this).val();
-	// console.log(changeCharNum);
-	let currentPlayer = game.playersInGame[game.currentPlayerTurn];
-	currentPlayer.changeCharacter(changeCharNum);
+	// let currentPlayer = game.playersInGame[game.currentPlayerTurn];
+	// currentPlayer.changeCharacter(changeCharNum);
+	game.turnchangeChar(changecharNum);
 	backButtonClickMouse()
 }
 /****end of click handler for changing character option in game ****/

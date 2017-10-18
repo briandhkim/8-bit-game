@@ -40,7 +40,18 @@ function Character(charObj){  //fetch charObj from charStats.js
 
     this.useSkill = function(skillNum){ 
         //takes in skill number (0-3) passed in from playerObj level. 
-        return this.skillArr[skillNum].executeSkill();
+        if(!this.skillArr[skillNum].heal){
+            let skillReturn = [this.skillArr[skillNum].executeSkill(), false];
+                    //second variable in array is boolean for whether skill heals or not
+            return skillReturn;
+        }else if(this.skillArr[skillNum].heal){
+            console.log('heal skill');
+            let healReturn = [this.skillArr[skillNum].heal, true];
+            return healReturn;
+        }else{
+            console.log('error useSkill function at character object');
+        }
+        
         //returns an array with a single damage input or 
         //array with length 2 with heal input and healsplash bool
         //taking damage/heal is called at playerObject level based on the array returned
