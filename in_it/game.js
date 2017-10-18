@@ -70,6 +70,11 @@ function Game(uiUpdater){
     };
     
     this.turnSkillChar = function(skillNum){
+        let selectedSkill = this_.playersInGame[this_.currentPlayerTurn].activeCharacter.skillArr[skillNum];
+        if(selectedSkill.pp<=0){
+            uiUp.updateConsoleCustomMsg("No more pp for this skill...");
+            return;
+        }
         let skillOutput = this_.playersInGame[this_.currentPlayerTurn].skillSelected(skillNum);
         //skillOutput =array [0]:heal/damage val  [1]:heal true||false
         // console.log(skillOutput);

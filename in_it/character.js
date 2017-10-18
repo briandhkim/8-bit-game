@@ -16,7 +16,7 @@ function Character(charObj){  //fetch charObj from charStats.js
     this.skill4 = new Skill(charObj.skill_4);
     this.skillArr = [this.skill1, this.skill2, this.skill3, this.skill4];
     this.alive = true;
-
+    // let uiUp = uiUpdater;
     this.getHP = function(){
         return this.hp;
     };
@@ -41,9 +41,15 @@ function Character(charObj){  //fetch charObj from charStats.js
     this.useSkill = function(skillNum){ 
         //takes in skill number (0-3) passed in from playerObj level. 
         if(!this.skillArr[skillNum].heal){
-            let skillReturn = [this.skillArr[skillNum].executeSkill(), false];
+            if(this.skillArr[skillNum].pp>0){
+                let skillReturn = [this.skillArr[skillNum].executeSkill(), false];
                     //second variable in array is boolean for whether skill heals or not
-            return skillReturn;
+                return skillReturn;
+            }else{
+                // uiUp.updateConsoleCustomMsg("No more pp for this skill...");
+                console.log('character object no pp check');
+                return;
+            }
         }else if(this.skillArr[skillNum].heal){
             console.log('heal skill');
             let healReturn = [this.skillArr[skillNum].heal, true];
