@@ -88,23 +88,17 @@ function UIupdater(){
  	};
  	this.currentCharDamageTakeHP=function(selectedChar, playerTurnNum){
  		if(playerTurnNum){
- 			let prevHP = $('.player2_currentChar_hpArea .currentHP').text();
- 			let prevHPperc = Math.round((prevHP/selectedChar.hpMax)*100);
  			$('.player2_currentChar_hpArea .currentHP').text(selectedChar.hp);
  			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
- 			let percDiff = prevHPperc - hpBar;
- 			// $('#player2_charHealthBar').animate({
- 			// 	'width' : "-=" + percDiff + "%"
- 			// });
- 			$('#player2_charHealthBar').animate({
+ 			$('#player2_charHealthBar').css({
  				'width' : hpBar+'%'
  			});
  		}else{
  			$('.player1_currentChar_hpArea .currentHP').text(selectedChar.hp);
  			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
- 			$('#player1_charHealthBar').animate({
+ 			$('#player1_charHealthBar').css({
  				'width' : hpBar+'%'
- 			},450);
+ 			});
  		}
  	}
 	/***************************
