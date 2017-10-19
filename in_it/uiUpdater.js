@@ -27,7 +27,7 @@ function UIupdater(){
 		let charInPlay = player.activeCharacter;
 		this.loadCurrentCharName(charInPlay, playerTurnNum);
 		this.loadCurrentCharImage(charInPlay, playerTurnNum);
-		this.charSwitchHPbarLoad(charInPlay, playerTurnNum);
+		this.loadCurrentCharHP(charInPlay, playerTurnNum);
 	};
 	/***************************
 	updateCurrentCharName -> 
@@ -80,28 +80,13 @@ function UIupdater(){
  			$('.player2_currentChar_hpArea .currentHP').text(selectedChar.hp);
  			$('.player2_currentChar_hpArea .maxHP').text(selectedChar.hpMax);
  			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
- 			$('#player2_charHealthBar').css('width', '0%');
- 			$('#player2_charHealthBar').animate({
- 				'width': '+='+hpBar+'%'
- 			}, 1100);
- 			// $('.player2_currentChar_hpArea .progress-bar').css('width', hpBar+'%');
- 		}else{
- 			$('.player1_currentChar_hpArea .currentHP').text(selectedChar.hp);
- 			$('.player1_currentChar_hpArea .maxHP').text(selectedChar.hpMax);
- 			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
- 			$('#player1_charHealthBar').css('width', '0%');
- 			$('#player1_charHealthBar').animate({
- 				'width': '+='+hpBar+'%'
- 			}, 1100);
- 			// $('.player1_currentChar_hpArea .progress-bar').css('width', hpBar+'%');
- 		}
- 	};
- 	this.charSwitchHPbarLoad = function(selectedChar, playerTurnNum){
- 		if(playerTurnNum){
- 			$('.player2_currentChar_hpArea .currentHP').text(selectedChar.hp);
- 			$('.player2_currentChar_hpArea .maxHP').text(selectedChar.hpMax);
- 			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
- 			// $('#player2_charHealthBar').css('width', '0%');
+ 			if(hpBar <20){
+ 				$('#player2_charHealthBar').removeClass('progress-bar-warning progress-bar-success').addClass('progress-bar-danger');
+ 			}else if(hpBar>=20 && hpBar <55){
+ 				$('#player2_charHealthBar').removeClass('progress-bar-danger progress-bar-success').addClass('progress-bar-warning');
+ 			}else if(hpBar>= 55){
+ 				$('#player2_charHealthBar').removeClass('progress-bar-danger progress-bar-warning').addClass('progress-bar-success');
+ 			}
  			$('#player2_charHealthBar').css({
  				'width': hpBar+'%'
  			});
@@ -110,23 +95,44 @@ function UIupdater(){
  			$('.player1_currentChar_hpArea .currentHP').text(selectedChar.hp);
  			$('.player1_currentChar_hpArea .maxHP').text(selectedChar.hpMax);
  			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
- 			// $('#player1_charHealthBar').css('width', '0%');
+ 			if(hpBar <20){
+ 				$('#player1_charHealthBar').removeClass('progress-bar-warning progress-bar-success').addClass('progress-bar-danger');
+ 			}else if(hpBar>=20 && hpBar <55){
+ 				$('#player1_charHealthBar').removeClass('progress-bar-danger progress-bar-success').addClass('progress-bar-warning');
+ 			}else if(hpBar>= 55){
+ 				$('#player1_charHealthBar').removeClass('progress-bar-danger progress-bar-warning').addClass('progress-bar-success');
+ 			}
  			$('#player1_charHealthBar').css({
  				'width': hpBar+'%'
  			});
  			// $('.player1_currentChar_hpArea .progress-bar').css('width', hpBar+'%');
  		}
  	};
+
  	this.currentCharDamageTakeHP=function(selectedChar, playerTurnNum){
  		if(playerTurnNum){
  			$('.player2_currentChar_hpArea .currentHP').text(selectedChar.hp);
  			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
+ 			if(hpBar <20){
+ 				$('#player2_charHealthBar').removeClass('progress-bar-warning progress-bar-success').addClass('progress-bar-danger');
+ 			}else if(hpBar>=20 && hpBar <55){
+ 				$('#player2_charHealthBar').removeClass('progress-bar-danger progress-bar-success').addClass('progress-bar-warning');
+ 			}else if(hpBar>= 55){
+ 				$('#player2_charHealthBar').removeClass('progress-bar-danger progress-bar-warning').addClass('progress-bar-success');
+ 			}
  			$('#player2_charHealthBar').css({
  				'width' : hpBar+'%'
  			});
  		}else{
  			$('.player1_currentChar_hpArea .currentHP').text(selectedChar.hp);
  			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
+ 			if(hpBar <20){
+ 				$('#player1_charHealthBar').removeClass('progress-bar-warning progress-bar-success').addClass('progress-bar-danger');
+ 			}else if(hpBar>=20 && hpBar <55){
+ 				$('#player1_charHealthBar').removeClass('progress-bar-danger progress-bar-success').addClass('progress-bar-warning');
+ 			}else if(hpBar>= 55){
+ 				$('#player1_charHealthBar').removeClass('progress-bar-danger progress-bar-warning').addClass('progress-bar-success');
+ 			}
  			$('#player1_charHealthBar').css({
  				'width' : hpBar+'%'
  			});
