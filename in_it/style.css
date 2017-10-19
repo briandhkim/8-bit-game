@@ -178,7 +178,7 @@ html,body{
 }
 .player2_charStats, .player1_charStats{
 	height: 70%;
-	border: 1px solid green;
+	/*border: 1px solid green;*/
 }
 .player2_charStats{
 	margin-top: 2.5%;
@@ -190,7 +190,7 @@ html,body{
 }
 .player2_currentChar_nameArea, .player2_currentChar_hpArea{
 	height: 50%;
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 }
 .player2_charImg{
 	height: 100%;
@@ -211,7 +211,7 @@ html,body{
 }
 .player1_currentChar_nameArea, .player1_currentChar_hpArea{
 	height: 50%;
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 }
 .player1_charStats{
 	margin-top: 8.5%;
@@ -222,8 +222,8 @@ html,body{
 	padding: 2%;
 }
 .changeCharList .playerCharListIcon{
-	height: 50px;
-	width: 50px;
+	height: 45px;
+	width: 45px;
 }
 
 
@@ -324,17 +324,37 @@ html,body{
 	/*default display - block*/
 	/*overflow: hidden;
 	text-overflow:ellipsis;*/
+	background-color:white;
 }
 .moveOptions ul{
 	list-style-type:none;
 }
-.moveOptions li:focus{
+/*.moveOptions li:focus{
 	list-style-type: square;
+}*/
+.changeCharList li{
+	display: inline-flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
 }
-
-.skillList, .changeCharList, .useList{
+.changeCharList span{
+	/*flex-grow: 2;*/
+	/*width: 40%;*/
+}
+.changeCharList .progress{
+	padding: 0;
+	margin-right: 20%;
+	/*margin-left: 10%;*/
+	margin-bottom: 0;
+	width: 30%;
+	height: 7px;
+	border: 0.5px solid;
+}
+/*.skillList, .changeCharList, .useList{
 	background-color: white;
-}
+}*/
 .tracker{
 	font-size: 175%;
 }

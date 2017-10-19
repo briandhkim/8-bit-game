@@ -77,39 +77,39 @@ $(window).keydown(function(event){
 	if(key===39||key===68){			//right key
 		if(this_.next('.moveOpt').length >0){
 			event.preventDefault();		//prevents arrow key scroll
-			this_.next('.moveOpt').append(spanAdd);
+			this_.next('.moveOpt').prepend(spanAdd);
 			this_.children('.tracker').remove();
 		}
 	}else if(key===40||key===83){		//down key
 		if(menuOpened){	
 			if(this_li_.next('li').length>0){
 				event.preventDefault();
-				this_li_.next('li').append(spanAdd);
+				this_li_.next('li').prepend(spanAdd);
 				this_li_.children('.tracker').remove();
 			}
 		}
 		if(this_.next('.moveOpt').next('.moveOpt').length > 0){
 			event.preventDefault();
-			this_.next('.moveOpt').next('.moveOpt').append(spanAdd);
+			this_.next('.moveOpt').next('.moveOpt').prepend(spanAdd);
 			this_.children('.tracker').remove();
 		}
 	}else if(key===37||key===65){		//left key
 		if(this_.prev('.moveOpt').length>0){
 			event.preventDefault();
-			this_.prev('.moveOpt').append(spanAdd);
+			this_.prev('.moveOpt').prepend(spanAdd);
 			this_.children('.tracker').remove();
 		}
 	}else if(key===38||key===87){		//up key
 		if(menuOpened){
 			if(this_li_.prev('li').length>0){
 				event.preventDefault();
-				this_li_.prev('li').append(spanAdd);
+				this_li_.prev('li').prepend(spanAdd);
 				this_li_.children('.tracker').remove();
 			}
 		}
 		if(this_.prev('.moveOpt').prev('.moveOpt').length>0){
 			event.preventDefault();
-			this_.prev('.moveOpt').prev('.moveOpt').append(spanAdd);
+			this_.prev('.moveOpt').prev('.moveOpt').prepend(spanAdd);
 			this_.children('.tracker').remove();
 		}
 	}else if(key===32){		//space key
@@ -174,24 +174,24 @@ function changeCharListClickMouse(){
 
 function skillMenuClick(){
 	$('.skillList').css('display','block');
-	$('.skillList li:first-child').append(spanAdd);
+	$('.skillList li:first-child').prepend(spanAdd);
 	menuOpened = true;
 }
 
 function charOptClick(){
 	$('.changeCharList').css('display','block');
-	$('.changeCharList li:first-child').append(spanAdd);
+	$('.changeCharList li:first-child').prepend(spanAdd);
 	menuOpened = true;
 }
 function useOptClick(){
 	$('.useList').css('display','block');
-	$('.useList li:first-child').append(spanAdd);
+	$('.useList li:first-child').prepend(spanAdd);
 	menuOpened = true;
 }
 function backButtonClick(elmt){
 	// $(this_li_).parent().closest('div').css('display','none');
 	$(elmt).css('display','none');
-	$('.moveOptionSkills').append(spanAdd);
+	$('.moveOptionSkills').prepend(spanAdd);
 	menuOpened = false;
 }
 /*******ui handlers with keyboard end*******/
@@ -199,24 +199,24 @@ function backButtonClick(elmt){
 function skillMenuClickMouse(){
 	$('.tracker').remove();
 	$('.skillList').css('display','block');
-	$('.skillList li:first-child').append(spanAdd);
+	$('.skillList li:first-child').prepend(spanAdd);
 	menuOpened = true;
 }
 function charOptClickMouse(){
 	$('.tracker').remove();
 	$('.changeCharList').css('display','block');
-	$('.changeCharList li:first-child').append(spanAdd);
+	$('.changeCharList li:first-child').prepend(spanAdd);
 	menuOpened = true;
 }
 function useOptClickMouse(){
 	$('.tracker').remove();
 	$('.useList').css('display','block');
-	$('.useList li:first-child').append(spanAdd);
+	$('.useList li:first-child').prepend(spanAdd);
 	menuOpened = true;
 }
 function backButtonClickMouse(){
 	$('.tracker').closest('div').css('display', 'none');
-	$('.moveOptionSkills').append(spanAdd);
+	$('.moveOptionSkills').prepend(spanAdd);
 	menuOpened = false;
 }
 /****end of mouse click handler for main game area ****/
