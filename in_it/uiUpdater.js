@@ -27,7 +27,7 @@ function UIupdater(){
 		let charInPlay = player.activeCharacter;
 		this.loadCurrentCharName(charInPlay, playerTurnNum);
 		this.loadCurrentCharImage(charInPlay, playerTurnNum);
-		this.loadCurrentCharHP(charInPlay, playerTurnNum);
+		this.charSwitchHPbarLoad(charInPlay, playerTurnNum);
 	};
 	/***************************
 	updateCurrentCharName -> 
@@ -83,7 +83,7 @@ function UIupdater(){
  			$('#player2_charHealthBar').css('width', '0%');
  			$('#player2_charHealthBar').animate({
  				'width': '+='+hpBar+'%'
- 			}, 1200);
+ 			}, 1100);
  			// $('.player2_currentChar_hpArea .progress-bar').css('width', hpBar+'%');
  		}else{
  			$('.player1_currentChar_hpArea .currentHP').text(selectedChar.hp);
@@ -92,7 +92,28 @@ function UIupdater(){
  			$('#player1_charHealthBar').css('width', '0%');
  			$('#player1_charHealthBar').animate({
  				'width': '+='+hpBar+'%'
- 			}, 1200);
+ 			}, 1100);
+ 			// $('.player1_currentChar_hpArea .progress-bar').css('width', hpBar+'%');
+ 		}
+ 	};
+ 	this.charSwitchHPbarLoad = function(selectedChar, playerTurnNum){
+ 		if(playerTurnNum){
+ 			$('.player2_currentChar_hpArea .currentHP').text(selectedChar.hp);
+ 			$('.player2_currentChar_hpArea .maxHP').text(selectedChar.hpMax);
+ 			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
+ 			// $('#player2_charHealthBar').css('width', '0%');
+ 			$('#player2_charHealthBar').css({
+ 				'width': hpBar+'%'
+ 			});
+ 			// $('.player2_currentChar_hpArea .progress-bar').css('width', hpBar+'%');
+ 		}else{
+ 			$('.player1_currentChar_hpArea .currentHP').text(selectedChar.hp);
+ 			$('.player1_currentChar_hpArea .maxHP').text(selectedChar.hpMax);
+ 			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
+ 			// $('#player1_charHealthBar').css('width', '0%');
+ 			$('#player1_charHealthBar').css({
+ 				'width': hpBar+'%'
+ 			});
  			// $('.player1_currentChar_hpArea .progress-bar').css('width', hpBar+'%');
  		}
  	};
