@@ -9,8 +9,9 @@ function UIupdater(){
 		this.loadAttackMoveList(charInPlay.skillArr);
 		this.loadHealthPackCount(player.healthPackCount);
 		this.loadPlayerCharacterList(player.characterArr);
-	}
+	};
 
+	//only changes player ui options area (next to console)
 	this.turnChangeLoadUpdate = function(player, playerTurnNum){	//doesn't animate the character image
 		let charInPlay = player.activeCharacter;
 		// this.loadCurrentCharName(charInPlay, playerTurnNum);
@@ -18,7 +19,16 @@ function UIupdater(){
 		this.loadAttackMoveList(charInPlay.skillArr);
 		this.loadHealthPackCount(player.healthPackCount);
 		this.loadPlayerCharacterList(player.characterArr);
-	}
+	};
+
+	//changes character name area, character image, health
+	//used when a character is eliminated
+	this.changeCharacterUpdate = function(player, playerTurnNum){
+		let charInPlay = player.activeCharacter;
+		this.loadCurrentCharName(charInPlay, playerTurnNum);
+		this.loadCurrentCharImage(charInPlay, playerTurnNum);
+		this.loadCurrentCharHP(charInPlay, playerTurnNum);
+	};
 	/***************************
 	updateCurrentCharName -> 
 	param: selectedChar -> currentCharacter from player object (activeCharacter)

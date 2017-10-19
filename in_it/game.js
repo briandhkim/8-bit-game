@@ -67,6 +67,8 @@ function Game(uiUpdater){
     */
     this.turnChangeChar = function(characterNum){
         this_.playersInGame[this_.currentPlayerTurn].changeCharacter(characterNum);
+        // uiUp.changeCharacterUpdate(this.playersInGame[this.currentPlayerTurn], this.currentPlayerTurn);
+        // this.changePlayerTurn();
     };
     
     this.turnSkillChar = function(skillNum){
@@ -82,12 +84,42 @@ function Game(uiUpdater){
             if(this.currentPlayerTurn===0){
                 this.playersInGame[1].activeCharacter.takeDamage(skillOutput[0][0]);
                 uiUp.currentCharDamageTakeHP(this.playersInGame[1].activeCharacter, 1);
+                if(this.checkCharDead(this.playersInGame[1].activeCharacter)){  //checking hcaracter elimination status
+                    //ui Messager for character eliminated  
+                    this.deadCharSwap(this.playersInGame[1]);       //swaping out eliminated char   
+                    uiUp.changeCharacterUpdate(this.playersInGame[1], 1);
+                }
                 this.changePlayerTurn();
             }else if(this.currentPlayerTurn===1){
                 this.playersInGame[0].activeCharacter.takeDamage(skillOutput[0][0]);
                 uiUp.currentCharDamageTakeHP(this.playersInGame[0].activeCharacter, 0);
+                if(this.checkCharDead(this.playersInGame[0].activeCharacter)){
+                    //ui Messager for character eliminated
+                    this.deadCharSwap(this.playersInGame[0]);   
+                    uiUp.changeCharacterUpdate(this.playersInGame[0], 0);
+                }
                 this.changePlayerTurn();
             }
         }
+    };
+    this.checkCharDead = function(character){
+        if(character.alive){
+            return false;
+        }else if(!character.alive){
+            return true;
+        }else{
+            console.log('error checkCharDead function');
+        }
+    }
+    this.deadCharSwap = function(player){
+        //if(player.charactersAlive===0)
+        for (var char in player.characterArr){
+            if(player.characterArr[char].alive){
+                player.eliminatedCharSwap(char);
+                player.charactersAlive--;
+                return;
+            }
+        }
+        
     };
 }

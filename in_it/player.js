@@ -36,12 +36,22 @@ function Player(uiUpdater, game){
 		if(this.characterArr[charChosen].alive && this.activeCharacterTracker!==charChosen){ 	//check if character chosen is alive
 			this.activeCharacterTracker = charChosen;
 			this.activeCharacter = this.characterArr[this.activeCharacterTracker]; //this line might not be necessary
-			uiUp.characterLoadUpdate(this_,gameObj.currentPlayerTurn);//call ui update function
+			uiUp.changeCharacterUpdate(this_,gameObj.currentPlayerTurn);//call ui update function
 			gameObj.changePlayerTurn();
 		}else{
 			// console.log('update console to ask for different character');
 			const consoleMsg = "You can't select this character..."
 			uiUp.updateConsoleCustomMsg(consoleMsg);
+		}
+	};
+	this.eliminatedCharSwap = function(charChosen){
+		if(this.characterArr[charChosen].alive && this.activeCharacterTracker!==charChosen){ 	//check if character chosen is alive
+			this.activeCharacterTracker = charChosen;
+			this.activeCharacter = this.characterArr[this.activeCharacterTracker]; //this line might not be necessary
+		}else{
+			console.log('error eliminatedCharSwap function player');
+			// const consoleMsg = "You can't select this character..."
+			// uiUp.updateConsoleCustomMsg(consoleMsg);
 		}
 	};
 	this.useHealthPack = function(){	//using helathpack item function
