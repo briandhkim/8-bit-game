@@ -164,8 +164,18 @@ function UIupdater(){
 		for(var i=0; i<characterArr.length; i++){
 			$('#playerChar_'+(i+1)+' .playerCharListIcon').attr('src', characterArr[i].characterIcon);
 			$('#playerChar_'+(i+1)+' .playerCharName').text(characterArr[i].name);
+			let hpBar = Math.round((characterArr[i].hp/characterArr[i].hpMax)*100);
+			if(hpBar <20){
+ 				$('#playerChar_'+(i+1)+' .progress-bar').removeClass('progress-bar-warning progress-bar-success').addClass('progress-bar-danger');
+ 			}else if(hpBar>=20 && hpBar <55){
+ 				$('#playerChar_'+(i+1)+' .progress-bar').removeClass('progress-bar-danger progress-bar-success').addClass('progress-bar-warning');
+ 			}else if(hpBar>= 55){
+ 				$('#playerChar_'+(i+1)+' .progress-bar').removeClass('progress-bar-danger progress-bar-warning').addClass('progress-bar-success');
+ 			}
+ 			$('#playerChar_'+(i+1)+' .progress-bar').css('width', hpBar+'%');
 		}
 	};
+	
 	/***************************
 	loadHealthPackCount -> 
 	param: 
