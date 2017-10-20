@@ -100,6 +100,10 @@ function Game(uiUpdater){
                 }
                 this.changePlayerTurn();
             }
+        }else if(skillOutput[1]){
+            this.playersInGame[this.currentPlayerTurn].activeCharacter.addHP(skillOutput[0]);
+            uiUp.currentCharDamageTakeHP(this.playersInGame[this.currentPlayerTurn].activeCharacter, this.currentPlayerTurn);
+            this.changePlayerTurn();
         }
     };
     this.checkCharDead = function(character){
