@@ -426,7 +426,7 @@ var junkrat = {
 };
 
 var mei = {
-	name : 'Mei (satan)',
+	name : 'Mei(satan)',
 	hp : 250,
 	img : 'images/charMain/mei.png',
 	icon : 'images/icon/mei.png',

@@ -123,7 +123,23 @@ function Game(uiUpdater){
                 player.charactersAlive--;
                 return;
             }
-        }
-        
+        } 
     };
+
+    this.turnUseHealthPack = function(){
+        const currentPlayer = this.playersInGame[this.currentPlayerTurn];
+        if(currentPlayer.healthPackCount!==0){
+            currentPlayer.activeCharacter.addHP(currentPlayer.healthPack);
+            uiUp.currentCharDamageTakeHP(currentPlayer.activeCharacter, this.currentPlayerTurn);
+            currentPlayer.healthPackCount--;
+            this.changePlayerTurn();
+        }else{
+            uiUp.updateConsoleCustomMsg("No more health packs...");
+        }
+    };
+    this.turnReload = function(){
+        const currentPlayerChar = this.playersInGame[this.currentPlayerTurn].activeCharacter;
+        currentPlayerChar.reload();
+        this.changePlayerTurn();
+    }
 }

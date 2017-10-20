@@ -49,6 +49,8 @@ function mouseHandlerGameArea(){
 
 	$('#playerChar_1, #playerChar_2, #playerChar_3').click(changeCharListClickMouse);
 	$('#skill_1, #skill_2, #skill_3, #skill_4').click(skillListClickMouse);
+	$('#item_healthPack').click(healthPackItemClick);
+	$('#item_Reload').click(reloadClick);
 }
 
 /** initial screen ui handler **/
@@ -121,6 +123,10 @@ $(window).keydown(function(event){
 				changeCharListClick(this_li_.val());
 			}else if(this_li_.closest('div').hasClass('skillList')){
 				skillListClick(this_li_.val());
+			}else if(this_li_.attr('id')=="item_healthPack"){
+				healthPackItemClick();
+			}else if(this_li_.attr('id')=="item_Reload"){
+				reloadClick();
 			}
 		}
 		if(this_.hasClass('moveOptionSkills')){
@@ -169,6 +175,14 @@ function changeCharListClickMouse(){
 	// currentPlayer.changeCharacter(changeCharNum);
 	game.turnChangeChar(changeCharNum);
 	backButtonClickMouse()
+}
+function healthPackItemClick(){
+	game.turnUseHealthPack();
+	backButtonClickMouse();
+}
+function reloadClick(){
+	game.turnReload();
+	backButtonClickMouse();
 }
 /****end of click handler for changing character option in game ****/
 
