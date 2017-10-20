@@ -259,7 +259,7 @@ html,body{
 }
 .consoleMessage{
 	border-right: 4px dashed;
-	display: flex;
+	/*display: flex;*/
 	overflow: auto;
 }
 .consoleMessage::-webkit-scrollbar{
@@ -273,7 +273,12 @@ html,body{
 	border-radius: 20px;
 	background-color: rgb(25, 85, 147);
 }
+.consoleMsgList{
+	display: inline-block;
+	margin-bottom: 2px;
+}
 .consoleMsgList li:first-child{		/*typing animation for first li element in console*/
+	/*display: inline-block;*/
 	overflow: hidden;
 	border-right: .15em solid rgb(25, 85, 147);
 	white-space: nowrap;
