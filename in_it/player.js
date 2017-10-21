@@ -9,7 +9,6 @@ function Player(uiUpdater, game){
 	let gameObj = game;
 	//this.name //at this time, the name will likely stay player 1 || player 2
 	this.characterArr = [];
-	// this.currentCharacter = null;   //will be single chracter from characterArr
 	
 	var char_iterator = 0;
 	this.charactersAlive = 3; //check characters alive
