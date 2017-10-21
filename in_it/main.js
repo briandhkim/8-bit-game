@@ -4,7 +4,12 @@
 	return: 
 	descpt: 
  	*/
-
+let battleAud = new Audio('./sounds/trainer_battle_music.mp3');
+battleAud.volume = 0.3;
+let gameEndAud = new Audio('./sounds/victory_music_wildpoke.mp3');
+gameEndAud.volume = 0.3;
+let gameEndAud2 = new Audio('./sounds/victory_music.mp3');
+gameEndAud2.volume = 0.3;
 let uiUpdate = null;
 let game = null;
 $(document).ready(function(){

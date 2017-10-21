@@ -6,17 +6,7 @@ function Game(uiUpdater){
     this.currentPlayerTurn = 0;     // 0 --player1 ||| 1 --player2 (since playersInPlay is 0 indexed)
     let player1 = null;
     let player2 = null;
-    let battleAud = new Audio('./sounds/trainer_battle_music.mp3');
-    battleAud.volume = 0.3;
-    let gameEndAud = new Audio('./sounds/victory_music_wildpoke.mp3');
-    gameEndAud.volume = 0.3;
-    let gameEndAud2 = new Audio('./sounds/victory_music.mp3');
-    gameEndAud2.volume = 0.3;
-    this.musicPause = function(){
-        battleAud.pause();
-        gameEndAud.pause();
-        gameEndAud2.pause();
-    }
+    
     /***************************
     gameInitiated -> 
     param: none
@@ -29,7 +19,6 @@ function Game(uiUpdater){
         player2 = new Player(uiUp, this_);
         this_.playersInGame[0] = player1;
         this_.playersInGame[1] = player2;
-        battleAud.play();
         console.log(this_.playersInGame);
     }();    /*****!!! called when Game object is created !!!*****/
 
