@@ -29,6 +29,28 @@ $(document).ready(function(){
 	// uiHandleTest();
 });
 
+function scroller(screenID){	//will be either #gamePageMain or #introPageMain
+	if(screenID == 'introPageMain'){
+		$('#introPageMain').css('display','block');
+	}else if(screenID == 'gamePageMain'){
+		$('#gamePageMain').css('display', 'block');
+	}
+    // Prevent default anchor click behavior
+	// event.preventDefault();
+	let scroll = screenID;
+	// Using jQuery's animate() method to add smooth page scroll
+	// The optional number (700) specifies the number of milliseconds it takes to scroll to the specified area
+	$('html, body').animate({
+		scrollTop: $("#"+scroll).offset().top
+	}, 800, function(){
+		if(screenID == 'introPageMain'){
+			$('#gamePageMain').css('display','none');
+		}else if(screenID == 'gamePageMain'){
+			$('#introPageMain').css('display','none');
+		}
+	});
+}
+
 function playerCreateTest(){
 	game.addCharacterToPlayer(game.playersInGame[0], mei);
 	game.addCharacterToPlayer(game.playersInGame[1], torbjorn);

@@ -141,7 +141,9 @@ html,body{
 	}
 }
 /*end of intro page main css*/
-
+#gamePageMain{
+	display: none;
+}
 .gameBannerRow{
 	height: 10%;
 }
