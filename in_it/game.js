@@ -116,14 +116,20 @@ function Game(uiUpdater){
         }
     }
     this.deadCharSwap = function(player){
-        //if(player.charactersAlive===0)
-        for (var char in player.characterArr){
-            if(player.characterArr[char].alive){
-                player.eliminatedCharSwap(char);
-                player.charactersAlive--;
-                return;
+        player.charactersAlive--;
+        if(player.charactersAlive===0){
+            console.log('game over');
+        }else if(player.charactersAlive>0){
+            for (var char in player.characterArr){
+                if(player.characterArr[char].alive){
+                    player.eliminatedCharSwap(char);
+                    return;
+                }
             }
-        } 
+        }else{
+            console.log("error at deadCharSwap in gameObj");
+        }
+         
     };
 
     this.turnUseHealthPack = function(){

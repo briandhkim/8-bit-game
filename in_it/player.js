@@ -46,7 +46,7 @@ function Player(uiUpdater, game){
 	};
 	this.eliminatedCharSwap = function(charChosen){
 		if(this.characterArr[charChosen].alive && this.activeCharacterTracker!==charChosen){ 	//check if character chosen is alive
-			this.activeCharacterTracker = charChosen;
+			this.activeCharacterTracker = parseInt(charChosen);	//need to parse other wise causes char swap check error on next turn
 			this.activeCharacter = this.characterArr[this.activeCharacterTracker]; //this line might not be necessary
 		}else{
 			console.log('error eliminatedCharSwap function player');
