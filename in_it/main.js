@@ -41,7 +41,8 @@ function scroller(screenID){	//will be either #gamePageMain or #introPageMain
 	// Using jQuery's animate() method to add smooth page scroll
 	// The optional number (700) specifies the number of milliseconds it takes to scroll to the specified area
 	$('html, body').animate({
-		scrollTop: $("#"+scroll).offset().top
+		scrollTop: $("#"+scroll).offset().top,
+		behavior: 'smooth'
 	}, 800, function(){
 		if(screenID == 'introPageMain'){
 			$('#gamePageMain').css('display','none');
@@ -271,8 +272,15 @@ function rageQuitOpt(){
 /****end of mouse click handler for main game area ****/
 /********** end of ui handlers for game area *********/
 
-function gameOver(){
+function gameOver(playerTurnNum){
+	uiUpdate.clearConsoleMessage();
+	if(playerTurnNum){
+		uiUpdate.updateConsoleCustomMsg("Player 1 defeated Player 2!!!");
+	}else{
+		uiUpdate.updateConsoleCustomMsg("Player 2 defeated Player 1!!!");
+	}
 	battleAud.pause();
+	gameEndAud.play();
 	// <iframe width="560" height="315" src="https://www.youtube.com/embed/t2Yrz9HSZNo" frameborder="0" allowfullscreen></iframe>
 	let videoFrame = $("<iframe>",{
 		src: "https://www.youtube.com/embed/t2Yrz9HSZNo",
@@ -282,7 +290,10 @@ function gameOver(){
 	});
 	$('.modal-body').text('').append(videoFrame);
 	$('#gameEndModalTitle').text("Game Over");
-	$("#gameEndModal").modal('show');
-	scroller('introPageMain');
+	setTimeout(function(){
+		$("#gameEndModal").modal('show');
+		scroller('introPageMain');
+	},4000);
+	
 	game = null;
 }

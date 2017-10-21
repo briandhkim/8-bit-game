@@ -6,7 +6,8 @@ function Game(uiUpdater){
     this.currentPlayerTurn = 0;     // 0 --player1 ||| 1 --player2 (since playersInPlay is 0 indexed)
     let player1 = null;
     let player2 = null;
-    
+    let prevTurnMsgElimination = null;
+    let prevTurnMsg = null;
     /***************************
     gameInitiated -> 
     param: none
@@ -43,13 +44,25 @@ function Game(uiUpdater){
             this.currentPlayerTurn++;
             uiUp.turnChangeLoadUpdate(this.playersInGame[this.currentPlayerTurn], this.currentPlayerTurn);
             uiUp.clearConsoleMessage();
+            uiUp.updatePrevTurnMsg(prevTurnMsg);
+            if(prevTurnMsgElimination){
+                uiUp.updatePrevTurnMsg(prevTurnMsgElimination);
+            }
             uiUp.updateConsoleMessageTurnChange(this.currentPlayerTurn);
+            prevTurnMsg = null;
+            prevTurnMsgElimination = null;
             return;
         }else if(this.currentPlayerTurn===1){
             this.currentPlayerTurn--;
             uiUp.turnChangeLoadUpdate(this.playersInGame[this.currentPlayerTurn], this.currentPlayerTurn);
             uiUp.clearConsoleMessage();
+            uiUp.updatePrevTurnMsg(prevTurnMsg);
+            if(prevTurnMsgElimination){
+                uiUp.updatePrevTurnMsg(prevTurnMsgElimination);
+            }
             uiUp.updateConsoleMessageTurnChange(this.currentPlayerTurn);
+            prevTurnMsg = null;
+            prevTurnMsgElimination = null;
             return;
         }else{
             console.log('changePlayerTurn error in game object');
@@ -75,25 +88,28 @@ function Game(uiUpdater){
             uiUp.updateConsoleCustomMsg("No more pp for this skill...");
             return;
         }
-        let skillOutput = this_.playersInGame[this_.currentPlayerTurn].skillSelected(skillNum);
+        let skillName = this.playersInGame[this.currentPlayerTurn].activeCharacter.skillArr[skillNum].name;
+        let charName = this.playersInGame[this.currentPlayerTurn].activeCharacter.name;
+        let skillOutput = this.playersInGame[this.currentPlayerTurn].skillSelected(skillNum);
         //skillOutput =array [0]:heal/damage val  [1]:heal true||false
+        prevTurnMsg = charName +" used " + skillName +"!";
         if(!skillOutput[1]){
             if(this.currentPlayerTurn===0){
                 this.playersInGame[1].activeCharacter.takeDamage(skillOutput[0][0]);
                 uiUp.currentCharDamageTakeHP(this.playersInGame[1].activeCharacter, 1);
                 if(this.checkCharDead(this.playersInGame[1].activeCharacter)){  //checking hcaracter elimination status
-                    //ui Messager for character eliminated  
-                    this.deadCharSwap(this.playersInGame[1]);       //swaping out eliminated char   
-                    uiUp.changeCharacterUpdate(this.playersInGame[1], 1);
+                    prevTurnMsgElimination = this.playersInGame[1].activeCharacter.name +" was eliminated!";  
+                    this.deadCharSwap(this.playersInGame[1], 1);       //swaping out eliminated char   
+                    // uiUp.changeCharacterUpdate(this.playersInGame[1], 1);
                 }
                 this.changePlayerTurn();
             }else if(this.currentPlayerTurn===1){
                 this.playersInGame[0].activeCharacter.takeDamage(skillOutput[0][0]);
                 uiUp.currentCharDamageTakeHP(this.playersInGame[0].activeCharacter, 0);
                 if(this.checkCharDead(this.playersInGame[0].activeCharacter)){
-                    //ui Messager for character eliminated
-                    this.deadCharSwap(this.playersInGame[0]);   
-                    uiUp.changeCharacterUpdate(this.playersInGame[0], 0);
+                    prevTurnMsgElimination = this.playersInGame[0].activeCharacter.name +" was eliminated!";
+                    this.deadCharSwap(this.playersInGame[0], 0);   
+                    // uiUp.changeCharacterUpdate(this.playersInGame[0], 0);
                 }
                 this.changePlayerTurn();
             }
@@ -112,15 +128,16 @@ function Game(uiUpdater){
             console.log('error checkCharDead function');
         }
     }
-    this.deadCharSwap = function(player){
+    this.deadCharSwap = function(player, playerTurnNum){
         player.charactersAlive--;
         if(player.charactersAlive===0){
             console.log('game over');
-            gameOver();
+            gameOver(playerTurnNum);
         }else if(player.charactersAlive>0){
             for (var char in player.characterArr){
                 if(player.characterArr[char].alive){
                     player.eliminatedCharSwap(char);
+                    uiUp.changeCharacterUpdate(player, playerTurnNum);
                     return;
                 }
             }

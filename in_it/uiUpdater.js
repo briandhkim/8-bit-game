@@ -195,6 +195,12 @@ function UIupdater(){
  		});
  		$('.consoleMsgList').prepend(updateMsg);
  	};
+ 	this.updatePrevTurnMsg = function(msgString){
+ 		let updateMsg = $('<li>',{
+ 			text: msgString
+ 		});
+ 		$('.consoleMsgListPrevTurn').prepend(updateMsg);
+ 	};
  	/***************************
 	updateConsoleMessageAttack -> 
 	param: player active char name (string),
@@ -219,9 +225,9 @@ function UIupdater(){
  		$('.consoleMsgList').prepend(turnChangeMsg);
  	};	
 
-
  	this.clearConsoleMessage = function(){
  		$('.consoleMsgList li').remove();
+ 		$('.consoleMsgListPrevTurn li').remove();
  	};
  	/*****end of game play updates *****/
 }

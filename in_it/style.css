@@ -407,8 +407,9 @@ html,body{
 	}
 }
 
-#gameEndModal{
+.modal-content{
 	font-family: 'Press Start 2P', cursive;
+	border-radius: 15px;
 }
 .modal-title-wrap{
 	display:inline-block;
@@ -423,4 +424,18 @@ html,body{
 	animation: 
 		typing 3s steps(40, end),
 		blinkCaret .85s step-end infinite;
+}
+.modal-header, .modal-footer{
+	background-color: rgba(25, 85, 147, 0.7);
+	border: 3px dashed;
+	box-sizing: border-box;
+}
+.modal-header{
+	border-radius: 15px 15px 0 0;
+}
+.modal-body{
+	background-color: rgba(227, 145, 23, 0.7);
+}
+.modal-footer{
+	border-radius: 0 0 15px 15px;
 }
