@@ -265,8 +265,24 @@ function backButtonClickMouse(){
 }
 function rageQuitOpt(){
 	scroller("introPageMain");
-	$('#gameEndModalTitle').text("Too difficult for you?");
+	$('#gameEndModalTitle').text("Too difficult for you???");
 	$('#gameEndModal').modal('show');
 }
 /****end of mouse click handler for main game area ****/
 /********** end of ui handlers for game area *********/
+
+function gameOver(){
+	battleAud.pause();
+	// <iframe width="560" height="315" src="https://www.youtube.com/embed/t2Yrz9HSZNo" frameborder="0" allowfullscreen></iframe>
+	let videoFrame = $("<iframe>",{
+		src: "https://www.youtube.com/embed/t2Yrz9HSZNo",
+		frameborder : "0",
+		width: "560",
+		height: "315"
+	});
+	$('.modal-body').text('').append(videoFrame);
+	$('#gameEndModalTitle').text("Game Over");
+	$("#gameEndModal").modal('show');
+	scroller('introPageMain');
+	game = null;
+}

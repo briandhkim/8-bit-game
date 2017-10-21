@@ -116,6 +116,7 @@ function Game(uiUpdater){
         player.charactersAlive--;
         if(player.charactersAlive===0){
             console.log('game over');
+            gameOver();
         }else if(player.charactersAlive>0){
             for (var char in player.characterArr){
                 if(player.characterArr[char].alive){

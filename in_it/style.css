@@ -1,7 +1,14 @@
 html,body{
 	overflow-x: hidden;
 }
-
+@keyframes typing{
+	from {width: 0}
+	to {width: 100%}
+}
+@keyframes blinkCaret{
+	from, to{border-color: transparent}
+	50%{ border-color: rgb(25, 85, 147);}
+}
 
 /*font-family: 'Press Start 2P', cursive;*/
 .introPageMain, .gamePageMain{
@@ -290,15 +297,6 @@ html,body{
 		typing 2s steps(40, end),
 		blinkCaret .85s step-end infinite;
 }
-/*type animation*/
-@keyframes typing{
-	from {width: 0}
-	to {width: 100%}
-}
-@keyframes blinkCaret{
-	from, to{border-color: transparent}
-	50%{ border-color: rgb(25, 85, 147);}
-}
 
 .moveOpt{
 	height: 50%;
@@ -407,4 +405,22 @@ html,body{
 	.useList{
 		font-size: 18px;
 	}
+}
+
+#gameEndModal{
+	font-family: 'Press Start 2P', cursive;
+}
+.modal-title-wrap{
+	display:inline-block;
+}
+#gameEndModalTitle{		/*typing animation for first li element in console*/
+	/*display: list-item;*/
+	overflow: hidden;
+	border-right: .15em solid rgb(25, 85, 147);
+	white-space: nowrap;
+	margin: 0 auto;
+	letter-spacing: .15em;
+	animation: 
+		typing 3s steps(40, end),
+		blinkCaret .85s step-end infinite;
 }
