@@ -72,6 +72,7 @@ function mouseHandlerGameArea(){
 	$('.moveOptionSkills').click(skillMenuClickMouse);
 	$('.moveOptionChangeChar').click(charOptClickMouse);
 	$('.moveOptionUse').click(useOptClickMouse);
+	$('.moveOptionRageQuit').click(rageQuitOpt);
 	$('.backButton').click(backButtonClickMouse);
 
 	$('#playerChar_1, #playerChar_2, #playerChar_3').click(changeCharListClickMouse);
@@ -165,6 +166,8 @@ $(window).keydown(function(event){
 		}else if(this_.hasClass('moveOptionUse')){
 			useOptClick();
 			this_.children('span:first').remove();
+		}else if(this_.hasClass('moveOptionRageQuit')){
+			rageQuitOpt();
 		}
 	}
 });
@@ -259,6 +262,11 @@ function backButtonClickMouse(){
 	$('.tracker').closest('div').css('display', 'none');
 	$('.moveOptionSkills').prepend(spanAdd);
 	menuOpened = false;
+}
+function rageQuitOpt(){
+	scroller("introPageMain");
+	$('#gameEndModalTitle').text("Too difficult for you?");
+	$('#gameEndModal').modal('show');
 }
 /****end of mouse click handler for main game area ****/
 /********** end of ui handlers for game area *********/
