@@ -100,7 +100,7 @@ function Game(uiUpdater){
                 if(this.checkCharDead(this.playersInGame[1].activeCharacter)){  //checking hcaracter elimination status
                     prevTurnMsgElimination = this.playersInGame[1].activeCharacter.name +" was eliminated!";  
                     this.deadCharSwap(this.playersInGame[1], 1);       //swaping out eliminated char   
-                    // uiUp.changeCharacterUpdate(this.playersInGame[1], 1);
+                    return;
                 }
                 this.changePlayerTurn();
             }else if(this.currentPlayerTurn===1){
@@ -109,7 +109,7 @@ function Game(uiUpdater){
                 if(this.checkCharDead(this.playersInGame[0].activeCharacter)){
                     prevTurnMsgElimination = this.playersInGame[0].activeCharacter.name +" was eliminated!";
                     this.deadCharSwap(this.playersInGame[0], 0);   
-                    // uiUp.changeCharacterUpdate(this.playersInGame[0], 0);
+                    return;
                 }
                 this.changePlayerTurn();
             }
@@ -138,6 +138,7 @@ function Game(uiUpdater){
                 if(player.characterArr[char].alive){
                     player.eliminatedCharSwap(char);
                     uiUp.changeCharacterUpdate(player, playerTurnNum);
+                    this.changePlayerTurn();
                     return;
                 }
             }

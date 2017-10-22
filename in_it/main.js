@@ -17,8 +17,6 @@ $(document).ready(function(){
 	mouseHandler();
 	uiUpdate = new UIupdater();
 	game = new Game(uiUpdate);
-	// game.gameInitiated();
-	// game.gameStart();
 });
 
 function scroller(screenID){	//will be either #gamePageMain or #introPageMain
@@ -27,11 +25,9 @@ function scroller(screenID){	//will be either #gamePageMain or #introPageMain
 	}else if(screenID == 'gamePageMain'){
 		$('#gamePageMain').css('display', 'block');
 	}
-    // Prevent default anchor click behavior
-	// event.preventDefault();
 	let scroll = screenID;
 	// Using jQuery's animate() method to add smooth page scroll
-	// The optional number (700) specifies the number of milliseconds it takes to scroll to the specified area
+	// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
 	$('html, body').animate({
 		scrollTop: $("#"+scroll).offset().top,
 		behavior: 'smooth'
@@ -84,7 +80,7 @@ function playerAddCharTurn(){
 		if(game.playersInGame[1].characterArr.length===3){
 			$('.initialScreenConsole p').remove();
 			const par = $('<p>',{
-				text: 'start game',
+				text: 'start game!!!',
 				class: 'text-success'
 			});
 			$('.initialScreenConsole div').append(par);
@@ -168,9 +164,11 @@ function playerAddCharacter(playerNum, character){
 }
 function gameStart(){
 	battleAud.play();
+	gameEndAud.load();
 	scroller('gamePageMain');
 	game.gameStart();
 	$('.player1_intro li, .player2_intro li').remove();
+	$('iframe').remove();
 }
 
 
@@ -194,6 +192,9 @@ function mouseHandler(){
 	$('#skill_1, #skill_2, #skill_3, #skill_4').click(skillListClickMouse);
 	$('#item_healthPack').click(healthPackItemClick);
 	$('#item_Reload').click(reloadClick);
+	$('.modal-footer button').click(function(){
+		$('iframe').remove();
+	})
 }
 
 /** initial screen ui handler **/
@@ -379,9 +380,26 @@ function backButtonClickMouse(){
 	menuOpened = false;
 }
 function rageQuitOpt(){
-	scroller("introPageMain");
+	if(game.currentPlayerTurn){
+		$('#gameEndModalFooter').text("player 2 rage quit");
+	}else if(!game.currentPlayerTurn){
+		$('#gameEndModalFooter').text("player 1 rage quit");
+	}
+	game=null;
+	battleAud.pause();
+	game=new Game(uiUpdate);
+	// <iframe width="560" height="315" src="https://www.youtube.com/embed/X2WH8mHJnhM?start=16" frameborder="0" allowfullscreen></iframe>
+	let feelsBadMan = $('<iframe>',{
+		src: "https://www.youtube.com/embed/X2WH8mHJnhM?start=16&autoplay=1",
+		width: "560",
+		height: "315",
+		frameborder: "0"
+	});
+	$('.modal-body').text('').append(feelsBadMan);
 	$('#gameEndModalTitle').text("Too difficult for you???");
 	$('#gameEndModal').modal('show');
+	scroller("introPageMain");
+	gameEnder();
 }
 /****end of mouse click handler for main game area ****/
 /********** end of ui handlers for game area *********/
@@ -391,8 +409,10 @@ function gameOver(playerTurnNum){
 	uiUpdate.clearConsoleMessage();
 	if(playerTurnNum){
 		uiUpdate.updateConsoleCustomMsg("Player 1 defeated Player 2!!!");
+		$('#gameEndModalFooter').text("player 1 wins");
 	}else{
 		uiUpdate.updateConsoleCustomMsg("Player 2 defeated Player 1!!!");
+		$('#gameEndModalFooter').text("player2 wins");
 	}
 	battleAud.pause();
 	gameEndAud.play();
@@ -409,15 +429,19 @@ function gameOver(playerTurnNum){
 		$("#gameEndModal").modal('show');
 		scroller('introPageMain');
 		game = new Game(uiUpdate);
-		$('.charSelectDrop').bind('click',charDropMenuOpen);
-		$('.gameStart button').text('Player 1 Select').addClass('btn-warning').removeClass('btn-success');
-		$('.gameStart button').unbind('click', gameStart);
-		$('.initialScreenConsole p').remove();
-		const par = $('<p>',{
-			text: 'player 1...',
-			class: 'player1Color'
-		});
-		$('.initialScreenConsole div').append(par);
+		gameEnder();
 	},4000);
+}
 
+function gameEnder(){
+	battleAud.load();
+	$('.charSelectDrop').bind('click',charDropMenuOpen);
+	$('.gameStart button').text('Player 1 Select').addClass('btn-warning').removeClass('btn-success');
+	$('.gameStart button').unbind('click', gameStart);
+	$('.initialScreenConsole p').remove();
+	const par = $('<p>',{
+		text: 'player 1...',
+		class: 'player1Color'
+	});
+	$('.initialScreenConsole div').append(par);
 }
