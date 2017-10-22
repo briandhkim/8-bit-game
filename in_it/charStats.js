@@ -15,7 +15,6 @@
 	healSplash true -> ana, soldier
 */
 
-
 var ana = {
 	name: 'Ana',
 	hp : 200,
@@ -67,7 +66,6 @@ var ana = {
 		healSplash : false
 	}
 };
-
 var lucio = {
 	name : 'Lucio',
 	hp : 200,
@@ -118,7 +116,6 @@ var lucio = {
 		healSplash : true
 	}
 };
-
 var zenyatta = {
 	name : 'Zenyatta',
 	hp : 200,
@@ -169,7 +166,106 @@ var zenyatta = {
 		healSplash : true
 	}
 };
-
+var mercy = {
+	name : 'Mercy',
+	hp : 200,
+	img : 'images/charMain/mercy.png',
+	icon : 'images/icon/mercy.png',
+	skill_1 :{
+		name: 'Caduceus Staff',
+		damage: 0,
+		accuracy: 100,
+		pp: 25,
+		// aoe: false,
+		aoe: 0,
+		// heal: false
+		heal: 60,
+		healSplash : false
+	},
+	skill_2 :{
+		name: 'Caduceus Blaster',
+		damage: 25,
+		accuracy: 80,
+		pp: 20,	
+		// aoe: false,
+		aoe: 0,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	},
+	skill_3 :{
+		name: 'Resurrect',	
+		damage: 0,				
+		accuracy: 100,
+		pp: 2,
+		// aoe: false,
+		aoe: 0,
+		// heal: true
+		heal: 200,
+		healSplash : false
+	},
+	skill_4 :{
+		name: 'Valkyrie',	
+		damage: 70,
+		accuracy: 80,
+		pp: 2,
+		// aoe: true,
+		aoe: 0,
+		// heal: true
+		heal: 0,
+		healSplash : false
+	}
+};
+var symmetra = {
+	name : 'Symmetra',
+	hp : 200,
+	img : 'images/charMain/symmetra.png',
+	icon : 'images/icon/symmetra.png',
+	skill_1 :{
+		name: 'Photon Projector',
+		damage: 18,
+		accuracy: 100,
+		pp: 30,
+		// aoe: false,
+		aoe: 0,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	},
+	skill_2 :{
+		name: 'Energy Ball',
+		damage: 100,
+		accuracy: 50,
+		pp: 5,	
+		// aoe: false,
+		aoe: 0,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	},
+	skill_3 :{
+		name: 'Sentry Microwave',	
+		damage: 100,				
+		accuracy: 90,
+		pp: 2,
+		// aoe: false,
+		aoe: 0,
+		// heal: true
+		heal: 0,
+		healSplash : false
+	},
+	skill_4 :{
+		name: 'Shield Generator',	
+		damage: 0,
+		accuracy: 100,
+		pp: 2,
+		// aoe: true,
+		aoe: 0,
+		// heal: true
+		heal: 80,
+		healSplash : true
+	}
+};
 var dva = {
 	name : 'D. Va',
 	hp : 400,
@@ -220,7 +316,6 @@ var dva = {
 		healSplash : false
 	}
 };
-
 var reinhardt = {
 	name : 'Reinhardt',
 	hp : 500,
@@ -271,7 +366,6 @@ var reinhardt = {
 		healSplash : false
 	}
 };
-
 var roadhog = {
 	name : 'Roadhog',
 	hp : 600,
@@ -322,7 +416,106 @@ var roadhog = {
 		healSplash : false
 	}
 };
-
+var winston = {
+	name : 'Winston',
+	hp : 500,
+	img : 'images/charMain/winston.png',
+	icon : 'images/icon/winston.png',
+	skill_1 :{
+		name: "Ol'Musky Cannon",
+		damage: 60,
+		accuracy: 80,
+		pp: 15,
+		// aoe: true,
+		aoe: 15,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	},
+	skill_2 :{
+		name: 'Jump Pack',
+		damage: 45,
+		accuracy: 60,
+		pp: 5,
+		// aoe: false,
+		aoe: 0,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	},
+	skill_3 :{
+		name: 'Barrier Projector',
+		damage: 0,
+		accuracy: 70,
+		pp: 3,
+		// aoe: false,
+		aoe: 0,
+		// heal: false
+		heal: 70,
+		healSplash : true
+	},
+	skill_4 :{
+		name: 'Primal Rage',
+		damage: 100,
+		accuracy: 50,
+		pp: 1,
+		// aoe: true,
+		aoe: 0, 
+		// heal: false
+		heal: 0,
+		healSplash : false
+	}
+};
+var zarya = {
+	name : 'Zarya',
+	hp : 400,
+	img : 'images/charMain/zarya.png',
+	icon : 'images/icon/zarya.png',
+	skill_1 :{
+		name: "Particle Beam",
+		damage: 95,
+		accuracy: 35,
+		pp: 20,
+		// aoe: true,
+		aoe: 0,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	},
+	skill_2 :{
+		name: 'Particle Cannon',
+		damage: 45,
+		accuracy: 80,
+		pp: 4,
+		// aoe: false,
+		aoe: 0,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	},
+	skill_3 :{
+		name: 'Particle Barrier',
+		damage: 0,
+		accuracy: 100,
+		pp: 3,
+		// aoe: false,
+		aoe: 0,
+		// heal: false
+		heal: 60,
+		healSplash : false
+	},
+	skill_4 :{
+		name: 'Graviton Surge',
+		damage: 30,
+		accuracy: 90,
+		pp: 4,
+		// aoe: true,
+		aoe: 0, 
+		// heal: false
+		heal: 0,
+		healSplash : false
+	}
+};
 var hanzo = {
 	name : 'Hanzo',
 	hp : 200,
@@ -373,7 +566,6 @@ var hanzo = {
 		healSplash : false
 	}
 };
-
 var junkrat = {
 	name : 'Junkrat',
 	hp : 200,
@@ -424,7 +616,6 @@ var junkrat = {
 		healSplash : false
 	}
 };
-
 var mei = {
 	name : 'Mei(satan)',
 	hp : 250,
@@ -475,7 +666,6 @@ var mei = {
 		healSplash : false
 	}
 };
-
 var torbjorn = {
 	name : 'Torbjorn',
 	hp : 200,
@@ -527,7 +717,106 @@ var torbjorn = {
 		healSplash : false
 	}
 };
-
+var bastion = {
+	name : 'Bastion',
+	hp : 300,
+	img : 'images/charMain/bastion.png',
+	icon : 'images/icon/bastion.png',
+	skill_1 :{
+		name: 'Submachine Gun',
+		damage: 20,
+		accuracy: 70,
+		pp: 25,
+		// aoe: false,
+		aoe: 0,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	},
+	skill_2 :{
+		name: 'Gatling Gun',
+		damage: 15,
+		accuracy: 80,
+		pp: 30,
+		// aoe: true,
+		aoe: 10,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	},
+	skill_3 :{
+		name: 'Self-Repair',
+		damage: 0,
+		accuracy: 100,
+		pp: 5,
+		// aoe: false,
+		aoe: 0,
+		// heal: false
+		heal:75,
+		healSplash : false
+	},
+	skill_4 :{
+		name: 'Configuration: Tank',
+		damage: 205,		
+		accuracy: 65,
+		pp: 1,
+		// aoe: false,
+		aoe: 0,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	}
+};
+var widowmaker = {
+	name : 'Widowmaker',
+	hp : 200,
+	img : 'images/charMain/widow.png',
+	icon : 'images/icon/widow.png',
+	skill_1 :{
+		name: "Widow's Kiss: Sniper",
+		damage: 120,
+		accuracy: 20,
+		pp: 10,
+		// aoe: false,
+		aoe: 0,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	},
+	skill_2 :{
+		name: "Widow's Kiss: Assault",
+		damage: 13,
+		accuracy: 80,
+		pp: 30,
+		// aoe: true,
+		aoe: 0,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	},
+	skill_3 :{
+		name: 'Venom Mine',
+		damage: 75,
+		accuracy: 70,
+		pp: 5,
+		// aoe: false,
+		aoe: 0,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	},
+	skill_4 :{
+		name: 'Infra-Sight',
+		damage: 120,		
+		accuracy: 70,
+		pp: 1,
+		// aoe: false,
+		aoe: 0,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	}
+};
 var genji = {
 	name : 'Genji',
 	hp : 200,
@@ -578,7 +867,6 @@ var genji = {
 		healSplash : false
 	}
 };
-
 var mccree = {
 	name : 'McCree',
 	hp : 200,
@@ -629,7 +917,6 @@ var mccree = {
 		healSplash : false
 	}
 };
-
 var pharah = {
 	name : 'Pharah',
 	hp : 200,
@@ -680,7 +967,6 @@ var pharah = {
 		healSplash : false
 	}
 };
-
 var soldier = {
 	name : 'Solder: 76',
 	hp : 200,
@@ -731,45 +1017,106 @@ var soldier = {
 		healSplash : false
 	}
 };
-
-// var reaper = {
-// 	name : 'Reaper',
-// 	hp : 250,
-// 	img : '',
-// 	icon : '',
-// 	skill_1 :{
-// 		name: 'Hellfire Shotguns',
-// 		damage: 50,
-// 		accuracy: 85,
-// 		pp: 8,
-// 		aoe: true,
-// 		heal: false
-// 	},
-// 	skill_2 :{
-// 		name: '',
-// 		damage: ,
-// 		accuracy: ,
-// 		pp: ,
-// 		aoe: ,
-// 		heal: 
-// 	},
-// 	skill_3 :{
-// 		name: '',
-// 		damage: ,
-// 		accuracy: ,
-// 		pp: ,
-// 		aoe: ,
-// 		heal: 
-// 	},
-// 	skill_4 :{
-// 		name: '',
-// 		damage: ,
-// 		accuracy: ,
-// 		pp: ,
-// 		aoe: ,
-// 		heal: 
-// 	}
-// };
+var reaper = {
+	name : 'Reaper',
+	hp : 250,
+	img : 'iamges/charMain/reaper.png',
+	icon : 'images/icon/reaper.png',
+	skill_1 :{
+		name: 'Hellfire Shotguns',
+		damage: 80,
+		accuracy: 70,
+		pp: 8,
+		// aoe: false,
+		aoe: 0,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	},
+	skill_2 :{
+		name: 'Shotgun Throw',
+		damage: 45,
+		accuracy: 70,
+		pp: 5,
+		// aoe: true,
+		aoe: 0,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	},
+	skill_3 :{
+		name: 'The Reaping',
+		damage: 0,
+		accuracy: 100,
+		pp: 5,
+		// aoe: true,
+		aoe: 0,
+		//heal: true  	
+		heal: 50,
+		healSplash : false
+	},
+	skill_4 :{
+		name: 'Death Blossom',
+		damage: 170,
+		accuracy: 80,
+		pp: 1,
+		// aoe: false,
+		aoe: 70,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	}
+};
+var tracer = {
+	name : 'Tracer',
+	hp : 150,
+	img : 'iamges/charMain/tracer.png',
+	icon : 'images/icon/tracer.png',
+	skill_1 :{
+		name: 'Pulse Pistols',
+		damage: 90,
+		accuracy: 60,
+		pp: 20,
+		// aoe: false,
+		aoe: 0,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	},
+	skill_2 :{
+		name: 'English Punch',
+		damage: 45,
+		accuracy: 70,
+		pp: 25,
+		// aoe: true,
+		aoe: 0,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	},
+	skill_3 :{
+		name: 'Recall',
+		damage: 0,
+		accuracy: 100,
+		pp: 2,
+		// aoe: true,
+		aoe: 0,
+		//heal: true  	
+		heal: 150,
+		healSplash : false
+	},
+	skill_4 :{
+		name: 'Pulse Bomb',
+		damage: 400,
+		accuracy: 60,
+		pp: 1,
+		// aoe: false,
+		aoe: 70,
+		// heal: false
+		heal: 0,
+		healSplash : false
+	}
+};
 
 // var char = {
 // 	name : '',
