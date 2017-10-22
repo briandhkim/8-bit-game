@@ -12,21 +12,13 @@ let gameEndAud2 = new Audio('./sounds/victory_music.mp3');
 gameEndAud2.volume = 0.3;
 let uiUpdate = null;
 let game = null;
+let tracker = 1;
 $(document).ready(function(){
-	$('.charSelectDrop').click(charDropMenuOpen);
-	$('.charDropMenu').on('click',function(evt){
-		evt.stopPropagation();
-		charDropMenuClose();
-	});
-	mouseHandlerGameArea();
-
-
+	mouseHandler();
 	uiUpdate = new UIupdater();
 	game = new Game(uiUpdate);
 	// game.gameInitiated();
-	playerCreateTest();
-	game.gameStart();
-	// uiHandleTest();
+	// game.gameStart();
 });
 
 function scroller(screenID){	//will be either #gamePageMain or #introPageMain
@@ -52,24 +44,146 @@ function scroller(screenID){	//will be either #gamePageMain or #introPageMain
 	});
 }
 
-function playerCreateTest(){
-	game.addCharacterToPlayer(game.playersInGame[0], mei);
-	game.addCharacterToPlayer(game.playersInGame[1], torbjorn);
-	game.addCharacterToPlayer(game.playersInGame[0], reinhardt);
-	game.addCharacterToPlayer(game.playersInGame[1], mccree);
-	game.addCharacterToPlayer(game.playersInGame[0], dva);
-	game.addCharacterToPlayer(game.playersInGame[1], genji);
+function playerAddCharTurn(){
+	event.stopPropagation();
+	$('.charDropMenu').css('display','none');
+	let character = $(event.target).attr('value');
+	const imgSrc = $(event.target).children('img').attr('src');
+	let img_ = $('<img>',{
+		src: imgSrc,
+		class: 'charListIcon',
+		width: '30px',
+		height: '30px'
+	});
+	let charLi = $('<li>');
+	$('.initialScreenConsole p').remove();
+	if(game.playersInGame[1].characterArr.length<3){	//when player2 has 3 chars(limit) prevent character add
+		if(tracker==1){
+			const charName = playerAddCharacter(0,character);
+			const par = $('<p>',{
+				text: 'player 2...',
+				class: 'text-primary'
+			});
+			$('.initialScreenConsole div').append(par);
+			$('.gameStart button').text('Player 2 Select').addClass('btn-primary').removeClass('btn-warning');
+			charLi.text(' '+charName).prepend(img_);
+			$('.player1_intro ul').append(charLi);
+			tracker = 2;
+		}else if(tracker ==2){
+			const charName = playerAddCharacter(1,character);
+			const par = $('<p>',{
+				text: 'player 1...',
+				class: 'player1Color'
+			});
+			$('.initialScreenConsole div').append(par);
+			$('.gameStart button').text('Player 1 Select').addClass('btn-warning').removeClass('btn-primary');
+			charLi.text(' '+charName).prepend(img_);
+			$('.player2_intro ul').append(charLi);
+			tracker = 1;
+		}
+		if(game.playersInGame[1].characterArr.length===3){
+			$('.initialScreenConsole p').remove();
+			const par = $('<p>',{
+				text: 'start game',
+				class: 'text-success'
+			});
+			$('.initialScreenConsole div').append(par);
+			$('.charSelectDrop').unbind('click',charDropMenuOpen);
+			$('.gameStart button').text('START').addClass('btn-success').removeClass('btn-warning');
+			$('.gameStart button').bind('click', gameStart);
+		}
+	}else{
+		console.log('error playerAdder function main');
+	}
+}
+function playerAddCharacter(playerNum, character){
+	switch(character){
+		case "ana":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], ana);
+			return ana.name;
+		case "lucio":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], lucio);
+			return lucio.name;
+		case "zenyatta":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], zenyatta);
+			return zenyatta.name;
+		case "mercy":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], mercy);
+			return mercy.name;
+		case "symmetra":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], symmetra);
+			return symmetra.name;
+		case "dva":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], dva);
+			return dva.name;
+		case "reinhardt":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], reinhardt);
+			return reinhardt.name;
+		case "roadhog":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], roadhog);
+			return roadhog.name;
+		case "winston":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], winston);
+			return winston.name;
+		case "zarya":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], zarya);
+			return zarya.name;
+		case "hanzo":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], hanzo);
+			return hanzo.name;		
+		case "junkrat":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], junkrat);
+			return junkrat.name;
+		case "mei":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], mei);
+			return mei.name;
+		case "torbjorn":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], torbjorn);
+			return torbjorn.name;
+		case "bastion":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], bastion);
+			return bastion.name;
+		case "widowmaker":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], widowmaker);
+			return widowmaker.name;
+		case "genji":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], genji);
+			return genji.name;
+		case "mccree":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], mccree);
+			return mccree.name;
+		case "pharah":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], pharah);
+			return pharah.name;
+		case "soldier":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], soldier);
+			return soldier.name;
+		case "reaper":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], reaper);
+			return reaper.name;	
+		case "tracer":
+			game.addCharacterToPlayer(game.playersInGame[playerNum], tracer);
+			return tracer.name;	
+	}
+}
+function gameStart(){
+	battleAud.play();
+	scroller('gamePageMain');
+	game.gameStart();
+	$('.player1_intro li, .player2_intro li').remove();
 }
 
-function playerAttackTest(player){
-	player.skillSelected(1);
-	uiUpdate.updateConsoleMessage(player.activeCharacter.name, player.activeCharacter.skillArr[1].name);
 
-}
-
-
-
-function mouseHandlerGameArea(){
+function mouseHandler(){
+	$('.charSelectDrop:not(.characterList)').click(charDropMenuOpen);
+	$('.charMenuCloser').on('click',function(evt){
+		evt.stopPropagation();
+		charDropMenuClose();
+	});
+	$('.charDropMenu ul').on('click', 'li:not(li:last-of-type)', function(){
+		playerAddCharTurn();
+	});
+	// below are handlers for main game area
 	$('.moveOptionSkills').click(skillMenuClickMouse);
 	$('.moveOptionChangeChar').click(charOptClickMouse);
 	$('.moveOptionUse').click(useOptClickMouse);
@@ -273,6 +387,7 @@ function rageQuitOpt(){
 /********** end of ui handlers for game area *********/
 
 function gameOver(playerTurnNum){
+	game=null;
 	uiUpdate.clearConsoleMessage();
 	if(playerTurnNum){
 		uiUpdate.updateConsoleCustomMsg("Player 1 defeated Player 2!!!");
@@ -293,7 +408,16 @@ function gameOver(playerTurnNum){
 	setTimeout(function(){
 		$("#gameEndModal").modal('show');
 		scroller('introPageMain');
+		game = new Game(uiUpdate);
+		$('.charSelectDrop').bind('click',charDropMenuOpen);
+		$('.gameStart button').text('Player 1 Select').addClass('btn-warning').removeClass('btn-success');
+		$('.gameStart button').unbind('click', gameStart);
+		$('.initialScreenConsole p').remove();
+		const par = $('<p>',{
+			text: 'player 1...',
+			class: 'player1Color'
+		});
+		$('.initialScreenConsole div').append(par);
 	},4000);
-	
-	game = null;
+
 }

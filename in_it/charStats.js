@@ -970,7 +970,7 @@ var pharah = {
 var soldier = {
 	name : 'Solder: 76',
 	hp : 200,
-	img : 'iamges/charMain/soldier.png',
+	img : 'images/charMain/soldier.png',
 	icon : 'images/icon/soldier.png',
 	skill_1 :{
 		name: 'Heavy Pulse Rifle',
@@ -1020,7 +1020,7 @@ var soldier = {
 var reaper = {
 	name : 'Reaper',
 	hp : 250,
-	img : 'iamges/charMain/reaper.png',
+	img : 'images/charMain/reaper.png',
 	icon : 'images/icon/reaper.png',
 	skill_1 :{
 		name: 'Hellfire Shotguns',
@@ -1070,7 +1070,7 @@ var reaper = {
 var tracer = {
 	name : 'Tracer',
 	hp : 150,
-	img : 'iamges/charMain/tracer.png',
+	img : 'images/charMain/tracer.png',
 	icon : 'images/icon/tracer.png',
 	skill_1 :{
 		name: 'Pulse Pistols',
