@@ -39,6 +39,50 @@ function scroller(screenID){	//will be either #gamePageMain or #introPageMain
 		}
 	});
 }
+function gameStart(){
+	battleAud.play();
+	gameEndAud.load();
+	scroller('gamePageMain');
+	game.gameStart();
+	$('.player1_intro li, .player2_intro li').remove();
+	$('iframe').remove();
+}
+function mouseHandler(){
+	$('.charSelectDrop:not(.characterList)').click(charDropMenuOpen);
+	$('.charMenuCloser').on('click',function(evt){
+		evt.stopPropagation();
+		charDropMenuClose();
+	});
+	$('.charDropMenu ul').on('click', 'li:not(li:last-of-type)', function(){
+		playerAddCharTurn();
+	});
+	// below are handlers for main game area
+	$('.moveOptionSkills').click(skillMenuClickMouse);
+	$('.moveOptionChangeChar').click(charOptClickMouse);
+	$('.moveOptionUse').click(useOptClickMouse);
+	$('.moveOptionRageQuit').click(rageQuitOpt);
+	$('.backButton').click(backButtonClickMouse);
+
+	$('#playerChar_1, #playerChar_2, #playerChar_3').click(changeCharListClickMouse);
+	$('#skill_1, #skill_2, #skill_3, #skill_4').click(skillListClickMouse);
+	$('#item_healthPack').click(healthPackItemClick);
+	$('#item_Reload').click(reloadClick);
+	$('.modal-footer .modalClose, .modal-header .close').click(function(){
+		$('iframe').remove();
+		gameEndAud.pause();
+	});
+	$('.modal-header .audioToggler').click(modalAudioToggle);
+}
+function modalAudioToggle(){
+	let aButton = $('.modal-header .audioToggler i');
+	if(aButton.hasClass('fa-volume-up')){
+		gameEndAud.pause();
+		aButton.toggleClass('fa-volume-up fa-volume-off');
+	}else if(aButton.hasClass('fa-volume-off')){
+		gameEndAud.play();
+		aButton.toggleClass('fa-volume-up fa-volume-off');
+	}
+}
 
 function playerAddCharTurn(){
 	event.stopPropagation();
@@ -85,7 +129,7 @@ function playerAddCharTurn(){
 			});
 			$('.initialScreenConsole div').append(par);
 			$('.charSelectDrop').unbind('click',charDropMenuOpen);
-			$('.gameStart button').text('START').addClass('btn-success').removeClass('btn-warning');
+			$('.gameStart button').text('START').addClass('btn-success startButtonPop').removeClass('btn-warning');
 			$('.gameStart button').bind('click', gameStart);
 		}
 	}else{
@@ -161,40 +205,6 @@ function playerAddCharacter(playerNum, character){
 			game.addCharacterToPlayer(game.playersInGame[playerNum], tracer);
 			return tracer.name;	
 	}
-}
-function gameStart(){
-	battleAud.play();
-	gameEndAud.load();
-	scroller('gamePageMain');
-	game.gameStart();
-	$('.player1_intro li, .player2_intro li').remove();
-	$('iframe').remove();
-}
-
-
-function mouseHandler(){
-	$('.charSelectDrop:not(.characterList)').click(charDropMenuOpen);
-	$('.charMenuCloser').on('click',function(evt){
-		evt.stopPropagation();
-		charDropMenuClose();
-	});
-	$('.charDropMenu ul').on('click', 'li:not(li:last-of-type)', function(){
-		playerAddCharTurn();
-	});
-	// below are handlers for main game area
-	$('.moveOptionSkills').click(skillMenuClickMouse);
-	$('.moveOptionChangeChar').click(charOptClickMouse);
-	$('.moveOptionUse').click(useOptClickMouse);
-	$('.moveOptionRageQuit').click(rageQuitOpt);
-	$('.backButton').click(backButtonClickMouse);
-
-	$('#playerChar_1, #playerChar_2, #playerChar_3').click(changeCharListClickMouse);
-	$('#skill_1, #skill_2, #skill_3, #skill_4').click(skillListClickMouse);
-	$('#item_healthPack').click(healthPackItemClick);
-	$('#item_Reload').click(reloadClick);
-	$('.modal-footer button').click(function(){
-		$('iframe').remove();
-	})
 }
 
 /** initial screen ui handler **/
@@ -436,7 +446,7 @@ function gameOver(playerTurnNum){
 function gameEnder(){
 	battleAud.load();
 	$('.charSelectDrop').bind('click',charDropMenuOpen);
-	$('.gameStart button').text('Player 1 Select').addClass('btn-warning').removeClass('btn-success');
+	$('.gameStart button').text('Player 1 Select').addClass('btn-warning').removeClass('btn-success startButtonPop');
 	$('.gameStart button').unbind('click', gameStart);
 	$('.initialScreenConsole p').remove();
 	const par = $('<p>',{
