@@ -72,9 +72,14 @@ function mouseHandler(){
 		gameEndAud.pause();
 	});
 	$('.modal-header .audioToggler').click(modalAudioToggle);
+	$('.aboutButton').click(function(){
+		$('#gameInfoModal dl').remove();
+		aboutModalToggle();
+		$('#gameInfoModal').modal('show');
+	});
 }
 function modalAudioToggle(){
-	let aButton = $('.modal-header .audioToggler i');
+	let aButton = $('#gameEndModal .audioToggler i');
 	if(aButton.hasClass('fa-volume-up')){
 		gameEndAud.pause();
 		aButton.toggleClass('fa-volume-up fa-volume-off');
@@ -82,6 +87,52 @@ function modalAudioToggle(){
 		gameEndAud.play();
 		aButton.toggleClass('fa-volume-up fa-volume-off');
 	}
+}
+function aboutModalToggle(){
+	const aboutGameLead = $('<dt>',{
+		class: 'aboutModalDT',
+		text: "Overwatch meets Pokemon:"
+	});
+	const aboutGameContent = $('<dd>',{
+		class: 'aboutModalDD',
+		text: "This game uses the battle mechanics seen in the classic Pokemon games. However, instead of Pokemons, this game uses the characters from the popular, beloved game by Blizzard, Overwatch."
+	}).css({
+		'color': 'white',
+		'text-shadow': '-0.5px -0.5px 0 #000, 0.75px 0.75px 0 #000'
+	});
+	const aboutDevDT = $('<dt>',{
+		class: 'aboutModalDT',
+		text: "About the developer:"		
+	});
+	const aboutDevDD = $('<dd>',{
+		class: 'aboutModalDD',
+		text: "Hello, my name is Brian. I am a web developer located in Irvine, California. I started this project to challenge myself and to further develop my coding skills in web development."
+	}).css({
+		'color': 'white',
+		'text-shadow': '-0.5px -0.5px 0 #000, 0.75px 0.75px 0 #000'
+	});
+	const gitIcon = $('<i>',{
+		class: 'fa fa-github-square fa-3x gitIcon'
+	}).css({
+		color: 'rgba(0, 0, 0, 0.6)'
+	});
+	const gitButton = $('<a>',{
+		href: "https://github.com/briandhkim",
+		target: '_blank'
+	}).append(gitIcon);
+	const linkedIcon = $('<i>',{
+		class: 'fa fa-linkedin-square fa-3x liIcon'
+	}).css({
+		margin: '0 10px',
+		color: 'rgba(0, 119, 181, 0.6)'
+	});
+	const linkedButton = $('<a>',{
+		href: "https://www.linkedin.com/in/briandhkimucla/",
+		target: '_blank'
+	}).append(linkedIcon);
+	let aboutDescription = $('<dl>').append(aboutGameLead, aboutGameContent, aboutDevDT, aboutDevDD, gitButton, linkedButton);
+	$('#gameInfoModal .modal-body').append(aboutDescription);
+	$('#gameInfoModalTitle').text('about the game');
 }
 
 function playerAddCharTurn(){
@@ -405,7 +456,7 @@ function rageQuitOpt(){
 		height: "315",
 		frameborder: "0"
 	});
-	$('.modal-body').text('').append(feelsBadMan);
+	$('#gameEndModal .modal-body').text('').append(feelsBadMan);
 	$('#gameEndModalTitle').text("Too difficult for you???");
 	$('#gameEndModal').modal('show');
 	scroller("introPageMain");
@@ -433,7 +484,7 @@ function gameOver(playerTurnNum){
 		width: "560",
 		height: "315"
 	});
-	$('.modal-body').text('').append(videoFrame);
+	$('#gameEndModal .modal-body').text('').append(videoFrame);
 	$('#gameEndModalTitle').text("Game Over");
 	setTimeout(function(){
 		$("#gameEndModal").modal('show');

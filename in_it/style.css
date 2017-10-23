@@ -8,7 +8,7 @@ html,body{
 }
 @keyframes blinkCaret{
 	from, to{border-color: transparent}
-	50%{ border-color: rgb(25, 85, 147);}
+	50%{ border-color: #2BBBAD;}
 }
 @keyframes buttonPop{
 	from, to{background-color: #449d44}
@@ -62,19 +62,22 @@ html,body{
 .gameLogo, .initialCharSelect{
 	height: 100%;
 }
-.logoArea, .infoArea{
-	height: 50%;
-}
 .logoArea{
+	height: 70%;
 	background-image: url('../images/logo.png');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: auto 100%;
 }
+.infoArea{
+	height: 30%;
+}
 .infoArea button{
 	border: none;
 	background: none;
-	margin-top: 5%;
+}
+.infoArea button:focus{
+	outline: none;
 }
 .aboutButton i{
 	color: rgba(25, 85, 147, 0.6);
@@ -143,6 +146,9 @@ html,body{
 	width: 95%;
 	height: 98%;
 	margin-left: 2.5%;
+	text-shadow:
+		-0.75px -0.75px 0 #000,
+		1px 1px 0 #000;
 }
 .startButtonPop{
 	animation:
@@ -155,6 +161,9 @@ html,body{
 	display: inline-block;
 } 
 .initialScreenConsole p{
+	text-shadow:
+		-0.5px -0.5px 0 #000,
+		0.75px 0.75px 0 #000;
 	overflow: hidden;
 	border-right: .15em solid rgb(25, 85, 147);
 	white-space: nowrap;
@@ -175,9 +184,14 @@ html,body{
 	box-sizing: border-box;
 	border: 5px dashed;
 	background-color: rgb(255,255,255);
+	text-shadow:
+		-0.75px -0.75px 0 #000,
+		1px 1px 0 #000,
+		1.5px 1.5px 0 #000;
 }
 .player1_intro ul, .player2_intro ul{
 	list-style-type: none;
+	color: white;
 }
 .player1_intro{
 	/*margin-right: 10px;*/
@@ -493,6 +507,13 @@ html,body{
 	}
 }
 
+/*** modal css ***/
+#gameInfoModal .gitIcon:hover{
+	color: rgba(0,0,0,1) !important;
+}
+#gameInfoModal .liIcon:hover{
+	color: rgba(0,119,181,1) !important;
+}
 .modal-content{
 	font-family: 'Press Start 2P', cursive;
 	border-radius: 15px;
@@ -500,13 +521,13 @@ html,body{
 .modal-title-wrap{
 	display:inline-block;
 }
-#gameEndModalTitle{		/*typing animation for first li element in console*/
+#gameEndModalTitle, #gameInfoModalTitle{		/*typing animation for first li element in console*/
 	/*display: list-item;*/
 	overflow: hidden;
 	border-right: .15em solid rgb(25, 85, 147);
 	white-space: nowrap;
 	margin: 0 auto;
-	letter-spacing: .15em;
+	letter-spacing: .20em;
 	animation: 
 		typing 3s steps(40, end),
 		blinkCaret .85s step-end infinite;

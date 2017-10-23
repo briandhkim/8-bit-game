@@ -348,8 +348,32 @@
 				</div>
 			</div>
 		</div>	<!--end of game page div-->
-
-		<div class="modal fade" id="gameEndModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
+		<!--modal for game info/instructions-->
+		<div class="modal fade" id="gameInfoModal" tabindex="-1" role="dialog" data-backdrop="static">
+  			<div class="modal-dialog" role="document">
+    			<div class="modal-content" >
+      				<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        					<i class="fa fa-window-close fa-lg" aria-hidden="true"></i>
+        				</button>
+        				<div class="modal-title-wrap">
+        					<h5 class="modal-title" id="gameInfoModalTitle">
+        						Modal title
+        					</h5>
+        				</div>
+      				</div>
+      				<div class="modal-body">
+        				
+      				</div>
+      				<div class="modal-footer">
+      					<span id="gameInfoModalFooter"></span>
+        				<button type="button" class="btn btn-danger modalClose" data-dismiss="modal">close</button>
+      				</div>
+    			</div>
+  			</div>
+		</div> <!--modal end for game info/instructions-->
+		<!--modal for end of game / game quit -->
+		<div class="modal fade" id="gameEndModal" tabindex="-1" role="dialog" data-backdrop="static">
   			<div class="modal-dialog" role="document">
     			<div class="modal-content" >
       				<div class="modal-header">
@@ -374,7 +398,7 @@
       				</div>
     			</div>
   			</div>
-		</div>	<!--modal end-->
+		</div>	<!--modal end for game end/quit-->
 	</div>		<!--end overall container div-->
 </body>
 
