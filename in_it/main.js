@@ -136,6 +136,19 @@ function aboutModalToggle(){
 	$('#gameInfoModal .modal-body').append(aboutDescription);
 	$('#gameInfoModalTitle').text('about the game');
 }
+function instructionModal(){
+	const initialScreenDT = $('<dt>',{
+		class: 'instructionDT',
+		text: 'at the initial screen:'
+	});
+	const initialScreenDD = $('<dd>',{
+		class: 'instructionDD',
+		text: 'Players will take turns choosing three characters of his or her choice.'
+	});
+	let instructionDesc = $('<dl>');
+	$('#gameInfoModal .modal-body').append(instructionsDesc);
+	$('#gameInfoModalTitle').text('instructions');
+}
 
 function playerAddCharTurn(){
 	event.stopPropagation();

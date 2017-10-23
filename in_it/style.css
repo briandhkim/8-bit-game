@@ -566,7 +566,7 @@ html,body{
 .modal-footer{
 	border-radius: 0 0 15px 15px;
 }
-.aboutModalDD{
+.aboutModalDD, .instructionDD{
 	color: white;
 	text-shadow: 
 		-0.5px -0.5px 0 #000,
