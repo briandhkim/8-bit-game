@@ -566,3 +566,9 @@ html,body{
 .modal-footer{
 	border-radius: 0 0 15px 15px;
 }
+.aboutModalDD{
+	color: white;
+	text-shadow: 
+		-0.5px -0.5px 0 #000,
+		0.75px 0.75px 0 #000;
+}

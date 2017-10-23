@@ -96,9 +96,6 @@ function aboutModalToggle(){
 	const aboutGameContent = $('<dd>',{
 		class: 'aboutModalDD',
 		text: "This game uses the battle mechanics seen in the classic Pokemon games. However, instead of Pokemons, this game uses the characters from the popular, beloved game by Blizzard, Overwatch."
-	}).css({
-		'color': 'white',
-		'text-shadow': '-0.5px -0.5px 0 #000, 0.75px 0.75px 0 #000'
 	});
 	const aboutDevDT = $('<dt>',{
 		class: 'aboutModalDT',
@@ -107,9 +104,14 @@ function aboutModalToggle(){
 	const aboutDevDD = $('<dd>',{
 		class: 'aboutModalDD',
 		text: "Hello, my name is Brian. I am a web developer located in Irvine, California. I started this project to challenge myself and to further develop my coding skills in web development."
-	}).css({
-		'color': 'white',
-		'text-shadow': '-0.5px -0.5px 0 #000, 0.75px 0.75px 0 #000'
+	});
+	const copyrightDT = $('<dt>',{
+		class: 'aboutModalDT',
+		text: "Copyright:"
+	});
+	const copyrightDD= $('<dd>',{
+		class: 'aboutModalDD',
+		text: "The pixel artwork you seen in this project are what I have found on the internet. If by some chance someone from Blizzard stumbles upon this, Blizzard, I am sorry I did not ask permission to use your game before hand."
 	});
 	const gitIcon = $('<i>',{
 		class: 'fa fa-github-square fa-3x gitIcon'
@@ -130,7 +132,7 @@ function aboutModalToggle(){
 		href: "https://www.linkedin.com/in/briandhkimucla/",
 		target: '_blank'
 	}).append(linkedIcon);
-	let aboutDescription = $('<dl>').append(aboutGameLead, aboutGameContent, aboutDevDT, aboutDevDD, gitButton, linkedButton);
+	let aboutDescription = $('<dl>').append(aboutGameLead, aboutGameContent, aboutDevDT, aboutDevDD,copyrightDT, copyrightDD, gitButton, linkedButton);
 	$('#gameInfoModal .modal-body').append(aboutDescription);
 	$('#gameInfoModalTitle').text('about the game');
 }
@@ -473,7 +475,7 @@ function gameOver(playerTurnNum){
 		$('#gameEndModalFooter').text("player 1 wins");
 	}else{
 		uiUpdate.updateConsoleCustomMsg("Player 2 defeated Player 1!!!");
-		$('#gameEndModalFooter').text("player2 wins");
+		$('#gameEndModalFooter').text("player 2 wins");
 	}
 	battleAud.pause();
 	gameEndAud.play();
