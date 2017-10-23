@@ -77,6 +77,11 @@ function mouseHandler(){
 		aboutModalToggle();
 		$('#gameInfoModal').modal('show');
 	});
+	$('.instructionButton').click(function(){
+		$('#gameInfoModal dl').remove();
+		instructionModalToggle();
+		$('#gameInfoModal').modal('show');
+	});
 }
 function modalAudioToggle(){
 	let aButton = $('#gameEndModal .audioToggler i');
@@ -136,17 +141,55 @@ function aboutModalToggle(){
 	$('#gameInfoModal .modal-body').append(aboutDescription);
 	$('#gameInfoModalTitle').text('about the game');
 }
-function instructionModal(){
+function instructionModalToggle(){
 	const initialScreenDT = $('<dt>',{
 		class: 'instructionDT',
-		text: 'at the initial screen:'
+		text: 'the initial screen:'
 	});
 	const initialScreenDD = $('<dd>',{
 		class: 'instructionDD',
-		text: 'Players will take turns choosing three characters of his or her choice.'
+		text: 'Players will take turns choosing three characters of his or her choice; player turn will alternate and will be indicated on the right side of the screen.'
 	});
-	let instructionDesc = $('<dl>');
-	$('#gameInfoModal .modal-body').append(instructionsDesc);
+	const initialScreenDD2 = $('<dd>',{
+		class: 'instructionDD',
+		text:'Choose your characters wisely as the character selection cannot be reverted until the game ends.'
+	});
+	const startingGameDT = $('<dt>',{
+		class: 'instructionDT',
+		text: 'starting the game:'
+	});
+	const startingGameDD = $('<dd>',{
+		class: 'instructionDD',
+		text: 'After each player has selected his or her three characters, press the start button to start the game.'
+	});
+	const keysDT = $('<dt>',{
+		class: 'instructionDT',
+		text: 'Keys:'
+	});
+	const keySpan1 = $('<span>').text('Use your mouse or use ');
+	const wasdKey = $('<kbd>').text(' w | a | s | d ');
+	const keySpan2 = $('<span>').text(' keys / ');
+	const arrowKey = $('<kbd>').html(' &#8593 | &#8592 | &#8595 | &#8594 ');
+	const keySpan3 = $('<span>').text(' keys to navigate the character move options. Left click or press ');
+	const spaceKey = $('<kbd>').text('-space-');
+	const keySpan4 = $('<span>').text(' bar to select character move');
+	const keysDD = $('<dd>',{
+		class: 'instructionDD'
+	}).append(keySpan1, wasdKey, keySpan2, arrowKey, keySpan3, spaceKey, keySpan4);
+	const otherDT = $('<dt>',{
+		class: 'instructionDT',
+		text: 'Other:'
+	});
+	const otherDD = $('<dd>',{
+		class: 'instructionDD',
+		text: 'Any attack options, use options, or changing character counts as a player turn.'
+	});
+	const otherDD2 = $('<dd>',{
+		class: 'instructionDD',
+		text: 'Each attack skill has a accuracy stat; the damage output will differ at each turn, and may even do no damage at all in some cases.'
+	});
+	let instructionDesc = $('<dl>').append(initialScreenDT, initialScreenDD, initialScreenDD2, startingGameDT, startingGameDD, keysDT, keysDD, otherDT, otherDD, otherDD2);
+	$('#gameInfoModal .modal-body').append(instructionDesc);
 	$('#gameInfoModalTitle').text('instructions');
 }
 
