@@ -137,7 +137,7 @@ function aboutModalToggle(){
 		href: "https://www.linkedin.com/in/briandhkimucla/",
 		target: '_blank'
 	}).append(linkedIcon);
-	let aboutDescription = $('<dl>').append(aboutGameLead, aboutGameContent, aboutDevDT, aboutDevDD,copyrightDT, copyrightDD, gitButton, linkedButton);
+	let aboutDescription = $('<dl>').append(aboutGameLead, aboutGameContent, aboutDevDT, aboutDevDD, gitButton, linkedButton, copyrightDT, copyrightDD);
 	$('#gameInfoModal .modal-body').append(aboutDescription);
 	$('#gameInfoModalTitle').text('about the game');
 }
@@ -168,7 +168,7 @@ function instructionModalToggle(){
 	});
 	const keySpan1 = $('<span>').text('Use your mouse or use ');
 	const wasdKey = $('<kbd>').text(' w | a | s | d ');
-	const keySpan2 = $('<span>').text(' keys / ');
+	const keySpan2 = $('<span>').text('  /');
 	const arrowKey = $('<kbd>').html(' &#8593 | &#8592 | &#8595 | &#8594 ');
 	const keySpan3 = $('<span>').text(' keys to navigate the character move options. Left click or press ');
 	const spaceKey = $('<kbd>').text('-space-');
@@ -188,7 +188,11 @@ function instructionModalToggle(){
 		class: 'instructionDD',
 		text: 'Each attack skill has a accuracy stat; the damage output will differ at each turn, and may even do no damage at all in some cases.'
 	});
-	let instructionDesc = $('<dl>').append(initialScreenDT, initialScreenDD, initialScreenDD2, startingGameDT, startingGameDD, keysDT, keysDD, otherDT, otherDD, otherDD2);
+	const otherDD3 = $('<dd>',{
+		class: 'instructionDD',
+		text: "Player 1's characters will be displayed on the bottom side of the screen, and player 2's characters will appear on the top side."
+	});
+	let instructionDesc = $('<dl>').append(initialScreenDT, initialScreenDD, initialScreenDD2, startingGameDT, startingGameDD, keysDT, keysDD, otherDT, otherDD, otherDD2, otherDD3);
 	$('#gameInfoModal .modal-body').append(instructionDesc);
 	$('#gameInfoModalTitle').text('instructions');
 }
