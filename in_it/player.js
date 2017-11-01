@@ -1,7 +1,3 @@
-//player object
-/*
-using reload and using healthpack counts as turn. afterwards change to opponent 
-*/
 
 function Player(uiUpdater, game){
 	let this_ = this; //will likely need to use this for DOM stuff. e.g. updating console, player menu options etc.
@@ -10,9 +6,9 @@ function Player(uiUpdater, game){
 	//this.name //at this time, the name will likely stay player 1 || player 2
 	this.characterArr = [];
 	
-	var char_iterator = 0;
+	let char_iterator = 0;
 	this.charactersAlive = 3; //check characters alive
-	var max_char_num = 3; //maximum number of characters in storage; may increase to 4 in future
+	const max_char_num = 3; //maximum number of characters in storage; may increase to 4 in future
 
 	this.healthPackCount = 5;
 	this.healthPack = 75; 
@@ -21,16 +17,30 @@ function Player(uiUpdater, game){
 	this.activeCharacterTracker = 0;
 	this.activeCharacter = null;
 
-	this.addCharacter = function(selectedCharacter){		//pass in the character object based on what was selected
-		//will likely use click handler attached to the character list item in the inital selection page
+	/***************************
+	addCharacter -> 
+	param: character object
+	return: nothing
+	descpt: create/add new character selected by player to character array
+ 	*/
+	this.addCharacter = function(selectedCharacter){	
 		this.activeCharacter = this.characterArr[this.activeCharacterTracker];
-		if(char_iterator < max_char_num){	//condition check. can't create more characters alive then max allowed 
+		if(char_iterator < max_char_num){	
 			this.characterArr[char_iterator] = new Character(selectedCharacter);
 			char_iterator++;
 		}else{
-			console.log('check addCharacter in player obj');
+			console.log('error addCharacter in player obj');
 		}
 	};
+
+	/***************************
+	changeCharacter -> 
+	param: (int) 0-2, invoked if player selects changing character option
+	return: none
+	descpt: if character can be swapped, changes character and calls player turn change
+		function and ui update function ; otherwise calls ui update to display
+		option unselectable message
+ 	*/
 	this.changeCharacter = function(charChosen){	//changing character function
 		if(this.characterArr[charChosen].alive && this.activeCharacterTracker!==charChosen){ 	//check if character chosen is alive
 			this.activeCharacterTracker = charChosen;
@@ -38,44 +48,61 @@ function Player(uiUpdater, game){
 			uiUp.changeCharacterUpdate(this_,gameObj.currentPlayerTurn);//call ui update function
 			gameObj.changePlayerTurn();
 		}else{
-			// console.log('update console to ask for different character');
-			const consoleMsg = "You can't select this character..."
+			const consoleMsg = "You can't select this character...";
 			uiUp.updateConsoleCustomMsg(consoleMsg);
 		}
 	};
+
+	/***************************
+	eliminatedCharSwap -> 
+	param: (int) 0-2, invoked if a player's character dies 
+	return: none
+	descpt: invoked when a player's character dies and swaps active character
+ 	*/
 	this.eliminatedCharSwap = function(charChosen){
 		if(this.characterArr[charChosen].alive && this.activeCharacterTracker!==charChosen){ 	//check if character chosen is alive
 			this.activeCharacterTracker = parseInt(charChosen);	//need to parse other wise causes char swap check error on next turn
-			this.activeCharacter = this.characterArr[this.activeCharacterTracker]; //this line might not be necessary
+			this.activeCharacter = this.characterArr[this.activeCharacterTracker]; 
 		}else{
 			console.log('error eliminatedCharSwap function player');
-			// const consoleMsg = "You can't select this character..."
-			// uiUp.updateConsoleCustomMsg(consoleMsg);
 		}
 	};
+
+	/***************************
+	useHealthPack -> 
+	param: none
+	return: none
+	descpt: checks player healthPack count and adds hp to active character
+ 	*/
 	this.useHealthPack = function(){	//using helathpack item function
 		if(this.healthPackCount >0){
 			this.activeCharacter.addHP(this.healthPack); //addHP takes amount of hp to add
 			this.healthPackCount--;
 			//need to call healthPack count update ui
 		}else{
-			console.log('console message saying no health pack available');
+			console.log('error at useHealthPack in player object; healthpack count check did not work in game object');
 		}
 	};
+
+	/***************************
+	reload -> 
+	param: none 
+	return: none
+	descpt: invokes reload function for active character
+ 	*/
 	this.reload = function(){
 		this.activeCharacter.reload();
 		console.log('console message saying the current character reloaded');
 	};
+
+	/***************************
+	skillSelected -> 
+	param: (int) 0-3, skill selected by player
+	return: (array) 0-heal/damage output 1-bool, true if heal skill false if attk
+	descpt: called when player selects a skill option for the turn
+ 	*/
 	this.skillSelected = function(skillNum){
-		//takes in the skill number (0-3)
-		/*checking skill pp is done at skillobject level
-		so it's likely safe to just call the function at character
-		 level that calls the skill use function at skill object
-		 skills held in an array inside character object - 0 indexed
-		 need to decide where to update console with pp change etc.*/
 		 return this.activeCharacter.useSkill(skillNum);
-		 //skill use function returns damage value
-		 //still needs to work on accounting for heal/attk thing
 	};
 
 };
