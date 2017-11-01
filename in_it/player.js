@@ -72,7 +72,8 @@ function Player(uiUpdater, game){
 	useHealthPack -> 
 	param: none
 	return: none
-	descpt: checks player healthPack count and adds hp to active character
+	descpt: checks player healthPack count and adds hp to active character;
+		*****not used at this time
  	*/
 	this.useHealthPack = function(){	//using helathpack item function
 		if(this.healthPackCount >0){

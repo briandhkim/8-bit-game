@@ -119,6 +119,12 @@ function Game(uiUpdater){
             this.changePlayerTurn();
         }
     };
+    /***************************
+    checkCharDead -> 
+    param: character object
+    return: bool
+    descpt: returns false if character is alive; true if dead
+    */
     this.checkCharDead = function(character){
         if(character.alive){
             return false;
@@ -127,7 +133,15 @@ function Game(uiUpdater){
         }else{
             console.log('error checkCharDead function');
         }
-    }
+    };
+    /***************************
+    deadCharSwap -> 
+    param: player object, player turn (int)
+    return: none
+    descpt: calls gameOver function if player's characters are 
+        eliminated. otherwise select the next available character
+        and swaps active character
+    */
     this.deadCharSwap = function(player, playerTurnNum){
         player.charactersAlive--;
         if(player.charactersAlive===0){
@@ -148,20 +162,38 @@ function Game(uiUpdater){
          
     };
 
+    /***************************
+    turnUseHealthPack -> 
+    param: none
+    return: none
+    descpt: called when player uses health pack for the turn; changes 
+        turn after using the healthpack; displays message in console
+        if none are available
+    */
     this.turnUseHealthPack = function(){
         const currentPlayer = this.playersInGame[this.currentPlayerTurn];
         if(currentPlayer.healthPackCount!==0){
             currentPlayer.activeCharacter.addHP(currentPlayer.healthPack);
             uiUp.currentCharDamageTakeHP(currentPlayer.activeCharacter, this.currentPlayerTurn);
             currentPlayer.healthPackCount--;
+            prevTurnMsg = currentPlayer.activeCharacter.name + " used Health Pack!";
             this.changePlayerTurn();
         }else{
             uiUp.updateConsoleCustomMsg("No more health packs...");
         }
     };
+
+    /***************************
+    turnReload -> 
+    param: none
+    return: none
+    descpt: calls relaod function for active character; calls player
+        turn change function after
+    */
     this.turnReload = function(){
         const currentPlayerChar = this.playersInGame[this.currentPlayerTurn].activeCharacter;
+        prevTurnMsg = currentPlayerChar.name + " reloaded!";
         currentPlayerChar.reload();
         this.changePlayerTurn();
-    }
+    };
 }
