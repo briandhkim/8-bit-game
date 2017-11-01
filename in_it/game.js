@@ -12,7 +12,7 @@ function Game(uiUpdater){
     gameInitiated -> 
     param: none
     return: none
-    descpt: creates new players and adds the objects to playersInPlay array
+    descpt: creates new players and adds the objects to playersInGame array
             called when Game object is created
     */
     this.gameInitiated = function(){
@@ -34,11 +34,23 @@ function Game(uiUpdater){
         player.addCharacter(characterObj);
     };
 
+    /***************************
+    gameStart -> 
+    param: none
+    return: none
+    descpt: calls uiUpdate function for each character images at game start
+    */
     this.gameStart = function(){
         uiUp.characterLoadUpdate(player2, 1);
         uiUp.characterLoadUpdate(player1, 0);
     };
 
+    /***************************
+    changePlayerTurn -> 
+    param: none
+    return: none
+    descpt: changes player turn; called when character uses skill/item/change char 
+    */
     this.changePlayerTurn = function(){
         if(this.currentPlayerTurn===0){
             this.currentPlayerTurn++;
@@ -82,6 +94,12 @@ function Game(uiUpdater){
         this_.playersInGame[this_.currentPlayerTurn].changeCharacter(characterNum);
     };
     
+    /***************************
+    turnSkillChar -> 
+    param: (int) 0-3, skill array iterator based on player selection
+    return: none
+    descpt: called when player selects a skill to use. 
+    */
     this.turnSkillChar = function(skillNum){
         let selectedSkill = this_.playersInGame[this_.currentPlayerTurn].activeCharacter.skillArr[skillNum];
         if(selectedSkill.pp<=0){
