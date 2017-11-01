@@ -1,8 +1,6 @@
 
-function Player(uiUpdater, game){
+function Player(){
 	let this_ = this; //will likely need to use this for DOM stuff. e.g. updating console, player menu options etc.
-	let uiUp = uiUpdater;
-	let gameObj = game;
 	//this.name //at this time, the name will likely stay player 1 || player 2
 	this.characterArr = [];
 	
@@ -36,20 +34,21 @@ function Player(uiUpdater, game){
 	/***************************
 	changeCharacter -> 
 	param: (int) 0-2, invoked if player selects changing character option
-	return: none
-	descpt: if character can be swapped, changes character and calls player turn change
-		function and ui update function ; otherwise calls ui update to display
-		option unselectable message
+	return: bool, true if character changed false otherwise
+	descpt: if character can be swapped, changes character and return true;
+		return false otherwise
  	*/
 	this.changeCharacter = function(charChosen){	//changing character function
 		if(this.characterArr[charChosen].alive && this.activeCharacterTracker!==charChosen){ 	//check if character chosen is alive
 			this.activeCharacterTracker = charChosen;
 			this.activeCharacter = this.characterArr[this.activeCharacterTracker]; //this line might not be necessary
-			uiUp.changeCharacterUpdate(this_,gameObj.currentPlayerTurn);//call ui update function
-			gameObj.changePlayerTurn();
+			return true;
+			// uiUp.changeCharacterUpdate(this_,gameObj.currentPlayerTurn);//call ui update function
+			// gameObj.changePlayerTurn();
 		}else{
-			const consoleMsg = "You can't select this character...";
-			uiUp.updateConsoleCustomMsg(consoleMsg);
+			// const consoleMsg = "You can't select this character...";
+			// uiUp.updateConsoleCustomMsg(consoleMsg);
+			return false;
 		}
 	};
 

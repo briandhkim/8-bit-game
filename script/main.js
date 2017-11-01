@@ -46,6 +46,7 @@ function gameStart(){
 	game.gameStart();
 	$('.player1_intro li, .player2_intro li').remove();
 	$('iframe').remove();
+	$('.inGameAudioToggler i').removeClass('fa-volume-off').addClass('fa-volume-up');
 }
 function mouseHandler(){
 	$('.charSelectDrop:not(.characterList)').click(charDropMenuOpen);
@@ -71,6 +72,7 @@ function mouseHandler(){
 		$('iframe').remove();
 		gameEndAud.pause();
 	});
+	$('.inGameAudioToggler').click(inGameAudioToggle);
 	$('.modal-header .audioToggler').click(modalAudioToggle);
 	$('.aboutButton').click(function(){
 		$('#gameInfoModal dl').remove();
@@ -82,6 +84,16 @@ function mouseHandler(){
 		instructionModalToggle();
 		$('#gameInfoModal').modal('show');
 	});
+}
+function inGameAudioToggle(){
+	let aButton = $('.inGameAudioToggler i');
+	if(aButton.hasClass('fa-volume-up')){
+		battleAud.pause();
+		aButton.toggleClass('fa-volume-up fa-volume-off');
+	}else if(aButton.hasClass('fa-volume-off')){
+		battleAud.play();
+		aButton.toggleClass('fa-volume-up fa-volume-off');
+	}
 }
 function modalAudioToggle(){
 	let aButton = $('#gameEndModal .audioToggler i');
@@ -339,9 +351,9 @@ let menuOpened = false;
 
 /******** ui handlers for keyboard input *******/
 $(window).keydown(function(event){
-	var key = event.keyCode;
-	var this_ = $('.tracker').parent().closest('.moveOpt');		//track span in choosing move options
-	var this_li_ = $('.tracker').parent().closest('li');		//track span in the move option list
+	const key = event.keyCode;
+	let this_ = $('.tracker').parent().closest('.moveOpt');		//track span in choosing move options
+	let this_li_ = $('.tracker').parent().closest('li');		//track span in the move option list
 	//	37left	38up	39right	40down	87w	65a	83s	68d
 	if(key===39||key===68){			//right key
 		if(this_.next('.moveOpt').length >0){
@@ -512,7 +524,7 @@ function rageQuitOpt(){
 	battleAud.pause();
 	game=new Game(uiUpdate);
 	// <iframe width="560" height="315" src="https://www.youtube.com/embed/X2WH8mHJnhM?start=16" frameborder="0" allowfullscreen></iframe>
-	let feelsBadMan = $('<iframe>',{
+	const feelsBadMan = $('<iframe>',{
 		src: "https://www.youtube.com/embed/X2WH8mHJnhM?start=16&autoplay=1",
 		width: "560",
 		height: "315",
@@ -540,7 +552,7 @@ function gameOver(playerTurnNum){
 	battleAud.pause();
 	gameEndAud.play();
 	// <iframe width="560" height="315" src="https://www.youtube.com/embed/t2Yrz9HSZNo" frameborder="0" allowfullscreen></iframe>
-	let videoFrame = $("<iframe>",{
+	const videoFrame = $("<iframe>",{
 		src: "https://www.youtube.com/embed/t2Yrz9HSZNo",
 		frameborder : "0",
 		width: "560",

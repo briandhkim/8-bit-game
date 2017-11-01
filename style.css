@@ -44,7 +44,7 @@ html,body{
 }
 .introBackground{
 	height: 100%;
-	background: url('../images/introBG.gif');
+	background: url('images/introBG.gif');
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
@@ -64,7 +64,7 @@ html,body{
 }
 .logoArea{
 	height: 70%;
-	background-image: url('../images/logo.png');
+	background-image: url('images/logo.png');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: auto 100%;
@@ -259,6 +259,23 @@ html,body{
 	border: 4px dashed;
 	background-color:rgba(25, 85, 147,0.8);
 }
+.inGameAudioToggler{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	background: none;
+	border: none;
+	color: rgba(255,255,255,0.4);
+	height: 35px;
+	width: 35px;
+	padding: 0;
+}
+.inGameAudioToggler:hover{
+	color: rgba(255,255,255,1);
+}
+.inGameAudioToggler:focus{
+	outline: none;
+}
 .gameBodyRow{
 	height: 90%;
 }
@@ -291,7 +308,7 @@ html,body{
 }
 .player2_charStats{
 	margin-top: 10%;
-	background-image: url(../images/charStat1.png);
+	background-image: url(images/charStat1.png);
 	background-repeat: no-repeat;
 	background-position: left bottom;
 	background-size: 100% 100%;
@@ -303,7 +320,7 @@ html,body{
 }
 .player2_charImg{
 	height: 100%;
-	background-image: url(../images/charMain/ana.png);
+	background-image: url(images/charMain/ana.png);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -312,7 +329,7 @@ html,body{
 }
 .player1_charImg{
 	height: 100%;
-	background-image: url(../images/charMain/reaper.png);
+	background-image: url(images/charMain/reaper.png);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -324,7 +341,7 @@ html,body{
 }
 .player1_charStats{
 	margin-top: 12%;
-	background-image: url(../images/charStat2.png);
+	background-image: url(images/charStat2.png);
 	background-repeat: no-repeat;
 	background-position: right bottom;
 	background-size: 100% 100%;

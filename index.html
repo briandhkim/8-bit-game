@@ -6,15 +6,14 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="in_it/style.css">
-	<!-- <script type="text/javascript" src="in_it/moveButton.js"></script> -->
-	<script type="text/javascript" src="in_it/charStats.js"></script>
-	<script type="text/javascript" src="in_it/skills.js"></script>
-	<script type="text/javascript" src="in_it/character.js"></script>
-	<script type="text/javascript" src="in_it/player.js"></script>
-	<script type="text/javascript" src="in_it/game.js"></script>
-	<script type="text/javascript" src="in_it/uiUpdater.js"></script>
-	<script type="text/javascript" src="in_it/main.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="script/charStats.js"></script>
+	<script type="text/javascript" src="script/skills.js"></script>
+	<script type="text/javascript" src="script/character.js"></script>
+	<script type="text/javascript" src="script/player.js"></script>
+	<script type="text/javascript" src="script/game.js"></script>
+	<script type="text/javascript" src="script/uiUpdater.js"></script>
+	<script type="text/javascript" src="script/main.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" type="image/png" href="images/charMain/dva.png" sizes="128x128">
 	<title>OW arcade</title>
@@ -180,7 +179,11 @@
 		</div>	<!--end of intro page div-->
 		<div class="row gamePageMain" id="gamePageMain">
 			<div class="row gameBannerRow">
-				<div class="col-xs-10 col-xs-offset-1 gameBanner"></div>
+				<div class="col-xs-10 col-xs-offset-1 gameBanner">
+					<button type="button" class="inGameAudioToggler">
+  						<i class="fa fa-volume-up fa-2x" aria-hidden="true"></i>
+  					</button>
+				</div>
 			</div>
 			<div class="row gameBodyRow">
 				<div class="col-xs-11 gameBody">

@@ -1,6 +1,13 @@
 function UIupdater(){
 	
 	/*** ui updates for main game area ***/
+	/***************************
+	characterLoadUpdate -> 
+	param: player object, (int) player turn number
+	return: none
+	descpt: updates character image area, name, hp bar, skill list,
+		item list, player character list
+ 	*/
 	this.characterLoadUpdate = function(player, playerTurnNum){
 		let charInPlay = player.activeCharacter;
 		this.loadCurrentCharName(charInPlay, playerTurnNum);
@@ -11,7 +18,13 @@ function UIupdater(){
 		this.loadPlayerCharacterList(player.characterArr);
 	};
 
-	//only changes player ui options area (next to console)
+	/***************************
+	turnChangeLoadUpdate -> 
+	param: player object, (int) player turn number
+	return: none
+	descpt: only changes player ui options area - ie. player turn
+		options: skills, change char, item list
+ 	*/
 	this.turnChangeLoadUpdate = function(player, playerTurnNum){	//doesn't animate the character image
 		let charInPlay = player.activeCharacter;
 		// this.loadCurrentCharName(charInPlay, playerTurnNum);
@@ -21,8 +34,13 @@ function UIupdater(){
 		this.loadPlayerCharacterList(player.characterArr);
 	};
 
-	//changes character name area, character image, health
-	//used when a character is eliminated
+	/***************************
+	changeCharacterUpdate -> 
+	param: player object, (int) player turn number)
+	return: none
+	descpt: changes character name area, image, hp bar; used
+		when a character is eliminated
+ 	*/
 	this.changeCharacterUpdate = function(player, playerTurnNum){
 		let charInPlay = player.activeCharacter;
 		this.loadCurrentCharName(charInPlay, playerTurnNum);
@@ -70,10 +88,10 @@ function UIupdater(){
  		}
  	};
  	/***************************
-	 -> 
-	param: 
-	return: 
-	descpt: 
+	loadCurrentCharHP -> 
+	param: character object, (int) player turn number
+	return: none
+	descpt: updates hp bar of the passed in character
  	*/
  	this.loadCurrentCharHP = function(selectedChar, playerTurnNum){
  		if(playerTurnNum){
@@ -90,7 +108,6 @@ function UIupdater(){
  			$('#player2_charHealthBar').css({
  				'width': hpBar+'%'
  			});
- 			// $('.player2_currentChar_hpArea .progress-bar').css('width', hpBar+'%');
  		}else{
  			$('.player1_currentChar_hpArea .currentHP').text(selectedChar.hp);
  			$('.player1_currentChar_hpArea .maxHP').text(selectedChar.hpMax);
@@ -105,10 +122,14 @@ function UIupdater(){
  			$('#player1_charHealthBar').css({
  				'width': hpBar+'%'
  			});
- 			// $('.player1_currentChar_hpArea .progress-bar').css('width', hpBar+'%');
  		}
  	};
-
+ 	/***************************
+	currentCharDamageTakeHP -> 
+	param: character object, (int) player turn number
+	return: none
+	descpt: updates character hp bar if damage is taken
+ 	*/
  	this.currentCharDamageTakeHP=function(selectedChar, playerTurnNum){
  		if(playerTurnNum){
  			$('.player2_currentChar_hpArea .currentHP').text(selectedChar.hp);
@@ -156,9 +177,10 @@ function UIupdater(){
 	};
 	/***************************
 	loadPlayerCharacterList -> 
-	param: 
-	return: 
-	descpt: 
+	param: [array] of player's available characters
+	return: none
+	descpt: updates the player turn area for change character
+		option list
  	*/
 	this.loadPlayerCharacterList = function(characterArr){
 		for(var i=0; i<characterArr.length; i++){
@@ -174,13 +196,12 @@ function UIupdater(){
  			}
  			$('#playerChar_'+(i+1)+' .progress-bar').css('width', hpBar+'%');
 		}
-	};
-	
+	};	
 	/***************************
 	loadHealthPackCount -> 
-	param: 
-	return: 
-	descpt: 
+	param: (int) health pack count number
+	return: none
+	descpt: updates player's avialable healthpack count
  	*/
  	this.loadHealthPackCount = function(hPackCount){
  		$('#item_healthPack_counter').text(hPackCount);
@@ -188,13 +209,24 @@ function UIupdater(){
 
 
  	/****game play updates****/
-
+ 	/***************************
+	updateConsoleCustomMsg -> 
+	param: (string) message input
+	return: none
+	descpt: updates game console with input message string
+ 	*/
  	this.updateConsoleCustomMsg = function(msgString){
  		let updateMsg = $('<li>',{
  			text: msgString
  		});
  		$('.consoleMsgList').prepend(updateMsg);
  	};
+ 	/***************************
+	updatePrevTurnMsg -> 
+	param: (string) messsage input 
+	return: none
+	descpt: updates game console with previous player's move selection
+ 	*/
  	this.updatePrevTurnMsg = function(msgString){
  		let updateMsg = $('<li>',{
  			text: msgString
@@ -216,7 +248,12 @@ function UIupdater(){
  		});
  		$('.consoleMsgList').prepend(updateList);
  	};
-
+ 	/***************************
+	updateConsoleMessageTurnChange -> 
+	param: (int) player turn number
+	return: none
+	descpt: updates game console with new player turn
+ 	*/
  	this.updateConsoleMessageTurnChange = function(currentPlayerTurn){
  		let turnMsgString = 'Player '+(currentPlayerTurn+1)+"'s turn";
  		let turnChangeMsg = $('<li>',{
@@ -225,6 +262,12 @@ function UIupdater(){
  		$('.consoleMsgList').prepend(turnChangeMsg);
  	};	
 
+ 	/***************************
+	clearConsoleMessage -> 
+	param: none
+	return: none
+	descpt: clears out game console
+ 	*/
  	this.clearConsoleMessage = function(){
  		$('.consoleMsgList li').remove();
  		$('.consoleMsgListPrevTurn li').remove();

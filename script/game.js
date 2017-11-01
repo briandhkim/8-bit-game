@@ -16,8 +16,8 @@ function Game(uiUpdater){
             called when Game object is created
     */
     this.gameInitiated = function(){
-        player1 = new Player(uiUp, this_);
-        player2 = new Player(uiUp, this_);
+        player1 = new Player();
+        player2 = new Player();
         this_.playersInGame[0] = player1;
         this_.playersInGame[1] = player2;
         console.log(this_.playersInGame);
@@ -91,7 +91,22 @@ function Game(uiUpdater){
     descpt: changes player character. calls changeCharacterFunction in player object
     */
     this.turnChangeChar = function(characterNum){
-        this_.playersInGame[this_.currentPlayerTurn].changeCharacter(characterNum);
+        const charChangeCheck = this_.playersInGame[this_.currentPlayerTurn].changeCharacter(characterNum);
+        const currentPlayer = this.playersInGame[this.currentPlayerTurn];
+        if(charChangeCheck){
+            if(this.currentPlayerTurn){
+                prevTurnMsg = `Player 2 switched to ${currentPlayer.activeCharacter.name}`; 
+            }else{
+                prevTurnMsg = `Player 1 switched to ${currentPlayer.activeCharacter.name}`;
+            }
+            uiUp.changeCharacterUpdate(currentPlayer, this.currentPlayerTurn);
+            this.changePlayerTurn();
+        }else if(!charChangeCheck){
+            const consoleMsg = "You can't select this character...";
+            uiUp.updateConsoleCustomMsg(consoleMsg);
+        }else{
+            console.log('error in turnChangeChar in game obj');
+        }
     };
     
     /***************************
