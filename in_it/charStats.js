@@ -15,7 +15,7 @@
 	healSplash true -> ana, soldier
 */
 
-var ana = {
+const ana = {
 	name: 'Ana',
 	hp : 200,
 	img : 'images/charMain/ana.png',
@@ -34,7 +34,7 @@ var ana = {
 	},
 	skill_2 :{
 		name: 'Sleep Dart', //maybe skip this skill for the time, this would stun the character that is hit
-		damage: 25,
+		damage: 40,
 		accuracy: 20,
 		pp: 10,
 		// aoe: false,
@@ -66,14 +66,14 @@ var ana = {
 		healSplash : false
 	}
 };
-var lucio = {
+const lucio = {
 	name : 'Lucio',
 	hp : 200,
 	img : 'images/charMain/lucio.png',
 	icon : 'images/icon/lucio.png',
 	skill_1 :{
 		name: 'Sonic Amplifier',
-		damage: 20,
+		damage: 60,
 		accuracy: 70,
 		pp: 20,
 		// aoe: false,
@@ -84,7 +84,7 @@ var lucio = {
 	},
 	skill_2 :{
 		name: 'Soundwave',
-		damage: 25,
+		damage: 45,
 		accuracy: 90,
 		pp: 5,
 		// aoe: true,
@@ -116,7 +116,7 @@ var lucio = {
 		healSplash : true
 	}
 };
-var zenyatta = {
+const zenyatta = {
 	name : 'Zenyatta',
 	hp : 200,
 	img : 'images/charMain/zenyatta.png',
@@ -166,7 +166,7 @@ var zenyatta = {
 		healSplash : true
 	}
 };
-var mercy = {
+const mercy = {
 	name : 'Mercy',
 	hp : 200,
 	img : 'images/charMain/mercy.png',
@@ -216,7 +216,7 @@ var mercy = {
 		healSplash : false
 	}
 };
-var symmetra = {
+const symmetra = {
 	name : 'Symmetra',
 	hp : 200,
 	img : 'images/charMain/symmetra.png',
@@ -245,7 +245,7 @@ var symmetra = {
 	},
 	skill_3 :{
 		name: 'Sentry Microwave',	
-		damage: 100,				
+		damage: 120,				
 		accuracy: 90,
 		pp: 2,
 		// aoe: false,
@@ -266,14 +266,14 @@ var symmetra = {
 		healSplash : true
 	}
 };
-var dva = {
+const dva = {
 	name : 'D. Va',
 	hp : 400,
 	img : 'images/charMain/dva.png',
 	icon : 'images/icon/dva.png',
 	skill_1 :{
 		name: 'Fusion Cannons',
-		damage: 22,
+		damage: 33,
 		accuracy: 90,
 		pp: 25,
 		//aoe: true,		//might be false
@@ -316,7 +316,7 @@ var dva = {
 		healSplash : false
 	}
 };
-var reinhardt = {
+const reinhardt = {
 	name : 'Reinhardt',
 	hp : 500,
 	img : 'images/charMain/reinhardt.png',
@@ -366,7 +366,7 @@ var reinhardt = {
 		healSplash : false
 	}
 };
-var roadhog = {
+const roadhog = {
 	name : 'Roadhog',
 	hp : 600,
 	img : 'images/charMain/roadhog.png',
@@ -416,7 +416,7 @@ var roadhog = {
 		healSplash : false
 	}
 };
-var winston = {
+const winston = {
 	name : 'Winston',
 	hp : 500,
 	img : 'images/charMain/winston.png',
@@ -466,7 +466,7 @@ var winston = {
 		healSplash : false
 	}
 };
-var zarya = {
+const zarya = {
 	name : 'Zarya',
 	hp : 400,
 	img : 'images/charMain/zarya.png',
@@ -516,7 +516,7 @@ var zarya = {
 		healSplash : false
 	}
 };
-var hanzo = {
+const hanzo = {
 	name : 'Hanzo',
 	hp : 200,
 	img : 'images/charMain/hanzo.png',
@@ -534,7 +534,7 @@ var hanzo = {
 	},
 	skill_2 :{
 		name: 'Sonic Arrow',
-		damage: 90,
+		damage: 80,
 		accuracy: 50,
 		pp: 5,
 		// aoe: false,
@@ -545,7 +545,7 @@ var hanzo = {
 	},
 	skill_3 :{
 		name: 'Scatter Arrow',
-		damage: 40,
+		damage: 115,
 		accuracy: 50,
 		pp: 4,
 		// aoe: true,
@@ -566,7 +566,7 @@ var hanzo = {
 		healSplash : false
 	}
 };
-var junkrat = {
+const junkrat = {
 	name : 'Junkrat',
 	hp : 200,
 	img : 'images/charMain/junkrat.png',
@@ -606,7 +606,7 @@ var junkrat = {
 	},
 	skill_4 :{
 		name: 'RiP-Tire',
-		damage: 400,
+		damage: 300,
 		accuracy: 65,
 		pp: 1,
 		// aoe: true,
@@ -616,7 +616,7 @@ var junkrat = {
 		healSplash : false
 	}
 };
-var mei = {
+const mei = {
 	name : 'Mei(satan)',
 	hp : 250,
 	img : 'images/charMain/mei.png',
@@ -666,7 +666,7 @@ var mei = {
 		healSplash : false
 	}
 };
-var torbjorn = {
+const torbjorn = {
 	name : 'Torbjorn',
 	hp : 200,
 	img : 'images/charMain/torbjorn.png',
@@ -684,7 +684,7 @@ var torbjorn = {
 	},
 	skill_2 :{
 		name: 'Rivet Shot Gun',
-		damage: 20,
+		damage: 40,
 		accuracy: 80,
 		pp: 6,
 		// aoe: true,
@@ -695,7 +695,7 @@ var torbjorn = {
 	},
 	skill_3 :{
 		name: 'Build Turret',
-		damage: 17,
+		damage: 27,
 		accuracy: 100,
 		pp: 5,
 		// aoe: false,
@@ -717,14 +717,14 @@ var torbjorn = {
 		healSplash : false
 	}
 };
-var bastion = {
+const bastion = {
 	name : 'Bastion',
 	hp : 300,
 	img : 'images/charMain/bastion.png',
 	icon : 'images/icon/bastion.png',
 	skill_1 :{
 		name: 'Submachine Gun',
-		damage: 20,
+		damage: 25,
 		accuracy: 70,
 		pp: 25,
 		// aoe: false,
@@ -735,7 +735,7 @@ var bastion = {
 	},
 	skill_2 :{
 		name: 'Gatling Gun',
-		damage: 15,
+		damage: 20,
 		accuracy: 80,
 		pp: 30,
 		// aoe: true,
@@ -767,7 +767,7 @@ var bastion = {
 		healSplash : false
 	}
 };
-var widowmaker = {
+const widowmaker = {
 	name : 'Widowmaker',
 	hp : 200,
 	img : 'images/charMain/widow.png',
@@ -817,7 +817,7 @@ var widowmaker = {
 		healSplash : false
 	}
 };
-var genji = {
+const genji = {
 	name : 'Genji',
 	hp : 200,
 	img : 'images/charMain/genji.png',
@@ -867,7 +867,7 @@ var genji = {
 		healSplash : false
 	}
 };
-var mccree = {
+const mccree = {
 	name : 'McCree',
 	hp : 200,
 	img : 'images/charMain/mccree.png',
@@ -885,7 +885,7 @@ var mccree = {
 	},
 	skill_2 :{
 		name: 'Fan the Hammer',
-		damage: 50,
+		damage: 90,
 		accuracy: 80,
 		pp: 6,
 		// aoe: true,
@@ -906,7 +906,7 @@ var mccree = {
 		healSplash : false
 	},
 	skill_4 :{
-		name: "It's 420 Noon",
+		name: "It's 12:00pm Noon",
 		damage: 250,
 		accuracy: 70,		//may need to adjust
 		pp: 1,
@@ -917,7 +917,7 @@ var mccree = {
 		healSplash : false
 	}
 };
-var pharah = {
+const pharah = {
 	name : 'Pharah',
 	hp : 200,
 	img : 'images/charMain/pharah.png',
@@ -967,7 +967,7 @@ var pharah = {
 		healSplash : false
 	}
 };
-var soldier = {
+const soldier = {
 	name : 'Solder: 76',
 	hp : 200,
 	img : 'images/charMain/soldier.png',
@@ -1017,7 +1017,7 @@ var soldier = {
 		healSplash : false
 	}
 };
-var reaper = {
+const reaper = {
 	name : 'Reaper',
 	hp : 250,
 	img : 'images/charMain/reaper.png',
@@ -1067,7 +1067,7 @@ var reaper = {
 		healSplash : false
 	}
 };
-var tracer = {
+const tracer = {
 	name : 'Tracer',
 	hp : 150,
 	img : 'images/charMain/tracer.png',
@@ -1118,7 +1118,7 @@ var tracer = {
 	}
 };
 
-// var char = {
+// const char = {
 // 	name : '',
 // 	hp : ,
 // 	img : '',

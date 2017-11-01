@@ -27,16 +27,6 @@ function Character(charObj){  //fetch charObj from charStats.js
         }
     };  //will likely be called when using health pack item or 
         //when skill used has healing property
-    /**
-    this.removeHP = function(amountLoss){
-        this.hp -= amountLoss;
-        if(this.hp<=0){
-            this.toggleStatus();
-            return;
-        }
-        //update gamebody ui - probably player object level function
-    };  //will need to be called when taking damage from opponent
-    **/
 
     this.useSkill = function(skillNum){ 
         //takes in skill number (0-3) passed in from playerObj level. 

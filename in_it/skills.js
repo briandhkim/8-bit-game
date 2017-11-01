@@ -1,6 +1,5 @@
 
 var Skill = function(skillObj){   //pass in an object instead of individual stats. object in charStat.js
-    //changed object name from createSkill to Skill; since this object also handles skill execution
     this.name = skillObj.name;
     this.skillAccuracy = skillObj.accuracy;
     this.pp = skillObj.pp;
@@ -14,6 +13,13 @@ var Skill = function(skillObj){   //pass in an object instead of individual stat
     this.heal = skillObj.heal;  //number
     this.healSplash = skillObj.healSplash;  //bool
 
+    /***************************
+    executeSkill -> 
+    param: none
+    return: invoke skillConditionCheck funct
+    descpt: called by character object when a character uses skill. only function besides 
+        reload function with interaction outside of Skill object
+    */
     this.executeSkill = function(){
         if(this.pp>0){      //check if there are pp left for skill use
             this.pp--;
@@ -24,27 +30,44 @@ var Skill = function(skillObj){   //pass in an object instead of individual stat
             return "You can't use this skill anymore"; 
     };
 
+    /***************************
+    skillConditionCheck -> 
+    param: none
+    return: array [int(heal/damage), bool for healing skill]
+    descpt: checks if skill does healing or damage and returns array
+    */
     this.skillConditionCheck = function(){  
-        //checks if skill is healing or attk. 
-        //returns number for heal or generated damage
         if (this.heal){ //any zero value will be false
             return [this.heal, this.healSplash]; 
-            //may use generatedamage function in future to calculate heal based on accuracy
             //which character to heal/checking healSplash will likely need to be done in player object
-
         }else
-            return [this.generateDamage()]; //returning as array to keep it in same format as the heal return
+            return [this.generateDamage()]; 
     };
 
+    /***************************
+    generateDamage -> 
+    param: none
+    return: int(calculated damage)
+    descpt: generate a random num between 1-100. if the number is greater than skill accuracy,
+        the skill will do 100% damage. otherwise skill does a percentage of damage based on
+        the random number generated and skill accuracy
+    */
     this.generateDamage = function(){
-        var randomAccuracyFactor = Math.floor(Math.random()*(101));
+        let randomAccuracyFactor = Math.floor(Math.random()*(101));
         if(randomAccuracyFactor > this.skillAccuracy){
             randomAccuracyFactor = this.skillAccuracy;
         }
-        var damageOutput = Math.round((randomAccuracyFactor/this.skillAccuracy)*this.damage);
+        const damageOutput = Math.round((randomAccuracyFactor/this.skillAccuracy)*this.damage);
         return damageOutput;
     };
 
+    /***************************
+    skillReloaded -> 
+    param: none
+    return: none
+    descpt: called from character object if player selects reload option. resets skill pp
+        to max available 
+    */
     this.skillReloaded = function(){
         this.pp = this.ppMax;
     };
