@@ -224,7 +224,8 @@ function playerAddCharTurn(){
 	$('.initialScreenConsole p').remove();
 	if(game.playersInGame[1].characterArr.length<3){	//when player2 has 3 chars(limit) prevent character add
 		if(tracker==1){
-			const charName = playerAddCharacter(0,character);
+			game.addCharacterToPlayer(game.playersInGame[0],characterModel[character]);
+			const charName = characterModel[character].name;
 			const par = $('<p>',{
 				text: 'player 2...',
 				class: 'text-primary'
@@ -235,7 +236,8 @@ function playerAddCharTurn(){
 			$('.player1_intro ul').append(charLi);
 			tracker = 2;
 		}else if(tracker ==2){
-			const charName = playerAddCharacter(1,character);
+			game.addCharacterToPlayer(game.playersInGame[1], characterModel[character]);
+			const charName = characterModel[character].name;
 			const par = $('<p>',{
 				text: 'player 1...',
 				class: 'player1Color'
@@ -261,76 +263,7 @@ function playerAddCharTurn(){
 		console.log('error playerAdder function main');
 	}
 }
-function playerAddCharacter(playerNum, character){
-	switch(character){
-		case "ana":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], ana);
-			return ana.name;
-		case "lucio":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], lucio);
-			return lucio.name;
-		case "zenyatta":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], zenyatta);
-			return zenyatta.name;
-		case "mercy":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], mercy);
-			return mercy.name;
-		case "symmetra":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], symmetra);
-			return symmetra.name;
-		case "dva":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], dva);
-			return dva.name;
-		case "reinhardt":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], reinhardt);
-			return reinhardt.name;
-		case "roadhog":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], roadhog);
-			return roadhog.name;
-		case "winston":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], winston);
-			return winston.name;
-		case "zarya":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], zarya);
-			return zarya.name;
-		case "hanzo":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], hanzo);
-			return hanzo.name;		
-		case "junkrat":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], junkrat);
-			return junkrat.name;
-		case "mei":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], mei);
-			return mei.name;
-		case "torbjorn":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], torbjorn);
-			return torbjorn.name;
-		case "bastion":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], bastion);
-			return bastion.name;
-		case "widowmaker":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], widowmaker);
-			return widowmaker.name;
-		case "genji":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], genji);
-			return genji.name;
-		case "mccree":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], mccree);
-			return mccree.name;
-		case "pharah":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], pharah);
-			return pharah.name;
-		case "soldier":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], soldier);
-			return soldier.name;
-		case "reaper":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], reaper);
-			return reaper.name;	
-		case "tracer":
-			game.addCharacterToPlayer(game.playersInGame[playerNum], tracer);
-			return tracer.name;	
-	}
-}
+
 
 /** initial screen ui handler **/
 function charDropMenuOpen(){
