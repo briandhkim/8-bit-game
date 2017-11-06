@@ -264,7 +264,6 @@ function playerAddCharTurn(){
 	}
 }
 
-
 /** initial screen ui handler **/
 function charDropMenuOpen(){
 	if($('.charDropMenu').css('display')=='none'){
@@ -284,74 +283,77 @@ let menuOpened = false;
 
 /******** ui handlers for keyboard input *******/
 $(window).keydown(function(event){
-	const key = event.keyCode;
-	let this_ = $('.tracker').parent().closest('.moveOpt');		//track span in choosing move options
-	let this_li_ = $('.tracker').parent().closest('li');		//track span in the move option list
-	//	37left	38up	39right	40down	87w	65a	83s	68d
-	if(key===39||key===68){			//right key
-		if(this_.next('.moveOpt').length >0){
-			event.preventDefault();		//prevents arrow key scroll
-			this_.next('.moveOpt').prepend(spanAdd);
-			this_.children('.tracker').remove();
-		}
-	}else if(key===40||key===83){		//down key
-		if(menuOpened){	
-			if(this_li_.next('li').length>0){
+	if(!game.buttonDisable){
+		const key = event.keyCode;
+		let this_ = $('.tracker').parent().closest('.moveOpt');		//track span in choosing move options
+		let this_li_ = $('.tracker').parent().closest('li');		//track span in the move option list
+		//	37left	38up	39right	40down	87w	65a	83s	68d
+		if(key===39||key===68){			//right key
+			if(this_.next('.moveOpt').length >0){
+				event.preventDefault();		//prevents arrow key scroll
+				this_.next('.moveOpt').prepend(spanAdd);
+				this_.children('.tracker').remove();
+			}
+		}else if(key===40||key===83){		//down key
+			if(menuOpened){	
+				if(this_li_.next('li').length>0){
+					event.preventDefault();
+					this_li_.next('li').prepend(spanAdd);
+					this_li_.children('.tracker').remove();
+				}
+			}
+			if(this_.next('.moveOpt').next('.moveOpt').length > 0){
 				event.preventDefault();
-				this_li_.next('li').prepend(spanAdd);
-				this_li_.children('.tracker').remove();
+				this_.next('.moveOpt').next('.moveOpt').prepend(spanAdd);
+				this_.children('.tracker').remove();
 			}
-		}
-		if(this_.next('.moveOpt').next('.moveOpt').length > 0){
-			event.preventDefault();
-			this_.next('.moveOpt').next('.moveOpt').prepend(spanAdd);
-			this_.children('.tracker').remove();
-		}
-	}else if(key===37||key===65){		//left key
-		if(this_.prev('.moveOpt').length>0){
-			event.preventDefault();
-			this_.prev('.moveOpt').prepend(spanAdd);
-			this_.children('.tracker').remove();
-		}
-	}else if(key===38||key===87){		//up key
-		if(menuOpened){
-			if(this_li_.prev('li').length>0){
+		}else if(key===37||key===65){		//left key
+			if(this_.prev('.moveOpt').length>0){
 				event.preventDefault();
-				this_li_.prev('li').prepend(spanAdd);
-				this_li_.children('.tracker').remove();
+				this_.prev('.moveOpt').prepend(spanAdd);
+				this_.children('.tracker').remove();
 			}
-		}
-		if(this_.prev('.moveOpt').prev('.moveOpt').length>0){
+		}else if(key===38||key===87){		//up key
+			if(menuOpened){
+				if(this_li_.prev('li').length>0){
+					event.preventDefault();
+					this_li_.prev('li').prepend(spanAdd);
+					this_li_.children('.tracker').remove();
+				}
+			}
+			if(this_.prev('.moveOpt').prev('.moveOpt').length>0){
+				event.preventDefault();
+				this_.prev('.moveOpt').prev('.moveOpt').prepend(spanAdd);
+				this_.children('.tracker').remove();
+			}
+		}else if(key===32){		//space key
 			event.preventDefault();
-			this_.prev('.moveOpt').prev('.moveOpt').prepend(spanAdd);
-			this_.children('.tracker').remove();
-		}
-	}else if(key===32){		//space key
-		if(menuOpened){
-			if(this_li_.hasClass('backButton')){
-				backButtonClick(this_li_.parent().closest('div'));
-			}else if(this_li_.closest('div').hasClass('changeCharList')){
-				// this_li_.val()
-				changeCharListClick(this_li_.val());
-			}else if(this_li_.closest('div').hasClass('skillList')){
-				skillListClick(this_li_.val());
-			}else if(this_li_.attr('id')=="item_healthPack"){
-				healthPackItemClick();
-			}else if(this_li_.attr('id')=="item_Reload"){
-				reloadClick();
+			if(menuOpened){
+				if(this_li_.hasClass('backButton')){
+					backButtonClick(this_li_.parent().closest('div'));
+				}else if(this_li_.closest('div').hasClass('changeCharList')){
+					// this_li_.val()
+					changeCharListClick(this_li_.val());
+				}else if(this_li_.closest('div').hasClass('skillList')){
+					skillListClick(this_li_.val());
+				}else if(this_li_.attr('id')=="item_healthPack"){
+					healthPackItemClick();
+				}else if(this_li_.attr('id')=="item_Reload"){
+					reloadClick();
+				}
 			}
-		}
-		if(this_.hasClass('moveOptionSkills')){
-			skillMenuClick();
-			this_.children('span:first').remove();
-		}else if(this_.hasClass('moveOptionChangeChar')){
-			charOptClick();
-			this_.children('span:first').remove();
-		}else if(this_.hasClass('moveOptionUse')){
-			useOptClick();
-			this_.children('span:first').remove();
-		}else if(this_.hasClass('moveOptionRageQuit')){
-			rageQuitOpt();
+			if(this_.hasClass('moveOptionSkills')){
+				skillMenuClick();
+				this_.children('span:first').remove();
+			}else if(this_.hasClass('moveOptionChangeChar')){
+				charOptClick();
+				this_.children('span:first').remove();
+			}else if(this_.hasClass('moveOptionUse')){
+				useOptClick();
+				this_.children('span:first').remove();
+			}else if(this_.hasClass('moveOptionRageQuit')){
+				rageQuitOpt();
+			}
 		}
 	}
 });
@@ -503,6 +505,8 @@ function gameOver(playerTurnNum){
 
 function gameEnder(){
 	battleAud.load();
+	$('.tracker').remove();
+	$('.moveOptionSkills').prepend(spanAdd);
 	$('.charSelectDrop').bind('click',charDropMenuOpen);
 	$('.gameStart button').text('Player 1 Select').addClass('btn-warning').removeClass('btn-success startButtonPop');
 	$('.gameStart button').unbind('click', gameStart);

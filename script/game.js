@@ -8,6 +8,7 @@ function Game(uiUpdater){
     let player2 = null;
     let prevTurnMsgElimination = null;
     let prevTurnMsg = null;
+    this.buttonDisable = true;
     /***************************
     gameInitiated -> 
     param: none
@@ -20,7 +21,7 @@ function Game(uiUpdater){
         player2 = new Player();
         this_.playersInGame[0] = player1;
         this_.playersInGame[1] = player2;
-        console.log(this_.playersInGame);
+        // console.log(this_.playersInGame);
     }();    /*****!!! called when Game object is created !!!*****/
 
     /***************************
@@ -43,8 +44,23 @@ function Game(uiUpdater){
     this.gameStart = function(){
         uiUp.characterLoadUpdate(player2, 1);
         uiUp.characterLoadUpdate(player1, 0);
+        this.buttonDisable = false;
     };
-
+    this.buttonTimeout = function(){
+        $('.moveOptionSkills').unbind('click',skillMenuClickMouse);
+        $('.moveOptionChangeChar').unbind('click',charOptClickMouse);
+        $('.moveOptionUse').unbind('click',useOptClickMouse);
+        $('.moveOptionRageQuit').unbind('click',rageQuitOpt);
+        this.buttonDisable = true;
+    };
+    this.buttonRebind = function(){
+        $('.moveOptionSkills').bind('click',skillMenuClickMouse);
+        $('.moveOptionChangeChar').bind('click',charOptClickMouse);
+        $('.moveOptionUse').bind('click',useOptClickMouse);
+        $('.moveOptionRageQuit').bind('click',rageQuitOpt);
+        this.buttonDisable = false;
+        uiUp.removeAnimationClass();
+    };
     /***************************
     changePlayerTurn -> 
     param: none
@@ -52,6 +68,7 @@ function Game(uiUpdater){
     descpt: changes player turn; called when character uses skill/item/change char 
     */
     this.changePlayerTurn = function(){
+        // this.buttonRebind();
         if(this.currentPlayerTurn===0){
             this.currentPlayerTurn++;
             uiUp.turnChangeLoadUpdate(this.playersInGame[this.currentPlayerTurn], this.currentPlayerTurn);
@@ -116,6 +133,7 @@ function Game(uiUpdater){
     descpt: called when player selects a skill to use. 
     */
     this.turnSkillChar = function(skillNum){
+        this.buttonTimeout();
         let selectedSkill = this_.playersInGame[this_.currentPlayerTurn].activeCharacter.skillArr[skillNum];
         if(selectedSkill.pp<=0){
             uiUp.updateConsoleCustomMsg("No more pp for this skill...");
@@ -127,6 +145,10 @@ function Game(uiUpdater){
         //skillOutput =array [0]:heal/damage val  [1]:heal true||false
         prevTurnMsg = charName +" used " + skillName +"!";
         if(!skillOutput[1]){
+            uiUp.attkAnimation(this.currentPlayerTurn);
+            setTimeout(function(){
+                this_.buttonRebind();
+            },500);
             if(this.currentPlayerTurn===0){
                 this.playersInGame[1].activeCharacter.takeDamage(skillOutput[0][0]);
                 uiUp.currentCharDamageTakeHP(this.playersInGame[1].activeCharacter, 1);

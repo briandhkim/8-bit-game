@@ -144,7 +144,7 @@ function UIupdater(){
  			$('#player2_charHealthBar').css({
  				'width' : hpBar+'%'
  			});
- 		}else{
+ 		}else{	
  			$('.player1_currentChar_hpArea .currentHP').text(selectedChar.hp);
  			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
  			if(hpBar <20){
@@ -158,6 +158,17 @@ function UIupdater(){
  				'width' : hpBar+'%'
  			});
  		}
+ 	};
+ 	this.attkAnimation = function(playerTurnNum){
+ 		if(playerTurnNum){
+ 			$('.player2_charImgArea').addClass('p2_attk');
+ 		}else{
+ 			$('.player1_charImgArea').addClass('p1_attk');
+ 		}
+ 	};
+ 	this.removeAnimationClass = function(){
+ 		$('.player1_charImgArea').removeClass('p1_attk');
+ 		$('.player2_charImgArea').removeClass('p2_attk');
  	}
 	/***************************
 	loadAttackMoveList -> 
