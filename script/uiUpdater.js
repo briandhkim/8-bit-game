@@ -166,9 +166,16 @@ function UIupdater(){
  			$('.player1_charImgArea').addClass('p1_attk');
  		}
  	};
+ 	this.receiveHitAnimation = function(playerTurnNum){
+ 		if(playerTurnNum){
+ 			$('.player2_charImgArea').addClass('got_hit');
+ 		}else{
+ 			$('.player1_charImgArea').addClass('got_hit');
+ 		}
+ 	}
  	this.removeAnimationClass = function(){
- 		$('.player1_charImgArea').removeClass('p1_attk');
- 		$('.player2_charImgArea').removeClass('p2_attk');
+ 		$('.player1_charImgArea').removeClass('p1_attk got_hit');
+ 		$('.player2_charImgArea').removeClass('p2_attk got_hit');
  	}
 	/***************************
 	loadAttackMoveList -> 

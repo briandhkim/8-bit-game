@@ -148,27 +148,40 @@ function Game(uiUpdater){
             uiUp.attkAnimation(this.currentPlayerTurn);
             setTimeout(function(){
                 this_.buttonRebind();
-            },500);
+            },900);
             if(this.currentPlayerTurn===0){
+                setTimeout(function(){
+                    uiUp.receiveHitAnimation(1);
+                },170);
                 this.playersInGame[1].activeCharacter.takeDamage(skillOutput[0][0]);
                 uiUp.currentCharDamageTakeHP(this.playersInGame[1].activeCharacter, 1);
                 if(this.checkCharDead(this.playersInGame[1].activeCharacter)){  //checking hcaracter elimination status
                     prevTurnMsgElimination = this.playersInGame[1].activeCharacter.name +" was eliminated!";  
-                    this.deadCharSwap(this.playersInGame[1], 1);       //swaping out eliminated char   
+                    setTimeout(function(){
+                        this_.deadCharSwap(this_.playersInGame[1], 1);       //swaping out eliminated char  
+                    }, 900);
+                     
                     return;
                 }
                 this.changePlayerTurn();
             }else if(this.currentPlayerTurn===1){
+                setTimeout(function(){
+                    uiUp.receiveHitAnimation(0);
+                },170);
                 this.playersInGame[0].activeCharacter.takeDamage(skillOutput[0][0]);
                 uiUp.currentCharDamageTakeHP(this.playersInGame[0].activeCharacter, 0);
                 if(this.checkCharDead(this.playersInGame[0].activeCharacter)){
                     prevTurnMsgElimination = this.playersInGame[0].activeCharacter.name +" was eliminated!";
-                    this.deadCharSwap(this.playersInGame[0], 0);   
+                    setTimeout(function(){
+                        this_.deadCharSwap(this_.playersInGame[0], 0); 
+                    },900);
+                      
                     return;
                 }
                 this.changePlayerTurn();
             }
         }else if(skillOutput[1]){
+            this.buttonRebind();
             this.playersInGame[this.currentPlayerTurn].activeCharacter.addHP(skillOutput[0]);
             uiUp.currentCharDamageTakeHP(this.playersInGame[this.currentPlayerTurn].activeCharacter, this.currentPlayerTurn);
             this.changePlayerTurn();
