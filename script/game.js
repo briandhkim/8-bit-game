@@ -137,6 +137,7 @@ function Game(uiUpdater){
         let selectedSkill = this_.playersInGame[this_.currentPlayerTurn].activeCharacter.skillArr[skillNum];
         if(selectedSkill.pp<=0){
             uiUp.updateConsoleCustomMsg("No more pp for this skill...");
+            this_.buttonRebind();
             return;
         }
         let skillName = this.playersInGame[this.currentPlayerTurn].activeCharacter.skillArr[skillNum].name;
