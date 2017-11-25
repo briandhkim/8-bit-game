@@ -385,7 +385,7 @@ html,body{
 	background-image: url(images/charMain/ana.png);
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: cover;
+	background-size: contain;
 	transform: rotateY(180deg);
 	/*border: 1px solid red;*/
 }
@@ -394,7 +394,7 @@ html,body{
 	background-image: url(images/charMain/reaper.png);
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: cover;
+	background-size: contain;
 	/*border: 1px solid red;*/
 }
 .player1_currentChar_nameArea, .player1_currentChar_hpArea{

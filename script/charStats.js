@@ -18,7 +18,7 @@ const characterModel={
 	ana:{
 		name: 'Ana',
 		hp : 200,
-		img : 'images/charMain/ana.png',
+		img : 'images/characters/ana.png',
 		icon : 'images/icon/ana.png', 
 		skill_1 :{
 			name: 'Biotic Rifle',	//can also shoot allies and heal, but will not use healing at this time
@@ -69,7 +69,7 @@ const characterModel={
 	lucio:{
 		name : 'Lucio',
 		hp : 200,
-		img : 'images/charMain/lucio.png',
+		img : 'images/characters/lucio.png',
 		icon : 'images/icon/lucio.png',
 		skill_1 :{
 			name: 'Sonic Amplifier',
@@ -119,7 +119,7 @@ const characterModel={
 	zenyatta:{
 		name : 'Zenyatta',
 		hp : 200,
-		img : 'images/charMain/zenyatta.png',
+		img : 'images/characters/zenyatta.png',
 		icon : 'images/icon/zenyatta.png',
 		skill_1 :{
 			name: 'Orb of Destruction',
@@ -169,7 +169,7 @@ const characterModel={
 	mercy:{
 		name : 'Mercy',
 		hp : 200,
-		img : 'images/charMain/mercy.png',
+		img : 'images/characters/mercy.png',
 		icon : 'images/icon/mercy.png',
 		skill_1 :{
 			name: 'Caduceus Staff',
@@ -219,7 +219,7 @@ const characterModel={
 	symmetra:{
 		name : 'Symmetra',
 		hp : 200,
-		img : 'images/charMain/symmetra.png',
+		img : 'images/characters/symmetra.png',
 		icon : 'images/icon/symmetra.png',
 		skill_1 :{
 			name: 'Photon Projector',
@@ -269,7 +269,7 @@ const characterModel={
 	dva:{
 		name : 'D. Va',
 		hp : 400,
-		img : 'images/charMain/dva.png',
+		img : 'images/characters/dva.png',
 		icon : 'images/icon/dva.png',
 		skill_1 :{
 			name: 'Fusion Cannons',
@@ -319,7 +319,7 @@ const characterModel={
 	reinhardt:{
 		name : 'Reinhardt',
 		hp : 500,
-		img : 'images/charMain/reinhardt.png',
+		img : 'images/characters/reinhardt.png',
 		icon : 'images/icon/reinhardt.png',
 		skill_1 :{
 			name: 'Rocket Hammer',
@@ -369,7 +369,7 @@ const characterModel={
 	roadhog:{
 		name : 'Roadhog',
 		hp : 600,
-		img : 'images/charMain/roadhog.png',
+		img : 'images/characters/roadhog.png',
 		icon : 'images/icon/roadhog.png',
 		skill_1 :{
 			name: 'Scrap Gun - SR',
@@ -419,7 +419,7 @@ const characterModel={
 	winston:{
 		name : 'Winston',
 		hp : 500,
-		img : 'images/charMain/winston.png',
+		img : 'images/characters/winston.png',
 		icon : 'images/icon/winston.png',
 		skill_1 :{
 			name: "Ol'Musky Cannon",
@@ -469,7 +469,7 @@ const characterModel={
 	zarya:{
 		name : 'Zarya',
 		hp : 400,
-		img : 'images/charMain/zarya.png',
+		img : 'images/characters/zarya.png',
 		icon : 'images/icon/zarya.png',
 		skill_1 :{
 			name: "Particle Beam",
@@ -519,7 +519,7 @@ const characterModel={
 	hanzo:{
 		name : 'Hanzo',
 		hp : 200,
-		img : 'images/charMain/hanzo.png',
+		img : 'images/characters/hanzo.png',
 		icon : 'images/icon/hanzo.png',
 		skill_1 :{
 			name: 'Storm Bow',
@@ -569,7 +569,7 @@ const characterModel={
 	junkrat:{
 		name : 'Junkrat',
 		hp : 200,
-		img : 'images/charMain/junkrat.png',
+		img : 'images/characters/junkrat.png',
 		icon : 'images/icon/junkrat.png',
 		skill_1 :{
 			name: 'Frag Launcher',
@@ -619,7 +619,7 @@ const characterModel={
 	mei:{
 		name : 'Mei(satan)',
 		hp : 250,
-		img : 'images/charMain/mei.png',
+		img : 'images/characters/mei.png',
 		icon : 'images/icon/mei.png',
 		skill_1 :{
 			name: 'Endothermic Blaster',
@@ -669,7 +669,7 @@ const characterModel={
 	torbjorn:{
 		name : 'Torbjorn',
 		hp : 200,
-		img : 'images/charMain/torbjorn.png',
+		img : 'images/characters/torbjorn.png',
 		icon : 'images/icon/torbjorn.png',
 		skill_1 :{
 			name: 'Rivet Gun',
@@ -720,7 +720,7 @@ const characterModel={
 	bastion:{
 		name : 'Bastion',
 		hp : 300,
-		img : 'images/charMain/bastion.png',
+		img : 'images/characters/bastion.png',
 		icon : 'images/icon/bastion.png',
 		skill_1 :{
 			name: 'Submachine Gun',
@@ -770,7 +770,7 @@ const characterModel={
 	widowmaker:{
 		name : 'Widowmaker',
 		hp : 200,
-		img : 'images/charMain/widow.png',
+		img : 'images/characters/widow.png',
 		icon : 'images/icon/widow.png',
 		skill_1 :{
 			name: "Widow's Kiss: Sniper",
@@ -820,7 +820,7 @@ const characterModel={
 	genji:{
 		name : 'Genji',
 		hp : 200,
-		img : 'images/charMain/genji.png',
+		img : 'images/characters/genji.png',
 		icon : 'images/icon/genji.png',
 		skill_1 :{
 			name: 'Shuriken',
@@ -879,7 +879,7 @@ const characterModel={
 	mccree:{
 		name : 'McCree',
 		hp : 200,
-		img : 'images/charMain/mccree.png',
+		img : 'images/characters/mccree.png',
 		icon : 'images/icon/mccree.png',
 		skill_1 :{
 			name: 'Peacekeeper',
@@ -929,7 +929,7 @@ const characterModel={
 	pharah:{
 		name : 'Pharah',
 		hp : 200,
-		img : 'images/charMain/pharah.png',
+		img : 'images/characters/pharah.png',
 		icon : 'images/icon/pharah.png',
 		skill_1 :{
 			name: 'Rocket Launcher',
@@ -979,7 +979,7 @@ const characterModel={
 	soldier:{
 		name : 'Solder: 76',
 		hp : 200,
-		img : 'images/charMain/soldier.png',
+		img : 'images/characters/soldier.png',
 		icon : 'images/icon/soldier.png',
 		skill_1 :{
 			name: 'Heavy Pulse Rifle',
@@ -1029,7 +1029,7 @@ const characterModel={
 	reaper:{
 		name : 'Reaper',
 		hp : 250,
-		img : 'images/charMain/reaper.png',
+		img : 'images/characters/reaper.png',
 		icon : 'images/icon/reaper.png',
 		skill_1 :{
 			name: 'Hellfire Shotguns',
@@ -1079,7 +1079,7 @@ const characterModel={
 	tracer:{
 		name : 'Tracer',
 		hp : 150,
-		img : 'images/charMain/tracer.png',
+		img : 'images/characters/tracer.png',
 		icon : 'images/icon/tracer.png',
 		skill_1 :{
 			name: 'Pulse Pistols',
