@@ -102,15 +102,40 @@ html,body{
 	margin-left: 4.1666%;
 }
 .charSelect>div:first-child{
-	height: 70%;
+	/*height: 70%;*/
+	height: 69%;
+	margin-top:5px;
 }
 .introBackground{
 	height: 100%;
-	background: url('images/introBG.gif');
+	margin-left: 4.1666%;
+	background-color: white;
+	border: 5px dashed;
+	box-sizing: border-box;
+	/*background: url('images/introBG.gif');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;*/
+}
+.gameLogo{
+	height: 25%;
+	border: 1px solid red;
+}
+.owLogo, .pokeLogo{
+	height: 100%;
+	border: 1px solid black;
+}
+.introImgArea{
+	height: 75%;
+	border: 1px solid green;
+}
+.introImgDiv{
+	height: 100%;
+	border: 1px solid blue;
+	background: url('images/intro/ana.png');
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
-	margin-left: 4.1666%;
 }
 .charSelect>div:nth-child(2){
 	height: 30%;
@@ -119,9 +144,10 @@ html,body{
 	height: 98%;
 	background-color: rgb(255,255,255);
 	border: 5px dashed;
+	border-top: none;
 	padding: 0;
 }
-.gameLogo, .initialCharSelect{
+.gameInfo, .initialCharSelect{
 	height: 100%;
 }
 .logoArea{
@@ -278,9 +304,9 @@ html,body{
 	.charBanner{
 		margin-left: 4.1666%;
 	}
-	.gameLogo{
+	/*.gameLogo{
 		display: none;
-	}
+	}*/
 	.playerCharDisplay{
 		height: 40%;
 	}
