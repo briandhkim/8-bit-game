@@ -102,15 +102,46 @@ html,body{
 	margin-left: 4.1666%;
 }
 .charSelect>div:first-child{
-	height: 70%;
+	/*height: 70%;*/
+	height: 69%;
+	margin-top:5px;
 }
 .introBackground{
 	height: 100%;
-	background: url('images/introBG.gif');
+	margin-left: 4.1666%;
+	background-color: white;
+	border: 5px dashed;
+	box-sizing: border-box;
+	/*background: url('images/introBG.gif');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;*/
+}
+.gameLogo{
+	height: 25%;
+	border: 1px solid red;
+}
+.owLogo, .pokeLogo{
+	height: 100%;
+	border: 1px solid black;
+}
+.owLogo{
+	background: url('images/owlogo.png');
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
-	margin-left: 4.1666%;
+}
+.introImgArea{
+	height: 75%;
+	border: 1px solid green;
+}
+.introImgDiv{
+	height: 100%;
+	border: 1px solid blue;
+	background: url('images/intro/ana.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
 }
 .charSelect>div:nth-child(2){
 	height: 30%;
@@ -119,9 +150,10 @@ html,body{
 	height: 98%;
 	background-color: rgb(255,255,255);
 	border: 5px dashed;
+	border-top: none;
 	padding: 0;
 }
-.gameLogo, .initialCharSelect{
+.gameInfo, .initialCharSelect{
 	height: 100%;
 }
 .logoArea{
@@ -132,7 +164,14 @@ html,body{
 	background-size: auto 100%;
 }
 .infoArea{
-	height: 30%;
+	/*height: 30%;*/
+	height: 100%;
+}
+.aboutRow, .instructionRow{
+	height: 50%;
+}
+.aboutRow h5{
+	line-height: 4.5;
 }
 .infoArea button{
 	border: none;
@@ -163,6 +202,7 @@ html,body{
 .charSelectDrop{
 	position: relative;
 	border-bottom: 5px dashed;
+	cursor: pointer;
 }
 .charSelectDrop h4{
 	margin-top: 5.5%;
@@ -208,15 +248,20 @@ html,body{
 	width: 95%;
 	height: 98%;
 	margin-left: 2.5%;
+	cursor: default;
+}
+.gameStart button.btn-success{
 	text-shadow:
 		-0.75px -0.75px 0 #000,
 		1px 1px 0 #000;
+	cursor: pointer;
 }
 .startButtonPop{
 	animation:
 		buttonPop .85s infinite;
 }
 .initialScreenConsole{
+	cursor: default;
 	font-size: 18px;
 }
 .initialScreenConsole div{
@@ -242,6 +287,7 @@ html,body{
 	height: 30%;
 }
 .player1_intro, .player2_intro{
+	cursor: default;
 	height: 90%;
 	box-sizing: border-box;
 	border: 5px dashed;
@@ -278,9 +324,9 @@ html,body{
 	.charBanner{
 		margin-left: 4.1666%;
 	}
-	.gameLogo{
+	/*.gameLogo{
 		display: none;
-	}
+	}*/
 	.playerCharDisplay{
 		height: 40%;
 	}

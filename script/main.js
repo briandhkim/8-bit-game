@@ -13,11 +13,42 @@ gameEndAud2.volume = 0.3;
 let uiUpdate = null;
 let game = null;
 let tracker = 1;
+const bgImgPath = './images/intro/';
+let imgArr = ['ana.png','bastion.png','genji.png','junkrat.png','mei.png','mercy.png','pharah.png'
+	,'reaper.png','reinhardt.png','soldier.png','symmetra.png', 'torbjorn.png','tracer.png','widow.png',
+	'winston.png','zarya.png','zenyatta.png'];
+let imgInterval = null;
+
 $(document).ready(function(){
 	mouseHandler();
 	uiUpdate = new UIupdater();
 	game = new Game(uiUpdate);
+
+	const randImg = Math.floor(Math.random()*imgArr.length);
+	$('.introImgDiv').css({
+		'background': `url(${bgImgPath}${imgArr[randImg]})`,
+		'background-repeat': 'no-repeat',
+		'background-size': 'contain',
+		'background-position': 'center'
+	});
+	randIntroImg();
+	$('.instructionButton').click();
 });
+
+function randIntroImg(){
+	imgInterval = setInterval(()=>{
+		const randImg = Math.floor(Math.random()*imgArr.length);
+		$('.introImgDiv').toggle('slide',{direction:'left'},1100,()=>{
+			$('.introImgDiv').css({
+				'background': `url(${bgImgPath}${imgArr[randImg]})`,
+				'background-repeat': 'no-repeat',
+				'background-size': 'contain',
+				'background-position': 'center'
+			});
+			$('.introImgDiv').toggle('slide',{direction:'right'}, 1100);
+		});
+	},5000);
+}
 
 function scroller(screenID){	//will be either #gamePageMain or #introPageMain
 	if(screenID == 'introPageMain'){
@@ -43,6 +74,8 @@ function gameStart(){
 	battleAud.play();
 	gameEndAud.load();
 	scroller('gamePageMain');
+	clearInterval(imgInterval);
+	imgInterval = null;
 	game.gameStart();
 	$('.player1_intro li, .player2_intro li').remove();
 	$('iframe').remove();
@@ -158,10 +191,16 @@ function instructionModalToggle(){
 		class: 'instructionDT',
 		text: 'the initial screen:'
 	});
+	const initialSpan1 = $('<span>').text('Players will take turns choosing ');
+	const initialSpan2 = $('<span>').text('three characters').css('color','red');
+	const initialSpan3 = $('<span>').text(' of his or her choice; player turn will alternate and will be indicated on the right side of the screen.');
+	// const initialScreenDD = $('<dd>',{
+	// 	class: 'instructionDD',
+	// 	text: 'Players will take turns choosing three characters of his or her choice; player turn will alternate and will be indicated on the right side of the screen.'
+	// });
 	const initialScreenDD = $('<dd>',{
-		class: 'instructionDD',
-		text: 'Players will take turns choosing three characters of his or her choice; player turn will alternate and will be indicated on the right side of the screen.'
-	});
+		class: 'instructionDD'
+	}).append(initialSpan1, initialSpan2, initialSpan3);
 	const initialScreenDD2 = $('<dd>',{
 		class: 'instructionDD',
 		text:'Choose your characters wisely as the character selection cannot be reverted until the game ends.'
@@ -182,7 +221,8 @@ function instructionModalToggle(){
 	const wasdKey = $('<kbd>').text(' w | a | s | d ');
 	const keySpan2 = $('<span>').text('  /');
 	const arrowKey = $('<kbd>').html(' &#8593 | &#8592 | &#8595 | &#8594 ');
-	const keySpan3 = $('<span>').text(' keys to navigate the character move options. Left click or press ');
+	const keySpan3 = $('<span>').text(' keys to navigate the character move options. Left click or press ')
+		.css('margin-left', '10px');
 	const spaceKey = $('<kbd>').text('-space-');
 	const keySpan4 = $('<span>').text(' bar to select character move');
 	const keysDD = $('<dd>',{
@@ -231,7 +271,8 @@ function playerAddCharTurn(){
 				class: 'text-primary'
 			});
 			$('.initialScreenConsole div').append(par);
-			$('.gameStart button').text('Player 2 Select').addClass('btn-primary').removeClass('btn-warning');
+			// $('.gameStart button').text('Player 2 Select').addClass('btn-primary').removeClass('btn-warning');
+			$('.gameStart button').text('Player 2 Select');
 			charLi.text(' '+charName).prepend(img_);
 			$('.player1_intro ul').append(charLi);
 			tracker = 2;
@@ -243,7 +284,8 @@ function playerAddCharTurn(){
 				class: 'player1Color'
 			});
 			$('.initialScreenConsole div').append(par);
-			$('.gameStart button').text('Player 1 Select').addClass('btn-warning').removeClass('btn-primary');
+			// $('.gameStart button').text('Player 1 Select').addClass('btn-warning').removeClass('btn-primary');
+			$('.gameStart button').text('Player 1 Select');
 			charLi.text(' '+charName).prepend(img_);
 			$('.player2_intro ul').append(charLi);
 			tracker = 1;
@@ -256,7 +298,7 @@ function playerAddCharTurn(){
 			});
 			$('.initialScreenConsole div').append(par);
 			$('.charSelectDrop').unbind('click',charDropMenuOpen);
-			$('.gameStart button').text('START').addClass('btn-success startButtonPop').removeClass('btn-warning');
+			$('.gameStart button').text('START').addClass('btn-success startButtonPop');
 			$('.gameStart button').bind('click', gameStart);
 		}
 	}else{
@@ -469,6 +511,7 @@ function rageQuitOpt(){
 	$('#gameEndModalTitle').text("Too difficult for you???");
 	$('#gameEndModal').modal('show');
 	scroller("introPageMain");
+	randIntroImg();
 	gameEnder();
 }
 /****end of mouse click handler for main game area ****/
@@ -495,6 +538,7 @@ function gameOver(playerTurnNum){
 	});
 	$('#gameEndModal .modal-body').text('').append(videoFrame);
 	$('#gameEndModalTitle').text("Game Over");
+	randIntroImg();
 	setTimeout(function(){
 		$("#gameEndModal").modal('show');
 		scroller('introPageMain');
@@ -508,7 +552,8 @@ function gameEnder(){
 	$('.tracker').remove();
 	$('.moveOptionSkills').prepend(spanAdd);
 	$('.charSelectDrop').bind('click',charDropMenuOpen);
-	$('.gameStart button').text('Player 1 Select').addClass('btn-warning').removeClass('btn-success startButtonPop');
+	// $('.gameStart button').text('Player 1 Select').addClass('btn-warning').removeClass('btn-success startButtonPop');
+	$('.gameStart button').text('Player 1 Select').removeClass('btn-success startButtonPop');
 	$('.gameStart button').unbind('click', gameStart);
 	$('.initialScreenConsole p').remove();
 	const par = $('<p>',{
