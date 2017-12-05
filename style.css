@@ -125,6 +125,12 @@ html,body{
 	height: 100%;
 	border: 1px solid black;
 }
+.owLogo{
+	background: url('images/owlogo.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}
 .introImgArea{
 	height: 75%;
 	border: 1px solid green;
@@ -158,7 +164,14 @@ html,body{
 	background-size: auto 100%;
 }
 .infoArea{
-	height: 30%;
+	/*height: 30%;*/
+	height: 100%;
+}
+.aboutRow, .instructionRow{
+	height: 50%;
+}
+.aboutRow h5{
+	line-height: 4.5;
 }
 .infoArea button{
 	border: none;
@@ -189,6 +202,7 @@ html,body{
 .charSelectDrop{
 	position: relative;
 	border-bottom: 5px dashed;
+	cursor: pointer;
 }
 .charSelectDrop h4{
 	margin-top: 5.5%;
@@ -234,15 +248,20 @@ html,body{
 	width: 95%;
 	height: 98%;
 	margin-left: 2.5%;
+	cursor: default;
+}
+.gameStart button.btn-success{
 	text-shadow:
 		-0.75px -0.75px 0 #000,
 		1px 1px 0 #000;
+	cursor: pointer;
 }
 .startButtonPop{
 	animation:
 		buttonPop .85s infinite;
 }
 .initialScreenConsole{
+	cursor: default;
 	font-size: 18px;
 }
 .initialScreenConsole div{
@@ -268,6 +287,7 @@ html,body{
 	height: 30%;
 }
 .player1_intro, .player2_intro{
+	cursor: default;
 	height: 90%;
 	box-sizing: border-box;
 	border: 5px dashed;
