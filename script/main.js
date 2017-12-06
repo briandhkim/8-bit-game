@@ -161,8 +161,18 @@ function aboutModalToggle(){
 	});
 	const copyrightDD= $('<dd>',{
 		class: 'aboutModalDD',
-		text: "The pixel artwork you seen in this project are what I have found on the internet. If by some chance someone from Blizzard stumbles upon this, Blizzard, I am sorry I did not ask permission to use your game before hand."
+		text: "If by some chance someone from Blizzard stumbles upon this, Blizzard, I am sorry I did not ask permission to use your game before hand."
 	});
+	const imageSrcDD = $('<dd>').addClass('aboutModalDD');
+	const imgSrcSpan1 = $('<span>').text('The pixel artworks used for this project can be found at the following link: ');
+	const tumblrIcon = $('<i>',{
+		class:'fa fa-tumblr-square fa-2x tumblrIcon'
+	}).css({color: 'rgba(54,70,93,0.6)'});
+	const tumblrButton = $('<a>',{
+		href: 'http://chiwadesu.tumblr.com/',
+		target: '_blank'
+	}).append(tumblrIcon);
+	imageSrcDD.append(imgSrcSpan1, tumblrButton);
 	const gitIcon = $('<i>',{
 		class: 'fa fa-github-square fa-3x gitIcon'
 	}).css({
@@ -182,7 +192,7 @@ function aboutModalToggle(){
 		href: "https://www.linkedin.com/in/briandhkimucla/",
 		target: '_blank'
 	}).append(linkedIcon);
-	let aboutDescription = $('<dl>').append(aboutGameLead, aboutGameContent, aboutDevDT, aboutDevDD, gitButton, linkedButton, copyrightDT, copyrightDD);
+	let aboutDescription = $('<dl>').append(aboutGameLead, aboutGameContent, aboutDevDT, aboutDevDD, gitButton, linkedButton, copyrightDT, copyrightDD, imageSrcDD);
 	$('#gameInfoModal .modal-body').append(aboutDescription);
 	$('#gameInfoModalTitle').text('about the game');
 }

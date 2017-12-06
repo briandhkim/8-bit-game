@@ -9,9 +9,9 @@ function UIupdater(){
 			const banner = `.gBannerSkill${idx+1}`;
 			$(`${banner} .skillName`).text(skill.name);
 			if(skill.heal){
-				$(`${banner} .skillAttr`).text(` - HEAL: ${skill.heal} hp`);
+				$(`${banner} .skillAttr`).text(` -HEAL:${skill.heal}hp`);
 			}else{
-				$(`${banner} .skillAttr`).text(` - DMG: ${skill.damage} | ACC: ${skill.skillAccuracy}%`)
+				$(`${banner} .skillAttr`).text(` -DMG:${skill.damage} | ACC:${skill.skillAccuracy}%`)
 			}
 		});
 	};	
