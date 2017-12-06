@@ -1,6 +1,21 @@
 function UIupdater(){
-	
 	/*** ui updates for main game area ***/
+	this.bannerUpdate = function(selectedChar){
+		let character = selectedChar;
+		$('.gBannerNameCol').text(character.name);
+		// let skillNum = 1;
+		skillArr = character.skillArr;
+		skillArr.forEach((skill, idx)=>{
+			const banner = `.gBannerSkill${idx+1}`;
+			$(`${banner} .skillName`).text(skill.name);
+			if(skill.heal){
+				$(`${banner} .skillAttr`).text(` - HEAL: ${skill.heal} hp`);
+			}else{
+				$(`${banner} .skillAttr`).text(` - DMG: ${skill.damage} | ACC: ${skill.skillAccuracy}%`)
+			}
+		});
+	};	
+
 	/***************************
 	characterLoadUpdate -> 
 	param: player object, (int) player turn number
@@ -16,6 +31,7 @@ function UIupdater(){
 		this.loadAttackMoveList(charInPlay.skillArr);
 		this.loadHealthPackCount(player.healthPackCount);
 		this.loadPlayerCharacterList(player.characterArr);
+		this.bannerUpdate(charInPlay);
 	};
 
 	/***************************
@@ -32,6 +48,7 @@ function UIupdater(){
 		this.loadAttackMoveList(charInPlay.skillArr);
 		this.loadHealthPackCount(player.healthPackCount);
 		this.loadPlayerCharacterList(player.characterArr);
+		this.bannerUpdate(charInPlay);
 	};
 
 	/***************************

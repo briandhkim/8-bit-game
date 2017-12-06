@@ -610,10 +610,26 @@ html,body{
 		font-size:15px;
 	}
 }
-@media screen and (max-width: 768px){
+@media screen and (max-width: 767px){
+	.gameBanner{
+		margin-left: 4.166%;
+		padding: 0;
+	}
+	.gBannerSkillCol{
+		padding: 0;
+	}
+	.player2_currentChar_hpArea div:nth-child(2), .player1_currentChar_hpArea div:nth-child(2){
+		font-size: 10px;
+	}
 	/*.console{
 		font-size: 18px;
 	}*/
+	.player1_charStats, .player2_charStats{
+		background-image: none;
+	}
+	.gameBodyConsole .console{
+		margin-left: 0;
+	}
 	.consoleMessage li{
 		font-size: 11.5px;
 	}
