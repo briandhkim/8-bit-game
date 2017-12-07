@@ -78,7 +78,7 @@ function gameStart(){
 	imgInterval = null;
 	game.gameStart();
 	// $('.player1_intro li, .player2_intro li').remove();
-	$('.player1_intro li, .player2_intro li').text('not selected');
+	$('.player1_intro li, .player2_intro li').text('- not selected');
 	$('iframe').remove();
 	$('.inGameAudioToggler i').removeClass('fa-volume-off').addClass('fa-volume-up');
 }
@@ -262,7 +262,7 @@ function instructionModalToggle(){
 
 function playerAddCharTurn(){
 	event.stopPropagation();
-	$('.charDropMenu').css('display','none');
+	// $('.charDropMenu').css('display','none');
 	let character = $(event.target).attr('value');
 	const imgSrc = $(event.target).children('img').attr('src');
 	let img_ = $('<img>',{
