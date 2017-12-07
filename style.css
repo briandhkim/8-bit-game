@@ -80,6 +80,7 @@ html,body{
 /*font-family: 'Press Start 2P', cursive;*/
 .introPageMain, .gamePageMain{
 	height: 100vh;
+	min-height: 900px;
 }
 .introPageMain{
 	background-color: rgb(25, 85, 147);
@@ -568,6 +569,9 @@ html,body{
 	font-size: 175%;
 }
 @media screen and (max-width: 1024px){
+	.introPageMain, .gamePageMain{
+		min-height: 768px;
+	}
 	.instructionRow h5, .aboutRow h5{
 		font-size: 11px;
 	}
@@ -621,6 +625,9 @@ html,body{
 	}
 }
 @media screen and (max-width: 767px){
+	.introPageMain, .gamePageMain{
+		min-height: 650px;
+	}
 	.logo-charSelection{
 		height: 60%;
 	}
@@ -742,7 +749,7 @@ html,body{
 	display:inline-block;
 }
 #gameEndModalTitle, #gameInfoModalTitle{		/*typing animation for first li element in console*/
-	/*display: list-item;*/
+	cursor: default;
 	overflow: hidden;
 	border-right: .15em solid rgb(25, 85, 147);
 	white-space: nowrap;
