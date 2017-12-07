@@ -83,12 +83,12 @@ function gameStart(){
 	$('.inGameAudioToggler i').removeClass('fa-volume-off').addClass('fa-volume-up');
 }
 function mouseHandler(){
-	$('.charSelectDrop:not(.characterList)').click(charDropMenuOpen);
-	$('.charMenuCloser').on('click',function(evt){
-		evt.stopPropagation();
-		charDropMenuClose();
-	});
-	$('.charDropMenu ul').on('click', 'li:not(li:last-of-type)', function(){
+	// $('.charSelectDrop:not(.characterList)').click(charDropMenuOpen);
+	// $('.charMenuCloser').on('click',function(evt){
+	// 	evt.stopPropagation();
+	// 	charDropMenuClose();
+	// });
+	$('.charDropMenu ul').on('click', 'li', function(){
 		playerAddCharTurn();
 	});
 	// below are handlers for main game area
@@ -171,7 +171,10 @@ function aboutModalToggle(){
 	}).css({color: 'rgba(54,70,93,0.6)'});
 	const tumblrButton = $('<a>',{
 		href: 'http://chiwadesu.tumblr.com/',
-		target: '_blank'
+		target: '_blank',
+	}).css({
+		position: 'relative',
+		top: '7px'
 	}).append(tumblrIcon);
 	imageSrcDD.append(imgSrcSpan1, tumblrButton);
 	const gitIcon = $('<i>',{
@@ -312,7 +315,7 @@ function playerAddCharTurn(){
 				class: 'text-success'
 			});
 			$('.initialScreenConsole div').append(par);
-			$('.charSelectDrop').unbind('click',charDropMenuOpen);
+			// $('.charSelectDrop').unbind('click',charDropMenuOpen);
 			$('.gameStart button').text('START').addClass('btn-success startButtonPop');
 			$('.gameStart button').bind('click', gameStart);
 		}
@@ -323,16 +326,16 @@ function playerAddCharTurn(){
 }
 
 /** initial screen ui handler **/
-function charDropMenuOpen(){
-	if($('.charDropMenu').css('display')=='none'){
-		$('.charDropMenu').show();
-	}
-}
-function charDropMenuClose(){
-	if($('.charDropMenu').css('display')=='block'){
-		$('.charDropMenu').hide();
-	}
-}
+// function charDropMenuOpen(){
+// 	if($('.charDropMenu').css('display')=='none'){
+// 		$('.charDropMenu').show();
+// 	}
+// }
+// function charDropMenuClose(){
+// 	if($('.charDropMenu').css('display')=='block'){
+// 		$('.charDropMenu').hide();
+// 	}
+// }
 /**** end of initial screen ui handler ****/
 
 /******************* ui handlers for game area *****************/ 
