@@ -317,7 +317,8 @@ function playerAddCharTurn(){
 			$('.gameStart button').bind('click', gameStart);
 		}
 	}else{
-		console.log('error playerAdder function main');
+		console.log("'error playerAdder function main: can't add more");
+		return;
 	}
 }
 
@@ -518,8 +519,8 @@ function rageQuitOpt(){
 	// <iframe width="560" height="315" src="https://www.youtube.com/embed/X2WH8mHJnhM?start=16" frameborder="0" allowfullscreen></iframe>
 	const feelsBadMan = $('<iframe>',{
 		src: "https://www.youtube.com/embed/X2WH8mHJnhM?start=16&autoplay=1",
-		width: "560",
-		height: "315",
+		// "width": "100%",
+		// "min-height": "350px",
 		frameborder: "0"
 	});
 	$('#gameEndModal .modal-body').text('').append(feelsBadMan);
@@ -544,12 +545,10 @@ function gameOver(playerTurnNum){
 	}
 	battleAud.pause();
 	gameEndAud.play();
-	// <iframe width="560" height="315" src="https://www.youtube.com/embed/t2Yrz9HSZNo" frameborder="0" allowfullscreen></iframe>
+	// <iframe "width"="560" height="315" src="https://www.youtube.com/embed/t2Yrz9HSZNo" frameborder="0" allowfullscreen></iframe>
 	const videoFrame = $("<iframe>",{
 		src: "https://www.youtube.com/embed/sQfk5HykiEk",
-		frameborder : "0",
-		width: "560",
-		height: "315"
+		frameborder : "0"
 	});
 	$('#gameEndModal .modal-body').text('').append(videoFrame);
 	$('#gameEndModalTitle').text("Game Over");

@@ -120,11 +120,11 @@ html,body{
 }
 .gameLogo{
 	height: 25%;
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 }
 .owLogo, .pokeLogo{
 	height: 100%;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 }
 .owLogo{
 	background: url('images/owlogo.png');
@@ -134,11 +134,11 @@ html,body{
 }
 .introImgArea{
 	height: 75%;
-	border: 1px solid green;
+	/*border: 1px solid green;*/
 }
 .introImgDiv{
 	height: 100%;
-	border: 1px solid blue;
+	/*border: 1px solid blue;*/
 	background: url('images/intro/ana.png');
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -303,6 +303,9 @@ html,body{
 .player1_intro ul, .player2_intro ul{
 	list-style-type: none;
 	color: white;
+}
+.player1_intro ul li, .player2_intro ul li{
+	height: 5.5vh;
 }
 .player1_intro{
 	/*margin-right: 10px;*/
@@ -493,12 +496,15 @@ html,body{
 		typing 2s steps(40, end),
 		blinkCaret .85s step-end infinite;
 }
-
+.moveOptions{
+	padding: 0;
+}
 .moveOpt{
 	height: 50%;
 	font-size: 15px;
 	overflow: hidden;
 	text-overflow:ellipsis;
+	padding: 10px 15px;
 }
 
 .moveOptionSkills{
@@ -535,6 +541,20 @@ html,body{
 	text-overflow:ellipsis;*/
 	background-color:white;
 }
+.statsSquareWrapper{
+	position: relative;
+}
+.statsSquare{
+	width: 400px;
+	height:250px;
+	position: absolute;
+	left: -10%;
+	bottom: 0;
+	border: 4px dashed;
+	background-color: white;
+	font-size: 13.5px;
+	padding: 1px 15px;
+}
 .moveOptions ul{
 	list-style-type:none;
 }
@@ -568,6 +588,90 @@ html,body{
 .tracker{
 	font-size: 175%;
 }
+
+/*** modal css ***/
+#gameInfoModal .gitIcon:hover{
+	color: rgba(0,0,0,1) !important;
+}
+#gameInfoModal .liIcon:hover{
+	color: rgba(0,119,181,1) !important;
+}
+#gameInfoModal .tumblrIcon:hover{
+	color: rgba(54,70,93,1) !important;
+}
+.modal-content{
+	font-family: 'Press Start 2P', cursive;
+	border-radius: 15px;
+}
+.modal-title-wrap{
+	display:inline-block;
+}
+#gameEndModalTitle, #gameInfoModalTitle{		/*typing animation for first li element in console*/
+	cursor: default;
+	overflow: hidden;
+	border-right: .15em solid rgb(25, 85, 147);
+	white-space: nowrap;
+	margin: 0 auto;
+	letter-spacing: .20em;
+	animation: 
+		typing 3s steps(40, end),
+		blinkCaret .85s step-end infinite;
+}
+.modal-header, .modal-footer{
+	background-color: rgba(25, 85, 147, 0.7);
+	border: 3px dashed black;
+	box-sizing: border-box;
+	color: white;
+	text-shadow: 
+	-1px -1px 0 #000,
+	1px 1px 0 #000,
+	2px 2px 0 #000;
+}
+.modal-header{
+	border-radius: 15px 15px 0 0;
+}
+.modal-header .audioToggler{
+	float: right;
+	border: 0;
+	background: 0;
+	color: rgba(255,255,255,0.5);
+}
+.modal-header .audioToggler:hover{
+	color: rgba(255,255,255,1);
+}
+.modal-header .close{
+	color: red;
+}
+.modal-header .close:hover{
+	color: red;
+}
+#gameEndModal .modal-body{
+	min-height: 350px;
+}
+#gameEndModal .modal-body iframe{
+	width: 100%;
+	min-height: 325px;
+}
+.modal-body{
+	background-color: rgba(227, 145, 23, 0.7);
+}
+.modal-footer{
+	border-radius: 0 0 15px 15px;
+}
+.aboutModalDT, .instructionDT{
+	color: red;
+	text-shadow: 
+		-0.5px -0.5px 0 #000,
+		1px 1px 0 #000;
+}
+.aboutModalDD, .instructionDD{
+	font-size: 11px;
+	color: white;
+	text-shadow: 
+		-0.5px -0.5px 0 #000,
+		0.75px 0.75px 0 #000;
+}
+
 @media screen and (max-width: 1024px){
 	.introPageMain, .gamePageMain{
 		min-height: 768px;
@@ -608,8 +712,8 @@ html,body{
 		font-size: 11.5px;
 	}
 	.moveOpt{
-		padding: 0;
-		font-size: 13px;
+		padding: 20px 0;
+		font-size: 12px;
 	}
 	#skill_1, #skill_2, #skill_3, #skill_4{
 		font-size: 16px;
@@ -637,7 +741,8 @@ html,body{
 		margin-left: 0;
 	}
 	.introBackground{
-		margin-left: 0;
+		/*margin-left: 0;*/
+		margin-left: 4.1666%;
 	}
 	.charBanner{
 		margin-left: 4.1666%;
@@ -713,7 +818,7 @@ html,body{
 		font-size: 11.5px;
 	}
 	.moveOpt{
-		padding: 0;
+		padding: 10px 5px;
 		font-size: 13px;
 	}
 	#skill_1, #skill_2, #skill_3, #skill_4{
@@ -729,80 +834,11 @@ html,body{
 	.useList{
 		font-size: 18px;
 	}
-}
-
-/*** modal css ***/
-#gameInfoModal .gitIcon:hover{
-	color: rgba(0,0,0,1) !important;
-}
-#gameInfoModal .liIcon:hover{
-	color: rgba(0,119,181,1) !important;
-}
-#gameInfoModal .tumblrIcon:hover{
-	color: rgba(54,70,93,1) !important;
-}
-.modal-content{
-	font-family: 'Press Start 2P', cursive;
-	border-radius: 15px;
-}
-.modal-title-wrap{
-	display:inline-block;
-}
-#gameEndModalTitle, #gameInfoModalTitle{		/*typing animation for first li element in console*/
-	cursor: default;
-	overflow: hidden;
-	border-right: .15em solid rgb(25, 85, 147);
-	white-space: nowrap;
-	margin: 0 auto;
-	letter-spacing: .20em;
-	animation: 
-		typing 3s steps(40, end),
-		blinkCaret .85s step-end infinite;
-}
-.modal-header, .modal-footer{
-	background-color: rgba(25, 85, 147, 0.7);
-	border: 3px dashed black;
-	box-sizing: border-box;
-	color: white;
-	text-shadow: 
-	-1px -1px 0 #000,
-	1px 1px 0 #000,
-	2px 2px 0 #000;
-}
-.modal-header{
-	border-radius: 15px 15px 0 0;
-}
-.modal-header .audioToggler{
-	float: right;
-	border: 0;
-	background: 0;
-	color: rgba(255,255,255,0.5);
-}
-.modal-header .audioToggler:hover{
-	color: rgba(255,255,255,1);
-}
-.modal-header .close{
-	color: red;
-}
-.modal-header .close:hover{
-	color: red;
-}
-.modal-body{
-	background-color: rgba(227, 145, 23, 0.7);
-}
-.modal-footer{
-	border-radius: 0 0 15px 15px;
-}
-.aboutModalDT, .instructionDT{
-	color: red;
-	text-shadow: 
-		-0.5px -0.5px 0 #000,
-		1px 1px 0 #000;
-}
-.aboutModalDD, .instructionDD{
-	font-size: 11px;
-	color: white;
-	text-shadow: 
-		-0.5px -0.5px 0 #000,
-		0.75px 0.75px 0 #000;
+	#gameEndModalTitle, #gameInfoModalTitle, #gameEndModalFooter{
+		font-size: 9px;
+	}
+	#gameEndModal .modal-body iframe{
+		width: 100%;
+		height: auto;
+	}
 }
