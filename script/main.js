@@ -77,7 +77,8 @@ function gameStart(){
 	clearInterval(imgInterval);
 	imgInterval = null;
 	game.gameStart();
-	$('.player1_intro li, .player2_intro li').remove();
+	// $('.player1_intro li, .player2_intro li').remove();
+	$('.player1_intro li, .player2_intro li').text('not selected');
 	$('iframe').remove();
 	$('.inGameAudioToggler i').removeClass('fa-volume-off').addClass('fa-volume-up');
 }
@@ -166,7 +167,7 @@ function aboutModalToggle(){
 	const imageSrcDD = $('<dd>').addClass('aboutModalDD');
 	const imgSrcSpan1 = $('<span>').text('The pixel artworks used for this project can be found at the following link: ');
 	const tumblrIcon = $('<i>',{
-		class:'fa fa-tumblr-square fa-2x tumblrIcon'
+		class:'fa fa-tumblr-square fa-3x tumblrIcon'
 	}).css({color: 'rgba(54,70,93,0.6)'});
 	const tumblrButton = $('<a>',{
 		href: 'http://chiwadesu.tumblr.com/',
@@ -270,11 +271,12 @@ function playerAddCharTurn(){
 		width: '30px',
 		height: '30px'
 	});
-	let charLi = $('<li>');
+	// let charLi = $('<li>');
 	$('.initialScreenConsole p').remove();
 	if(game.playersInGame[1].characterArr.length<3){	//when player2 has 3 chars(limit) prevent character add
 		if(tracker==1){
 			game.addCharacterToPlayer(game.playersInGame[0],characterModel[character]);
+			const liIterator = game.playersInGame[0].characterArr.length;
 			const charName = characterModel[character].name;
 			const par = $('<p>',{
 				text: 'player 2...',
@@ -283,11 +285,13 @@ function playerAddCharTurn(){
 			$('.initialScreenConsole div').append(par);
 			// $('.gameStart button').text('Player 2 Select').addClass('btn-primary').removeClass('btn-warning');
 			$('.gameStart button').text('Player 2 Select');
-			charLi.text(' '+charName).prepend(img_);
-			$('.player1_intro ul').append(charLi);
+			$(`.player1_intro li:nth-of-type(${liIterator})`).text(' '+charName).prepend(img_);
+			// charLi.text(' '+charName).prepend(img_);
+			// $('.player1_intro ul').append(charLi);
 			tracker = 2;
 		}else if(tracker ==2){
 			game.addCharacterToPlayer(game.playersInGame[1], characterModel[character]);
+			const liIterator = game.playersInGame[1].characterArr.length;
 			const charName = characterModel[character].name;
 			const par = $('<p>',{
 				text: 'player 1...',
@@ -296,8 +300,9 @@ function playerAddCharTurn(){
 			$('.initialScreenConsole div').append(par);
 			// $('.gameStart button').text('Player 1 Select').addClass('btn-warning').removeClass('btn-primary');
 			$('.gameStart button').text('Player 1 Select');
-			charLi.text(' '+charName).prepend(img_);
-			$('.player2_intro ul').append(charLi);
+			$(`.player2_intro li:nth-of-type(${liIterator})`).text(' '+charName).prepend(img_);
+			// charLi.text(' '+charName).prepend(img_);
+			// $('.player2_intro ul').append(charLi);
 			tracker = 1;
 		}
 		if(game.playersInGame[1].characterArr.length===3){
@@ -541,7 +546,7 @@ function gameOver(playerTurnNum){
 	gameEndAud.play();
 	// <iframe width="560" height="315" src="https://www.youtube.com/embed/t2Yrz9HSZNo" frameborder="0" allowfullscreen></iframe>
 	const videoFrame = $("<iframe>",{
-		src: "https://www.youtube.com/embed/t2Yrz9HSZNo",
+		src: "https://www.youtube.com/embed/sQfk5HykiEk",
 		frameborder : "0",
 		width: "560",
 		height: "315"
