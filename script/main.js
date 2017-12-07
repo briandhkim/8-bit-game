@@ -568,7 +568,7 @@ function gameEnder(){
 	battleAud.load();
 	$('.tracker').remove();
 	$('.moveOptionSkills').prepend(spanAdd);
-	$('.charSelectDrop').bind('click',charDropMenuOpen);
+	// $('.charSelectDrop').bind('click',charDropMenuOpen);
 	// $('.gameStart button').text('Player 1 Select').addClass('btn-warning').removeClass('btn-success startButtonPop');
 	$('.gameStart button').text('Player 1 Select').removeClass('btn-success startButtonPop');
 	$('.gameStart button').unbind('click', gameStart);
