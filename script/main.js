@@ -168,7 +168,10 @@ function aboutModalToggle(){
 	const imgSrcSpan1 = $('<span>').text('The pixel artworks used for this project can be found at the following link: ');
 	const tumblrIcon = $('<i>',{
 		class:'fa fa-tumblr-square fa-3x tumblrIcon'
-	}).css({color: 'rgba(54,70,93,0.6)'});
+	}).css({
+		color: 'rgba(54,70,93,0.6)',
+		'font-size':'33px'
+	});
 	const tumblrButton = $('<a>',{
 		href: 'http://chiwadesu.tumblr.com/',
 		target: '_blank',
@@ -180,7 +183,8 @@ function aboutModalToggle(){
 	const gitIcon = $('<i>',{
 		class: 'fa fa-github-square fa-3x gitIcon'
 	}).css({
-		color: 'rgba(0, 0, 0, 0.6)'
+		color: 'rgba(0, 0, 0, 0.6)',
+		'font-size': '33px'
 	});
 	const gitButton = $('<a>',{
 		href: "https://github.com/briandhkim",
@@ -190,7 +194,8 @@ function aboutModalToggle(){
 		class: 'fa fa-linkedin-square fa-3x liIcon'
 	}).css({
 		margin: '0 10px',
-		color: 'rgba(0, 119, 181, 0.6)'
+		color: 'rgba(0, 119, 181, 0.6)',
+		'font-size':'33px'
 	});
 	const linkedButton = $('<a>',{
 		href: "https://www.linkedin.com/in/briandhkimucla/",
@@ -309,12 +314,21 @@ function playerAddCharTurn(){
 			tracker = 1;
 		}
 		if(game.playersInGame[1].characterArr.length===3){
-			$('.initialScreenConsole p').remove();
+			// $('.initialScreenConsole p').remove();
+			$('.initialScreenConsole').text('');
+			const startSpan = $('<span>').text('click below');
+			const downIcon = $('<i>')
+				.addClass('fa fa-arrow-circle-down fa-lg')
+				.css({
+					'color':'green'
+				});
 			const par = $('<p>',{
 				text: 'start game!!!',
 				class: 'text-success'
 			});
-			$('.initialScreenConsole div').append(par);
+			const pDiv = $('<div>').append(par);
+			$('.initialScreenConsole').prepend(startSpan, downIcon, pDiv);	
+			// $('.initialScreenConsole').append(par);
 			// $('.charSelectDrop').unbind('click',charDropMenuOpen);
 			$('.gameStart button').text('START').addClass('btn-success startButtonPop');
 			$('.gameStart button').bind('click', gameStart);
@@ -572,10 +586,24 @@ function gameEnder(){
 	// $('.gameStart button').text('Player 1 Select').addClass('btn-warning').removeClass('btn-success startButtonPop');
 	$('.gameStart button').text('Player 1 Select').removeClass('btn-success startButtonPop');
 	$('.gameStart button').unbind('click', gameStart);
-	$('.initialScreenConsole p').remove();
+	$('.initialScreenConsole').text('');
+	const startSpan = $('<span>').text('select your character');
+	const downIcon = $('<i>')
+		.addClass('fa fa-arrow-circle-right fa-lg')
+		.css({
+			'color':'red'
+		});
 	const par = $('<p>',{
 		text: 'player 1...',
 		class: 'player1Color'
 	});
-	$('.initialScreenConsole div').append(par);
+	const pDiv = $('<div>').append(par);
+	$('.initialScreenConsole').prepend(startSpan, downIcon, pDiv);	
+
+	// $('.initialScreenConsole p').remove();
+	// const par = $('<p>',{
+	// 	text: 'player 1...',
+	// 	class: 'player1Color'
+	// });
+	// $('.initialScreenConsole div').append(par);
 }

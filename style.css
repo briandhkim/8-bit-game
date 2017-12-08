@@ -167,6 +167,7 @@ html,body{
 .infoArea{
 	/*height: 30%;*/
 	height: 100%;
+	direction:rtl;
 }
 .aboutRow, .instructionRow{
 	height: 50%;
@@ -241,6 +242,7 @@ html,body{
 }
 .characterList li:hover{
 	background-color: lightblue;
+	cursor: pointer;
 }
 .characterList .charListIcon{
 	width: 30px;
@@ -332,14 +334,13 @@ html,body{
 		-0.5px -0.5px 0 #000,
 		0.5px 0.5px 0 #000;
 }
-.gameBanner .skillName{
-	font-size: 12px;
-}
-.gBannerSkillCol{
-	height:100%;
-}
-.gameBanner .skillAttr{
-	font-size: 14.5px;
+.gBannerLogo{
+	height: 100%;
+	background-image: url(images/owlogo.png);
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+	background-position: center;
+	margin-left: 4.1666%;
 }
 .inGameAudioToggler{
 	position: absolute;
@@ -347,7 +348,7 @@ html,body{
 	bottom: 0;
 	background: none;
 	border: none;
-	color: rgba(255,255,255,0.4);
+	color: rgba(255,255,255,0.6);
 	height: 35px;
 	width: 35px;
 	padding: 0;
@@ -470,6 +471,12 @@ html,body{
 	/*display: flex;*/
 	overflow: auto;
 }
+.consoleMessageP2{
+	float: right;
+	border-right: none;
+	border-left: 4px dashed;
+	direction: rtl;
+}
 .consoleMessage::-webkit-scrollbar{
 	width: 7px;
 	/*background-color:rgb(227, 129, 23);*/
@@ -541,6 +548,9 @@ html,body{
 	text-overflow:ellipsis;*/
 	background-color:white;
 }
+.skillListP2, .changeCharListP2, .useListP2{
+	right: -250px;
+}
 .statsSquareWrapper{
 	position: relative;
 }
@@ -554,6 +564,9 @@ html,body{
 	background-color: white;
 	font-size: 13.5px;
 	padding: 1px 15px;
+}
+.statsSquareP2{
+	left: 40%;
 }
 .moveOptions ul{
 	list-style-type:none;
