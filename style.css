@@ -240,8 +240,25 @@ html,body{
 	/*text-align: center;*/
 	padding: 10px;
 }
+.charListTracker{
+	color: white;
+	text-shadow: none;
+}
+.trackedCharList{
+	background-color: rgba(30,30,30,0.8);
+	color:red;
+	text-shadow: 
+		-0.5px -0.5px 0 #fff,
+		0.5px 0.5px 0 #fff,
+		0.75px 0.75px 0 #fff;
+}
 .characterList li:hover, .characterList li:focus{
-	background-color: lightblue;
+	background-color: rgba(30,30,30,0.8);
+	color:red;
+	text-shadow: 
+		-0.5px -0.5px 0 #fff,
+		0.5px 0.5px 0 #fff,
+		0.75px 0.75px 0 #fff;
 	cursor: pointer;
 }
 .characterList .charListIcon{
@@ -503,6 +520,9 @@ html,body{
 		typing 2s steps(40, end),
 		blinkCaret .85s step-end infinite;
 }
+.tracker{
+	color: black;
+}
 .moveOptions{
 	padding: 0;
 }
@@ -513,7 +533,6 @@ html,body{
 	text-overflow:ellipsis;
 	padding: 10px 15px;
 }
-
 .moveOptionSkills{
 	border-right: 2px dashed;
 	border-bottom: 2px dashed;
@@ -755,6 +774,10 @@ html,body{
 		margin-top: 5px;
 		height: 94%;	
 		margin-left: 0;
+	}
+	.trackedCharList{
+		background-color: transparent;
+		color: black;
 	}
 	.introBackground{
 		/*margin-left: 0;*/

@@ -46,8 +46,9 @@ function mouseHandler(){
 	// });
 	$('.charDropMenu ul').on('click', 'li', function(){
 		//use variable initialTracker to add new span to clicked li
+		$('.charListTracker').closest('li').removeClass('trackedCharList');
 		$('.charListTracker').remove();
-		$(event.target).prepend(initialTracker);
+		$(event.target).prepend(initialTracker).addClass('trackedCharList');
 		playerAddCharTurn();
 	});
 	// below are handlers for main game area
@@ -170,8 +171,8 @@ $(window).keydown(function(event){
 		if(key===40||key===83){	//down key
 			if(charLi.next('li').length){
 				event.preventDefault();
-				charLi.next('li').prepend(initialTracker);
-				charLi.children('.charListTracker').remove();
+				charLi.next('li').prepend(initialTracker).addClass('trackedCharList');
+				charLi.removeClass('trackedCharList').children('.charListTracker').remove();
 				let charId = $('.charListTracker').closest('li').attr('id');
 				let charElmt = document.getElementById(charId);
 				charElmt.scrollIntoView({behavior:'smooth', block:'center', inline: 'nearest'});
@@ -180,8 +181,8 @@ $(window).keydown(function(event){
 		}else if (key===38||key===87){	//up key
 			if(charLi.prev('li').length){
 				event.preventDefault();
-				charLi.prev('li').prepend(initialTracker);
-				charLi.children('.charListTracker').remove();
+				charLi.prev('li').prepend(initialTracker).addClass('trackedCharList');
+				charLi.removeClass('trackedCharList').children('.charListTracker').remove();
 				let charId = $('.charListTracker').closest('li').attr('id');
 				let charElmt = document.getElementById(charId);
 				charElmt.scrollIntoView({behavior:'smooth', block:'center', inline: 'nearest'});
@@ -420,8 +421,9 @@ function gameEnder(){
 	$('.moveOptionSkills').prepend(spanAdd);
 	$('.gameStart button').text('Player 1 Select').removeClass('btn-success startButtonPop');
 	$('.gameStart button').unbind('click', gameStart);
+	$('.charListTracker').closest('li').removeClass('trackedCharList');
 	$('.charListTracker').remove();
-	$('#listAna').prepend(initialTracker);
+	$('#listAna').prepend(initialTracker).addClass('trackedCharList');
 	const listAna = document.getElementById('listAna');
 	listAna.scrollIntoView();
 	$('.initialScreenConsole').text('');
