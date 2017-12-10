@@ -80,11 +80,13 @@ function Game(uiUpdater){
             uiUp.updateConsoleMessageTurnChange(this.currentPlayerTurn);
             prevTurnMsg = null;
             prevTurnMsgElimination = null;
-            $('.consoleMessage').addClass('consoleMessageP2');
-            $('.skillList').addClass('skillListP2');
-            $('.changeCharList').addClass('changeCharListP2');
-            $('.useList').addClass('useListP2');
-            $('.statsSquare').addClass('statsSquareP2');
+            if($(window).innerWidth()>767){
+                $('.consoleMessage').addClass('consoleMessageP2');
+                $('.skillList').addClass('skillListP2');
+                $('.changeCharList').addClass('changeCharListP2');
+                $('.useList').addClass('useListP2');
+                $('.statsSquare').addClass('statsSquareP2');
+            }
             return;
         }else if(this.currentPlayerTurn===1){
             this.currentPlayerTurn--;
@@ -97,11 +99,13 @@ function Game(uiUpdater){
             uiUp.updateConsoleMessageTurnChange(this.currentPlayerTurn);
             prevTurnMsg = null;
             prevTurnMsgElimination = null;
-            $('.consoleMessage').removeClass('consoleMessageP2');
-            $('.skillList').removeClass('skillListP2');
-            $('.changeCharList').removeClass('changeCharListP2');
-            $('.useList').removeClass('useListP2');
-            $('.statsSquare').removeClass('statsSquareP2');
+            if($('.consoleMessage').hasClass('consoleMessageP2')){
+                $('.consoleMessage').removeClass('consoleMessageP2');
+                $('.skillList').removeClass('skillListP2');
+                $('.changeCharList').removeClass('changeCharListP2');
+                $('.useList').removeClass('useListP2');
+                $('.statsSquare').removeClass('statsSquareP2');
+            }
             return;
         }else{
             console.log('changePlayerTurn error in game object');
