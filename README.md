@@ -4,6 +4,6 @@
   Arcade Game
 </h1>
 
-...This game was created as a personal challenge to practice JavaScript OOP as well as utilizing MVC framework.
+>This game was created as a personal challenge to practice JavaScript OOP as well as utilizing MVC framework.
 
 
