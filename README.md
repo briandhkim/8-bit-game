@@ -1,6 +1,8 @@
 
 <h1> 
+  <a href="briandhkim.fun" target="_blank">
   <img src="https://github.com/briandhkim/8-bit-game/blob/master/images/owlogo.png?raw=true" height="75">
+  </a>
   Arcade Game
 </h1>
 
