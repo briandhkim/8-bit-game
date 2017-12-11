@@ -20,7 +20,7 @@ At the initial screen, each players will take turns to choose three characters o
 - HTML5
 - CSS3
 - Bootstrap
-- jQuery
+- JavaScript / jQuery
 - jQuery UI
 - Font Awesome
 
