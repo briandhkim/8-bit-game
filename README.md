@@ -8,4 +8,4 @@
 
 ![Alt][1]
 
-[1]: https://github.com/briandhkim/8-bit-game/blob/master/images/owlogo.png?raw=true "logo"
+[1]: https://github.com/briandhkim/8-bit-game/blob/master/images/owlogo.png =x75 "logo"
