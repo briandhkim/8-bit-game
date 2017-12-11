@@ -12,10 +12,10 @@ Overwatch Arcade is a two player, turn-based game using similar game mechanic as
 At the initial screen, each players will take turns to choose three characters of his or her choosing. Once the game starts, the players can then choose different move options based on his or her character selection. To win the game, the player will have to eliminate all three characters of the opposing player. 
 
 -----
-## Used in this project:
--HTML5
--CSS3
--Bootstrap
--jQuery
--jQuery UI
--Font Awesome
+## Tech used in this project:
+- HTML5
+- CSS3
+- Bootstrap
+- jQuery
+- jQuery UI
+- Font Awesome
