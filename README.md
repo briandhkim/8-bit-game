@@ -6,7 +6,7 @@
 
    This game was created as a personal challenge to practice JavaScript OOP as well as utilizing MVC framework.
    
-   The artwork used for this project can be found at the following [link](http://chiwadesu.tumblr.com/)
+   The artwork used for this project can be found at the following [link](http://chiwadesu.tumblr.com/).
 
 ------
 Overwatch Arcade is a two player, turn-based game using similar game mechanic as the classic Pokemon games but with the theme of Blizzard's Overwatch. 
@@ -32,4 +32,7 @@ At the initial screen, each players will take turns to choose three characters o
 
    `https://github.com/[your user name]/8-bit-game.git`
 
-5. Open up your terminal and navigate to the path where you want to clone this repo.
+5. Open up git bash or terminal and navigate to the directory where you want to clone this repo.
+6. Type `git clone` and paste in the url copied earlier.
+   e.g. `$ git clone https://github/[your user name]/8-bit-game.git`
+7. Congratulations, you just cloned a repository. 
