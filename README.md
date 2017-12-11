@@ -19,3 +19,12 @@ At the initial screen, each players will take turns to choose three characters o
 - jQuery
 - jQuery UI
 - Font Awesome
+
+-----
+
+#### To clone this repo:
+1. Click the 'Fork' button located at the top-right side of the repo.
+2. Fork the repo to your account.
+3. Click the green 'Clone or download' button located to the right of your forked repo.
+4. Copy the web url your url should look like the following:
+   `https://github.com/[your user name]/8-bit-game.git`
