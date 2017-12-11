@@ -30,11 +30,11 @@ At the initial screen, each players will take turns to choose three characters o
 3. Click the green 'Clone or download' button located to the right of your forked repo.
 4. Copy the web url your url should look like the following:
 
-   `https://github.com/[your user name]/8-bit-game.git`
+   `https://github.com/[your user name]/OW-Arcade.git`
 
 5. Open up git bash or terminal and navigate to the directory where you want to clone this repo.
 6. Type `git clone` and paste in the url copied earlier.
 
-   e.g. `$ git clone https://github/[your user name]/8-bit-game.git`
+   e.g. `$ git clone https://github/[your user name]/OW-Arcade.git`
    
-7. Congratulations, you just cloned a repository. 
+7. Congratulations, you just cloned yourself a repository. 
