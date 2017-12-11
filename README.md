@@ -1,4 +1,4 @@
-![Image](https://github.com/briandhkim/8-bit-game/blob/master/images/owlogo.png =x50)
+![Image](https://github.com/briandhkim/8-bit-game/blob/master/images/owlogo.png)
 
 # Overwatch Arcade Game
 
