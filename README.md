@@ -34,5 +34,7 @@ At the initial screen, each players will take turns to choose three characters o
 
 5. Open up git bash or terminal and navigate to the directory where you want to clone this repo.
 6. Type `git clone` and paste in the url copied earlier.
+
    e.g. `$ git clone https://github/[your user name]/8-bit-game.git`
+   
 7. Congratulations, you just cloned a repository. 
