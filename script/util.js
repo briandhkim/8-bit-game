@@ -17,9 +17,11 @@ function inGameAudioToggle(){
 	let aButton = $('.inGameAudioToggler i');
 	if(aButton.hasClass('fa-volume-up')){
 		battleAud.pause();
+		localStorage['gameAud'] = 'off';
 		aButton.toggleClass('fa-volume-up fa-volume-off');
 	}else if(aButton.hasClass('fa-volume-off')){
 		battleAud.play();
+		localStorage['gameAud'] = 'on';
 		aButton.toggleClass('fa-volume-up fa-volume-off');
 	}
 }
@@ -27,9 +29,11 @@ function modalAudioToggle(){
 	let aButton = $('#gameEndModal .audioToggler i');
 	if(aButton.hasClass('fa-volume-up')){
 		gameEndAud.pause();
+		localStorage['gameAud'] = 'off';
 		aButton.toggleClass('fa-volume-up fa-volume-off');
 	}else if(aButton.hasClass('fa-volume-off')){
 		gameEndAud.play();
+		localStorage['gameAud'] = 'on';
 		aButton.toggleClass('fa-volume-up fa-volume-off');
 	}
 }

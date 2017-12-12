@@ -8,7 +8,6 @@
 let uiUpdate = null;
 let game = null;
 let tracker = 1;
-
 $(document).ready(function(){
 	mouseHandler();
 	uiUpdate = new UIupdater();
@@ -23,11 +22,25 @@ $(document).ready(function(){
 	});
 	randIntroImg();
 	$('.instructionButton').click();
+
+	if(typeof localStorage['gameAud'] !== 'string'){
+		localStorage['gameAud'] = 'on';
+	}else if(  !(localStorage['gameAud']=='off'||localStorage['gameAud']=='on') ){
+		localStorage['gameAud'] = 'on';
+	}
+
+	if(localStorage['gameAud']=='on' && $('.inGameAudioToggler i').hasClass('fa-volume-off')){
+		$('.inGameAudioToggler i').toggleClass('fa-volume-off fa-volume-up');
+	}else if(localStorage['gameAud']=='off' && $('.inGameAudioToggler i').hasClass('fa-volume-up')){
+		$('.inGameAudioToggler i').toggleClass('fa-volume-off fa-volume-up');
+	}
 });
 
 
 function gameStart(){
-	battleAud.play();
+	if(localStorage['gameAud']=='on'){
+		battleAud.play();
+	}
 	gameEndAud.load();
 	scroller('gamePageMain');
 	clearInterval(imgInterval);
@@ -36,7 +49,7 @@ function gameStart(){
 	// $('.player1_intro li, .player2_intro li').remove();
 	$('.player1_intro li, .player2_intro li').text('- not selected');
 	$('iframe').remove();
-	$('.inGameAudioToggler i').removeClass('fa-volume-off').addClass('fa-volume-up');
+	// $('.inGameAudioToggler i').removeClass('fa-volume-off').addClass('fa-volume-up');
 }
 function mouseHandler(){
 	// $('.charSelectDrop:not(.characterList)').click(charDropMenuOpen);
@@ -370,9 +383,19 @@ function rageQuitOpt(){
 	game=null;
 	battleAud.pause();
 	game=new Game(uiUpdate);
+	let audioButton = $('#gameEndModal .audioToggler i');
+	let iframeAutoplay = '';
+	if(localStorage['gameAud']=='on'){
+		iframeAutoplay = '&autoplay=1';
+		if(audioButton.hasClass('fa-volume-off')){
+			audioButton.removeClass('fa-volume-off').addClass('fa-volume-up');
+		}
+	}else if(localStorage['gameAud']=='off' && audioButton.hasClass('fa-volume-up')){
+		audioButton.removeClass('fa-volume-up').addClass('fa-volume-off');
+	}
 	// <iframe width="560" height="315" src="https://www.youtube.com/embed/X2WH8mHJnhM?start=16" frameborder="0" allowfullscreen></iframe>
 	const feelsBadMan = $('<iframe>',{
-		src: "https://www.youtube.com/embed/X2WH8mHJnhM?start=16&autoplay=1",
+		src: "https://www.youtube.com/embed/X2WH8mHJnhM?start=16"+iframeAutoplay,
 		// "width": "100%",
 		// "min-height": "350px",
 		frameborder: "0"
@@ -397,8 +420,17 @@ function gameOver(playerTurnNum){
 		uiUpdate.updateConsoleCustomMsg("Player 2 defeated Player 1!!!");
 		$('#gameEndModalFooter').text("player 2 wins");
 	}
-	battleAud.pause();
-	gameEndAud.play();
+	let audioButton = $('#gameEndModal .audioToggler i');
+	if(localStorage['gameAud']=='on'){
+		battleAud.pause();
+		gameEndAud.play();
+		if(audioButton.hasClass('fa-volume-off')){
+			audioButton.removeClass('fa-volume-off').addClass('fa-volume-up');
+		}
+	}else if(localStorage['gameAud']=='off' && audioButton.hasClass('fa-volume-up')){
+		audioButton.removeClass('fa-volume-up').addClass('fa-volume-off');
+	}
+	
 	// <iframe "width"="560" height="315" src="https://www.youtube.com/embed/t2Yrz9HSZNo" frameborder="0" allowfullscreen></iframe>
 	const videoFrame = $("<iframe>",{
 		src: "https://www.youtube.com/embed/sQfk5HykiEk",
