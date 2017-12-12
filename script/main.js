@@ -181,7 +181,7 @@ $(window).keydown(function(event){
 	const key = event.keyCode;
 	if(game.buttonDisable){
 		let charLi = $('.charListTracker').closest('li');
-		if(key===40||key===83){	//down key
+		if((key===40||key===83) &&  $('#gameInfoModal').css('display')==='none' && $('#gameEndModal').css('display')==='none'){	//down key
 			if(charLi.next('li').length){
 				event.preventDefault();
 				charLi.next('li').prepend(initialTracker).addClass('trackedCharList');
@@ -191,7 +191,7 @@ $(window).keydown(function(event){
 				charElmt.scrollIntoView({behavior:'smooth', block:'center', inline: 'nearest'});
 				// charElmt.scrollIntoView(false);
 			}
-		}else if (key===38||key===87){	//up key
+		}else if((key===38||key===87) &&  $('#gameInfoModal').css('display')==='none' && $('#gameEndModal').css('display')==='none'){	//up key
 			if(charLi.prev('li').length){
 				event.preventDefault();
 				charLi.prev('li').prepend(initialTracker).addClass('trackedCharList');
@@ -202,6 +202,10 @@ $(window).keydown(function(event){
 			}
 		}else if (key===32){	//space
 			event.preventDefault();
+			if($('#gameInfoModal').css('display')==='block' || $('#gameEndModal').css('display')==='block'){
+				$('#gameInfoModal, #gameEndModal').modal('hide');
+				return;
+			}
 			if($('.gameStart button').hasClass('startButtonPop')){
 				gameStart();
 				return;
@@ -459,6 +463,7 @@ function gameEnder(){
 	const listAna = document.getElementById('listAna');
 	listAna.scrollIntoView();
 	$('.initialScreenConsole').text('');
+	uiUpdate.gameEndClear();
 	const startSpan = $('<span>').text('select your character');
 	const downIcon = $('<i>')
 		.addClass('fa fa-arrow-circle-right fa-lg')

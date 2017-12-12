@@ -163,7 +163,7 @@ function Game(uiUpdater){
             uiUp.attkAnimation(this.currentPlayerTurn);
             setTimeout(function(){
                 this_.buttonRebind();
-            },900);
+            },950);
             if(this.currentPlayerTurn===0){
                 setTimeout(function(){
                     uiUp.receiveHitAnimation(1);

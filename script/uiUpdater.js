@@ -313,5 +313,18 @@ function UIupdater(){
 			}
 		});
 	};	
+	this.gameEndClear = function(){
+		if($('.consoleMessage').hasClass('consoleMessageP2')){
+	        $('.consoleMessage').removeClass('consoleMessageP2');
+	        $('.skillList').removeClass('skillListP2');
+	        $('.changeCharList').removeClass('changeCharListP2');
+	        $('.useList').removeClass('useListP2');
+	        $('.statsSquare').removeClass('statsSquareP2');
+	    }
+	    $('.consoleMsgList li').remove();
+ 		$('.consoleMsgListPrevTurn li').remove();
+ 		const resetConsoleLi = $('<li>').text("Player 1's turn");
+ 		$('.consoleMsgList').append(resetConsoleLi);
+	};
  	/*****end of game play updates *****/
 }
