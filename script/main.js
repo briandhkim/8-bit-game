@@ -179,7 +179,8 @@ let menuOpened = false;
 /******** ui handlers for keyboard input *******/
 $(window).keydown(function(event){
 	const key = event.keyCode;
-	if(game.buttonDisable){
+	event.preventDefault();
+	if(game.buttonDisable && $('.introPageMain').css('display')==='block'){
 		let charLi = $('.charListTracker').closest('li');
 		if((key===40||key===83) &&  $('#gameInfoModal').css('display')==='none' && $('#gameEndModal').css('display')==='none'){	//down key
 			if(charLi.next('li').length){
@@ -212,7 +213,7 @@ $(window).keydown(function(event){
 			}
 			playerAddCharTurn();
 		}
-	} else if(!game.buttonDisable){
+	} else if(!game.buttonDisable && $('.gamePageMain').css('display')==='block'){
 		// const key = event.keyCode;
 		let this_ = $('.tracker').parent().closest('.moveOpt');		//track span in choosing move options
 		let this_li_ = $('.tracker').parent().closest('li');		//track span in the move option list
