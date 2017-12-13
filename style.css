@@ -14,8 +14,17 @@ html,body{
 	from, to{background-color: #449d44}
 	50%{background-color: #5cb85c}
 }
-
-
+::-webkit-scrollbar{
+	width: 7px;
+	/*background-color:rgb(227, 129, 23);*/
+	background-color: rgb(25, 85, 147);
+	background-color: white;
+}
+::-webkit-scrollbar-thumb{
+	width: 5px;
+	border-radius: 20px;
+	background-color: rgb(25, 85, 147);
+}
 /*skill hit animation: toggle class for .player1/2_charImgArea*/
 .got_hit {
     /*animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;*/
@@ -418,6 +427,7 @@ html,body{
 }
 .player2_currentChar_nameArea, .player2_currentChar_hpArea{
 	height: 50%;
+	cursor: default;
 	/*border: 1px solid red;*/
 }
 .player2_charImg{
@@ -439,6 +449,7 @@ html,body{
 }
 .player1_currentChar_nameArea, .player1_currentChar_hpArea{
 	height: 50%;
+	cursor: default;
 	/*border: 1px solid red;*/
 }
 .player1_charStats{
@@ -454,7 +465,9 @@ html,body{
 	width: 45px;
 }
 
-
+.hpLabel{
+	padding:0;
+}
 .player1_currentChar_hp, .player2_currentChar_hp{
 	height: 10px;
 	margin-top: 7px;
@@ -472,8 +485,9 @@ html,body{
 	box-sizing: border-box;
 	background-color: rgba(255,255,255,0.5);
 	font-family: 'Press Start 2P', cursive;
-	font-size: 24px;
-
+	/*font-size: 24px;*/
+	font-size: 20px;
+	cursor: default;
 }
 .console>div{
 	height: 98%;
@@ -534,13 +548,14 @@ html,body{
 	overflow: hidden;
 	text-overflow:ellipsis;
 	padding: 10px 15px;
+	cursor: pointer;
 }
 .moveOptionSkills{
 	border-right: 2px dashed;
 	border-bottom: 2px dashed;
 }
 #skill_4{
-	font-size: 20px;
+	/*font-size: 20px;*/
 }
 .moveOptionChangeChar{
 	border-left: 2px dashed;
@@ -558,7 +573,6 @@ html,body{
 	position: absolute;
 	width: 180%;
 	height: 150%;
-	/*left: 0;*/
 	right: 0;
 	bottom: 0;
 	display:none;
@@ -568,6 +582,10 @@ html,body{
 	/*overflow: hidden;
 	text-overflow:ellipsis;*/
 	background-color:white;
+}
+.skillList li, .changeCharList li, .useList li{
+	cursor: pointer;
+	margin: 5px 0;
 }
 .skillListP2, .changeCharListP2, .useListP2{
 	right: -375px;
@@ -688,6 +706,7 @@ html,body{
 }
 .modal-body{
 	background-color: rgba(227, 145, 23, 0.7);
+	padding: 17px;
 }
 .modal-footer{
 	border-radius: 0 0 15px 15px;
@@ -697,6 +716,8 @@ html,body{
 	text-shadow: 
 		-0.5px -0.5px 0 #000,
 		1px 1px 0 #000;
+	margin-top: 12px;
+	cursor: default;
 }
 .aboutModalDD, .instructionDD{
 	font-size: 11px;
@@ -704,6 +725,12 @@ html,body{
 	text-shadow: 
 		-0.5px -0.5px 0 #000,
 		0.75px 0.75px 0 #000;
+	cursor: default;
+}
+.aboutModalLink{
+	float: right;
+	position: relative;
+	top: -10px;
 }
 
 @media screen and (max-width: 1024px){
@@ -724,10 +751,14 @@ html,body{
 		font-size: 12px;
 	}
 	.characterList li{
-		height: 3.5vh;
+		/*height: 3.5vh;*/
+		height: 4.5vh;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
+	}
+	.trackedCharList{
+		line-height: 3;
 	}
 	.charListIcon{
 		width: 20px;
@@ -767,7 +798,8 @@ html,body{
 }
 @media screen and (max-width: 767px){
 	.introPageMain, .gamePageMain{
-		min-height: 650px;
+		/*min-height: 650px;*/
+		min-height: 450px;
 	}
 	.logo-charSelection{
 		height: 60%;
@@ -777,9 +809,12 @@ html,body{
 		height: 94%;	
 		margin-left: 0;
 	}
-	.trackedCharList{
-		background-color: transparent;
-		color: black;
+	.charSelect>div:first-child{
+		height: 50%;
+		margin-top:2px;
+	}
+	.charSelect> div:nth-child(2){
+		height: 50%;
 	}
 	.introBackground{
 		/*margin-left: 0;*/
@@ -789,7 +824,8 @@ html,body{
 		margin-left: 4.1666%;
 	}
 	.playerCharDisplay{
-		height: 40%;
+		/*height: 40%;*/
+		height: auto;
 	}
 	.initialScreenConsole{
 		font-size: 10px;
@@ -802,7 +838,13 @@ html,body{
 		font-size: 11px;
 	}
 	.characterList li{
-		height: 4.5vh;
+		/*height: 4.5vh;*/
+		height: 37px;
+	}
+	.trackedCharList{
+		background-color: transparent;
+		color: black;
+		line-height: 2.5;
 	}
 	.characterList .charListIcon{
 		width: 15px;
@@ -815,7 +857,8 @@ html,body{
 		font-size: 10px;
 	}
 	.player1_intro, .player2_intro{
-		height: 80%;
+		/*height: 80%;*/
+		height: auto;
 		border: 2.5px dashed;
 	}
 	.player1_intro{
@@ -829,6 +872,9 @@ html,body{
 		padding: 0;
 		font-size: 11px;
 	}
+	.player1_intro ul li, .player2_intro ul li{
+		height: 9.5vh;
+	}
 	/*end of intro screen 767px*/
 	.gameBanner{
 		margin-left: 4.166%;
@@ -839,6 +885,12 @@ html,body{
 	}
 	.gameBanner .skillName{
 		font-size: 9px;
+	}
+	.gameBodyDisplay{
+		height: 70%;
+	}
+	.gameBodyConsole{
+		height: 30%;
 	}
 	.player2_currentChar_hpArea div:nth-child(2), .player1_currentChar_hpArea div:nth-child(2){
 		font-size: 10px;
@@ -851,6 +903,8 @@ html,body{
 	}
 	.skillList, .changeCharList, .useList{
 		width: 100%;
+		height: 175%;
+		overflow: auto;
 	}
 	.gameBodyConsole .console{
 		margin-left: 0;
@@ -862,8 +916,9 @@ html,body{
 		padding: 10px 5px;
 		font-size: 13px;
 	}
-	#skill_1, #skill_2, #skill_3, #skill_4{
-		font-size: 14px;
+	#skill_1, #skill_2, #skill_3, #skill_4, .backButton, .useList{
+		/*font-size: 14px;*/
+		font-size: 10px;
 	}
 	.changeCharList .playerCharListIcon{
 		height: 30px;
@@ -872,14 +927,21 @@ html,body{
 	.changeCharList .playerCharName{
 		font-size: 10px;
 	}
-	.useList{
+	/*.useList{
 		font-size: 18px;
-	}
+	}*/
 	#gameEndModalTitle, #gameInfoModalTitle, #gameEndModalFooter{
 		font-size: 9px;
 	}
 	#gameEndModal .modal-body iframe{
 		width: 100%;
 		height: auto;
+	}
+	.aboutModalDT, .instructionDT{
+		font-size: 12px;
+		margin-top:10px;
+	}
+	.aboutModalDD, .instructionDD{
+		font-size: 10px;	
 	}
 }

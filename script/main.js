@@ -179,7 +179,6 @@ let menuOpened = false;
 /******** ui handlers for keyboard input *******/
 $(window).keydown(function(event){
 	const key = event.keyCode;
-	event.preventDefault();
 	if(game.buttonDisable && $('.introPageMain').css('display')==='block'){
 		let charLi = $('.charListTracker').closest('li');
 		if((key===40||key===83) &&  $('#gameInfoModal').css('display')==='none' && $('#gameEndModal').css('display')==='none'){	//down key

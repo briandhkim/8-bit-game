@@ -62,8 +62,10 @@ function aboutModalToggle(){
 		class: 'aboutModalDD',
 		text: "If by some chance someone from Blizzard stumbles upon this, Blizzard, I am sorry I did not ask permission to use your game before hand."
 	});
-	const imageSrcDD = $('<dd>').addClass('aboutModalDD');
-	const imgSrcSpan1 = $('<span>').text('The pixel artworks used for this project can be found at the following link: ');
+	const imageSrcDD = $('<dd>')
+		.addClass('aboutModalDD')
+		.text('The pixel artworks used for this project can be found at the following link: ');
+	// const imgSrcSpan1 = $('<span>').text('The pixel artworks used for this project can be found at the following link: ');
 	const tumblrIcon = $('<i>',{
 		class:'fa fa-tumblr-square fa-3x tumblrIcon'
 	}).css({
@@ -73,11 +75,9 @@ function aboutModalToggle(){
 	const tumblrButton = $('<a>',{
 		href: 'http://chiwadesu.tumblr.com/',
 		target: '_blank',
-	}).css({
-		position: 'relative',
-		top: '7px'
+		class: 'aboutModalLink'
 	}).append(tumblrIcon);
-	imageSrcDD.append(imgSrcSpan1, tumblrButton);
+	// imageSrcDD.append(imgSrcSpan1, tumblrButton);
 	const gitIcon = $('<i>',{
 		class: 'fa fa-github-square fa-3x gitIcon'
 	}).css({
@@ -86,7 +86,8 @@ function aboutModalToggle(){
 	});
 	const gitButton = $('<a>',{
 		href: "https://github.com/briandhkim",
-		target: '_blank'
+		target: '_blank',
+		class:'aboutModalLink'
 	}).append(gitIcon);
 	const linkedIcon = $('<i>',{
 		class: 'fa fa-linkedin-square fa-3x liIcon'
@@ -97,9 +98,13 @@ function aboutModalToggle(){
 	});
 	const linkedButton = $('<a>',{
 		href: "https://www.linkedin.com/in/briandhkimucla/",
-		target: '_blank'
+		target: '_blank',
+		class:'aboutModalLink'
 	}).append(linkedIcon);
-	let aboutDescription = $('<dl>').append(aboutGameLead, aboutGameContent, aboutDevDT, aboutDevDD, gitButton, linkedButton, copyrightDT, copyrightDD, imageSrcDD);
+	let aboutDescription = $('<dl>').append(aboutGameLead, 
+		aboutGameContent, aboutDevDT, aboutDevDD, 
+		gitButton, linkedButton, copyrightDT, 
+		copyrightDD, imageSrcDD, tumblrButton);
 	$('#gameInfoModal .modal-body').append(aboutDescription);
 	$('#gameInfoModalTitle').text('about the game');
 }
