@@ -313,6 +313,11 @@ html,body{
 		typing 2s steps(40, end),
 		blinkCaret .85s step-end infinite;
 }
+.initialScreenConsole .fa{
+	font-size: 18px;
+	line-height: 0;
+	margin-left: 5px;
+}
 .player1Color{
 	color: #ec971f;
 }
@@ -736,6 +741,9 @@ html,body{
 @media screen and (max-width: 1024px){
 	.introPageMain, .gamePageMain{
 		min-height: 768px;
+	}
+	.infoArea{
+		padding:0;
 	}
 	.instructionRow h5, .aboutRow h5{
 		font-size: 11px;

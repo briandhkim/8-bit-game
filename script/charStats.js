@@ -433,7 +433,7 @@ const characterModel={
 			healSplash : false
 		},
 		skill_2 :{
-			name: 'Jump Pack',
+			name: ':Electric Boogaloo',
 			damage: 45,
 			accuracy: 60,
 			pp: 5,
