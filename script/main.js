@@ -188,7 +188,7 @@ $(window).keydown(function(event){
 				charLi.removeClass('trackedCharList').children('.charListTracker').remove();
 				let charId = $('.charListTracker').closest('li').attr('id');
 				let charElmt = document.getElementById(charId);
-				charElmt.scrollIntoView({behavior:'smooth', block:'center', inline: 'nearest'});
+				charElmt.scrollIntoView({behavior:'instant', block:'center', inline: 'nearest'});
 				// charElmt.scrollIntoView(false);
 			}
 		}else if((key===38||key===87) &&  $('#gameInfoModal').css('display')==='none' && $('#gameEndModal').css('display')==='none'){	//up key
@@ -198,7 +198,7 @@ $(window).keydown(function(event){
 				charLi.removeClass('trackedCharList').children('.charListTracker').remove();
 				let charId = $('.charListTracker').closest('li').attr('id');
 				let charElmt = document.getElementById(charId);
-				charElmt.scrollIntoView({behavior:'smooth', block:'center', inline: 'nearest'});
+				charElmt.scrollIntoView({behavior:'instant', block:'center', inline: 'nearest'});
 			}
 		}else if (key===32){	//space
 			event.preventDefault();
@@ -332,20 +332,26 @@ function reloadClick(){
 /****end of click handler for changing character option in game ****/
 
 function skillMenuClick(){
-	$('.skillList').css('display','block');
-	$('.skillList li:first-child').prepend(spanAdd);
-	menuOpened = true;
+	if(!game.buttonDisable && $('.gamePageMain').css('display')==='block'){
+		$('.skillList').css('display','block');
+		$('.skillList li:first-child').prepend(spanAdd);
+		menuOpened = true;
+	}
 }
 
 function charOptClick(){
-	$('.changeCharList').css('display','block');
-	$('.changeCharList li:first-child').prepend(spanAdd);
-	menuOpened = true;
+	if(!game.buttonDisable && $('.gamePageMain').css('display')==='block'){
+		$('.changeCharList').css('display','block');
+		$('.changeCharList li:first-child').prepend(spanAdd);
+		menuOpened = true;
+	}
 }
 function useOptClick(){
-	$('.useList').css('display','block');
-	$('.useList li:first-child').prepend(spanAdd);
-	menuOpened = true;
+	if(!game.buttonDisable && $('.gamePageMain').css('display')==='block'){
+		$('.useList').css('display','block');
+		$('.useList li:first-child').prepend(spanAdd);
+		menuOpened = true;
+	}
 }
 function backButtonClick(elmt){
 	// $(this_li_).parent().closest('div').css('display','none');
@@ -356,22 +362,28 @@ function backButtonClick(elmt){
 /*******ui handlers with keyboard end*******/
 /****mouse click handler for main game area ****/
 function skillMenuClickMouse(){
-	$('.tracker').remove();
-	$('.skillList').css('display','block');
-	$('.skillList li:first-child').prepend(spanAdd);
-	menuOpened = true;
+	if(game!==null && $('.gamePageMain').css('display')==='block'){
+		$('.tracker').remove();
+		$('.skillList').css('display','block');
+		$('.skillList li:first-child').prepend(spanAdd);
+		menuOpened = true;
+	}
 }
 function charOptClickMouse(){
-	$('.tracker').remove();
-	$('.changeCharList').css('display','block');
-	$('.changeCharList li:first-child').prepend(spanAdd);
-	menuOpened = true;
+	if(game!==null && $('.gamePageMain').css('display')==='block'){
+		$('.tracker').remove();
+		$('.changeCharList').css('display','block');
+		$('.changeCharList li:first-child').prepend(spanAdd);
+		menuOpened = true;
+	}	
 }
 function useOptClickMouse(){
-	$('.tracker').remove();
-	$('.useList').css('display','block');
-	$('.useList li:first-child').prepend(spanAdd);
-	menuOpened = true;
+	if(game!==null && $('.gamePageMain').css('display')==='block'){
+		$('.tracker').remove();
+		$('.useList').css('display','block');
+		$('.useList li:first-child').prepend(spanAdd);
+		menuOpened = true;
+	}
 }
 function backButtonClickMouse(){
 	$('.tracker').closest('div').css('display', 'none');
@@ -379,37 +391,39 @@ function backButtonClickMouse(){
 	menuOpened = false;
 }
 function rageQuitOpt(){
-	if(game.currentPlayerTurn){
-		$('#gameEndModalFooter').text("player 2 rage quit");
-	}else if(!game.currentPlayerTurn){
-		$('#gameEndModalFooter').text("player 1 rage quit");
-	}
-	game=null;
-	battleAud.pause();
-	game=new Game(uiUpdate);
-	let audioButton = $('#gameEndModal .audioToggler i');
-	let iframeAutoplay = '';
-	if(localStorage['gameAud']=='on'){
-		iframeAutoplay = '&autoplay=1';
-		if(audioButton.hasClass('fa-volume-off')){
-			audioButton.removeClass('fa-volume-off').addClass('fa-volume-up');
+	if(game!==null){
+		if(game.currentPlayerTurn){
+			$('#gameEndModalFooter').text("player 2 rage quit");
+		}else if(!game.currentPlayerTurn){
+			$('#gameEndModalFooter').text("player 1 rage quit");
 		}
-	}else if(localStorage['gameAud']=='off' && audioButton.hasClass('fa-volume-up')){
-		audioButton.removeClass('fa-volume-up').addClass('fa-volume-off');
+		game=null;
+		battleAud.pause();
+		game=new Game(uiUpdate);
+		let audioButton = $('#gameEndModal .audioToggler i');
+		let iframeAutoplay = '';
+		if(localStorage['gameAud']=='on'){
+			iframeAutoplay = '&autoplay=1';
+			if(audioButton.hasClass('fa-volume-off')){
+				audioButton.removeClass('fa-volume-off').addClass('fa-volume-up');
+			}
+		}else if(localStorage['gameAud']=='off' && audioButton.hasClass('fa-volume-up')){
+			audioButton.removeClass('fa-volume-up').addClass('fa-volume-off');
+		}
+		// <iframe width="560" height="315" src="https://www.youtube.com/embed/X2WH8mHJnhM?start=16" frameborder="0" allowfullscreen></iframe>
+		const feelsBadMan = $('<iframe>',{
+			src: "https://www.youtube.com/embed/X2WH8mHJnhM?start=16"+iframeAutoplay,
+			// "width": "100%",
+			// "min-height": "350px",
+			frameborder: "0"
+		});
+		$('#gameEndModal .modal-body').text('').append(feelsBadMan);
+		$('#gameEndModalTitle').text("Too difficult for you???");
+		$('#gameEndModal').modal('show');
+		scroller("introPageMain");
+		randIntroImg();
+		gameEnder();
 	}
-	// <iframe width="560" height="315" src="https://www.youtube.com/embed/X2WH8mHJnhM?start=16" frameborder="0" allowfullscreen></iframe>
-	const feelsBadMan = $('<iframe>',{
-		src: "https://www.youtube.com/embed/X2WH8mHJnhM?start=16"+iframeAutoplay,
-		// "width": "100%",
-		// "min-height": "350px",
-		frameborder: "0"
-	});
-	$('#gameEndModal .modal-body').text('').append(feelsBadMan);
-	$('#gameEndModalTitle').text("Too difficult for you???");
-	$('#gameEndModal').modal('show');
-	scroller("introPageMain");
-	randIntroImg();
-	gameEnder();
 }
 /****end of mouse click handler for main game area ****/
 /********** end of ui handlers for game area *********/

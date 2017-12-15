@@ -173,14 +173,14 @@ function instructionModalToggle(){
 function randIntroImg(){
 	imgInterval = setInterval(()=>{
 		const randImg = Math.floor(Math.random()*imgArr.length);
-		$('.introImgDiv').toggle('slide',{direction:'left'},1100,()=>{
+		$('.introImgDiv').hide('slide',{direction:'left'},1100,()=>{
 			$('.introImgDiv').css({
 				'background': `url(${bgImgPath}${imgArr[randImg]})`,
 				'background-repeat': 'no-repeat',
 				'background-size': 'contain',
 				'background-position': 'center'
 			});
-			$('.introImgDiv').toggle('slide',{direction:'right'}, 1100);
+			$('.introImgDiv').show('slide',{direction:'right'}, 1100);
 		});
 	},5000);
 }
