@@ -122,18 +122,12 @@ html,body{
 	background-color: white;
 	border: 5px dashed;
 	box-sizing: border-box;
-	/*background: url('images/introBG.gif');
-	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: center;*/
 }
 .gameLogo{
 	height: 25%;
-	/*border: 1px solid red;*/
 }
 .owLogo, .pokeLogo{
 	height: 100%;
-	/*border: 1px solid black;*/
 }
 .owLogo{
 	background: url('images/owlogo.png');
@@ -143,11 +137,9 @@ html,body{
 }
 .introImgArea{
 	height: 75%;
-	/*border: 1px solid green;*/
 }
 .introImgDiv{
 	height: 100%;
-	/*border: 1px solid blue;*/
 	background: url('images/intro/ana.png');
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -224,14 +216,8 @@ html,body{
 	font-size: 11px;
 }
 .charDropMenu{
-	/*position: absolute;*/
-	/*width: 100%;*/
-	/*height: 350%;*/
 	left: 0;
-	/*display:none;*/
-	/*z-index: 1;*/
 	background-color: white;
-	/*border: 5px dashed;*/
 	overflow: auto;
 	height: 100%;
 }
@@ -246,7 +232,6 @@ html,body{
 }
 .characterList{
 	list-style-type: none;
-	/*text-align: center;*/
 	padding: 10px;
 }
 .charListTracker{
@@ -326,7 +311,7 @@ html,body{
 }
 .player1_intro, .player2_intro{
 	cursor: default;
-	height: 90%;
+	/*height: 90%;*/
 	box-sizing: border-box;
 	border: 5px dashed;
 	background-color: rgb(255,255,255);
@@ -340,14 +325,13 @@ html,body{
 	color: white;
 }
 .player1_intro ul li, .player2_intro ul li{
-	height: 5.5vh;
+	height: 6.5vh;
+	min-height: 50px;
 }
 .player1_intro{
-	/*margin-right: 10px;*/
 	border-right: 2.5px dashed;
 }
 .player2_intro{
-	/*margin-left: 10px;*/
 	border-left: 2.5px dashed;
 }
 /*end of intro page main css*/
@@ -412,16 +396,6 @@ html,body{
 .quad1, .quad2, .quad3, .quad4{
 	height: 99%;
 }
-.quad1, .quad3{
-	/*border: 1px solid orange;*/
-}
-.quad2, .quad4{
-	/*border: 1px solid blue;*/
-}
-.player2_charStats, .player1_charStats{
-	/*height: 70%;*/
-	/*border: 1px solid green;*/
-}
 .player2_charStats{
 	margin-top: 10%;
 	background-image: url(images/charStat1.png);
@@ -442,7 +416,6 @@ html,body{
 	background-position: center;
 	background-size: contain;
 	transform: rotateY(180deg);
-	/*border: 1px solid red;*/
 }
 .player1_charImg{
 	height: 100%;
@@ -450,12 +423,10 @@ html,body{
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
-	/*border: 1px solid red;*/
 }
 .player1_currentChar_nameArea, .player1_currentChar_hpArea{
 	height: 50%;
 	cursor: default;
-	/*border: 1px solid red;*/
 }
 .player1_charStats{
 	margin-top: 12%;
@@ -490,14 +461,12 @@ html,body{
 	box-sizing: border-box;
 	background-color: rgba(255,255,255,0.5);
 	font-family: 'Press Start 2P', cursive;
-	/*font-size: 24px;*/
 	font-size: 20px;
 	cursor: default;
 }
 .console>div{
 	height: 98%;
 	margin-top: 0.125%;
-	/*border: 1px solid;*/
 }
 .console>div>ul>li{
 	margin-top: 5px;
@@ -506,7 +475,6 @@ html,body{
 }
 .consoleMessage{
 	border-right: 4px dashed;
-	/*display: flex;*/
 	overflow: auto;
 }
 .consoleMessageP2{
@@ -517,7 +485,6 @@ html,body{
 }
 .consoleMessage::-webkit-scrollbar{
 	width: 7px;
-	/*background-color:rgb(227, 129, 23);*/
 	background-color: rgb(25, 85, 147);
 	background-color: white;
 }
@@ -531,7 +498,6 @@ html,body{
 	margin-bottom: 2px;
 }
 .consoleMsgList li:first-child{		/*typing animation for first li element in console*/
-	/*display: inline-block;*/
 	overflow: hidden;
 	border-right: .15em solid rgb(25, 85, 147);
 	white-space: nowrap;
@@ -559,9 +525,6 @@ html,body{
 	border-right: 2px dashed;
 	border-bottom: 2px dashed;
 }
-#skill_4{
-	/*font-size: 20px;*/
-}
 .moveOptionChangeChar{
 	border-left: 2px dashed;
 	border-bottom: 2px dashed;
@@ -583,9 +546,6 @@ html,body{
 	display:none;
 	z-index: 1;
 	border: 4px dashed;
-	/*default display - block*/
-	/*overflow: hidden;
-	text-overflow:ellipsis;*/
 	background-color:white;
 }
 .skillList li, .changeCharList li, .useList li{
@@ -615,20 +575,12 @@ html,body{
 .moveOptions ul{
 	list-style-type:none;
 }
-/*.moveOptions li:focus{
-	list-style-type: square;
-}*/
 .changeCharList li{
 	display: inline-flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
 	align-content: center;
-}
-.changeCharList .playerCharName{
-	/*flex-grow: 2;*/
-	/*width: 40%;*/
-	/*flex-shrink: 3;*/
 }
 .changeCharList .progress{
 	padding: 0;
@@ -639,9 +591,6 @@ html,body{
 	height: 7px;
 	border: 0.5px solid;
 }
-/*.skillList, .changeCharList, .useList{
-	background-color: white;
-}*/
 .tracker{
 	font-size: 175%;
 }
@@ -825,14 +774,12 @@ html,body{
 		height: 50%;
 	}
 	.introBackground{
-		/*margin-left: 0;*/
 		margin-left: 4.1666%;
 	}
 	.charBanner{
 		margin-left: 4.1666%;
 	}
 	.playerCharDisplay{
-		/*height: 40%;*/
 		height: auto;
 	}
 	.initialScreenConsole{
@@ -846,7 +793,6 @@ html,body{
 		font-size: 11px;
 	}
 	.characterList li{
-		/*height: 4.5vh;*/
 		height: 37px;
 	}
 	.trackedCharList{
@@ -865,7 +811,6 @@ html,body{
 		font-size: 10px;
 	}
 	.player1_intro, .player2_intro{
-		/*height: 80%;*/
 		height: auto;
 		border: 2.5px dashed;
 	}
@@ -873,7 +818,6 @@ html,body{
 		border-right: 1.5px dashed;
 	}
 	.player2_intro{
-		/*margin-left: 8.3333%;*/
 		border-left: 1.5px dashed;
 	}
 	.player1_intro ul, .player2_intro ul{
@@ -903,9 +847,6 @@ html,body{
 	.player2_currentChar_hpArea div:nth-child(2), .player1_currentChar_hpArea div:nth-child(2){
 		font-size: 10px;
 	}
-	/*.console{
-		font-size: 18px;
-	}*/
 	.player1_charStats, .player2_charStats{
 		background-image: none;
 	}
@@ -925,7 +866,6 @@ html,body{
 		font-size: 13px;
 	}
 	#skill_1, #skill_2, #skill_3, #skill_4, .backButton, .useList{
-		/*font-size: 14px;*/
 		font-size: 10px;
 	}
 	.changeCharList .playerCharListIcon{
@@ -935,9 +875,6 @@ html,body{
 	.changeCharList .playerCharName{
 		font-size: 10px;
 	}
-	/*.useList{
-		font-size: 18px;
-	}*/
 	#gameEndModalTitle, #gameInfoModalTitle, #gameEndModalFooter{
 		font-size: 9px;
 	}
