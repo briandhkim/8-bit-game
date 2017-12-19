@@ -53,10 +53,10 @@ function Game(uiUpdater){
     descpt: disable all buttons and click handlers during skill animation timeout
     */
     this.buttonTimeout = function(){
-        $('.moveOptionSkills').unbind('click',skillMenuClickMouse);
-        $('.moveOptionChangeChar').unbind('click',charOptClickMouse);
-        $('.moveOptionUse').unbind('click',useOptClickMouse);
-        $('.moveOptionRageQuit').unbind('click',rageQuitOpt);
+        $('.moveOptionSkills').off('click');
+        $('.moveOptionChangeChar').off('click');
+        $('.moveOptionUse').off('click');
+        $('.moveOptionRageQuit').off('click', rageQuitOpt);
         this.buttonDisable = true;
     };
     /***************************
@@ -66,10 +66,19 @@ function Game(uiUpdater){
     descpt: rebind all buttons and click handlers after skill animation timeout
     */
     this.buttonRebind = function(){
-        $('.moveOptionSkills').bind('click',skillMenuClickMouse);
-        $('.moveOptionChangeChar').bind('click',charOptClickMouse);
-        $('.moveOptionUse').bind('click',useOptClickMouse);
-        $('.moveOptionRageQuit').bind('click',rageQuitOpt);
+        $('.moveOptionSkills').on('click',()=>{
+            $('.tracker').remove();
+            skillMenuClick();
+        });
+        $('.moveOptionChangeChar').on('click',()=>{
+            $('.tracker').remove();
+            charOptClick();
+        });
+        $('.moveOptionUse').on('click',()=>{
+            $('.tracker').remove();
+            useOptClick();
+        });
+        $('.moveOptionRageQuit').on('click',rageQuitOpt);
         this.buttonDisable = false;
         uiUp.removeAnimationClass();
     };

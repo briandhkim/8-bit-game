@@ -1,9 +1,9 @@
 /***************************
-	 -> 
-	param: 
-	return: 
-	descpt: 
- 	*/
+ -> 
+param: 
+return: 
+descpt: 
+*/
 
 let uiUpdate = null;
 let game = null;
@@ -35,28 +35,13 @@ $(document).ready(function(){
 		$('.inGameAudioToggler i').toggleClass('fa-volume-off fa-volume-up');
 	}
 });
-
-
-function gameStart(){
-	if(localStorage['gameAud']=='on'){
-		battleAud.play();
-	}
-	gameEndAud.load();
-	scroller('gamePageMain');
-	clearInterval(imgInterval);
-	imgInterval = null;
-	game.gameStart();
-	// $('.player1_intro li, .player2_intro li').remove();
-	$('.player1_intro li, .player2_intro li').text('- not selected');
-	$('iframe').remove();
-	// $('.inGameAudioToggler i').removeClass('fa-volume-off').addClass('fa-volume-up');
-}
+/***************************
+mouseHandler -> 
+param: none
+return: none
+descpt: bind all click handlers when called; function called at document ready
+*/
 function mouseHandler(){
-	// $('.charSelectDrop:not(.characterList)').click(charDropMenuOpen);
-	// $('.charMenuCloser').on('click',function(evt){
-	// 	evt.stopPropagation();
-	// 	charDropMenuClose();
-	// });
 	$('.charDropMenu ul').on('click', 'li', function(){
 		//use variable initialTracker to add new span to clicked li
 		$('.charListTracker').closest('li').removeClass('trackedCharList');
@@ -65,12 +50,22 @@ function mouseHandler(){
 		playerAddCharTurn();
 	});
 	// below are handlers for main game area
-	$('.moveOptionSkills').click(skillMenuClickMouse);
-	$('.moveOptionChangeChar').click(charOptClickMouse);
-	$('.moveOptionUse').click(useOptClickMouse);
+	$('.moveOptionSkills').on('click',()=>{
+		$('.tracker').remove();
+		skillMenuClick();
+	});
+	// $('.moveOptionChangeChar').click(charOptClickMouse);
+	$('.moveOptionChangeChar').on('click', ()=>{
+		$('.tracker').remove();
+		charOptClick();
+	});
+	// $('.moveOptionUse').click(useOptClickMouse);
+	$('.moveOptionUse').on('click',()=>{
+		$('.tracker').remove();
+		useOptClick();
+	});
 	$('.moveOptionRageQuit').click(rageQuitOpt);
 	$('.backButton').click(backButtonClickMouse);
-
 	$('#playerChar_1, #playerChar_2, #playerChar_3').click(changeCharListClickMouse);
 	$('#skill_1, #skill_2, #skill_3, #skill_4').click(skillListClickMouse);
 	$('#item_healthPack').click(healthPackItemClick);
@@ -102,11 +97,32 @@ function mouseHandler(){
 		$('#gameInfoModal').modal('show');
 	});
 }
-
+/***************************
+gameStart -> 
+param: none
+return: none
+descpt: called when player starts game from intro screen
+	initiates game, and calls gameStart function in game object
+*/
+function gameStart(){
+	if(localStorage['gameAud']=='on'){
+		battleAud.play();
+	}
+	gameEndAud.load();
+	scroller('gamePageMain');
+	clearInterval(imgInterval);
+	imgInterval = null;
+	game.gameStart();
+	$('.player1_intro li, .player2_intro li').text('- not selected');
+	$('iframe').remove();
+}
+/***************************
+playerAddCharTurn -> 
+param: none
+return: none
+descpt: function for handling player character selection at intro screen
+*/
 function playerAddCharTurn(){
-	// event.stopPropagation();
-	// let character = $(event.target).attr('value');
-	// const imgSrc = $(event.target).children('img').attr('src');
 	const character = $('.charListTracker').closest('li').attr('value');
 	const imgSrc = $('.charListTracker').closest('li').children('img').attr('src');
 	let img_ = $('<img>',{
@@ -115,7 +131,6 @@ function playerAddCharTurn(){
 		width: '30px',
 		height: '30px'
 	});
-	// let charLi = $('<li>');
 	$('.initialScreenConsole p').remove();
 	if(game.playersInGame[1].characterArr.length<3){	//when player2 has 3 chars(limit) prevent character add
 		if(tracker==1){
@@ -127,11 +142,8 @@ function playerAddCharTurn(){
 				class: 'text-primary'
 			});
 			$('.initialScreenConsole div').append(par);
-			// $('.gameStart button').text('Player 2 Select').addClass('btn-primary').removeClass('btn-warning');
 			$('.gameStart button').text('Player 2 Select');
 			$(`.player1_intro li:nth-of-type(${liIterator})`).text(' '+charName).prepend(img_);
-			// charLi.text(' '+charName).prepend(img_);
-			// $('.player1_intro ul').append(charLi);
 			tracker = 2;
 		}else if(tracker ==2){
 			game.addCharacterToPlayer(game.playersInGame[1], characterModel[character]);
@@ -142,15 +154,11 @@ function playerAddCharTurn(){
 				class: 'player1Color'
 			});
 			$('.initialScreenConsole div').append(par);
-			// $('.gameStart button').text('Player 1 Select').addClass('btn-warning').removeClass('btn-primary');
 			$('.gameStart button').text('Player 1 Select');
 			$(`.player2_intro li:nth-of-type(${liIterator})`).text(' '+charName).prepend(img_);
-			// charLi.text(' '+charName).prepend(img_);
-			// $('.player2_intro ul').append(charLi);
 			tracker = 1;
 		}
 		if(game.playersInGame[1].characterArr.length===3){
-			// $('.initialScreenConsole p').remove();
 			$('.initialScreenConsole').text('');
 			const startSpan = $('<span>').text('click below');
 			const downIcon = $('<i>')
@@ -164,8 +172,6 @@ function playerAddCharTurn(){
 			});
 			const pDiv = $('<div>').append(par);
 			$('.initialScreenConsole').prepend(startSpan, downIcon, pDiv);	
-			// $('.initialScreenConsole').append(par);
-			// $('.charSelectDrop').unbind('click',charDropMenuOpen);
 			$('.gameStart button').text('START').addClass('btn-success startButtonPop');
 			$('.gameStart button').bind('click', gameStart);
 		}
@@ -176,11 +182,9 @@ function playerAddCharTurn(){
 }
 
 /******************* ui handlers for game area *****************/ 
-let initialTracker = $('<span>').addClass('charListTracker hidden-xs hidden-sm').html('&#9830');
-
-let spanAdd = $("<span>").addClass("tracker").html('&#9830');
+const initialTracker = $('<span>').addClass('charListTracker hidden-xs hidden-sm').html('&#9830');
+const spanAdd = $("<span>").addClass("tracker").html('&#9830');
 let menuOpened = false;
-
 /******** ui handlers for keyboard input *******/
 $(window).keydown(function(event){
 	const key = event.keyCode;
@@ -292,50 +296,76 @@ $(window).keydown(function(event){
 	}
 });
 
-
+/***************************
+skillListClick -> 
+param: selected skill num (int)
+return: none
+descpt: keyboard click handler for player skill selection
+*/
 function skillListClick(skillVal){
 	let skillListNum = skillVal;
-	// let currentPlayer = game.playersInGame[game.currentPlayerTurn];
 	game.turnSkillChar(skillListNum);
 	backButtonClickMouse();
 }
+/***************************
+skillListClickMouse -> 
+param: none
+return: none
+descpt: mouse click handler for player skill selection
+*/
 function skillListClickMouse(){
 	let skillListNum = $(this).val();
-	// let currentPlayer = game.playersInGame[game.currentPlayerTurn];
 	game.turnSkillChar(skillListNum);
 	backButtonClickMouse();
 }
-/****click handler for changing character option  in game ****/
+/***************************
+changeCharListClick -> 
+param: selected char num (int)
+return: none
+descpt: keyboard click handler for player change character selection
+*/
 function changeCharListClick(charVal){
 	let changeCharNum = charVal;
-	// let currentPlayer = game.playersInGame[game.currentPlayerTurn];
-	// currentPlayer.changeCharacter(changeCharNum);
 	game.turnChangeChar(changeCharNum);
 	backButtonClickMouse()
 }
 /***************************
-changeCharListClick -> 
+changeCharListClickMouse -> 
 param: none
 return: none
-descpt: handles player turn change when selected by user
+descpt: mouse click handler for player  change character selection
  */
 function changeCharListClickMouse(){
 	let changeCharNum = $(this).val();
-	// let currentPlayer = game.playersInGame[game.currentPlayerTurn];
-	// currentPlayer.changeCharacter(changeCharNum);
 	game.turnChangeChar(changeCharNum);
 	backButtonClickMouse()
 }
+/***************************
+healthPackItemClick -> 
+param: none
+return: none
+descpt: click handler for player choosing health pack option
+*/
 function healthPackItemClick(){
 	game.turnUseHealthPack();
 	backButtonClickMouse();
 }
+/***************************
+reloadClick -> 
+param: none
+return: none
+descpt: click handler for player choosing reload option
+*/
 function reloadClick(){
 	game.turnReload();
 	backButtonClickMouse();
 }
-/****end of click handler for changing character option in game ****/
-
+/***************************
+skillMenuClick -> 
+param: none
+return: none
+descpt: click handler for player opening skill options menu
+*/
 function skillMenuClick(){
 	if(!game.buttonDisable && $('.gamePageMain').css('display')==='block'){
 		$('.skillList').css('display','block');
@@ -343,7 +373,12 @@ function skillMenuClick(){
 		menuOpened = true;
 	}
 }
-
+/***************************
+charOptClick -> 
+param: none
+return: none
+descpt: click handler for player opening character change options menu
+*/
 function charOptClick(){
 	if(!game.buttonDisable && $('.gamePageMain').css('display')==='block'){
 		$('.changeCharList').css('display','block');
@@ -351,6 +386,12 @@ function charOptClick(){
 		menuOpened = true;
 	}
 }
+/***************************
+useOptClick -> 
+param: none
+return: none
+descpt: click handler for player opening use options menu
+*/
 function useOptClick(){
 	if(!game.buttonDisable && $('.gamePageMain').css('display')==='block'){
 		$('.useList').css('display','block');
@@ -358,43 +399,35 @@ function useOptClick(){
 		menuOpened = true;
 	}
 }
+/***************************
+backButtonClick -> 
+param: element object
+return: none
+descpt: keyboard click handler to close skill/char/use menu;
+	dom element had to be passed in for keyboard to identify the correct menu
+*/
 function backButtonClick(elmt){
-	// $(this_li_).parent().closest('div').css('display','none');
 	$(elmt).css('display','none');
 	$('.moveOptionSkills').prepend(spanAdd);
 	menuOpened = false;
 }
-/*******ui handlers with keyboard end*******/
-/****mouse click handler for main game area ****/
-function skillMenuClickMouse(){
-	if(game!==null && $('.gamePageMain').css('display')==='block'){
-		$('.tracker').remove();
-		$('.skillList').css('display','block');
-		$('.skillList li:first-child').prepend(spanAdd);
-		menuOpened = true;
-	}
-}
-function charOptClickMouse(){
-	if(game!==null && $('.gamePageMain').css('display')==='block'){
-		$('.tracker').remove();
-		$('.changeCharList').css('display','block');
-		$('.changeCharList li:first-child').prepend(spanAdd);
-		menuOpened = true;
-	}	
-}
-function useOptClickMouse(){
-	if(game!==null && $('.gamePageMain').css('display')==='block'){
-		$('.tracker').remove();
-		$('.useList').css('display','block');
-		$('.useList li:first-child').prepend(spanAdd);
-		menuOpened = true;
-	}
-}
+/***************************
+backButtonClickMouse -> 
+param: none
+return: none
+descpt: mouse click handler to close skill/char/use menu
+*/
 function backButtonClickMouse(){
 	$('.tracker').closest('div').css('display', 'none');
 	$('.moveOptionSkills').prepend(spanAdd);
 	menuOpened = false;
 }
+/***************************
+rageQuitOpt -> 
+param: none
+return: none
+descpt: ends and resets the game. displays game end modal
+*/
 function rageQuitOpt(){
 	if(game!==null){
 		if(game.currentPlayerTurn){
@@ -415,11 +448,8 @@ function rageQuitOpt(){
 		}else if(localStorage['gameAud']=='off' && audioButton.hasClass('fa-volume-up')){
 			audioButton.removeClass('fa-volume-up').addClass('fa-volume-off');
 		}
-		// <iframe width="560" height="315" src="https://www.youtube.com/embed/X2WH8mHJnhM?start=16" frameborder="0" allowfullscreen></iframe>
 		const feelsBadMan = $('<iframe>',{
 			src: "https://www.youtube.com/embed/X2WH8mHJnhM?start=16"+iframeAutoplay,
-			// "width": "100%",
-			// "min-height": "350px",
 			frameborder: "0"
 		});
 		$('#gameEndModal .modal-body').text('').append(feelsBadMan);
@@ -430,9 +460,12 @@ function rageQuitOpt(){
 		gameEnder();
 	}
 }
-/****end of mouse click handler for main game area ****/
-/********** end of ui handlers for game area *********/
-
+/***************************
+gameOver -> 
+param: player turn num (int)
+return: none
+descpt: ends/resets the game and displays game end modal
+*/
 function gameOver(playerTurnNum){
 	game=null;
 	uiUpdate.clearConsoleMessage();
@@ -453,8 +486,6 @@ function gameOver(playerTurnNum){
 	}else if(localStorage['gameAud']=='off' && audioButton.hasClass('fa-volume-up')){
 		audioButton.removeClass('fa-volume-up').addClass('fa-volume-off');
 	}
-	
-	// <iframe "width"="560" height="315" src="https://www.youtube.com/embed/t2Yrz9HSZNo" frameborder="0" allowfullscreen></iframe>
 	const videoFrame = $("<iframe>",{
 		src: "https://www.youtube.com/embed/sQfk5HykiEk",
 		frameborder : "0"
@@ -469,7 +500,12 @@ function gameOver(playerTurnNum){
 		gameEnder();
 	},4000);
 }
-
+/***************************
+gameEnder -> 
+param: none
+return: none
+descpt: resets ui elements for game area and intro page
+*/
 function gameEnder(){
 	battleAud.load();
 	$('.tracker').remove();
@@ -495,11 +531,4 @@ function gameEnder(){
 	});
 	const pDiv = $('<div>').append(par);
 	$('.initialScreenConsole').prepend(startSpan, downIcon, pDiv);	
-
-	// $('.initialScreenConsole p').remove();
-	// const par = $('<p>',{
-	// 	text: 'player 1...',
-	// 	class: 'player1Color'
-	// });
-	// $('.initialScreenConsole div').append(par);
 }
