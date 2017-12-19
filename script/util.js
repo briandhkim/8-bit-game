@@ -13,6 +13,12 @@ let imgArr = ['ana.png','bastion.png','genji.png','junkrat.png','mei.png','mercy
 	,'reaper.png','reinhardt.png','soldier.png','symmetra.png', 'torbjorn.png','tracer.png','widow.png',
 	'winston.png','zarya.png','zenyatta.png'];
 let imgInterval = null;
+/***************************
+inGameAudioToggle -> 
+param: none
+return: none
+descpt: audio toggle for audio button on game banner 
+*/
 function inGameAudioToggle(){
 	let aButton = $('.inGameAudioToggler i');
 	if(aButton.hasClass('fa-volume-up')){
@@ -25,6 +31,12 @@ function inGameAudioToggle(){
 		aButton.toggleClass('fa-volume-up fa-volume-off');
 	}
 }
+/***************************
+modalAudioToggle -> 
+param: none 
+return: none
+descpt: audio toggle for audio button on game end modal
+*/
 function modalAudioToggle(){
 	let aButton = $('#gameEndModal .audioToggler i');
 	if(aButton.hasClass('fa-volume-up')){
@@ -37,6 +49,12 @@ function modalAudioToggle(){
 		aButton.toggleClass('fa-volume-up fa-volume-off');
 	}
 }
+/***************************
+aboutModalToggle -> 
+param:  none
+return: none
+descpt: dynamically create content for about modal on click
+*/
 function aboutModalToggle(){
 	const aboutGameLead = $('<dt>',{
 		class: 'aboutModalDT',
@@ -108,6 +126,12 @@ function aboutModalToggle(){
 	$('#gameInfoModal .modal-body').append(aboutDescription);
 	$('#gameInfoModalTitle').text('about the game');
 }
+/***************************
+instructionModalToggle -> 
+param: none
+return: none
+descpt: dynamically create content for instruction modal when clicked 
+*/
 function instructionModalToggle(){
 	const initialScreenDT = $('<dt>',{
 		class: 'instructionDT',
@@ -170,6 +194,12 @@ function instructionModalToggle(){
 	$('#gameInfoModal .modal-body').append(instructionDesc);
 	$('#gameInfoModalTitle').text('instructions');
 }
+/***************************
+randIntroImg -> 
+param: none
+return: none
+descpt: intro page image slider starter
+*/
 function randIntroImg(){
 	imgInterval = setInterval(()=>{
 		const randImg = Math.floor(Math.random()*imgArr.length);
@@ -184,6 +214,12 @@ function randIntroImg(){
 		});
 	},5000);
 }
+/***************************
+scroller -> 
+param: id of dom element id ('string') without '#'
+return: none
+descpt: scrollspy function scroll page to provided dom id page
+*/
 function scroller(screenID){	//will be either #gamePageMain or #introPageMain
 	if(screenID == 'introPageMain'){
 		$('#introPageMain').css('display','block');

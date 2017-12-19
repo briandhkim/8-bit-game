@@ -160,6 +160,12 @@ function UIupdater(){
  			});
  		}
  	};
+ 	/***************************
+	attkAnimation -> 
+	param:  player turn number (int)
+	return: none
+	descpt: add attack animation class to character in turn
+ 	*/
  	this.attkAnimation = function(playerTurnNum){
  		if(playerTurnNum){
  			$('.player2_charImgArea').addClass('p2_attk');
@@ -167,17 +173,29 @@ function UIupdater(){
  			$('.player1_charImgArea').addClass('p1_attk');
  		}
  	};
+ 	/***************************
+	receiveHitAnimation -> 
+	param: player turn number (int)
+	return: none
+	descpt: add receive hit animation to character receiving hit
+ 	*/
  	this.receiveHitAnimation = function(playerTurnNum){
  		if(playerTurnNum){
  			$('.player2_charImgArea').addClass('got_hit');
  		}else{
  			$('.player1_charImgArea').addClass('got_hit');
  		}
- 	}
+ 	};
+ 	/***************************
+	removeAnimationClass -> 
+	param: none
+	return: none
+	descpt: remove all animation classes after turn finishes
+ 	*/
  	this.removeAnimationClass = function(){
  		$('.player1_charImgArea').removeClass('p1_attk got_hit');
  		$('.player2_charImgArea').removeClass('p2_attk got_hit');
- 	}
+ 	};
 	/***************************
 	loadAttackMoveList -> 
 	param: array containing skills (skillArr in character obj)
@@ -313,6 +331,12 @@ function UIupdater(){
 			}
 		});
 	};	
+	/***************************
+	gameEndClear -> 
+	param: none
+	return: none
+	descpt: resets game area ui area after game end
+ 	*/
 	this.gameEndClear = function(){
 		if($('.consoleMessage').hasClass('consoleMessageP2')){
 	        $('.consoleMessage').removeClass('consoleMessageP2');
