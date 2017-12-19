@@ -77,11 +77,16 @@ function mouseHandler(){
 	$('#item_Reload').click(reloadClick);
 	$('.modal-footer .modalClose, .modal-header .close').click(function(){
 		$('iframe').remove();
-		gameEndAud.pause();
+		if(!gameEndAud.ended){
+			gameEndAud.pause();
+		}	
 	});
 	$('#gameEndModal').on('hide.bs.modal',()=>{
 		if($('#gameEndModal .modal-body').children().length){
 			$('#gameEndModal .modal-body').children().remove();
+		}
+		if(!gameEndAud.ended){
+			gameEndAud.pause();
 		}
 	});
 	$('.inGameAudioToggler').click(inGameAudioToggle);
