@@ -46,6 +46,12 @@ function Game(uiUpdater){
         uiUp.characterLoadUpdate(player1, 0);
         this.buttonDisable = false;
     };
+    /***************************
+    buttonTimeout -> 
+    param:  none
+    return: none
+    descpt: disable all buttons and click handlers during skill animation timeout
+    */
     this.buttonTimeout = function(){
         $('.moveOptionSkills').unbind('click',skillMenuClickMouse);
         $('.moveOptionChangeChar').unbind('click',charOptClickMouse);
@@ -53,6 +59,12 @@ function Game(uiUpdater){
         $('.moveOptionRageQuit').unbind('click',rageQuitOpt);
         this.buttonDisable = true;
     };
+    /***************************
+    buttonRebind -> 
+    param:  none
+    return: none
+    descpt: rebind all buttons and click handlers after skill animation timeout
+    */
     this.buttonRebind = function(){
         $('.moveOptionSkills').bind('click',skillMenuClickMouse);
         $('.moveOptionChangeChar').bind('click',charOptClickMouse);
@@ -111,8 +123,6 @@ function Game(uiUpdater){
             console.log('changePlayerTurn error in game object');
         }
     };
-
-
     /***************************
     turnChangeChar -> 
     param: player --> e.g. game.playersInGame[currentPlayerTurn]
@@ -139,7 +149,6 @@ function Game(uiUpdater){
             console.log('error in turnChangeChar in game obj');
         }
     };
-    
     /***************************
     turnSkillChar -> 
     param: (int) 0-3, skill array iterator based on player selection
@@ -244,7 +253,6 @@ function Game(uiUpdater){
         }
          
     };
-
     /***************************
     turnUseHealthPack -> 
     param: none
@@ -265,7 +273,6 @@ function Game(uiUpdater){
             uiUp.updateConsoleCustomMsg("No more health packs...");
         }
     };
-
     /***************************
     turnReload -> 
     param: none

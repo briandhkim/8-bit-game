@@ -14,10 +14,6 @@ function Character(charObj){  //fetch charObj from charStats.js
     this.skill3 = new Skill(charObj.skill_3);
     this.skill4 = new Skill(charObj.skill_4);
     this.skillArr = [this.skill1, this.skill2, this.skill3, this.skill4];
-
-    // this.getHP = function(){
-    //     return this.hp;
-    // };
     /***************************
     addHP -> 
     param: (int) amount of health to add
@@ -31,7 +27,6 @@ function Character(charObj){  //fetch charObj from charStats.js
             this.hp = this.hpMax;
         }
     };  
-
     /***************************
     useSkill -> 
     param: (int) skill index 0-3
@@ -57,7 +52,6 @@ function Character(charObj){  //fetch charObj from charStats.js
             console.log('error useSkill function at character object');
         }
     };
-
     /***************************
     takeDamage -> 
     param: (int) damage input
@@ -74,7 +68,6 @@ function Character(charObj){  //fetch charObj from charStats.js
             return;
         }
     };
-
     /***************************
     reload -> 
     param: none
@@ -89,7 +82,6 @@ function Character(charObj){  //fetch charObj from charStats.js
             //may change so last skill(ult) does not get reload
        }
     };
-
     /***************************
     toggleDeathStatus -> 
     param: none
@@ -102,20 +94,6 @@ function Character(charObj){  //fetch charObj from charStats.js
             console.log(this.name +" was eliminated");
         }
     };
-
-
-    // this.checkPP = function(skillNum){    
-    //     return this.skillArr[skillNum].pp;
-    // };
-    // this.checkAccuracy = function(skillNum){
-    //     return this.skillArr[skillNum].skillAccuracy;
-    // };
-    // this.checkDMG = function(skillNum){
-    //     return this.skillArr[skillNum].damage;
-    // };
-    // this.getName = function(){
-    //     return this.name;
-    // };
 };
 
 
