@@ -1,3 +1,8 @@
+mvc
+control
+anything making assumption about how DOM is structured needs to be removed from game.js
+google critical rendering path
+
 8-bit overwatch duel game
 https://downloads.khinsider.com/game-soundtracks/browse/P
 https://www.youtube.com/watch?v=t2Yrz9HSZNo
