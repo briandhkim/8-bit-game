@@ -85,8 +85,9 @@ html,body{
 	}
 }
 /****end of skill hit animation***/
-
 /*font-family: 'Press Start 2P', cursive;*/
+
+/**container row css (immediate children of the overall .container-fluid**/
 .introPageMain, .gamePageMain{
 	height: 100vh;
 	min-height: 900px;
@@ -95,11 +96,17 @@ html,body{
 	background-color: rgb(25, 85, 147);
 	font-family: 'Press Start 2P', cursive;
 }
+.container-none{
+	display: none;
+}
 .gamePageMain{
 	background-color:rgb(227, 129, 23);
 }
 /*end of container css*/
 
+/********
+	intro page (#introPageMain)
+********/
 .logo-charSelection{
 	height: 70%;
 }
@@ -334,9 +341,15 @@ html,body{
 .player2_intro{
 	border-left: 2.5px dashed;
 }
-/*end of intro page main css*/
+/*********
+	end of intro page main css
+**********/
+
+/********
+	game page (#gamePageMain)
+*********/
 #gamePageMain{
-	display: none;
+	/*display: none;*/
 }
 .gameBannerRow{
 	height: 10%;
@@ -594,16 +607,33 @@ html,body{
 .tracker{
 	font-size: 175%;
 }
+/*******
+	end of game page 
+********/
+
 
 /*** modal css ***/
+#gameInfoModal .gitIcon{
+	color: rgba(0, 0, 0, 0.6);
+	font-size: 33px;
+}
 #gameInfoModal .gitIcon:hover{
-	color: rgba(0,0,0,1) !important;
+	color: rgba(0,0,0,1);
+}
+#gameInfoModal .liIcon{
+	color: rgba(0, 119, 181, 0.6);
+	font-size: 33px;
+	margin: 0 10px;
 }
 #gameInfoModal .liIcon:hover{
-	color: rgba(0,119,181,1) !important;
+	color: rgba(0,119,181,1);
+}
+#gameInfoModal .tumblrIcon{
+	color: rgba(54, 70, 93, 0.6);
+	font-size: 33px;
 }
 #gameInfoModal .tumblrIcon:hover{
-	color: rgba(54,70,93,1) !important;
+	color: rgba(54,70,93,1);
 }
 .modal-content{
 	font-family: 'Press Start 2P', cursive;
@@ -629,9 +659,9 @@ html,body{
 	box-sizing: border-box;
 	color: white;
 	text-shadow: 
-	-1px -1px 0 #000,
-	1px 1px 0 #000,
-	2px 2px 0 #000;
+		-1px -1px 0 #000,
+		1px 1px 0 #000,
+		2px 2px 0 #000;
 }
 .modal-header{
 	border-radius: 15px 15px 0 0;

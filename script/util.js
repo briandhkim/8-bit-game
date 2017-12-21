@@ -86,9 +86,6 @@ function aboutModalToggle(){
 	// const imgSrcSpan1 = $('<span>').text('The pixel artworks used for this project can be found at the following link: ');
 	const tumblrIcon = $('<i>',{
 		class:'fa fa-tumblr-square fa-3x tumblrIcon'
-	}).css({
-		color: 'rgba(54,70,93,0.6)',
-		'font-size':'33px'
 	});
 	const tumblrButton = $('<a>',{
 		href: 'http://chiwadesu.tumblr.com/',
@@ -98,21 +95,14 @@ function aboutModalToggle(){
 	// imageSrcDD.append(imgSrcSpan1, tumblrButton);
 	const gitIcon = $('<i>',{
 		class: 'fa fa-github-square fa-3x gitIcon'
-	}).css({
-		color: 'rgba(0, 0, 0, 0.6)',
-		'font-size': '33px'
 	});
 	const gitButton = $('<a>',{
-		href: "https://github.com/briandhkim",
+		href: "https://github.com/briandhkim/OW-Arcade",
 		target: '_blank',
 		class:'aboutModalLink'
 	}).append(gitIcon);
 	const linkedIcon = $('<i>',{
 		class: 'fa fa-linkedin-square fa-3x liIcon'
-	}).css({
-		margin: '0 10px',
-		color: 'rgba(0, 119, 181, 0.6)',
-		'font-size':'33px'
 	});
 	const linkedButton = $('<a>',{
 		href: "https://www.linkedin.com/in/briandhkimucla/",
@@ -201,6 +191,7 @@ return: none
 descpt: intro page image slider starter
 */
 function randIntroImg(){
+	// $('.introImgDiv').velocity('slideDown',{duration:1200, loop:true}).velocity('slideUp',{delay: 4800, duration:1200, loop:true})
 	imgInterval = setInterval(()=>{
 		const randImg = Math.floor(Math.random()*imgArr.length);
 		$('.introImgDiv').hide('slide',{direction:'left'},1100,()=>{
@@ -222,19 +213,21 @@ descpt: scrollspy function scroll page to provided dom id page
 */
 function scroller(screenID){	//will be either #gamePageMain or #introPageMain
 	if(screenID == 'introPageMain'){
-		$('#introPageMain').css('display','block');
+		$('#introPageMain').removeClass('container-none');
+		$('html, body').scrollTop($('#gamePageMain').offset().top);
 	}else if(screenID == 'gamePageMain'){
-		$('#gamePageMain').css('display', 'block');
+		$('#gamePageMain').removeClass('container-none');
 	}
-	let scroll = screenID;
-	$('html, body').animate({
-		scrollTop: $("#"+scroll).offset().top,
-		behavior: 'smooth'
-	}, 800, function(){
-		if(screenID == 'introPageMain'){
-			$('#gamePageMain').css('display','none');
-		}else if(screenID == 'gamePageMain'){
-			$('#introPageMain').css('display','none');
+	$(`#${screenID}`).velocity('scroll',{
+		duration: 800,
+		complete: ()=>{
+			if(screenID == 'introPageMain'){
+				// $('#gamePageMain').css('display','none');
+				$('#gamePageMain').addClass('container-none');
+			}else if(screenID == 'gamePageMain'){
+				// $('#introPageMain').css('display','none');
+				$('#introPageMain').addClass('container-none');
+			}
 		}
 	});
 }

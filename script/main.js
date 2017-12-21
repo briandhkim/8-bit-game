@@ -455,7 +455,7 @@ function rageQuitOpt(){
 		$('#gameEndModal .modal-body').text('').append(feelsBadMan);
 		$('#gameEndModalTitle').text("Too difficult for you???");
 		$('#gameEndModal').modal('show');
-		scroller("introPageMain");
+		// scroller("introPageMain");
 		randIntroImg();
 		gameEnder();
 	}
@@ -495,7 +495,7 @@ function gameOver(playerTurnNum){
 	randIntroImg();
 	setTimeout(function(){
 		$("#gameEndModal").modal('show');
-		scroller('introPageMain');
+		// scroller('introPageMain');
 		game = new Game(uiUpdate);
 		gameEnder();
 	},4000);
@@ -507,6 +507,7 @@ return: none
 descpt: resets ui elements for game area and intro page
 */
 function gameEnder(){
+	scroller('introPageMain');
 	battleAud.load();
 	$('.tracker').remove();
 	$('.moveOptionSkills').prepend(spanAdd);
@@ -531,4 +532,5 @@ function gameEnder(){
 	});
 	const pDiv = $('<div>').append(par);
 	$('.initialScreenConsole').prepend(startSpan, downIcon, pDiv);	
+	
 }
