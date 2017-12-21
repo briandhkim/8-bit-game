@@ -85,8 +85,9 @@ html,body{
 	}
 }
 /****end of skill hit animation***/
-
 /*font-family: 'Press Start 2P', cursive;*/
+
+/**container row css (immediate children of the overall .container-fluid**/
 .introPageMain, .gamePageMain{
 	height: 100vh;
 	min-height: 900px;
@@ -100,6 +101,9 @@ html,body{
 }
 /*end of container css*/
 
+/********
+	intro page (#introPageMain)
+********/
 .logo-charSelection{
 	height: 70%;
 }
@@ -334,7 +338,13 @@ html,body{
 .player2_intro{
 	border-left: 2.5px dashed;
 }
-/*end of intro page main css*/
+/*********
+	end of intro page main css
+**********/
+
+/********
+	game page (#gamePageMain)
+*********/
 #gamePageMain{
 	display: none;
 }
@@ -594,6 +604,10 @@ html,body{
 .tracker{
 	font-size: 175%;
 }
+/*******
+	end of game page 
+********/
+
 
 /*** modal css ***/
 #gameInfoModal .gitIcon{
@@ -642,9 +656,9 @@ html,body{
 	box-sizing: border-box;
 	color: white;
 	text-shadow: 
-	-1px -1px 0 #000,
-	1px 1px 0 #000,
-	2px 2px 0 #000;
+		-1px -1px 0 #000,
+		1px 1px 0 #000,
+		2px 2px 0 #000;
 }
 .modal-header{
 	border-radius: 15px 15px 0 0;
