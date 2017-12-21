@@ -96,6 +96,9 @@ html,body{
 	background-color: rgb(25, 85, 147);
 	font-family: 'Press Start 2P', cursive;
 }
+.container-none{
+	display: none;
+}
 .gamePageMain{
 	background-color:rgb(227, 129, 23);
 }
@@ -346,7 +349,7 @@ html,body{
 	game page (#gamePageMain)
 *********/
 #gamePageMain{
-	display: none;
+	/*display: none;*/
 }
 .gameBannerRow{
 	height: 10%;

@@ -191,6 +191,7 @@ return: none
 descpt: intro page image slider starter
 */
 function randIntroImg(){
+	// $('.introImgDiv').velocity('slideDown',{duration:1200, loop:true}).velocity('slideUp',{delay: 4800, duration:1200, loop:true})
 	imgInterval = setInterval(()=>{
 		const randImg = Math.floor(Math.random()*imgArr.length);
 		$('.introImgDiv').hide('slide',{direction:'left'},1100,()=>{
@@ -212,19 +213,21 @@ descpt: scrollspy function scroll page to provided dom id page
 */
 function scroller(screenID){	//will be either #gamePageMain or #introPageMain
 	if(screenID == 'introPageMain'){
-		$('#introPageMain').css('display','block');
+		$('#introPageMain').removeClass('container-none');
+		$('html, body').scrollTop($('#gamePageMain').offset().top);
 	}else if(screenID == 'gamePageMain'){
-		$('#gamePageMain').css('display', 'block');
+		$('#gamePageMain').removeClass('container-none');
 	}
-	let scroll = screenID;
-	$('html, body').animate({
-		scrollTop: $("#"+scroll).offset().top,
-		behavior: 'smooth'
-	}, 800, function(){
-		if(screenID == 'introPageMain'){
-			$('#gamePageMain').css('display','none');
-		}else if(screenID == 'gamePageMain'){
-			$('#introPageMain').css('display','none');
+	$(`#${screenID}`).velocity('scroll',{
+		duration: 800,
+		complete: ()=>{
+			if(screenID == 'introPageMain'){
+				// $('#gamePageMain').css('display','none');
+				$('#gamePageMain').addClass('container-none');
+			}else if(screenID == 'gamePageMain'){
+				// $('#introPageMain').css('display','none');
+				$('#introPageMain').addClass('container-none');
+			}
 		}
 	});
 }
