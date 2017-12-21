@@ -86,9 +86,6 @@ function aboutModalToggle(){
 	// const imgSrcSpan1 = $('<span>').text('The pixel artworks used for this project can be found at the following link: ');
 	const tumblrIcon = $('<i>',{
 		class:'fa fa-tumblr-square fa-3x tumblrIcon'
-	}).css({
-		color: 'rgba(54,70,93,0.6)',
-		'font-size':'33px'
 	});
 	const tumblrButton = $('<a>',{
 		href: 'http://chiwadesu.tumblr.com/',
@@ -98,21 +95,14 @@ function aboutModalToggle(){
 	// imageSrcDD.append(imgSrcSpan1, tumblrButton);
 	const gitIcon = $('<i>',{
 		class: 'fa fa-github-square fa-3x gitIcon'
-	}).css({
-		color: 'rgba(0, 0, 0, 0.6)',
-		'font-size': '33px'
 	});
 	const gitButton = $('<a>',{
-		href: "https://github.com/briandhkim",
+		href: "https://github.com/briandhkim/OW-Arcade",
 		target: '_blank',
 		class:'aboutModalLink'
 	}).append(gitIcon);
 	const linkedIcon = $('<i>',{
 		class: 'fa fa-linkedin-square fa-3x liIcon'
-	}).css({
-		margin: '0 10px',
-		color: 'rgba(0, 119, 181, 0.6)',
-		'font-size':'33px'
 	});
 	const linkedButton = $('<a>',{
 		href: "https://www.linkedin.com/in/briandhkimucla/",

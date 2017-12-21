@@ -596,14 +596,27 @@ html,body{
 }
 
 /*** modal css ***/
+#gameInfoModal .gitIcon{
+	color: rgba(0, 0, 0, 0.6);
+	font-size: 33px;
+}
 #gameInfoModal .gitIcon:hover{
-	color: rgba(0,0,0,1) !important;
+	color: rgba(0,0,0,1);
+}
+#gameInfoModal .liIcon{
+	color: rgba(0, 119, 181, 0.6);
+	font-size: 33px;
+	margin: 0 10px;
 }
 #gameInfoModal .liIcon:hover{
-	color: rgba(0,119,181,1) !important;
+	color: rgba(0,119,181,1);
+}
+#gameInfoModal .tumblrIcon{
+	color: rgba(54, 70, 93, 0.6);
+	font-size: 33px;
 }
 #gameInfoModal .tumblrIcon:hover{
-	color: rgba(54,70,93,1) !important;
+	color: rgba(54,70,93,1);
 }
 .modal-content{
 	font-family: 'Press Start 2P', cursive;
