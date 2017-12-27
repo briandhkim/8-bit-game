@@ -92,7 +92,7 @@ function Player(){
  	*/
 	this.reload = function(){
 		this.activeCharacter.reload();
-		console.log('console message saying the current character reloaded');
+		// console.log('console message saying the current character reloaded');
 	};
 
 	/***************************
