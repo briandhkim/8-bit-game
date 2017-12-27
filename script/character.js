@@ -64,7 +64,7 @@ function Character(charObj){  //fetch charObj from charStats.js
         if(this.hp<= 0){
             this.hp = 0;
             this.toggleDeathStatus();
-            console.log("dead");
+            // console.log("dead");
             return;
         }
     };
@@ -91,7 +91,7 @@ function Character(charObj){  //fetch charObj from charStats.js
     this.toggleDeathStatus = function(){
         if(this.alive){
             this.alive = false;
-            console.log(this.name +" was eliminated");
+            // console.log(this.name +" was eliminated");
         }
     };
 };

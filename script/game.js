@@ -246,7 +246,7 @@ function Game(uiUpdater){
     this.deadCharSwap = function(player, playerTurnNum){
         player.charactersAlive--;
         if(player.charactersAlive===0){
-            console.log('game over');
+            // console.log('game over');
             gameOver(playerTurnNum);
         }else if(player.charactersAlive>0){
             for (var char in player.characterArr){
