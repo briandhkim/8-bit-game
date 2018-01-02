@@ -1,6 +1,4 @@
-//remove this_ variable. it is unnecessary!!!!!!!!!!!
 function Game(uiUpdater){
-    let this_ = this;
     let uiUp = uiUpdater;     //uiUpdater Object
     this.playersInGame = [];        // will always have 2
     this.currentPlayerTurn = 0;     // 0 --player1 ||| 1 --player2 (since playersInPlay is 0 indexed)
@@ -19,10 +17,10 @@ function Game(uiUpdater){
     this.gameInitiated = function(){
         player1 = new Player();
         player2 = new Player();
-        this_.playersInGame[0] = player1;
-        this_.playersInGame[1] = player2;
+        this.playersInGame[0] = player1;
+        this.playersInGame[1] = player2;
         // console.log(this_.playersInGame);
-    }();    /*****!!! called when Game object is created !!!*****/
+    }.bind(this)();    /*****!!! called when Game object is created !!!*****/
 
     /***************************
     addCharacterToPlayer -> 
@@ -141,7 +139,7 @@ function Game(uiUpdater){
     descpt: changes player character. calls changeCharacterFunction in player object
     */
     this.turnChangeChar = function(characterNum){
-        const charChangeCheck = this_.playersInGame[this_.currentPlayerTurn].changeCharacter(characterNum);
+        const charChangeCheck = this.playersInGame[this.currentPlayerTurn].changeCharacter(characterNum);
         const currentPlayer = this.playersInGame[this.currentPlayerTurn];
         if(charChangeCheck){
             if(this.currentPlayerTurn){
@@ -166,10 +164,10 @@ function Game(uiUpdater){
     */
     this.turnSkillChar = function(skillNum){
         this.buttonTimeout();
-        let selectedSkill = this_.playersInGame[this_.currentPlayerTurn].activeCharacter.skillArr[skillNum];
+        let selectedSkill = this.playersInGame[this.currentPlayerTurn].activeCharacter.skillArr[skillNum];
         if(selectedSkill.pp<=0){
             uiUp.updateConsoleCustomMsg("No more pp for this skill...");
-            this_.buttonRebind();
+            this.buttonRebind();
             return;
         }
         let skillName = this.playersInGame[this.currentPlayerTurn].activeCharacter.skillArr[skillNum].name;
@@ -180,8 +178,8 @@ function Game(uiUpdater){
         if(!skillOutput[1]){
             uiUp.attkAnimation(this.currentPlayerTurn);
             setTimeout(function(){
-                this_.buttonRebind();
-            },950);
+                this.buttonRebind();
+            }.bind(this),950);
             if(this.currentPlayerTurn===0){
                 setTimeout(function(){
                     uiUp.receiveHitAnimation(1);
@@ -191,8 +189,8 @@ function Game(uiUpdater){
                 if(this.checkCharDead(this.playersInGame[1].activeCharacter)){  //checking hcaracter elimination status
                     prevTurnMsgElimination = this.playersInGame[1].activeCharacter.name +" was eliminated!";  
                     setTimeout(function(){
-                        this_.deadCharSwap(this_.playersInGame[1], 1);       //swaping out eliminated char  
-                    }, 900);
+                        this.deadCharSwap(this.playersInGame[1], 1);       //swaping out eliminated char  
+                    }.bind(this), 900);
                      
                     return;
                 }
@@ -206,8 +204,8 @@ function Game(uiUpdater){
                 if(this.checkCharDead(this.playersInGame[0].activeCharacter)){
                     prevTurnMsgElimination = this.playersInGame[0].activeCharacter.name +" was eliminated!";
                     setTimeout(function(){
-                        this_.deadCharSwap(this_.playersInGame[0], 0); 
-                    },900);
+                        this.deadCharSwap(this.playersInGame[0], 0); 
+                    }.bind(this),900);
                       
                     return;
                 }

@@ -15,7 +15,7 @@ function UIupdater(){
 		this.loadAttackMoveList(charInPlay.skillArr);
 		this.loadHealthPackCount(player.healthPackCount);
 		this.loadPlayerCharacterList(player.characterArr);
-		this.bannerUpdate(charInPlay);
+		this.statUpdate(charInPlay);
 	};
 
 	/***************************
@@ -32,7 +32,7 @@ function UIupdater(){
 		this.loadAttackMoveList(charInPlay.skillArr);
 		this.loadHealthPackCount(player.healthPackCount);
 		this.loadPlayerCharacterList(player.characterArr);
-		this.bannerUpdate(charInPlay);
+		this.statUpdate(charInPlay);
 	};
 
 	/***************************
@@ -311,12 +311,12 @@ function UIupdater(){
  	};
 
  	/***************************
-	bannerUpdate -> 
+	statUpdate -> 
 	param: character object
 	return: none
 	descpt: updates the character skill stats based on player turn
  	*/
- 	this.bannerUpdate = function(selectedChar){
+ 	this.statUpdate = function(selectedChar){
 		let character = selectedChar;
 		// $('.gBannerNameCol').text(character.name);
 		// let skillNum = 1;
