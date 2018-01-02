@@ -1,6 +1,4 @@
-//remove this_ variable. it is unnecessary!!!!!!!!!!!
 function Game(uiUpdater){
-    let this_ = this;
     let uiUp = uiUpdater;     //uiUpdater Object
     this.playersInGame = [];        // will always have 2
     this.currentPlayerTurn = 0;     // 0 --player1 ||| 1 --player2 (since playersInPlay is 0 indexed)
@@ -19,10 +17,10 @@ function Game(uiUpdater){
     this.gameInitiated = function(){
         player1 = new Player();
         player2 = new Player();
-        this_.playersInGame[0] = player1;
-        this_.playersInGame[1] = player2;
+        this.playersInGame[0] = player1;
+        this.playersInGame[1] = player2;
         // console.log(this_.playersInGame);
-    }();    /*****!!! called when Game object is created !!!*****/
+    }.bind(this)();    /*****!!! called when Game object is created !!!*****/
 
     /***************************
     addCharacterToPlayer -> 
@@ -53,10 +51,7 @@ function Game(uiUpdater){
     descpt: disable all buttons and click handlers during skill animation timeout
     */
     this.buttonTimeout = function(){
-        $('.moveOptionSkills').off('click');
-        $('.moveOptionChangeChar').off('click');
-        $('.moveOptionUse').off('click');
-        $('.moveOptionRageQuit').off('click', rageQuitOpt);
+        uiUp.buttonOff();
         this.buttonDisable = true;
     };
     /***************************
@@ -66,19 +61,7 @@ function Game(uiUpdater){
     descpt: rebind all buttons and click handlers after skill animation timeout
     */
     this.buttonRebind = function(){
-        $('.moveOptionSkills').on('click',()=>{
-            $('.tracker').remove();
-            skillMenuClick();
-        });
-        $('.moveOptionChangeChar').on('click',()=>{
-            $('.tracker').remove();
-            charOptClick();
-        });
-        $('.moveOptionUse').on('click',()=>{
-            $('.tracker').remove();
-            useOptClick();
-        });
-        $('.moveOptionRageQuit').on('click',rageQuitOpt);
+        uiUp.buttonOn();
         this.buttonDisable = false;
         uiUp.removeAnimationClass();
     };
@@ -102,11 +85,7 @@ function Game(uiUpdater){
             prevTurnMsg = null;
             prevTurnMsgElimination = null;
             if($(window).innerWidth()>767){
-                $('.consoleMessage').addClass('consoleMessageP2');
-                $('.skillList').addClass('skillListP2');
-                $('.changeCharList').addClass('changeCharListP2');
-                $('.useList').addClass('useListP2');
-                $('.statsSquare').addClass('statsSquareP2');
+                uiUp.consoleSwitchP2();
             }
             return;
         }else if(this.currentPlayerTurn===1){
@@ -121,11 +100,7 @@ function Game(uiUpdater){
             prevTurnMsg = null;
             prevTurnMsgElimination = null;
             if($('.consoleMessage').hasClass('consoleMessageP2')){
-                $('.consoleMessage').removeClass('consoleMessageP2');
-                $('.skillList').removeClass('skillListP2');
-                $('.changeCharList').removeClass('changeCharListP2');
-                $('.useList').removeClass('useListP2');
-                $('.statsSquare').removeClass('statsSquareP2');
+                uiUp.consoleSwitchP1();
             }
             return;
         }else{
@@ -141,7 +116,7 @@ function Game(uiUpdater){
     descpt: changes player character. calls changeCharacterFunction in player object
     */
     this.turnChangeChar = function(characterNum){
-        const charChangeCheck = this_.playersInGame[this_.currentPlayerTurn].changeCharacter(characterNum);
+        const charChangeCheck = this.playersInGame[this.currentPlayerTurn].changeCharacter(characterNum);
         const currentPlayer = this.playersInGame[this.currentPlayerTurn];
         if(charChangeCheck){
             if(this.currentPlayerTurn){
@@ -166,10 +141,10 @@ function Game(uiUpdater){
     */
     this.turnSkillChar = function(skillNum){
         this.buttonTimeout();
-        let selectedSkill = this_.playersInGame[this_.currentPlayerTurn].activeCharacter.skillArr[skillNum];
+        let selectedSkill = this.playersInGame[this.currentPlayerTurn].activeCharacter.skillArr[skillNum];
         if(selectedSkill.pp<=0){
             uiUp.updateConsoleCustomMsg("No more pp for this skill...");
-            this_.buttonRebind();
+            this.buttonRebind();
             return;
         }
         let skillName = this.playersInGame[this.currentPlayerTurn].activeCharacter.skillArr[skillNum].name;
@@ -180,8 +155,8 @@ function Game(uiUpdater){
         if(!skillOutput[1]){
             uiUp.attkAnimation(this.currentPlayerTurn);
             setTimeout(function(){
-                this_.buttonRebind();
-            },950);
+                this.buttonRebind();
+            }.bind(this),950);
             if(this.currentPlayerTurn===0){
                 setTimeout(function(){
                     uiUp.receiveHitAnimation(1);
@@ -191,8 +166,8 @@ function Game(uiUpdater){
                 if(this.checkCharDead(this.playersInGame[1].activeCharacter)){  //checking hcaracter elimination status
                     prevTurnMsgElimination = this.playersInGame[1].activeCharacter.name +" was eliminated!";  
                     setTimeout(function(){
-                        this_.deadCharSwap(this_.playersInGame[1], 1);       //swaping out eliminated char  
-                    }, 900);
+                        this.deadCharSwap(this.playersInGame[1], 1);       //swaping out eliminated char  
+                    }.bind(this), 900);
                      
                     return;
                 }
@@ -206,8 +181,8 @@ function Game(uiUpdater){
                 if(this.checkCharDead(this.playersInGame[0].activeCharacter)){
                     prevTurnMsgElimination = this.playersInGame[0].activeCharacter.name +" was eliminated!";
                     setTimeout(function(){
-                        this_.deadCharSwap(this_.playersInGame[0], 0); 
-                    },900);
+                        this.deadCharSwap(this.playersInGame[0], 0); 
+                    }.bind(this),900);
                       
                     return;
                 }

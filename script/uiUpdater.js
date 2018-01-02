@@ -15,7 +15,7 @@ function UIupdater(){
 		this.loadAttackMoveList(charInPlay.skillArr);
 		this.loadHealthPackCount(player.healthPackCount);
 		this.loadPlayerCharacterList(player.characterArr);
-		this.bannerUpdate(charInPlay);
+		this.statUpdate(charInPlay);
 	};
 
 	/***************************
@@ -32,7 +32,7 @@ function UIupdater(){
 		this.loadAttackMoveList(charInPlay.skillArr);
 		this.loadHealthPackCount(player.healthPackCount);
 		this.loadPlayerCharacterList(player.characterArr);
-		this.bannerUpdate(charInPlay);
+		this.statUpdate(charInPlay);
 	};
 
 	/***************************
@@ -243,8 +243,6 @@ function UIupdater(){
  	this.loadHealthPackCount = function(hPackCount){
  		$('#item_healthPack_counter').text(hPackCount);
  	};	
-
-
  	/****game play updates****/
  	/***************************
 	updateConsoleCustomMsg -> 
@@ -298,7 +296,6 @@ function UIupdater(){
  		});
  		$('.consoleMsgList').prepend(turnChangeMsg);
  	};	
-
  	/***************************
 	clearConsoleMessage -> 
 	param: none
@@ -309,14 +306,13 @@ function UIupdater(){
  		$('.consoleMsgList li').remove();
  		$('.consoleMsgListPrevTurn li').remove();
  	};
-
  	/***************************
-	bannerUpdate -> 
+	statUpdate -> 
 	param: character object
 	return: none
 	descpt: updates the character skill stats based on player turn
  	*/
- 	this.bannerUpdate = function(selectedChar){
+ 	this.statUpdate = function(selectedChar){
 		let character = selectedChar;
 		// $('.gBannerNameCol').text(character.name);
 		// let skillNum = 1;
@@ -331,6 +327,65 @@ function UIupdater(){
 			}
 		});
 	};	
+	/***************************
+	consoleSwitchP2 -> 
+	param: none
+	return: none
+	descpt: changes game console to player 2 orientation
+	*/
+	this.consoleSwitchP2 = function(){
+		$('.consoleMessage').addClass('consoleMessageP2');
+        $('.skillList').addClass('skillListP2');
+        $('.changeCharList').addClass('changeCharListP2');
+        $('.useList').addClass('useListP2');
+        $('.statsSquare').addClass('statsSquareP2');
+	};
+	/***************************
+	consoleSwitchP1 -> 
+	param: none
+	return: none
+	descpt: changes game console to player 1 orientation
+	*/
+	this.consoleSwitchP1 = function(){
+		$('.consoleMessage').removeClass('consoleMessageP2');
+        $('.skillList').removeClass('skillListP2');
+        $('.changeCharList').removeClass('changeCharListP2');
+        $('.useList').removeClass('useListP2');
+        $('.statsSquare').removeClass('statsSquareP2');
+	};
+	/***************************
+	buttonOff -> 
+	param: none
+	return: none
+	descpt: disables game button click handlers
+	*/
+	this.buttonOff = function(){
+		$('.moveOptionSkills').off('click');
+		$('.moveOptionChangeChar').off('click');
+		$('.moveOptionUse').off('click');
+		$('.moveOptionRageQuit').off('click', rageQuitOpt);
+	};
+	/***************************
+	buttonOn -> 
+	param: none
+	return: none
+	descpt: reenables game button click handlers
+	*/
+	this.buttonOn = function(){
+		$('.moveOptionSkills').on('click',()=>{
+            $('.tracker').remove();
+            skillMenuClick();
+        });
+        $('.moveOptionChangeChar').on('click',()=>{
+            $('.tracker').remove();
+            charOptClick();
+        });
+        $('.moveOptionUse').on('click',()=>{
+            $('.tracker').remove();
+            useOptClick();
+        });
+        $('.moveOptionRageQuit').on('click',rageQuitOpt);
+	};
 	/***************************
 	gameEndClear -> 
 	param: none
