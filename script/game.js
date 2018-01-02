@@ -51,10 +51,7 @@ function Game(uiUpdater){
     descpt: disable all buttons and click handlers during skill animation timeout
     */
     this.buttonTimeout = function(){
-        $('.moveOptionSkills').off('click');
-        $('.moveOptionChangeChar').off('click');
-        $('.moveOptionUse').off('click');
-        $('.moveOptionRageQuit').off('click', rageQuitOpt);
+        uiUp.buttonOff();
         this.buttonDisable = true;
     };
     /***************************
@@ -64,19 +61,7 @@ function Game(uiUpdater){
     descpt: rebind all buttons and click handlers after skill animation timeout
     */
     this.buttonRebind = function(){
-        $('.moveOptionSkills').on('click',()=>{
-            $('.tracker').remove();
-            skillMenuClick();
-        });
-        $('.moveOptionChangeChar').on('click',()=>{
-            $('.tracker').remove();
-            charOptClick();
-        });
-        $('.moveOptionUse').on('click',()=>{
-            $('.tracker').remove();
-            useOptClick();
-        });
-        $('.moveOptionRageQuit').on('click',rageQuitOpt);
+        uiUp.buttonOn();
         this.buttonDisable = false;
         uiUp.removeAnimationClass();
     };
@@ -100,11 +85,7 @@ function Game(uiUpdater){
             prevTurnMsg = null;
             prevTurnMsgElimination = null;
             if($(window).innerWidth()>767){
-                $('.consoleMessage').addClass('consoleMessageP2');
-                $('.skillList').addClass('skillListP2');
-                $('.changeCharList').addClass('changeCharListP2');
-                $('.useList').addClass('useListP2');
-                $('.statsSquare').addClass('statsSquareP2');
+                uiUp.consoleSwitchP2();
             }
             return;
         }else if(this.currentPlayerTurn===1){
@@ -119,11 +100,7 @@ function Game(uiUpdater){
             prevTurnMsg = null;
             prevTurnMsgElimination = null;
             if($('.consoleMessage').hasClass('consoleMessageP2')){
-                $('.consoleMessage').removeClass('consoleMessageP2');
-                $('.skillList').removeClass('skillListP2');
-                $('.changeCharList').removeClass('changeCharListP2');
-                $('.useList').removeClass('useListP2');
-                $('.statsSquare').removeClass('statsSquareP2');
+                uiUp.consoleSwitchP1();
             }
             return;
         }else{
