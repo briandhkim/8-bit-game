@@ -1,5 +1,5 @@
 function Game(uiUpdater){
-    let uiUp = uiUpdater;     //uiUpdater Object
+    const uiUp = uiUpdater;     //uiUpdater Object
     this.playersInGame = [];        // will always have 2
     this.currentPlayerTurn = 0;     // 0 --player1 ||| 1 --player2 (since playersInPlay is 0 indexed)
     let player1 = null;
@@ -235,7 +235,7 @@ function Game(uiUpdater){
         }else{
             console.log("error at deadCharSwap in gameObj");
         }
-         
+        
     };
     /***************************
     turnUseHealthPack -> 
