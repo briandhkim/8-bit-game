@@ -157,37 +157,23 @@ function Game(uiUpdater){
             setTimeout(function(){
                 this.buttonRebind();
             }.bind(this),950);
-            if(this.currentPlayerTurn===0){
+            
+            const opponentNum = 1-this.currentPlayerTurn;
+            //if currentPlayerTurn=1, opponentNum=0 else cPT=0, oppNum=1
+            setTimeout(function(){
+                uiUp.receiveHitAnimation(opponentNum);
+            },170);
+            this.playersInGame[opponentNum].activeCharacter.takeDamage(skillOutput[0][0]);
+            uiUp.currentCharDamageTakeHP(this.playersInGame[opponentNum].activeCharacter, opponentNum);
+            if(this.checkCharDead(this.playersInGame[opponentNum].activeCharacter)){    //checking hcaracter elimination status
+                prevTurnMsgElimination = this.playersInGame[opponentNum].activeCharacter.name +" was eliminated!";
                 setTimeout(function(){
-                    uiUp.receiveHitAnimation(1);
-                },170);
-                this.playersInGame[1].activeCharacter.takeDamage(skillOutput[0][0]);
-                uiUp.currentCharDamageTakeHP(this.playersInGame[1].activeCharacter, 1);
-                if(this.checkCharDead(this.playersInGame[1].activeCharacter)){  //checking hcaracter elimination status
-                    prevTurnMsgElimination = this.playersInGame[1].activeCharacter.name +" was eliminated!";  
-                    setTimeout(function(){
-                        this.deadCharSwap(this.playersInGame[1], 1);       //swaping out eliminated char  
-                    }.bind(this), 900);
-                     
-                    return;
-                }
-                this.changePlayerTurn();
-            }else if(this.currentPlayerTurn===1){
-                setTimeout(function(){
-                    uiUp.receiveHitAnimation(0);
-                },170);
-                this.playersInGame[0].activeCharacter.takeDamage(skillOutput[0][0]);
-                uiUp.currentCharDamageTakeHP(this.playersInGame[0].activeCharacter, 0);
-                if(this.checkCharDead(this.playersInGame[0].activeCharacter)){
-                    prevTurnMsgElimination = this.playersInGame[0].activeCharacter.name +" was eliminated!";
-                    setTimeout(function(){
-                        this.deadCharSwap(this.playersInGame[0], 0); 
-                    }.bind(this),900);
-                      
-                    return;
-                }
-                this.changePlayerTurn();
+                    this.deadCharSwap(this.playersInGame[opponentNum], opponentNum);    //swaping out eliminated char  
+                }.bind(this),900);
+                  
+                return;
             }
+            this.changePlayerTurn();
         }else if(skillOutput[1]){
             this.buttonRebind();
             this.playersInGame[this.currentPlayerTurn].activeCharacter.addHP(skillOutput[0]);

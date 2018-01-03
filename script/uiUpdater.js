@@ -9,9 +9,10 @@ function UIupdater(){
  	*/
 	this.characterLoadUpdate = function(player, playerTurnNum){
 		let charInPlay = player.activeCharacter;
-		this.loadCurrentCharName(charInPlay, playerTurnNum);
+		const targetPlayer = `player${playerTurnNum+1}`;
+		this.loadCurrentCharName(charInPlay, targetPlayer);
 		this.loadCurrentCharImage(charInPlay, playerTurnNum);
-		this.loadCurrentCharHP(charInPlay, playerTurnNum);
+		this.loadCurrentCharHP(charInPlay, targetPlayer);
 		this.loadAttackMoveList(charInPlay.skillArr);
 		this.loadHealthPackCount(player.healthPackCount);
 		this.loadPlayerCharacterList(player.characterArr);
@@ -27,8 +28,6 @@ function UIupdater(){
  	*/
 	this.turnChangeLoadUpdate = function(player, playerTurnNum){	//doesn't animate the character image
 		let charInPlay = player.activeCharacter;
-		// this.loadCurrentCharName(charInPlay, playerTurnNum);
-		// this.loadCurrentCharHP(charInPlay, playerTurnNum);
 		this.loadAttackMoveList(charInPlay.skillArr);
 		this.loadHealthPackCount(player.healthPackCount);
 		this.loadPlayerCharacterList(player.characterArr);
@@ -40,29 +39,26 @@ function UIupdater(){
 	param: player object, (int) player turn number)
 	return: none
 	descpt: changes character name area, image, hp bar; used
-		when a character is eliminated
+		when a character is eliminated/when player changes char
  	*/
 	this.changeCharacterUpdate = function(player, playerTurnNum){
 		let charInPlay = player.activeCharacter;
-		this.loadCurrentCharName(charInPlay, playerTurnNum);
+		const targetPlayer = `player${playerTurnNum+1}`;
+		this.loadCurrentCharName(charInPlay, targetPlayer);
 		this.loadCurrentCharImage(charInPlay, playerTurnNum);
-		this.loadCurrentCharHP(charInPlay, playerTurnNum);
+		this.loadCurrentCharHP(charInPlay, targetPlayer);
 	};
 	/***************************
 	updateCurrentCharName -> 
 	param: selectedChar -> currentCharacter from player object (activeCharacter)
-			playerTurnNum -> either 0 or 1 depending on the turn of current player
+			targetPlayer -> part of class selector specifying the target player character
+			to update
 	return: nothing
 	descpt: update character name area of corresponding player area
 			selectedChar.name  --> name of the character selected (string)
 	*/
-	this.loadCurrentCharName = function(selectedChar, playerTurnNum){
-		// 0 - player 1, 1 - player 2; 
-		if(playerTurnNum){	
-			$('.player2_currentChar_name').text(selectedChar.name);
-		}else{
-			$('.player1_currentChar_name').text(selectedChar.name);
-		}
+	this.loadCurrentCharName = function(selectedChar, targetPlayer){
+		$(`.${targetPlayer}_currentChar_name`).text(selectedChar.name);
 	};
 	/***************************
 	updatecurrentCharImage -> 
@@ -77,53 +73,37 @@ function UIupdater(){
  				'background-image': 'url('+selectedChar.gameImage+')',
  				'left': '175px'
  			});
- 			$('.player2_charImg').animate({'left': '-=175px'},1200);
+ 			$('.player2_charImg').velocity({'left': '-=175px'},1200);
  			return;
  		}else{
  			$('.player1_charImg').css({
  				'background-image': 'url('+selectedChar.gameImage+')',
  				'left': '-175px'
  			});
- 			$('.player1_charImg').animate({'left':'+=175px'},1200);
+ 			$('.player1_charImg').velocity({'left':'+=175px'},1200);
  			return;
  		}
  	};
  	/***************************
 	loadCurrentCharHP -> 
-	param: character object, (int) player turn number
+	param: character object, (string) player1 or player2
 	return: none
 	descpt: updates hp bar of the passed in character
  	*/
- 	this.loadCurrentCharHP = function(selectedChar, playerTurnNum){
- 		if(playerTurnNum){
- 			$('.player2_currentChar_hpArea .currentHP').text(selectedChar.hp);
- 			$('.player2_currentChar_hpArea .maxHP').text(selectedChar.hpMax);
- 			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
- 			if(hpBar <20){
- 				$('#player2_charHealthBar').removeClass('progress-bar-warning progress-bar-success').addClass('progress-bar-danger');
- 			}else if(hpBar>=20 && hpBar <55){
- 				$('#player2_charHealthBar').removeClass('progress-bar-danger progress-bar-success').addClass('progress-bar-warning');
- 			}else if(hpBar>= 55){
- 				$('#player2_charHealthBar').removeClass('progress-bar-danger progress-bar-warning').addClass('progress-bar-success');
- 			}
- 			$('#player2_charHealthBar').css({
- 				'width': hpBar+'%'
- 			});
- 		}else{
- 			$('.player1_currentChar_hpArea .currentHP').text(selectedChar.hp);
- 			$('.player1_currentChar_hpArea .maxHP').text(selectedChar.hpMax);
- 			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
- 			if(hpBar <20){
- 				$('#player1_charHealthBar').removeClass('progress-bar-warning progress-bar-success').addClass('progress-bar-danger');
- 			}else if(hpBar>=20 && hpBar <55){
- 				$('#player1_charHealthBar').removeClass('progress-bar-danger progress-bar-success').addClass('progress-bar-warning');
- 			}else if(hpBar>= 55){
- 				$('#player1_charHealthBar').removeClass('progress-bar-danger progress-bar-warning').addClass('progress-bar-success');
- 			}
- 			$('#player1_charHealthBar').css({
- 				'width': hpBar+'%'
- 			});
- 		}
+ 	this.loadCurrentCharHP = function(selectedChar, targetPlayer){
+ 		$(`.${targetPlayer}_currentChar_hpArea .currentHP`).text(selectedChar.hp);
+ 		$(`.${targetPlayer}_currentChar_hpArea .maxHP`).text(selectedChar.hpMax);
+ 		let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
+ 		if(hpBar <20){
+			$(`#${targetPlayer}_charHealthBar`).removeClass('progress-bar-warning progress-bar-success').addClass('progress-bar-danger');
+		}else if(hpBar>=20 && hpBar <55){
+			$(`#${targetPlayer}_charHealthBar`).removeClass('progress-bar-danger progress-bar-success').addClass('progress-bar-warning');
+		}else if(hpBar>= 55){
+			$(`#${targetPlayer}_charHealthBar`).removeClass('progress-bar-danger progress-bar-warning').addClass('progress-bar-success');
+		}
+		$(`#${targetPlayer}_charHealthBar`).css({
+			'width': hpBar+'%'
+		});
  	};
  	/***************************
 	currentCharDamageTakeHP -> 
