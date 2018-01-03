@@ -93,7 +93,7 @@ function UIupdater(){
  	this.loadCurrentCharHP = function(selectedChar, targetPlayer){
  		$(`.${targetPlayer}_currentChar_hpArea .currentHP`).text(selectedChar.hp);
  		$(`.${targetPlayer}_currentChar_hpArea .maxHP`).text(selectedChar.hpMax);
- 		let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
+ 		const hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
  		if(hpBar <20){
 			$(`#${targetPlayer}_charHealthBar`).removeClass('progress-bar-warning progress-bar-success').addClass('progress-bar-danger');
 		}else if(hpBar>=20 && hpBar <55){
@@ -111,34 +111,19 @@ function UIupdater(){
 	return: none
 	descpt: updates character hp bar if damage is taken
  	*/
- 	this.currentCharDamageTakeHP=function(selectedChar, playerTurnNum){
- 		if(playerTurnNum){
- 			$('.player2_currentChar_hpArea .currentHP').text(selectedChar.hp);
- 			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
- 			if(hpBar <20){
- 				$('#player2_charHealthBar').removeClass('progress-bar-warning progress-bar-success').addClass('progress-bar-danger');
- 			}else if(hpBar>=20 && hpBar <55){
- 				$('#player2_charHealthBar').removeClass('progress-bar-danger progress-bar-success').addClass('progress-bar-warning');
- 			}else if(hpBar>= 55){
- 				$('#player2_charHealthBar').removeClass('progress-bar-danger progress-bar-warning').addClass('progress-bar-success');
- 			}
- 			$('#player2_charHealthBar').css({
- 				'width' : hpBar+'%'
- 			});
- 		}else{	
- 			$('.player1_currentChar_hpArea .currentHP').text(selectedChar.hp);
- 			let hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
- 			if(hpBar <20){
- 				$('#player1_charHealthBar').removeClass('progress-bar-warning progress-bar-success').addClass('progress-bar-danger');
- 			}else if(hpBar>=20 && hpBar <55){
- 				$('#player1_charHealthBar').removeClass('progress-bar-danger progress-bar-success').addClass('progress-bar-warning');
- 			}else if(hpBar>= 55){
- 				$('#player1_charHealthBar').removeClass('progress-bar-danger progress-bar-warning').addClass('progress-bar-success');
- 			}
- 			$('#player1_charHealthBar').css({
- 				'width' : hpBar+'%'
- 			});
- 		}
+ 	this.currentCharDamageTakeHP=function(selectedChar, targetPlayer){
+ 		$(`.${targetPlayer}_currentChar_hpArea .currentHP`).text(selectedChar.hp);
+		const hpBar = Math.round((selectedChar.hp/selectedChar.hpMax)*100);
+		if(hpBar <20){
+			$(`#${targetPlayer}_charHealthBar`).removeClass('progress-bar-warning progress-bar-success').addClass('progress-bar-danger');
+		}else if(hpBar>=20 && hpBar <55){
+			$(`#${targetPlayer}_charHealthBar`).removeClass('progress-bar-danger progress-bar-success').addClass('progress-bar-warning');
+		}else if(hpBar>= 55){
+			$(`#${targetPlayer}_charHealthBar`).removeClass('progress-bar-danger progress-bar-warning').addClass('progress-bar-success');
+		}
+		$(`#${targetPlayer}_charHealthBar`).css({
+			'width' : hpBar+'%'
+		});
  	};
  	/***************************
 	attkAnimation -> 
@@ -155,16 +140,12 @@ function UIupdater(){
  	};
  	/***************************
 	receiveHitAnimation -> 
-	param: player turn number (int)
+	param: target player (string)
 	return: none
 	descpt: add receive hit animation to character receiving hit
  	*/
- 	this.receiveHitAnimation = function(playerTurnNum){
- 		if(playerTurnNum){
- 			$('.player2_charImgArea').addClass('got_hit');
- 		}else{
- 			$('.player1_charImgArea').addClass('got_hit');
- 		}
+ 	this.receiveHitAnimation = function(targetPlayer){
+ 		$(`.${targetPlayer}_charImgArea`).addClass('got_hit');
  	};
  	/***************************
 	removeAnimationClass -> 
@@ -185,7 +166,6 @@ function UIupdater(){
 	*/
 	this.loadAttackMoveList = function(skillsArr){
 		let skills = skillsArr;
-		//skills[i].name  -> name of skill (string)
 		for(var i = 0; i<skills.length; i++){
 			$('#skill_'+(i+1)+'_name').text(skills[i].name);
 			$('#skill_'+(i+1)+'_ppUpdate').text(skills[i].pp);
@@ -294,8 +274,6 @@ function UIupdater(){
  	*/
  	this.statUpdate = function(selectedChar){
 		let character = selectedChar;
-		// $('.gBannerNameCol').text(character.name);
-		// let skillNum = 1;
 		skillArr = character.skillArr;
 		skillArr.forEach((skill, idx)=>{
 			const banner = `.gStatSkill${idx+1}`;
@@ -308,30 +286,25 @@ function UIupdater(){
 		});
 	};	
 	/***************************
-	consoleSwitchP2 -> 
-	param: none
+	consoleSwitch -> 
+	param: pNum(int) 1 if player2 orientation; 0 if player1 orientation
 	return: none
 	descpt: changes game console to player 2 orientation
 	*/
-	this.consoleSwitchP2 = function(){
-		$('.consoleMessage').addClass('consoleMessageP2');
-        $('.skillList').addClass('skillListP2');
-        $('.changeCharList').addClass('changeCharListP2');
-        $('.useList').addClass('useListP2');
-        $('.statsSquare').addClass('statsSquareP2');
-	};
-	/***************************
-	consoleSwitchP1 -> 
-	param: none
-	return: none
-	descpt: changes game console to player 1 orientation
-	*/
-	this.consoleSwitchP1 = function(){
-		$('.consoleMessage').removeClass('consoleMessageP2');
-        $('.skillList').removeClass('skillListP2');
-        $('.changeCharList').removeClass('changeCharListP2');
-        $('.useList').removeClass('useListP2');
-        $('.statsSquare').removeClass('statsSquareP2');
+	this.consoleSwitch = function(pNum){
+		if(pNum){
+			$('.consoleMessage').addClass('consoleMessageP2');
+	        $('.skillList').addClass('skillListP2');
+	        $('.changeCharList').addClass('changeCharListP2');
+	        $('.useList').addClass('useListP2');
+	        $('.statsSquare').addClass('statsSquareP2');
+		}else{
+			$('.consoleMessage').removeClass('consoleMessageP2');
+	        $('.skillList').removeClass('skillListP2');
+	        $('.changeCharList').removeClass('changeCharListP2');
+	        $('.useList').removeClass('useListP2');
+	        $('.statsSquare').removeClass('statsSquareP2');
+		}
 	};
 	/***************************
 	buttonOff -> 
