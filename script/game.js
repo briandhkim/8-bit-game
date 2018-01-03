@@ -1,5 +1,5 @@
 function Game(uiUpdater){
-    let uiUp = uiUpdater;     //uiUpdater Object
+    const uiUp = uiUpdater;     //uiUpdater Object
     this.playersInGame = [];        // will always have 2
     this.currentPlayerTurn = 0;     // 0 --player1 ||| 1 --player2 (since playersInPlay is 0 indexed)
     let player1 = null;
@@ -72,39 +72,22 @@ function Game(uiUpdater){
     descpt: changes player turn; called when character uses skill/item/change char 
     */
     this.changePlayerTurn = function(){
-        // this.buttonRebind();
-        if(this.currentPlayerTurn===0){
-            this.currentPlayerTurn++;
-            uiUp.turnChangeLoadUpdate(this.playersInGame[this.currentPlayerTurn], this.currentPlayerTurn);
-            uiUp.clearConsoleMessage();
-            uiUp.updatePrevTurnMsg(prevTurnMsg);
-            if(prevTurnMsgElimination){
-                uiUp.updatePrevTurnMsg(prevTurnMsgElimination);
-            }
-            uiUp.updateConsoleMessageTurnChange(this.currentPlayerTurn);
-            prevTurnMsg = null;
-            prevTurnMsgElimination = null;
-            if($(window).innerWidth()>767){
-                uiUp.consoleSwitchP2();
-            }
+        this.currentPlayerTurn = 1-this.currentPlayerTurn;
+        uiUp.turnChangeLoadUpdate(this.playersInGame[this.currentPlayerTurn], this.currentPlayerTurn);
+        uiUp.clearConsoleMessage();
+        uiUp.updatePrevTurnMsg(prevTurnMsg);
+        if(prevTurnMsgElimination){
+            uiUp.updatePrevTurnMsg(prevTurnMsgElimination);
+        }
+        uiUp.updateConsoleMessageTurnChange(this.currentPlayerTurn);
+        prevTurnMsg = null;
+        prevTurnMsgElimination = null;
+        if(this.currentPlayerTurn&&$(window).innerWidth()>767){
+            uiUp.consoleSwitch(1);
             return;
-        }else if(this.currentPlayerTurn===1){
-            this.currentPlayerTurn--;
-            uiUp.turnChangeLoadUpdate(this.playersInGame[this.currentPlayerTurn], this.currentPlayerTurn);
-            uiUp.clearConsoleMessage();
-            uiUp.updatePrevTurnMsg(prevTurnMsg);
-            if(prevTurnMsgElimination){
-                uiUp.updatePrevTurnMsg(prevTurnMsgElimination);
-            }
-            uiUp.updateConsoleMessageTurnChange(this.currentPlayerTurn);
-            prevTurnMsg = null;
-            prevTurnMsgElimination = null;
-            if($('.consoleMessage').hasClass('consoleMessageP2')){
-                uiUp.consoleSwitchP1();
-            }
+        }else if($('.consoleMessage').hasClass('consoleMessageP2')){
+            uiUp.consoleSwitch(0);
             return;
-        }else{
-            console.log('changePlayerTurn error in game object');
         }
     };
     /***************************
@@ -119,11 +102,7 @@ function Game(uiUpdater){
         const charChangeCheck = this.playersInGame[this.currentPlayerTurn].changeCharacter(characterNum);
         const currentPlayer = this.playersInGame[this.currentPlayerTurn];
         if(charChangeCheck){
-            if(this.currentPlayerTurn){
-                prevTurnMsg = `Player 2 switched to ${currentPlayer.activeCharacter.name}`; 
-            }else{
-                prevTurnMsg = `Player 1 switched to ${currentPlayer.activeCharacter.name}`;
-            }
+            prevTurnMsg = `Player ${this.currentPlayerTurn+1} switched to ${currentPlayer.activeCharacter.name}`;
             uiUp.changeCharacterUpdate(currentPlayer, this.currentPlayerTurn);
             this.changePlayerTurn();
         }else if(!charChangeCheck){
@@ -157,41 +136,28 @@ function Game(uiUpdater){
             setTimeout(function(){
                 this.buttonRebind();
             }.bind(this),950);
-            if(this.currentPlayerTurn===0){
+            
+            const opponentNum = 1-this.currentPlayerTurn;
+            //if currentPlayerTurn=1, opponentNum=0 else cPT=0, oppNum=1
+            const opponentPlayer = `player${opponentNum+1}`;
+            setTimeout(function(){
+                uiUp.receiveHitAnimation(opponentPlayer);
+            },170);
+            this.playersInGame[opponentNum].activeCharacter.takeDamage(skillOutput[0][0]);
+            uiUp.currentCharDamageTakeHP(this.playersInGame[opponentNum].activeCharacter, opponentPlayer);
+            if(this.checkCharDead(this.playersInGame[opponentNum].activeCharacter)){    //checking hcaracter elimination status
+                prevTurnMsgElimination = this.playersInGame[opponentNum].activeCharacter.name +" was eliminated!";
                 setTimeout(function(){
-                    uiUp.receiveHitAnimation(1);
-                },170);
-                this.playersInGame[1].activeCharacter.takeDamage(skillOutput[0][0]);
-                uiUp.currentCharDamageTakeHP(this.playersInGame[1].activeCharacter, 1);
-                if(this.checkCharDead(this.playersInGame[1].activeCharacter)){  //checking hcaracter elimination status
-                    prevTurnMsgElimination = this.playersInGame[1].activeCharacter.name +" was eliminated!";  
-                    setTimeout(function(){
-                        this.deadCharSwap(this.playersInGame[1], 1);       //swaping out eliminated char  
-                    }.bind(this), 900);
-                     
-                    return;
-                }
-                this.changePlayerTurn();
-            }else if(this.currentPlayerTurn===1){
-                setTimeout(function(){
-                    uiUp.receiveHitAnimation(0);
-                },170);
-                this.playersInGame[0].activeCharacter.takeDamage(skillOutput[0][0]);
-                uiUp.currentCharDamageTakeHP(this.playersInGame[0].activeCharacter, 0);
-                if(this.checkCharDead(this.playersInGame[0].activeCharacter)){
-                    prevTurnMsgElimination = this.playersInGame[0].activeCharacter.name +" was eliminated!";
-                    setTimeout(function(){
-                        this.deadCharSwap(this.playersInGame[0], 0); 
-                    }.bind(this),900);
-                      
-                    return;
-                }
-                this.changePlayerTurn();
+                    this.deadCharSwap(this.playersInGame[opponentNum], opponentNum);    //swaping out eliminated char  
+                }.bind(this),900);
+                return;
             }
+            this.changePlayerTurn();
         }else if(skillOutput[1]){
             this.buttonRebind();
             this.playersInGame[this.currentPlayerTurn].activeCharacter.addHP(skillOutput[0]);
-            uiUp.currentCharDamageTakeHP(this.playersInGame[this.currentPlayerTurn].activeCharacter, this.currentPlayerTurn);
+            const targetPlayer = `player${this.currentPlayerTurn+1}`;
+            uiUp.currentCharDamageTakeHP(this.playersInGame[this.currentPlayerTurn].activeCharacter, targetPlayer);
             this.changePlayerTurn();
         }
     };
@@ -235,7 +201,7 @@ function Game(uiUpdater){
         }else{
             console.log("error at deadCharSwap in gameObj");
         }
-         
+        
     };
     /***************************
     turnUseHealthPack -> 
@@ -249,7 +215,8 @@ function Game(uiUpdater){
         const currentPlayer = this.playersInGame[this.currentPlayerTurn];
         if(currentPlayer.healthPackCount!==0){
             currentPlayer.activeCharacter.addHP(currentPlayer.healthPack);
-            uiUp.currentCharDamageTakeHP(currentPlayer.activeCharacter, this.currentPlayerTurn);
+            const targetPlayer = `player${this.currentPlayerTurn+1}`;
+            uiUp.currentCharDamageTakeHP(currentPlayer.activeCharacter, targetPlayer);
             currentPlayer.healthPackCount--;
             prevTurnMsg = currentPlayer.activeCharacter.name + " used Health Pack!";
             this.changePlayerTurn();
