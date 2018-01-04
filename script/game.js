@@ -64,7 +64,7 @@ function Game(uiUpdater){
         uiUp.buttonOn();
         this.buttonDisable = false;
         uiUp.removeAnimationClass();
-    };
+    }.bind(this);
     /***************************
     changePlayerTurn -> 
     param: none
@@ -131,9 +131,7 @@ function Game(uiUpdater){
         prevTurnMsg = charName +" used " + skillName +"!";
         if(!skillOutput[1]){
             uiUp.attkAnimation(this.currentPlayerTurn);
-            setTimeout(function(){
-                this.buttonRebind();
-            }.bind(this),950);
+            setTimeout(this.buttonRebind,950);
 
             const opponentNum = 1-this.currentPlayerTurn;
             //if currentPlayerTurn=1, opponentNum=0 else cPT=0, oppNum=1
