@@ -64,7 +64,7 @@ function Game(uiUpdater){
         uiUp.buttonOn();
         this.buttonDisable = false;
         uiUp.removeAnimationClass();
-    };
+    }.bind(this);
     /***************************
     changePlayerTurn -> 
     param: none
@@ -105,11 +105,9 @@ function Game(uiUpdater){
             prevTurnMsg = `Player ${this.currentPlayerTurn+1} switched to ${currentPlayer.activeCharacter.name}`;
             uiUp.changeCharacterUpdate(currentPlayer, this.currentPlayerTurn);
             this.changePlayerTurn();
-        }else if(!charChangeCheck){
+        }else{
             const consoleMsg = "You can't select this character...";
             uiUp.updateConsoleCustomMsg(consoleMsg);
-        }else{
-            console.log('error in turnChangeChar in game obj');
         }
     };
     /***************************
@@ -133,10 +131,8 @@ function Game(uiUpdater){
         prevTurnMsg = charName +" used " + skillName +"!";
         if(!skillOutput[1]){
             uiUp.attkAnimation(this.currentPlayerTurn);
-            setTimeout(function(){
-                this.buttonRebind();
-            }.bind(this),950);
-            
+            setTimeout(this.buttonRebind,950);
+
             const opponentNum = 1-this.currentPlayerTurn;
             //if currentPlayerTurn=1, opponentNum=0 else cPT=0, oppNum=1
             const opponentPlayer = `player${opponentNum+1}`;
@@ -168,13 +164,7 @@ function Game(uiUpdater){
     descpt: returns false if character is alive; true if dead
     */
     this.checkCharDead = function(character){
-        if(character.alive){
-            return false;
-        }else if(!character.alive){
-            return true;
-        }else{
-            console.log('error checkCharDead function');
-        }
+        return !character.alive;
     };
     /***************************
     deadCharSwap -> 
