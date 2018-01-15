@@ -43,11 +43,7 @@ function Player(){
 			this.activeCharacterTracker = charChosen;
 			this.activeCharacter = this.characterArr[this.activeCharacterTracker]; //this line might not be necessary
 			return true;
-			// uiUp.changeCharacterUpdate(this_,gameObj.currentPlayerTurn);//call ui update function
-			// gameObj.changePlayerTurn();
 		}else{
-			// const consoleMsg = "You can't select this character...";
-			// uiUp.updateConsoleCustomMsg(consoleMsg);
 			return false;
 		}
 	};
