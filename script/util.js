@@ -83,7 +83,6 @@ function aboutModalToggle(){
 	const imageSrcDD = $('<dd>')
 		.addClass('aboutModalDD')
 		.text('The pixel artworks used for this project can be found at the following link: ');
-	// const imgSrcSpan1 = $('<span>').text('The pixel artworks used for this project can be found at the following link: ');
 	const tumblrIcon = $('<i>',{
 		class:'fa fa-tumblr-square fa-3x tumblrIcon'
 	});
@@ -92,7 +91,6 @@ function aboutModalToggle(){
 		target: '_blank',
 		class: 'aboutModalLink'
 	}).append(tumblrIcon);
-	// imageSrcDD.append(imgSrcSpan1, tumblrButton);
 	const gitIcon = $('<i>',{
 		class: 'fa fa-github-square fa-3x gitIcon'
 	});
@@ -130,10 +128,6 @@ function instructionModalToggle(){
 	const initialSpan1 = $('<span>').text('Players will take turns choosing ');
 	const initialSpan2 = $('<span>').text('three characters').css('color','red');
 	const initialSpan3 = $('<span>').text(' of his or her choice; player turn will alternate and will be indicated on the right side of the screen.');
-	// const initialScreenDD = $('<dd>',{
-	// 	class: 'instructionDD',
-	// 	text: 'Players will take turns choosing three characters of his or her choice; player turn will alternate and will be indicated on the right side of the screen.'
-	// });
 	const initialScreenDD = $('<dd>',{
 		class: 'instructionDD'
 	}).append(initialSpan1, initialSpan2, initialSpan3);
@@ -222,10 +216,8 @@ function scroller(screenID){	//will be either #gamePageMain or #introPageMain
 		duration: 800,
 		complete: ()=>{
 			if(screenID == 'introPageMain'){
-				// $('#gamePageMain').css('display','none');
 				$('#gamePageMain').addClass('container-none');
 			}else if(screenID == 'gamePageMain'){
-				// $('#introPageMain').css('display','none');
 				$('#introPageMain').addClass('container-none');
 			}
 		}
