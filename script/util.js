@@ -2,14 +2,14 @@
 contains audio toggle functions, about/instruction modal toggle, intro image function, scroller function
 *********/
 
-let battleAud = new Audio('./sounds/trainer_battle_music.mp3');
+const battleAud = new Audio('./sounds/trainer_battle_music.mp3');
 battleAud.volume = 0.3;
-let gameEndAud = new Audio('./sounds/victory_music_wildpoke.mp3');
+const gameEndAud = new Audio('./sounds/victory_music_wildpoke.mp3');
 gameEndAud.volume = 0.3;
-let gameEndAud2 = new Audio('./sounds/victory_music.mp3');
+const gameEndAud2 = new Audio('./sounds/victory_music.mp3');
 gameEndAud2.volume = 0.3;
 const bgImgPath = './images/intro/';
-let imgArr = ['ana.png','bastion.png','genji.png','junkrat.png','mei.png','mercy.png','pharah.png'
+const imgArr = ['ana.png','bastion.png','genji.png','junkrat.png','mei.png','mercy.png','pharah.png'
 	,'reaper.png','reinhardt.png','soldier.png','symmetra.png', 'torbjorn.png','tracer.png','widow.png',
 	'winston.png','zarya.png','zenyatta.png'];
 let imgInterval = null;
