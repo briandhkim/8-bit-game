@@ -23,7 +23,7 @@ At the initial screen, each players will take turns to choose three characters o
 - JavaScript / jQuery
 - jQuery UI
 - Font Awesome
-
+- Velocity.js
 -----
 
 #### To clone this repo:
